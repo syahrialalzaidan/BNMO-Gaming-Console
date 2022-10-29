@@ -1,6 +1,5 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include<math.h>
 
 int rng() {
 /* Fungsi RNG bakal ngereturn score yang diperoleh pemain
