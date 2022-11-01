@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<time.h>
 
 int rng() {
 /* Fungsi RNG bakal ngereturn score yang diperoleh pemain
@@ -7,7 +8,9 @@ int rng() {
  * Fullscore adalah 10 dan akan berkurang 20% seiring dengan berkurangnya guess hingga benar
 */
     //Kamus Lokal
-    int x = rand() % 30, turn = 4, guess;
+    time_t t;
+    srand(time(&t));
+    int x = rand() % 30, turn = 9, guess;
 
     //Algoritma
     printf("RNG Telah dimulai. Uji keberuntungan Anda dengan menebak X.\n");
@@ -25,7 +28,7 @@ int rng() {
     printf("\n");
     if (guess == x){
         printf("Ya, X adalah %d\n", x);
-        return (turn+1) * 2;
+        return (turn+1);
     }
     else{
         printf("Mohon maaf, kesempatan telah habis.\n");
