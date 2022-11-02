@@ -10,6 +10,6 @@ sw
   
   >Iskandar Muda Rizky Parlambang (18221109)
   
-  > Devina Ar'raudah (18221109)
+  > Devina Ar'raudah (18221113)
   
   > Ariffudin Achmad Subagja (18221127)
