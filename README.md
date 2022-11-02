@@ -4,4 +4,4 @@
 # 18221055 - Mochamad Syahrial A
 # 18221109 - Iskandar Muda Rizky Parlambang
 # 18221113 - Devina Ar'raudah
-# 18221127 - Ariffudin Achmad Subagja
+# 18221127 - Arifuddin Achmad Subagja
