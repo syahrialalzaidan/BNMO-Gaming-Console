@@ -14,6 +14,7 @@ int rng() {
 
     //Algoritma
     printf("RNG Telah dimulai. Uji keberuntungan Anda dengan menebak X.\n");
+    printf("Tebakan: ");
     scanf("%d", &guess);
     while((guess != x) && turn > 0){
         if (guess > x){
@@ -23,6 +24,7 @@ int rng() {
             printf("Lebih besar\n");
         }
         turn--;
+        printf("Tebakan: ");
         scanf("%d", &guess);
     }
     printf("\n");
@@ -36,9 +38,8 @@ int rng() {
     }
 }
 
-/* driver buat testing
+// driver buat testing
 int main(){
     int x = rng();
     printf("Skor : %d\n", x);
 }
-*/
