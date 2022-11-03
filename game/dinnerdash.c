@@ -43,7 +43,7 @@ int getID(char kata[10]){
     return (output - '0');
 }
 
-void serve(Queue *q1, Queue *q2, int i){ //q1 = menu; q2 = cook; i = id
+void serve(Queue *q1, Queue *q2, int i, int *saldo){ //q1 = menu; q2 = cook; i = id
     boolean done = false, found = false;
     ElType food;
     int x = 0;
@@ -65,8 +65,8 @@ void serve(Queue *q1, Queue *q2, int i){ //q1 = menu; q2 = cook; i = id
         if(done){
             if(i == IDX_HEAD(*q1)){
                 printf("Berhasil mengantar M%d\n", i);
+                *saldo += (HEAD(*q1).harga);
                 dequeue(q1, &food);
-                printf("true");
                 boolean found = false;
                 int x = IDX_HEAD(*q2);
                 while (x < length(*q2) && !found){
@@ -92,6 +92,8 @@ void serve(Queue *q1, Queue *q2, int i){ //q1 = menu; q2 = cook; i = id
 void playdinnerdash(){
     printf("Selamat Datang di Diner Dash!\n");
     printf("\n");
+    int saldo = 0;
+    printf("Saldo: %d\n\n", saldo);
     srand(time(0));
     //generate menu
     Queue menu;
@@ -118,6 +120,7 @@ void playdinnerdash(){
             int i=0;
             boolean found=false;
             if(isEmpty(cook)){
+                printf("Berhasil memasak M%d\n", cook.buffer[i].id);
                 enqueue(&cook, menu.buffer[foodid]);
             }
             else {
@@ -130,13 +133,14 @@ void playdinnerdash(){
                     }
                 }
                 if(!found){
+                    printf("Berhasil memasak M%d\n", cook.buffer[i].id);
                     enqueue(&cook, menu.buffer[foodid]);
                 }
             }
         }
         else{
-            if(! isEmpty(cook)){
-                serve(&menu, &cook, foodid);
+            if(!isEmpty(cook)){
+                serve(&menu, &cook, foodid, &saldo);
             }
             else {
                 printf("Anda belum memasak makanan\n");
@@ -154,14 +158,20 @@ void playdinnerdash(){
                         cook.buffer[j].ketahanan--;
                     }
                 }
+                if (cook.buffer[j].ketahanan == 0){
+                    cook.buffer[j].id = 999;
+                }
             }
         }
         generatemenu(&menu);
+        printf("============================\n\n");
+        printf("Saldo: %d\n\n", saldo);
         daftarmenu(menu);
         daftarcook(cook);
         daftarserve(cook);
         printf("MASUKKAN COMMAND: ");
         scanf("%[^\n]%*c", input);
+        printf("\n");
     }
 }
 

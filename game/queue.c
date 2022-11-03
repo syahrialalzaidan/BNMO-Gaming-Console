@@ -123,7 +123,7 @@ void daftarcook(Queue q){
     if(!isEmpty(q)){
         for(int x = IDX_HEAD(q); x < length(q); x++){
             if(q.buffer[x].durasi+1 > 0){
-                printf("M%d \t\t| %d \t\t\n", q.buffer[x].id, q.buffer[x].durasi+1);
+                printf("M%d \t\t| %d \t\t\n\n", q.buffer[x].id, q.buffer[x].durasi+1);
             }
         }
     }
@@ -136,15 +136,20 @@ void daftarserve(Queue q){
     printf("Daftar Makanan yang dapat disajikan\n");
     printf("Makanan \t| Sisa ketahanan makanan\n");
     printf("--------------------------------------\n");
+    int count = 0;
     if(!isEmpty(q)){
         for(int x = IDX_HEAD(q); x <= IDX_TAIL(q); x++){
             if(q.buffer[x].durasi+1 <= 0 && q.buffer[x].ketahanan >0){
                 printf("M%d \t\t| %d \t\t\n", q.buffer[x].id,q.buffer[x].ketahanan);
+                count ++;
             }
+        }
+        if(count == 0){
+        printf("\t\t|\n\n\n");
         }
     }
     else {
-        printf("\t\t|\n");
+        printf("\t\t|\n\n\n");
     }
 }
 /*
