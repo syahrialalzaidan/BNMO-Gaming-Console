@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include "mesinkata.h"
 
+boolean EndWord;
+Word currentWord;
+
 void IgnoreBlanks() {
 /* Mengabaikan satu atau beberapa BLANK
    I.S. : currentChar sembarang
