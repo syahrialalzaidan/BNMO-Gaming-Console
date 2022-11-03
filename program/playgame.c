@@ -31,3 +31,4 @@ void playgame(Queue *queuegame){
         ElType a;
         dequeue(queuegame, &a);
     }
+}

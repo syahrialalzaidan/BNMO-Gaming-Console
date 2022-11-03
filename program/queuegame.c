@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "queue.h"
+#include "arraydin.h"
 
 void queuegame(Queue *queuegame, ArrayDin array){
     int i, j, x;
