@@ -49,16 +49,6 @@ int main() {
     printf("================\n");
     printf("ENTER COMMAND: ");
     STARTWORD();
-    //print word with for loop
-    while ((!isWordSame(currentWord, stringToWord("START"))) && (!isWordSame(currentWord, stringToWord("LOAD"))) && 
-    (!isWordSame(currentWord, stringToWord("SAVE"))) && (!isWordSame(currentWord, stringToWord("CREATEGAME"))) && 
-    (!isWordSame(currentWord, stringToWord("LISTGAME"))) && (!isWordSame(currentWord, stringToWord("DELETEGAME"))) && 
-    (!isWordSame(currentWord, stringToWord("QUEUEGAME"))) && (!isWordSame(currentWord, stringToWord("PLAYGAME"))) && 
-    (!isWordSame(currentWord, stringToWord("SKIPGAME"))) && (!isWordSame(currentWord, stringToWord("HELP")))){
-        printf("commandnya gaada ini mah\n");
-        printf("Masukkan command yang benernya ya, kalau perlu bantuan bisa panggil HELP: ");
-        STARTWORD();
-    }
 
     if(isWordSame(currentWord, stringToWord("LOAD"))) {
         ADVWORD();
