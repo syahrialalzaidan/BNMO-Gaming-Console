@@ -3,8 +3,7 @@
 #include "ADT/arraydin/arraydin.h"
 #include "ADT/boolean/boolean.h"
 //gcc program/ADT/mesinkarkata/mesinkar.c program/ADT/mesinkarkata/mesinkata.c program/ADT/arraydin/arraydin.c program/main.c -o main
-boolean EndWord;
-Word currentWord;
+
 
 Word stringToWord(char *string) {
     Word word;
