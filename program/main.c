@@ -2,7 +2,7 @@
 #include "ADT/mesinkarkata/mesinkata.h"
 #include "ADT/arraydin/arraydin.h"
 #include "ADT/boolean/boolean.h"
-//gcc ADT/mesinkarkata/mesinkar.c ADT/mesinkarkata/mesinkata.c ADT/arraydin/arraydin.c main.c -o main
+//gcc program/ADT/mesinkarkata/mesinkar.c program/ADT/mesinkarkata/mesinkata.c program/ADT/arraydin/arraydin.c program/main.c -o main
 boolean EndWord;
 Word currentWord;
 
