@@ -123,7 +123,7 @@ void daftarcook(Queue q){
     if(!isEmpty(q)){
         for(int x = IDX_HEAD(q); x < length(q); x++){
             if(q.buffer[x].durasi+1 > 0){
-                printf("M%d \t\t| %d \t\t\n\n", q.buffer[x].id, q.buffer[x].durasi+1);
+                printf("M%d \t\t| %d \t\t\n", q.buffer[x].id, q.buffer[x].durasi+1);
             }
         }
     }

@@ -13,50 +13,49 @@ void IgnoreBlanks() {
     }
 }
 
-void STARTWORD(){
-    /* I.S. : currentChar sembarang
+void STARTWORD() {
+/* I.S. : currentChar sembarang
    F.S. : EndWord = true, dan currentChar = MARK;
           atau EndWord = false, currentWord adalah kata yang sudah diakuisisi,
           currentChar karakter pertama sesudah karakter terakhir kata */
     START();
-    IgnoreBlanks();
-    if (IsEOP()){
+    if (IsEOP()) {
         EndWord = true;
-    }
-    else {
-        EndWord = false;
+    } else { 
         CopyWord();
+        ADV();
+        EndWord = false;
     }
 }
 
-
 void ADVWORD() {
-    /* I.S. : currentChar adalah karakter pertama kata yang akan diakuisisi
+/* I.S. : currentChar adalah karakter pertama kata yang akan diakuisisi
    F.S. : currentWord adalah kata terakhir yang sudah diakuisisi,
           currentChar adalah karakter pertama dari kata berikutnya, mungkin MARK
           Jika currentChar = MARK, EndWord = true.
    Proses : Akuisisi kata menggunakan procedure SalinWord */
     IgnoreBlanks();
-    if (IsEOP()) {
+    if (currentChar == BLANK) {
         EndWord = true;
-    }
-    else{
+    } else { 
+        EndWord = false;
         CopyWord();
         IgnoreBlanks();
     }
 }
 
-void CopyWord(){
+void CopyWord() {
+/* Mengakuisisi kata, menyimpan dalam currentWord
+   I.S. : currentChar adalah karakter pertama dari kata
+   F.S. : currentWord berisi kata yang sudah diakuisisi;
+          currentChar = BLANK atau currentChar = MARK;
+          currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
+          Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
     int i = 0;
-    while (! IsEOP() && currentChar != BLANK && i < NMax) {
+    while ((currentChar != BLANK) && (i < NMax) && (currentChar != MARK)) {
         currentWord.TabWord[i] = currentChar;
         ADV();
         i++;
     }
-    if (i > NMax) {
-        currentWord.Length = NMax;
-    }
-    else{
-        currentWord.Length = i;
-    }
+    currentWord.Length = i;
 }
