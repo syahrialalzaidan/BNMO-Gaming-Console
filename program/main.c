@@ -2,9 +2,8 @@
 #include "ADT/mesinkarkata/mesinkata.h"
 #include "ADT/arraydin/arraydin.h"
 #include "ADT/boolean/boolean.h"
-//gcc ADT/mesinkarkata/mesinkar.c ADT/mesinkarkata/mesinkata.c ADT/arraydin/arraydin.c main.c -o main
-boolean EndWord;
-Word currentWord;
+//gcc program/ADT/mesinkarkata/mesinkar.c program/ADT/mesinkarkata/mesinkata.c program/ADT/arraydin/arraydin.c program/main.c -o main
+
 
 Word stringToWord(char *string) {
     Word word;
@@ -50,7 +49,7 @@ int main() {
     printf("================\n");
     printf("ENTER COMMAND: ");
     STARTWORD();
-    //print word with for loop
+
     if(isWordSame(currentWord, stringToWord("LOAD"))) {
         ADVWORD();
         char filename[100];
