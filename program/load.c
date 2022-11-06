@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include "load.h"
 #include "ADT/arraydin/arraydin.h"
+#include "program/load.h"
 
 void load() {
     ;

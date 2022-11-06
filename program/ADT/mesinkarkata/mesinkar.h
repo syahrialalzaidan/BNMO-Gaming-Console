@@ -11,6 +11,8 @@
 extern char currentChar;
 extern boolean EOP;
 
+void LoadPita(boolean isF, char* filename);
+
 void START();
 /* Mesin siap dioperasikan. Pita disiapkan untuk dibaca.
    Karakter pertama yang ada pada pita posisinya adalah pada jendela.

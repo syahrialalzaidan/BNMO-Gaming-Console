@@ -6,9 +6,20 @@
 
 char currentChar;
 boolean EOP;
+boolean isFile;
 
 static FILE *pita;
 static int retval;
+
+void LoadPita(boolean isF, char* filename) {
+    isFile = isF;
+    fflush(stdin);
+    if (isFile) {
+        pita = fopen(filename, "r");
+    } else {
+        pita = stdin;
+    }
+}
 
 void START() {
 /* Mesin siap dioperasikan. Pita disiapkan untuk dibaca.
@@ -18,7 +29,7 @@ void START() {
    F.S. : currentChar adalah karakter pertama pada pita
           Jika currentChar != MARK maka EOP akan padam (false)
           Jika currentChar = MARK maka EOP akan menyala (true) */
-    pita = stdin;
+    EOP = false;
     ADV();
 }
 
@@ -30,8 +41,8 @@ void ADV() {
           Jika  currentChar = MARK maka EOP akan menyala (true) */
     retval = fscanf(pita,"%c",&currentChar);
     EOP = IsEOP();
-    if (EOP) {
-        fclose(pita);
+    if (EOP && isFile) {
+            fclose(pita);
     }
 }
 
