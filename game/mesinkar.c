@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "mesinkar.h"
-#include "boolean.h"
 
 // ASLINYA "mesinkarakter.h"
 
@@ -20,9 +19,6 @@ void START() {
           Jika currentChar != MARK maka EOP akan padam (false)
           Jika currentChar = MARK maka EOP akan menyala (true) */
     pita = stdin;
-    fseek(pita, 0, SEEK_SET);
-    fputc('.', pita);
-    rewind(pita);
     ADV();
 }
 
@@ -34,9 +30,9 @@ void ADV() {
           Jika  currentChar = MARK maka EOP akan menyala (true) */
     retval = fscanf(pita,"%c",&currentChar);
     EOP = IsEOP();
-    if (EOP) {
-        fclose(pita);
-    }
+    // if (EOP) {
+    //     fclose(pita);
+    // }
 }
 
 char GetCC() {
@@ -47,5 +43,19 @@ char GetCC() {
 boolean IsEOP() {
 /* Mengirimkan true jika currentChar = MARK */
     //check if currentChar is blank and the next character is blank  too
-    return currentChar == MARK;
+    if (currentChar == BLANK) {
+        char nextChar;
+        retval = fscanf(pita,"%c",&nextChar);
+        if (nextChar == BLANK) {
+            return true;
+        } else {
+            ungetc(nextChar,pita);
+            return false;
+        }
+    } else {
+        return (currentChar == MARK);
+    }
+    
 }
+
+// function makeword to unite currentchar and the next character

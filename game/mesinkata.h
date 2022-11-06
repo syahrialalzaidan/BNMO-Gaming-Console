@@ -8,7 +8,7 @@
 #include "mesinkar.h"
 
 #define NMax 50
-#define BLANK '\n'
+// #define BLANK ' '
 
 typedef struct
 {

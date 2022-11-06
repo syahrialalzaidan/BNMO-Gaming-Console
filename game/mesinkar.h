@@ -5,8 +5,8 @@
 #define __MESIN_KAR_H_
 
 #include "boolean.h"
-
-#define MARK '.'
+#define MARK '\n'
+#define BLANK ' '
 /* State Mesin */
 extern char currentChar;
 extern boolean EOP;
