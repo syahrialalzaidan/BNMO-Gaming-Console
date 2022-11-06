@@ -6,6 +6,7 @@
 #include<stdlib.h>
 #include "queue.h"
 #include "boolean.h"
+#include "mesinkata.h"
 
 void generatemenu();
 void playdinnerdash();
