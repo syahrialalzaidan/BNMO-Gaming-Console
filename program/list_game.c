@@ -12,7 +12,7 @@ void listgame (ArrayDin array){
     else{
         for (int i=0; i != array.Neff; i++)
         {
-            printf("%d. %d\n", i+1, array.A[i]);
+            printf("%d. %s\n", i+1, array.A[i]);
         }
     }
 }

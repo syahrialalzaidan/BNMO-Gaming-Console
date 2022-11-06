@@ -23,7 +23,6 @@ void STARTWORD() {
         EndWord = true;
     } else { 
         CopyWord();
-        ADV();
         EndWord = false;
     }
 }
