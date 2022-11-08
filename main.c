@@ -15,62 +15,8 @@
 #include "program/skipgame.h"
 #include "program/help.h"
 
-//gcc program/help.c program/skipgame.c program/playgame.c program/queuegame.c program/delete_game.c program/list_game.c program/save.c program/load.c program/start.c program/ADT/queue/queue.c program/ADT/mesinkarkata/mesinkar.c program/ADT/mesinkarkata/mesinkata.c program/ADT/arraydin/arraydin.c main.c -o main
+//gcc program/help.c program/skipgame.c program/playgame.c program/queuegame.c program/delete_game.c program/list_game.c program/create_game.c program/save.c program/load.c program/start.c program/ADT/queue/queue.c program/ADT/mesinkarkata/mesinkar.c program/ADT/mesinkarkata/mesinkata.c program/ADT/arraydin/arraydin.c main.c -o main
 
-
-Word stringToWord(char *string) {
-    Word word;
-    int i = 0;
-    while(string[i] != '\0') {
-        word.TabWord[i] = string[i];
-        i++;
-    }
-    word.Length = i;
-    return word;
-}
-
-//convert string to word
-// void WordToString(char x[100], Word W){
-// /* Mengubah Word menjadi string
-//     I.S. : Word W terdefinisi, string dest belum terdefinisi
-//     F.S. : string dest sudah terdefinisi berdasarkan Word W*/   
-//     int i;
-//     for (i = 0; i < W.Length; i++){
-//         x[i] = W.TabWord[i];
-//     }
-//     x[i] = '\0';
-// }
-// char *WordToString(Word W) {
-//     char *x = malloc(W.Length + 1);
-//     for (int i = 0; i < W.Length; i++) {
-//         x[i] = W.TabWord[i];
-//     }
-//     x[W.Length] = '\0';
-//     return x;
-// }
-// char *WordToString(Word W) {
-//     char *x = malloc(W.Length + 1);
-//     for (int i = 0; i < W.Length; i++) {
-//         x[i] = W.TabWord[i];
-//     }
-//     x[W.Length] = '\0';
-//     return x;
-// }
-
-boolean isWordSame(Word K1, Word K2) {
-    if (K1.Length != K2.Length) {
-        return false;
-    } else {
-        int i = 0;
-        while (i < K1.Length) {
-            if (K1.TabWord[i] != K2.TabWord[i]) {
-                return false;
-            }
-            i++;
-        }
-        return true;
-    }
-}
 boolean isCommandValid(Word kata, int *command)
 {
     boolean output;
@@ -157,14 +103,13 @@ boolean isCommandValid(Word kata, int *command)
 
 int main() {
     ArrayDin Games = MakeArrayDin();
+    Queue queuegames;
+    CreateQueue(&queuegames);
     char* filename;
     int command;
     printf("Welcome to BNMO!\n");
     printf("========================\n");
     printf("ENTER COMMAND: ");
-
-    Queue queuegames;
-    CreateQueue(&queuegames);
     STARTWORD();
     while (!isCommandValid(currentWord, &command)) {
         printf("command = %d\n", command);

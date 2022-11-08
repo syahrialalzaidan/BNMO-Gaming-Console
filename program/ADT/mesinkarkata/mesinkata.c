@@ -97,3 +97,29 @@ char *WordToString(Word W) {
     x[W.Length] = '\0';
     return x;
 }
+
+boolean isWordSame(Word K1, Word K2) {
+    if (K1.Length != K2.Length) {
+        return false;
+    } else {
+        int i = 0;
+        while (i < K1.Length) {
+            if (K1.TabWord[i] != K2.TabWord[i]) {
+                return false;
+            }
+            i++;
+        }
+        return true;
+    }
+}
+
+Word stringToWord(char *string) {
+    Word word;
+    int i = 0;
+    while(string[i] != '\0') {
+        word.TabWord[i] = string[i];
+        i++;
+    }
+    word.Length = i;
+    return word;
+}

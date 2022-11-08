@@ -50,4 +50,8 @@ int WordToInt(Word W);
 
 char *WordToString(Word W);
 
+boolean isWordSame(Word K1, Word K2);
+
+Word stringToWord(char *string);
+
 #endif
