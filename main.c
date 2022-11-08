@@ -177,11 +177,6 @@ int main() {
             start(&Games);
         }
     }
-    //print array games
-    printf("Game yang tersedia:\n");
-    for (int i = 0; i < Games.Neff; i++) {
-        printf("%d. %s\n", i+1, Games.A[i]);
-    }
     while (!isWordSame(currentWord, stringToWord("QUIT"))){
         if(command == 2){
             ADVWORD();
