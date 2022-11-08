@@ -62,7 +62,7 @@ void WordToInt(int *x, Word W) {
     *x = temp;
 }
 
-void load(char* filename, ArrayDin* Games) {
+void loadfile(char* filename, ArrayDin* Games) {
     char* filepath = AddPath(filename);
     // LoadPita("./data/config.txt");
     // open config.txt in data folder

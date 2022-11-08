@@ -3,12 +3,11 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "queue.h"
-#include "boolean.h"
+#include "../game/queue.h"
+#include "ADT/boolean/boolean.h"
 #include "mesinkata.h"
-#include "arraydin.h"
-#include "listgame.h"
-
+#include "ADT/arraydin/arraydin.h"
+#include "list_game.h"
 
 void queuegame();
 void listqueue();

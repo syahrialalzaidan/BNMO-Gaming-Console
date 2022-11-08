@@ -7,5 +7,5 @@
 
 int main() {
     ArrayDin Games = MakeArrayDin();
-    load("config.txt", &Games);
+    loadfile("config.txt", &Games);
 }

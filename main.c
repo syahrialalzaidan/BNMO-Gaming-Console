@@ -1,8 +1,12 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "game/mesinkata.h"
 #include "program/ADT/arraydin/arraydin.h"
 #include "program/ADT/boolean/boolean.h"
-//gcc game/mesinkar.c game/mesinkata.c program/ADT/arraydin/arraydin.c main.c -o main
+#include "program/ADT/queue/queue.h"
+#include "program/queuegame.h"
+// #include "program/load.h"
+//gcc program/ADT/queue/queue.c game/mesinkar.c game/mesinkata.c program/ADT/arraydin/arraydin.c main.c -o main
 
 
 Word stringToWord(char *string) {
@@ -17,15 +21,23 @@ Word stringToWord(char *string) {
 }
 
 //convert string to word
-void WordToString(char x[100], Word W){
-/* Mengubah Word menjadi string
-    I.S. : Word W terdefinisi, string dest belum terdefinisi
-    F.S. : string dest sudah terdefinisi berdasarkan Word W*/   
-    int i;
-    for (i = 0; i < W.Length; i++){
+// void WordToString(char x[100], Word W){
+// /* Mengubah Word menjadi string
+//     I.S. : Word W terdefinisi, string dest belum terdefinisi
+//     F.S. : string dest sudah terdefinisi berdasarkan Word W*/   
+//     int i;
+//     for (i = 0; i < W.Length; i++){
+//         x[i] = W.TabWord[i];
+//     }
+//     x[i] = '\0';
+// }
+char *WordToString(Word W) {
+    char *x = malloc(W.Length + 1);
+    for (int i = 0; i < W.Length; i++) {
         x[i] = W.TabWord[i];
     }
-    x[i] = '\0';
+    x[W.Length] = '\0';
+    return x;
 }
 
 boolean isWordSame(Word K1, Word K2) {
@@ -146,7 +158,10 @@ int main() {
         }
         else if(command == 1){
             //LOAD();
-            printf("LOAD\n");
+            ADVWORD();
+            char* filename = WordToString(currentWord);
+            printf("Loading game from %s...\n", filename);
+            //load(&Games, filename);
         }
         else if(command == 2){
             //SAVE();
@@ -167,12 +182,12 @@ int main() {
         else if(command == 6){
             //QUEUE_GAME();
             /* printf("QUEUE GAME\n"); */
-            queuegame(&queuegames, Games);
+            //queuegame(&queuegames, Games);
         }
         else if(command == 7){
             //PLAY_GAME();
             /* printf("PLAY GAME\n"); */
-            playgame(&queuegames, Games);
+            //playgame(&queuegames, Games);
         }
         else if(command == 8){
             //SKIPGAME();
@@ -180,7 +195,7 @@ int main() {
             ADVWORD();
             int nomor;
             nomor = currentWord.TabWord[0] - '0';
-            skipgame(&queuegames, nomor, Games);
+            //skipgame(&queuegames, nomor, Games);
         }
         else if(command == 10){
             //HELP();

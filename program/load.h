@@ -6,4 +6,5 @@
 char* AddPath(char* filename);
 
 char *WordToString(Word W);
-void load();
+void WordToInt(int* x, Word W);
+void loadfile();
