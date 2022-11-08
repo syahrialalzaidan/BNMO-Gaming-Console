@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "ADT/arraydin/arraydin.h"
-#include "ADT/mesinkarkata/mesinkarfile.h"
-#include "ADT/mesinkarkata/mesinkatafile.h"
+#include "ADT/mesinkarkata/mesinkar.h"
+#include "ADT/mesinkarkata/mesinkata.h"
 #include "load.h"
-// gcc program/ADT/mesinkarkata/mesinkarfile.c program/ADT/mesinkarkata/mesinkatafile.c program/ADT/arraydin/arraydin.c program/load.c program/load_driver.c -o load_driver
+// gcc program/ADT/mesinkarkata/mesinkar.c program/ADT/mesinkarkata/mesinkata.c program/ADT/arraydin/arraydin.c program/load.c program/load_driver.c -o load_driver
 
 
 char* AddPath(char* filename) {
@@ -39,37 +39,13 @@ char* AddPath(char* filename) {
     return newpath;
 }
 
-char *WordToString(Word W) {
-    char *x = malloc(W.Length + 1);
-    for (int i = 0; i < W.Length; i++) {
-        x[i] = W.TabWord[i];
-    }
-    x[W.Length] = '\0';
-    return x;
-}
-
-void WordToInt(int *x, Word W) {
-/* Mengubah Word menjadi integer
-    I.S. : Word W terdefinisi, integer dest belum terdefinisi
-    F.S. : integer dest sudah terdefinisi berdasarkan Word W*/   
-    int i;
-    int temp = 0;
-    for (i = 0; i < W.Length; i++){
-        if (W.TabWord[i] != BLANK) {
-            temp = temp * 10 + (W.TabWord[i] - '0');
-        }
-    }
-    *x = temp;
-}
-
 void loadfile(char* filename, ArrayDin* Games) {
     char* filepath = AddPath(filename);
     // LoadPita("./data/config.txt");
     // open config.txt in data folder
-    LoadPita(filepath);
+    LoadPita(filepath, true);
     STARTWORD();
-    int i = 0;
-    WordToInt(&i, currentWord);
+    int i = WordToInt(currentWord);
     int j = 0;
     while (j < i) {
         ADVWORD();
@@ -77,4 +53,5 @@ void loadfile(char* filename, ArrayDin* Games) {
         InsertLast(Games, name);
         j++;
     }
+    StopLoadPita();
 }

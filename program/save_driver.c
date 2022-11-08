@@ -9,6 +9,6 @@
 int main () {
     ArrayDin Games = MakeArrayDin();
     loadfile("savefile1.txt", &Games);
-    InsertLast(&Games, "VALORANT");
+    InsertLast(&Games, "COUNTER STRIKE");
     save(&Games, "savefile1.txt");
 }

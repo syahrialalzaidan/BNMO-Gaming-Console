@@ -1,16 +1,18 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "mesinkata.h"
 
 boolean EndWord;
+boolean isFile;
 Word currentWord;
 
 void IgnoreBlanks() {
 /* Mengabaikan satu atau beberapa BLANK
    I.S. : currentChar sembarang
    F.S. : currentChar ≠ BLANK atau currentChar = MARK */
-    if (currentChar == BLANK) {
+    if (((currentChar == BLANK) && (!isFile)) || ((isFile) && (currentChar == '\n'))) {
         ADV();
-    }
+    } 
 }
 
 void STARTWORD() {
@@ -19,11 +21,12 @@ void STARTWORD() {
           atau EndWord = false, currentWord adalah kata yang sudah diakuisisi,
           currentChar karakter pertama sesudah karakter terakhir kata */
     START();
+    IgnoreBlanks();
     if (IsEOP()) {
         EndWord = true;
     } else { 
         CopyWord();
-        ADV();
+        // ADV();
         EndWord = false;
     }
 }
@@ -35,9 +38,10 @@ void ADVWORD() {
           Jika currentChar = MARK, EndWord = true.
    Proses : Akuisisi kata menggunakan procedure SalinWord */
     IgnoreBlanks();
-    if (currentChar == BLANK) {
+    if ((currentChar == BLANK && !isFile) || (EOP && isFile)) {
         EndWord = true;
     } else { 
+        //EndWord = false;
         CopyWord();
         // IgnoreBlanks();
     }
@@ -51,10 +55,43 @@ void CopyWord() {
           currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
           Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
     int i = 0;
-    while ((currentChar != BLANK) && (i < NMax) && (currentChar != MARK)) {
-        currentWord.TabWord[i] = currentChar;
-        ADV();
-        i++;
+    if (isFile) {
+        while ((i < NMax) && (currentChar != '\n') && !IsEOP()) {
+            currentWord.TabWord[i] = currentChar;
+            ADV();
+            i++;
+        }
+    } else {
+        while ((currentChar != BLANK) && (i < NMax) && (currentChar != MARK)) {
+            currentWord.TabWord[i] = currentChar;
+            ADV();
+            i++;
+        }
     }
     currentWord.Length = i;
+}
+
+/* Word Converter Functions */
+
+int WordToInt(Word W) {
+/* Mengubah Word menjadi integer
+    I.S. : Word W terdefinisi, integer dest belum terdefinisi
+    F.S. : integer dest sudah terdefinisi berdasarkan Word W*/   
+    int i;
+    int temp = 0;
+    for (i = 0; i < W.Length; i++){
+        if (W.TabWord[i] != BLANK) {
+            temp = temp * 10 + (W.TabWord[i] - '0');
+        }
+    }
+    return temp;
+}
+
+char *WordToString(Word W) {
+    char *x = malloc(W.Length + 1);
+    for (int i = 0; i < W.Length; i++) {
+        x[i] = W.TabWord[i];
+    }
+    x[W.Length] = '\0';
+    return x;
 }

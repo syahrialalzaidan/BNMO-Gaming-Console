@@ -58,4 +58,3 @@ boolean IsEOP() {
     return (currentChar == MARK);
 }
 
-// function makeword to unite currentchar and the next character

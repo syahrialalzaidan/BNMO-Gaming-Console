@@ -6,19 +6,19 @@
 
 char currentChar;
 boolean EOP;
-boolean isFile;
+boolean isFile = false;
+char* filepath;
 
 static FILE *pita;
 static int retval;
 
-void LoadPita(boolean isF, char* filename) {
+void LoadPita(char* filename, boolean isF) {
+    filepath = filename;
     isFile = isF;
-    fflush(stdin);
-    if (isFile) {
-        pita = fopen(filename, "r");
-    } else {
-        pita = stdin;
-    }
+}
+
+void StopLoadPita() {
+    isFile = false;
 }
 
 void START() {
@@ -29,8 +29,17 @@ void START() {
    F.S. : currentChar adalah karakter pertama pada pita
           Jika currentChar != MARK maka EOP akan padam (false)
           Jika currentChar = MARK maka EOP akan menyala (true) */
-    EOP = false;
-    ADV();
+    if (isFile) {
+        pita = fopen(filepath, "r");
+        if (pita == NULL) {
+            printf("File tidak ditemukan\n");
+        } else {
+            ADV();
+        }
+    } else {
+        pita = stdin;
+        ADV();
+    }
 }
 
 void ADV() {
@@ -42,7 +51,7 @@ void ADV() {
     retval = fscanf(pita,"%c",&currentChar);
     EOP = IsEOP();
     if (EOP && isFile) {
-            fclose(pita);
+        fclose(pita);
     }
 }
 
@@ -54,19 +63,22 @@ char GetCC() {
 boolean IsEOP() {
 /* Mengirimkan true jika currentChar = MARK */
     //check if currentChar is blank and the next character is blank  too
-    if (currentChar == BLANK) {
-        char nextChar;
-        retval = fscanf(pita,"%c",&nextChar);
-        if (nextChar == BLANK) {
-            return true;
-        } else {
-            ungetc(nextChar,pita);
-            return false;
-        }
+    if (isFile) {
+        // if (currentChar == BLANK) {
+        //     char nextChar;
+        //     retval = fscanf(pita,"%c",&nextChar);
+        //     if (nextChar == BLANK) {
+        //         return true;
+        //     } else {
+        //         ungetc(nextChar,pita);
+        //         return false;
+        //     }
+        // } else {
+        //     return (currentChar == MARK);
+        // }
+        return (currentChar == EOF || retval == EOF);
     } else {
         return (currentChar == MARK);
     }
-    
 }
 
-// function makeword to unite currentchar and the next character
