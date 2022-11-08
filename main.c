@@ -1,8 +1,15 @@
 #include <stdio.h>
-#include "game/mesinkata.h"
+#include <stdlib.h>
+#include "program/ADT/mesinkarkata/mesinkata.h"
 #include "program/ADT/arraydin/arraydin.h"
 #include "program/ADT/boolean/boolean.h"
-//gcc game/mesinkar.c game/mesinkata.c program/ADT/arraydin/arraydin.c main.c -o main
+#include "program/ADT/queue/queue.h"
+#include "program/queuegame.h"
+#include "program/load.h"
+#include "program/start.h"
+#include "program/save.h"
+#include "program/list_game.h"
+//gcc program/list_game.c program/save.c program/load.c program/start.c program/ADT/queue/queue.c program/ADT/mesinkarkata/mesinkar.c program/ADT/mesinkarkata/mesinkata.c program/ADT/arraydin/arraydin.c main.c -o main
 
 
 Word stringToWord(char *string) {
@@ -17,16 +24,32 @@ Word stringToWord(char *string) {
 }
 
 //convert string to word
-void WordToString(char x[100], Word W){
-/* Mengubah Word menjadi string
-    I.S. : Word W terdefinisi, string dest belum terdefinisi
-    F.S. : string dest sudah terdefinisi berdasarkan Word W*/   
-    int i;
-    for (i = 0; i < W.Length; i++){
-        x[i] = W.TabWord[i];
-    }
-    x[i] = '\0';
-}
+// void WordToString(char x[100], Word W){
+// /* Mengubah Word menjadi string
+//     I.S. : Word W terdefinisi, string dest belum terdefinisi
+//     F.S. : string dest sudah terdefinisi berdasarkan Word W*/   
+//     int i;
+//     for (i = 0; i < W.Length; i++){
+//         x[i] = W.TabWord[i];
+//     }
+//     x[i] = '\0';
+// }
+// char *WordToString(Word W) {
+//     char *x = malloc(W.Length + 1);
+//     for (int i = 0; i < W.Length; i++) {
+//         x[i] = W.TabWord[i];
+//     }
+//     x[W.Length] = '\0';
+//     return x;
+// }
+// char *WordToString(Word W) {
+//     char *x = malloc(W.Length + 1);
+//     for (int i = 0; i < W.Length; i++) {
+//         x[i] = W.TabWord[i];
+//     }
+//     x[W.Length] = '\0';
+//     return x;
+// }
 
 boolean isWordSame(Word K1, Word K2) {
     if (K1.Length != K2.Length) {
@@ -120,6 +143,7 @@ boolean isCommandValid(Word kata, int *command)
     else
     {
         output = false;
+        *command = 11;
     }
 
     return output;
@@ -127,30 +151,37 @@ boolean isCommandValid(Word kata, int *command)
 
 int main() {
     ArrayDin Games = MakeArrayDin();
+    char* filename;
     int command;
     printf("Welcome to BNMO!\n");
     printf("========================\n");
     printf("ENTER COMMAND: ");
+
     Queue queuegames;
     CreateQueue(&queuegames);
     STARTWORD();
+    while (!isCommandValid(currentWord, &command)) {
+        printf("command = %d\n", command);
+        printf("Command tidak dikenali, silahkan masukkan command yang valid.\n");
+        printf("ENTER COMMAND: ");
+        STARTWORD();
+    }
+    while (IsEmpty(Games)) {
+        if (command == 1) {
+            ADVWORD();
+            filename = WordToString(currentWord);
+            printf("Loading game from %s...\n", filename);
+            loadfile(filename, &Games);
+        } else if (command == 0) {
+            printf("Starting new game...\n");
+            start(&Games);
+        }
+    }
     while (!isWordSame(currentWord, stringToWord("QUIT"))){
-        while (!isCommandValid(currentWord, &command)) {
-            printf("Command tidak dikenali, silahkan masukkan command yang valid.\n");
-            printf("ENTER COMMAND: ");
-            STARTWORD();
-        }
-        if (command == 0){
-            //START();
-            printf("START\n");
-        }
-        else if(command == 1){
-            //LOAD();
-            printf("LOAD\n");
-        }
-        else if(command == 2){
-            //SAVE();
-            printf("SAVE\n");
+        if(command == 2){
+            ADVWORD();
+            filename = WordToString(currentWord);
+            save(&Games, filename);
         }
         else if(command == 3){
             //CREATE_GAME();
@@ -167,12 +198,12 @@ int main() {
         else if(command == 6){
             //QUEUE_GAME();
             /* printf("QUEUE GAME\n"); */
-            queuegame(&queuegames, Games);
+            //queuegame(&queuegames, Games);
         }
         else if(command == 7){
             //PLAY_GAME();
             /* printf("PLAY GAME\n"); */
-            playgame(&queuegames, Games);
+            //playgame(&queuegames, Games);
         }
         else if(command == 8){
             //SKIPGAME();
@@ -180,7 +211,7 @@ int main() {
             ADVWORD();
             int nomor;
             nomor = currentWord.TabWord[0] - '0';
-            skipgame(&queuegames, nomor, Games);
+            //skipgame(&queuegames, nomor, Games);
         }
         else if(command == 10){
             //HELP();
@@ -188,6 +219,13 @@ int main() {
         }
         printf("ENTER COMMAND: ");
         STARTWORD();
+        isCommandValid(currentWord, &command);
+        while (command == 11 || command == 0 || command == 1) {
+            printf("Command tidak dikenali, silahkan masukkan command yang valid.\n");
+            printf("ENTER COMMAND: ");
+            STARTWORD();
+            isCommandValid(currentWord, &command);
+        }
     }
     //QUIT();
     return 0;

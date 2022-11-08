@@ -5,5 +5,4 @@
 
 char* AddPath(char* filename);
 
-char *WordToString(Word W);
-void load();
+void loadfile(char* filename, ArrayDin* Games);
