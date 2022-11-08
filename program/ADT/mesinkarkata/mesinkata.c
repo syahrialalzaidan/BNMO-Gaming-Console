@@ -10,7 +10,7 @@ void IgnoreBlanks() {
 /* Mengabaikan satu atau beberapa BLANK
    I.S. : currentChar sembarang
    F.S. : currentChar ≠ BLANK atau currentChar = MARK */
-    if (((currentChar == BLANK) && (!isFile)) || ((isFile) && (currentChar == '\n'))) {
+    while (((currentChar == BLANK) && (!isFile)) || ((isFile) && (currentChar == '\n'))) {
         ADV();
     } 
 }
@@ -21,7 +21,7 @@ void STARTWORD() {
           atau EndWord = false, currentWord adalah kata yang sudah diakuisisi,
           currentChar karakter pertama sesudah karakter terakhir kata */
     START();
-    IgnoreBlanks();
+    //IgnoreBlanks();
     if (IsEOP()) {
         EndWord = true;
     } else { 
@@ -41,9 +41,11 @@ void ADVWORD() {
     if ((currentChar == BLANK && !isFile) || (EOP && isFile)) {
         EndWord = true;
     } else { 
-        //EndWord = false;
+        EndWord = false;
         CopyWord();
-        // IgnoreBlanks();
+        if (!isFile) {
+            IgnoreBlanks();
+        }
     }
 }
 

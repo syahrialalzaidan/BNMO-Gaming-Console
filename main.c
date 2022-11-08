@@ -8,7 +8,8 @@
 #include "program/load.h"
 #include "program/start.h"
 #include "program/save.h"
-//gcc program/save.c program/load.c program/start.c program/ADT/queue/queue.c program/ADT/mesinkarkata/mesinkar.c program/ADT/mesinkarkata/mesinkata.c program/ADT/arraydin/arraydin.c main.c -o main
+#include "program/list_game.h"
+//gcc program/list_game.c program/save.c program/load.c program/start.c program/ADT/queue/queue.c program/ADT/mesinkarkata/mesinkar.c program/ADT/mesinkarkata/mesinkata.c program/ADT/arraydin/arraydin.c main.c -o main
 
 
 Word stringToWord(char *string) {
@@ -170,7 +171,7 @@ int main() {
             ADVWORD();
             filename = WordToString(currentWord);
             printf("Loading game from %s...\n", filename);
-            //loadfile(filename, &Games);
+            loadfile(filename, &Games);
         } else if (command == 0) {
             printf("Starting new game...\n");
             start(&Games);
