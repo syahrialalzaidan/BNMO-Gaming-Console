@@ -10,6 +10,7 @@
 /* State Mesin */
 extern char currentChar;
 extern boolean EOP;
+extern boolean isFile;
 
 void LoadPita(char* filename, boolean isF);
 void StopLoadPita();
