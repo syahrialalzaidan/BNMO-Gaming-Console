@@ -131,6 +131,8 @@ int main() {
     printf("Welcome to BNMO!\n");
     printf("========================\n");
     printf("ENTER COMMAND: ");
+    Queue queuegames;
+    CreateQueue(&queuegames);
     STARTWORD();
     while (!isWordSame(currentWord, stringToWord("QUIT"))){
         while (!isCommandValid(currentWord, &command)) {
@@ -164,15 +166,21 @@ int main() {
         }
         else if(command == 6){
             //QUEUE_GAME();
-            printf("QUEUE GAME\n");
+            /* printf("QUEUE GAME\n"); */
+            queuegame(&queuegames, Games);
         }
         else if(command == 7){
             //PLAY_GAME();
-            printf("PLAY GAME\n");
+            /* printf("PLAY GAME\n"); */
+            playgame(&queuegames, Games);
         }
         else if(command == 8){
             //SKIPGAME();
-            printf("SKIPGAME\n");
+            /* printf("SKIPGAME\n"); */
+            ADVWORD();
+            int nomor;
+            nomor = currentWord.TabWord[0] - '0';
+            skipgame(&queuegames, nomor, Games);
         }
         else if(command == 10){
             //HELP();
