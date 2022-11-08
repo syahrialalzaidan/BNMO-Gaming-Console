@@ -1,6 +1,7 @@
 #include "help.h"
+#include <stdio.h>
 
-void help(){
+void help() {
     printf("====================Need Help?====================\n");
     printf("1. START -- Untuk menjalankan BNMO\n");
     printf("2. LOAD -- Untuk membaca save file yang berisi list game yang dapat dimainkan, histori dan scoreboard game\n");

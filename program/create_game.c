@@ -9,7 +9,7 @@ void creategame (ArrayDin *array){
     printf("Masukkan nama game yang akan ditambahkan: ");
     STARTWORD();
     string = currentWord.TabWord;
-    if (SearchArrayDin(*array, string) != -1)
+    if (SearchArrayDin(*array, string) == -1)
     {
         printf("Game berhasil ditambahkan\n");
         InsertLast(array, string);
