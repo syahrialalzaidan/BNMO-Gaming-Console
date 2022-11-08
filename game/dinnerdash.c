@@ -133,16 +133,17 @@ void playdinnerdash() {
         daftarserve(cook, menu);
         printf("MASUKKAN COMMAND: ");
         STARTWORD();
-        if (isCommandValid(currentWord) && length(menu) < 7) {
+        if (conds) generatemenu(&menu);
+        if (isCommandValid(currentWord) && length(menu) <= 8) {
             boolean masak = isCook(currentWord);
             conds = true;
             ADVWORD();
-            if (isdigitvalid(currentWord) && currentWord.TabWord[0] == 'M' && currentWord.Length > 1 && currentWord.Length <=3 ) {
+            if (isdigitvalid(currentWord) && currentWord.TabWord[0] == 'M' && currentWord.Length > 1 && currentWord.Length <=3) {
                 int foodid = getID(currentWord);
-                if (masak) {
+                if (masak && length(menu) < 8) {
                     int i = 0;
                     boolean found = false;
-                    if (foodid >= IDX_HEAD(menu) && foodid <= IDX_TAIL(menu)){
+                    if (foodid >= IDX_HEAD(menu) && foodid <= (IDX_TAIL(menu)-1)){
                         printf("Berhasil memasak M%d\n", foodid);
                         enqueue(&cook, menu.buffer[foodid]);
                     }
@@ -152,14 +153,16 @@ void playdinnerdash() {
                     }
                 }
                 else {
-                    if (!isEmpty(cook)) serve(&menu, &cook, foodid, &saldo, &countserve, &conds);
-                    else {
-                        printf("Anda belum memasak makanan\n");
-                        conds = false;
+                    if (! masak){
+                        if (!isEmpty(cook) && length(menu) <= 8) serve(&menu, &cook, foodid, &saldo, &countserve, &conds);
+                        else {
+                            printf("Anda belum memasak makanan\n");
+                            conds = false;
+                        }
                     }
                 }
                 // Buat ngurangin durasi/ketahanan
-                if (!isEmpty(cook) && conds) {
+                if (!isEmpty(cook) && conds && length(menu) < 8) {
                     for (int j = 0; j < length(cook); j++) {
                         if (cook.buffer[j].durasi >= 0) {
                             cook.buffer[j].durasi--;
@@ -173,7 +176,6 @@ void playdinnerdash() {
             }
             else conds = false;
         }
-        if (conds) generatemenu(&menu);
         printf("\n");
     }
     printf("Permainan telah selesai. Anda mendapatkan %d poin.\n", saldo);
