@@ -94,6 +94,7 @@ void serve(Queue *q1, Queue *q2, int i, int *saldo, int *count, boolean *sukses)
                     }
                     else x++;  
                 }
+                *sukses = true;
             }
             else {
                 printf("M%d belum dapat disajikan karena M%d belum selesai\n", i, IDX_HEAD(*q1));
@@ -152,9 +153,11 @@ void playdinnerdash() {
                 }
                 else {
                     if (!isEmpty(cook)) serve(&menu, &cook, foodid, &saldo, &countserve, &conds);
-                    else printf("Anda belum memasak makanan\n");
+                    else {
+                        printf("Anda belum memasak makanan\n");
+                        conds = false;
+                    }
                 }
-
                 // Buat ngurangin durasi/ketahanan
                 if (!isEmpty(cook) && conds) {
                     for (int j = 0; j < length(cook); j++) {
