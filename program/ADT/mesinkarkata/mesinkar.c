@@ -32,7 +32,7 @@ void START() {
     if (isFile) {
         pita = fopen(filepath, "r");
         if (pita == NULL) {
-            printf("File tidak ditemukan\n");
+            printf("404 FILE NOT FOUND X_X \n");
         } else {
             ADV();
         }

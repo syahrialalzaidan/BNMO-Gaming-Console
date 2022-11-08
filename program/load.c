@@ -39,7 +39,7 @@ char* AddPath(char* filename) {
     return newpath;
 }
 
-void loadfile(char* filename, ArrayDin* Games) {
+void load(char* filename, ArrayDin* Games) {
     char* filepath = AddPath(filename);
     // LoadPita("./data/config.txt");
     // open config.txt in data folder

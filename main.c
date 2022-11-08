@@ -14,8 +14,9 @@
 #include "program/playgame.h"
 #include "program/skipgame.h"
 #include "program/help.h"
+#include "bnmo_pic.h"
 
-//gcc program/help.c program/skipgame.c program/playgame.c program/queuegame.c program/delete_game.c program/list_game.c program/create_game.c program/save.c program/load.c program/start.c program/ADT/queue/queue.c program/ADT/mesinkarkata/mesinkar.c program/ADT/mesinkarkata/mesinkata.c program/ADT/arraydin/arraydin.c main.c -o main
+//gcc bnmo_pic.c program/help.c program/skipgame.c program/playgame.c program/queuegame.c program/delete_game.c program/list_game.c program/create_game.c program/save.c program/load.c program/start.c program/ADT/queue/queue.c program/ADT/mesinkarkata/mesinkar.c program/ADT/mesinkarkata/mesinkata.c program/ADT/arraydin/arraydin.c main.c -o main
 
 boolean isCommandValid(Word kata, int *command)
 {
@@ -107,81 +108,94 @@ int main() {
     CreateQueue(&queuegames);
     char* filename;
     int command;
-    printf("Welcome to BNMO!\n");
-    printf("========================\n");
+    bnmo_pic();
+    printf("\nPILIHAN MENU:\n=> START\n=> LOAD (filename.txt)\n");
     printf("ENTER COMMAND: ");
     STARTWORD();
     while (!isCommandValid(currentWord, &command)) {
-        printf("command = %d\n", command);
-        printf("Command tidak dikenali, silahkan masukkan command yang valid.\n");
+        printf("Command tidak dikenali, silakan masukkan command yang valid.\n");
         printf("ENTER COMMAND: ");
         STARTWORD();
     }
-    while (IsEmpty(Games)) {
-        if (command == 1) {
-            ADVWORD();
-            filename = WordToString(currentWord);
-            printf("Loading game from %s...\n", filename);
-            loadfile(filename, &Games);
-        } else if (command == 0) {
-            printf("Starting new game...\n");
-            start(&Games);
-        }
-    }
-    while (!isWordSame(currentWord, stringToWord("QUIT"))){
-        if(command == 2){
-            ADVWORD();
-            filename = WordToString(currentWord);
-            save(&Games, filename);
-        }
-        else if(command == 3){
-            //CREATE_GAME();
-            // printf("CREATE GAME\n");
-            creategame(&Games);
-        }
-        else if(command == 4){
-            //LIST_GAME();
-            //printf("LIST GAME\n");
-            listgame(Games);
-        }
-        else if(command == 5){
-            //DELETE_GAME();
-            //printf("DELETE GAME\n");
-            deletegame(&Games, queuegames);
-        }
-        else if(command == 6){
-            //QUEUE_GAME();
-            //printf("QUEUE GAME\n");
-            queuegame(&queuegames, Games);
-        }
-        else if(command == 7){
-            //PLAY_GAME();
-            //printf("PLAY GAME\n");
-            playgame(&queuegames, Games);
-        }
-        else if(command == 8){
-            //SKIPGAME();
-            printf("SKIPGAME\n");
 
-            ADVWORD();
-            int nomor;
-            nomor = currentWord.TabWord[0] - '0';
-            skipgame(&queuegames, nomor, Games);
+    if (command == 1) {
+        ADVWORD();
+        filename = WordToString(currentWord);
+
+        load(filename, &Games);
+    } else if (command == 0) {
+        start(&Games);
+    }
+
+    if (!IsEmpty(Games)) {
+        if (command == 1) {
+            printf("\nSave file berhasil dibaca. BNMO berhasil dijalankan ^^\n\n");
+        } else if (command == 0) {
+            printf("\nFile konfigurasi sistem berhasil dibaca. BNMO berhasil dijalankan ^^\n\n");
         }
-        else if(command == 10){
-            help();
-            // printf("HELP\n");
-        }
-        printf("ENTER COMMAND: ");
-        STARTWORD();
-        isCommandValid(currentWord, &command);
-        while (command == 11 || command == 0 || command == 1) {
-            printf("Command tidak dikenali, silahkan masukkan command yang valid.\n");
+        printf("PILIHAN MENU:\n=> SAVE (filename.txt)\n=> CREATE GAME\n=> LIST GAME\n=> DELETE GAME\n=> QUEUE GAME\n=> PLAY GAME\n=> SKIPGAME (N)\n=> QUIT\n=> HELP\n");
+        printf("(N adalah jumlah game yang ingin dilewat pada queue)\n");
+        while (!isWordSame(currentWord, stringToWord("QUIT"))){
+            if(command == 2){
+                ADVWORD();
+                filename = WordToString(currentWord);
+                save(&Games, filename);
+            }
+            else if(command == 3){
+                //CREATE_GAME();
+                // printf("CREATE GAME\n");
+                creategame(&Games);
+            }
+            else if(command == 4){
+                //LIST_GAME();
+                //printf("LIST GAME\n");
+                listgame(Games);
+            }
+            else if(command == 5){
+                //DELETE_GAME();
+                //printf("DELETE GAME\n");
+                deletegame(&Games, queuegames);
+            }
+            else if(command == 6){
+                //QUEUE_GAME();
+                //printf("QUEUE GAME\n");
+                queuegame(&queuegames, Games);
+            }
+            else if(command == 7){
+                //PLAY_GAME();
+                //printf("PLAY GAME\n");
+                playgame(&queuegames, Games);
+            }
+            else if(command == 8){
+                //SKIPGAME();
+                printf("SKIPGAME\n");
+
+                ADVWORD();
+                int nomor;
+                nomor = currentWord.TabWord[0] - '0';
+                skipgame(&queuegames, nomor, Games);
+            }
+            else if(command == 10){
+                help();
+                // printf("HELP\n");
+            }
             printf("ENTER COMMAND: ");
             STARTWORD();
             isCommandValid(currentWord, &command);
+            while (command == 11 || command == 0 || command == 1) {
+                if (command == 1 || command == 0) {
+                    printf("Sistem sudah membaca file, Kamu bisa memulai ulang sistem untuk membaca file lain.\n\n");
+                } else {
+                    printf("Command tidak dikenali, silahkan masukkan command yang valid.\n");
+                }
+                printf("ENTER COMMAND: ");
+                STARTWORD();
+                isCommandValid(currentWord, &command);
+            }
         }
+        //QUIT();
+    } else {
+        printf("BNMO Gagal dijalankan.\n");
     }
-    //QUIT();
     return 0;
 }

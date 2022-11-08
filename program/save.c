@@ -15,6 +15,7 @@ void save(ArrayDin *Games, char* filename) {
                 fprintf(file, "%s\n", Games->A[i]);
             }
         }
+        printf("Save file berhasil disimpan ^^\n\n");
         fclose(file);
     }
 }

@@ -5,4 +5,4 @@
 
 char* AddPath(char* filename);
 
-void loadfile(char* filename, ArrayDin* Games);
+void load(char* filename, ArrayDin* Games);
