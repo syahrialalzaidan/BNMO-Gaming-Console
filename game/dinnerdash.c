@@ -106,7 +106,7 @@ void serve(Queue *q1, Queue *q2, int i, int *saldo, int *count, boolean *sukses)
                 while (x < length(*q2) && !found) {
                     if ((*q2).buffer[x].id == i) {
                         found = true;
-                        (*q2).buffer[x].ketahanan = 0;
+                        (*q2).buffer[x].ketahanan = -1;
                     }
                     else x++;  
                 }
@@ -188,7 +188,15 @@ void playdinnerdash() {
                     if (cook.buffer[j].durasi == -1) printf("M%d telah selesai dimasak\n", cook.buffer[j].id);
                 }
                 else {
-                    if (cook.buffer[j].ketahanan > 0) cook.buffer[j].ketahanan--;
+                    if (cook.buffer[j].ketahanan > 0){
+                        cook.buffer[j].ketahanan--;
+                        if (cook.buffer[j].ketahanan == 0){
+                            printf("Makanan M%d telah hangus\n", cook.buffer[j].id);
+                            cook.buffer[j].id = 999;
+                        }
+
+                    }
+                    
                 }
             }
         }

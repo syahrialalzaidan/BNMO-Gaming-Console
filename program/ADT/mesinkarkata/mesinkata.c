@@ -3,7 +3,6 @@
 #include "mesinkata.h"
 
 boolean EndWord;
-boolean isFile;
 Word currentWord;
 
 void IgnoreBlanks() {
