@@ -24,6 +24,18 @@ boolean isCook(Word kata) {
     return output;
 }
 
+boolean isSkip(Word kata){
+    boolean output = false;
+    if (kata.TabWord[0] == 'S') {
+        if (kata.TabWord[1] == 'K') {
+            if (kata.TabWord[2] == 'I') {
+                if (kata.TabWord[3] == 'P') output = true;
+            }
+        }
+    }
+    return output;
+}
+
 boolean isCommandValid(Word kata) {
     boolean output = false;
     if (kata.Length == 5) {
@@ -38,7 +50,16 @@ boolean isCommandValid(Word kata) {
         }
     }
     else {
-        if (isCook(kata)) output = true;
+        if (kata.Length == 4) {
+            if (isCook(kata)) output = true;
+            if (kata.TabWord[0] == 'S') {
+                if (kata.TabWord[1] == 'K') {
+                    if (kata.TabWord[2] == 'I') {
+                        if (kata.TabWord[3] == 'P') output = true;
+                    }
+                }
+            }
+        }
     }
     return output;
 }
@@ -54,12 +75,8 @@ boolean isdigitvalid(Word kata) {
 
 int getID(Word kata) {
     int output = 0;
-    if (kata.Length == 2) {
-        return kata.TabWord[1] - '0';
-    }
-    else if (kata.Length == 3) {
-        return (kata.TabWord[1] - '0') * 10 + (kata.TabWord[2] - '0');
-    }
+    if (kata.Length == 2) return kata.TabWord[1] - '0';
+    else if (kata.Length == 3) return (kata.TabWord[1] - '0') * 10 + (kata.TabWord[2] - '0');
 }
 
 void serve(Queue *q1, Queue *q2, int i, int *saldo, int *count, boolean *sukses) { // q1 = menu; q2 = cook; i = id
@@ -70,7 +87,6 @@ void serve(Queue *q1, Queue *q2, int i, int *saldo, int *count, boolean *sukses)
         if ((*q2).buffer[x].id == i) {
             found = true;
             if ((*q2).buffer[x].durasi <= 0) done = true;
-            
         }
         else x++;
     }
@@ -116,14 +132,10 @@ void playdinnerdash() {
     // generate menu
     Queue menu;
     CreateQueue(&menu);
-    for (int i = 0; i < 3; i++) {
-        generatemenu(&menu);
-    }
+    for (int i = 0; i < 3; i++) generatemenu(&menu);
     Queue cook;
     CreateQueue(&cook);
     boolean conds = false;
-    
-
     while (length(menu) <= 7 && countserve <= 15) {
         // ngelayananin input cook/serve
         printf("============================\n\n");
@@ -137,45 +149,51 @@ void playdinnerdash() {
         if (isCommandValid(currentWord) && length(menu) <= 8) {
             boolean masak = isCook(currentWord);
             conds = true;
-            ADVWORD();
-            if (isdigitvalid(currentWord) && currentWord.TabWord[0] == 'M' && currentWord.Length > 1 && currentWord.Length <=3) {
-                int foodid = getID(currentWord);
-                if (masak && length(menu) < 8) {
-                    int i = 0;
-                    boolean found = false;
-                    if (foodid >= IDX_HEAD(menu) && foodid <= (IDX_TAIL(menu)-1)){
-                        printf("Berhasil memasak M%d\n", foodid);
-                        enqueue(&cook, menu.buffer[foodid]);
-                    }
-                    else {
-                        printf("Makanan tidak ada di daftar pesanan!\n");
-                        conds = false;
-                    }
-                }
-                else {
-                    if (! masak){
-                        if (!isEmpty(cook) && length(menu) <= 8) serve(&menu, &cook, foodid, &saldo, &countserve, &conds);
+            if (isSkip(currentWord)) conds = true;
+            else {
+                if(! IsEOP()) ADVWORD();
+                Word kedua = currentWord;
+                if (isdigitvalid(kedua) && kedua.TabWord[0] == 'M' && kedua.Length > 1 && kedua.Length <=3) {
+                    int foodid = getID(kedua);
+                    if (masak && length(menu) < 8) {
+                        int i = 0;
+                        boolean found = false;
+                        if (foodid >= IDX_HEAD(menu) && foodid <= (IDX_TAIL(menu)-1)){
+                            printf("Berhasil memasak M%d\n", foodid);
+                            enqueue(&cook, menu.buffer[foodid]);
+                        }
                         else {
-                            printf("Anda belum memasak makanan\n");
+                            printf("Makanan tidak ada di daftar pesanan!\n");
                             conds = false;
                         }
                     }
-                }
-                // Buat ngurangin durasi/ketahanan
-                if (!isEmpty(cook) && conds && length(menu) < 8) {
-                    for (int j = 0; j < length(cook); j++) {
-                        if (cook.buffer[j].durasi >= 0) {
-                            cook.buffer[j].durasi--;
-                            if (cook.buffer[j].durasi == -1) printf("M%d telah selesai dimasak\n", cook.buffer[j].id);
-                        }
-                        else {
-                            if (cook.buffer[j].ketahanan > 0) cook.buffer[j].ketahanan--;
+                    else {
+                        if (! masak){
+                            if (!isEmpty(cook) && length(menu) <= 8) serve(&menu, &cook, foodid, &saldo, &countserve, &conds);
+                            else {
+                                printf("Anda belum memasak makanan\n");
+                                conds = false;
+                            }
                         }
                     }
+                    // Buat ngurangin durasi/ketahanan
+                    
+                }
+                else conds = false;
+            }   
+            if (!isEmpty(cook) && conds && length(menu) < 8) {
+            for (int j = 0; j < length(cook); j++) {
+                if (cook.buffer[j].durasi >= 0) {
+                    cook.buffer[j].durasi--;
+                    if (cook.buffer[j].durasi == -1) printf("M%d telah selesai dimasak\n", cook.buffer[j].id);
+                }
+                else {
+                    if (cook.buffer[j].ketahanan > 0) cook.buffer[j].ketahanan--;
                 }
             }
-            else conds = false;
         }
+        }
+        while (! IsEOP()) ADVWORD();
         printf("\n");
     }
     printf("Permainan telah selesai. Anda mendapatkan %d poin.\n", saldo);

@@ -209,7 +209,7 @@ void TulisTicTacToe (TabInt T1, TabInt T2, TabInt T3){
 | O | X | O |
 | X | O | X |
 */
-    printf("| %d | %d | %d |\n", GetElmt(T1, 1), GetElmt(T2, 1), GetElmt(T3, 1));
-    printf("| %d | %d | %d |\n", GetElmt(T1, 2), GetElmt(T2, 2), GetElmt(T3, 2));
-    printf("| %d | %d | %d |\n", GetElmt(T1, 3), GetElmt(T2, 3), GetElmt(T3, 3));
+    printf("| %d | %d | %d |\n", GetElmt(T1, 1), GetElmt(T2, 2), GetElmt(T3, 3));
+    printf("| %d | %d | %d |\n", GetElmt(T1, 1), GetElmt(T2, 2), GetElmt(T3, 3));
+    printf("| %d | %d | %d |\n", GetElmt(T1, 1), GetElmt(T2, 2), GetElmt(T3, 3));
 }

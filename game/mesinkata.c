@@ -8,7 +8,7 @@ void IgnoreBlanks() {
 /* Mengabaikan satu atau beberapa BLANK
    I.S. : currentChar sembarang
    F.S. : currentChar ≠ BLANK atau currentChar = MARK */
-    if (currentChar == BLANK) {
+    while (currentChar == BLANK) {
         ADV();
     }
 }
@@ -19,6 +19,7 @@ void STARTWORD() {
           atau EndWord = false, currentWord adalah kata yang sudah diakuisisi,
           currentChar karakter pertama sesudah karakter terakhir kata */
     START();
+    IgnoreBlanks();
     if (IsEOP()) {
         EndWord = true;
     } else { 

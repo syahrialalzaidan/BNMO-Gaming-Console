@@ -6,7 +6,7 @@
 /* Kamus Umum */
 
 #define IdxMax 100
-#define IdxMin 0
+#define IdxMin 1
 #define IdxUndef -999 /* indeks tak terdefinisi*/
 
 /* Definisi elemen dan koleksi objek */
