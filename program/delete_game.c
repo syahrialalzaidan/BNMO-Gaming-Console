@@ -2,6 +2,8 @@
 #include "delete_game.h"
 
 boolean findatqueue(Queue queuegame, char* string){
+/*I.S. Queue game mungkin kosong*/
+/*F.S. Elemen queue ditemukan atau tidak*/
     char* temp;
     dequeue(&queuegame, &temp);
     while (temp != string && !isEmpty(queuegame))

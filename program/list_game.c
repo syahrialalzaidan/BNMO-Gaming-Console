@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "arraydin.h"
+#include "list_game.h"
 
 void listgame (ArrayDin array){
 /* I.S. Ada daftar array game yang dimiliki user BNMO */

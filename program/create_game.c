@@ -25,9 +25,9 @@ void creategame (ArrayDin *array){
     //printf("Tes %s", (*array).A[(*array).Neff]);
 }
 
-int main()
-{
-    ArrayDin S;
-    S = MakeArrayDin();
-    creategame(&S);
-}
+// int main()
+// {
+//     ArrayDin S;
+//     S = MakeArrayDin();
+//     creategame(&S);
+// }
