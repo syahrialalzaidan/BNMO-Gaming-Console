@@ -9,7 +9,7 @@
 #define InitialSize 10
 
 typedef int IdxType;
-typedef int ElType;
+typedef char* ElType;
 typedef struct {
     ElType *A;
     int Capacity;

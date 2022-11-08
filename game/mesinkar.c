@@ -43,19 +43,18 @@ char GetCC() {
 boolean IsEOP() {
 /* Mengirimkan true jika currentChar = MARK */
     //check if currentChar is blank and the next character is blank  too
-    if (currentChar == BLANK) {
-        char nextChar;
-        retval = fscanf(pita,"%c",&nextChar);
-        if (nextChar == BLANK) {
-            return true;
-        } else {
-            ungetc(nextChar,pita);
-            return false;
-        }
-    } else {
-        return (currentChar == MARK);
-    }
-    
+    // if (currentChar == BLANK) {
+    //     char nextChar;
+    //     retval = fscanf(pita,"%c",&nextChar);
+    //     if (nextChar == BLANK) {
+    //         return true;
+    //     } else {
+    //         ungetc(nextChar,pita);
+    //         return false;
+    //     }
+    // } else {
+    //     return (currentChar == MARK);
+    // }
+    return (currentChar == MARK);
 }
 
-// function makeword to unite currentchar and the next character

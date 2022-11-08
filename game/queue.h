@@ -71,7 +71,7 @@ void daftarmenu(Queue q);
 /* Contoh : jika ada tiga elemen bernilai 1, 20, 30 akan dicetak: [1,20,30] */
 /* Jika Queue kosong : menulis [] */
 void daftarcook(Queue q);
-void daftarserve(Queue q);
+void daftarserve(Queue q, Queue q1);
 
 
 #endif

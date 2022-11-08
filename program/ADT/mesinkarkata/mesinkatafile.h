@@ -5,7 +5,7 @@
 #define __MESINKATA_H__
 
 #include "boolean.h"
-#include "mesinkar.h"
+#include "mesinkarfile.h"
 
 #define NMax 50
 // #define BLANK ' '
@@ -45,9 +45,5 @@ void CopyWord();
           currentChar = BLANK atau currentChar = MARK;
           currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
           Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
-
-int WordToInt(Word W);
-
-char *WordToString(Word W);
 
 #endif
