@@ -58,3 +58,14 @@ void CopyWord() {
     }
     currentWord.Length = i;
 }
+
+int WordtoInteger(Word W) {
+/* Mengubah kata menjadi integer */
+    int i = 0;
+    int result = 0;
+    while (i < W.Length) {
+        result = result * 10 + (W.TabWord[i] - '0');
+        i++;
+    }
+    return result;
+}

@@ -81,10 +81,10 @@ void serve(Queue *q1, Queue *q2, int i, int *saldo, int *count, boolean *sukses)
     else {
         if (done) {
             if (i == IDX_HEAD(*q1)) {
+                dequeue(q1, &food);
                 printf("Berhasil mengantar M%d\n", i);
                 *count++;
                 *saldo += (HEAD(*q1).harga);
-                dequeue(q1, &food);
                 boolean found = false;
                 int x = IDX_HEAD(*q2);
                 while (x < length(*q2) && !found) {
@@ -94,6 +94,7 @@ void serve(Queue *q1, Queue *q2, int i, int *saldo, int *count, boolean *sukses)
                     }
                     else x++;  
                 }
+                *sukses = true;
             }
             else {
                 printf("M%d belum dapat disajikan karena M%d belum selesai\n", i, IDX_HEAD(*q1));
@@ -111,7 +112,6 @@ void playdinnerdash() {
     printf("Selamat Datang di Diner Dash!\n");
     printf("\n");
     int saldo = 0, countserve = 0;
-    printf("Saldo: %d\n\n", saldo);
     srand(time(0));
     // generate menu
     Queue menu;
@@ -130,61 +130,46 @@ void playdinnerdash() {
         printf("Saldo: %d\n\n", saldo);
         daftarmenu(menu);
         daftarcook(cook);
-        daftarserve(cook);
+        daftarserve(cook, menu);
         printf("MASUKKAN COMMAND: ");
         STARTWORD();
-    
         if (conds) generatemenu(&menu);
-        if (isCommandValid(currentWord)) {
+        if (isCommandValid(currentWord) && length(menu) <= 8) {
             boolean masak = isCook(currentWord);
             conds = true;
             ADVWORD();
-            if (isdigitvalid(currentWord) && currentWord.TabWord[0] == 'M' && currentWord.Length > 1 && currentWord.Length <=3 ) {
+            if (isdigitvalid(currentWord) && currentWord.TabWord[0] == 'M' && currentWord.Length > 1 && currentWord.Length <=3) {
                 int foodid = getID(currentWord);
-                if (masak) {
+                if (masak && length(menu) < 8) {
                     int i = 0;
                     boolean found = false;
-                    if (isEmpty(cook)) {
+                    if (foodid >= IDX_HEAD(menu) && foodid <= (IDX_TAIL(menu)-1)){
                         printf("Berhasil memasak M%d\n", foodid);
                         enqueue(&cook, menu.buffer[foodid]);
                     }
                     else {
-                        while (i <= IDX_TAIL(cook) && (!found)) {
-                            if (cook.buffer[i].id == foodid) found = true; 
-                            else i++;
-                        }
-                        if (!found && length(menu) <= 7) {
-                            printf("Berhasil memasak M%d\n", foodid);
-                            enqueue(&cook, menu.buffer[foodid]);
-                        }
-                        else conds = false;
+                        printf("Makanan tidak ada di daftar pesanan!\n");
+                        conds = false;
                     }
                 }
-                else
-                {
-                    if (!isEmpty(cook)) serve(&menu, &cook, foodid, &saldo, &countserve, &conds);
-                    else printf("Anda belum memasak makanan\n");
+                else {
+                    if (! masak){
+                        if (!isEmpty(cook) && length(menu) <= 8) serve(&menu, &cook, foodid, &saldo, &countserve, &conds);
+                        else {
+                            printf("Anda belum memasak makanan\n");
+                            conds = false;
+                        }
+                    }
                 }
-
                 // Buat ngurangin durasi/ketahanan
-                if (conds && length(menu) <= 7)
-                {
-                    if (!isEmpty(cook))
-                    {
-                        for (int j = 0; j < length(cook); j++)
-                        {
-                            if (cook.buffer[j].durasi >= 0)
-                            {
-                                cook.buffer[j].durasi--;
-                                if (cook.buffer[j].durasi == -1) printf("M%d telah selesai dimasak\n", cook.buffer[j].id);
-                            }
-                            else
-                            {
-                                if (cook.buffer[j].ketahanan > 0) cook.buffer[j].ketahanan--;
-                                
-                            }
-                            if (cook.buffer[j].ketahanan == 0) cook.buffer[j].id = 999;
-                            
+                if (!isEmpty(cook) && conds && length(menu) < 8) {
+                    for (int j = 0; j < length(cook); j++) {
+                        if (cook.buffer[j].durasi >= 0) {
+                            cook.buffer[j].durasi--;
+                            if (cook.buffer[j].durasi == -1) printf("M%d telah selesai dimasak\n", cook.buffer[j].id);
+                        }
+                        else {
+                            if (cook.buffer[j].ketahanan > 0) cook.buffer[j].ketahanan--;
                         }
                     }
                 }
@@ -193,10 +178,10 @@ void playdinnerdash() {
         }
         printf("\n");
     }
+    printf("Permainan telah selesai. Anda mendapatkan %d poin.\n", saldo);
 }
 
-int main()
-{
+int main() {
     srand(time(0));
     playdinnerdash();
     return 0;

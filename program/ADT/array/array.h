@@ -6,7 +6,7 @@
 /* Kamus Umum */
 
 #define IdxMax 100
-#define IdxMin 1
+#define IdxMin 0
 #define IdxUndef -999 /* indeks tak terdefinisi*/
 
 /* Definisi elemen dan koleksi objek */
@@ -129,5 +129,8 @@ IdxType IdxMinTab (TabInt T);
 /* Prekondisi : Tabel tidak kosong */
 /* Mengirimkan indeks i */
 /* dengan elemen ke-i nilai minimum pada tabel */
+
+void TulisTicTacToe (TabInt T1, TabInt T2, TabInt T3);
+/* I.S. T terdefinisi, tidak kosong, ukuran 3x3 */
 
 #endif
