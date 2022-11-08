@@ -4,12 +4,18 @@
 #include "program/ADT/arraydin/arraydin.h"
 #include "program/ADT/boolean/boolean.h"
 #include "program/ADT/queue/queue.h"
-#include "program/queuegame.h"
 #include "program/load.h"
 #include "program/start.h"
 #include "program/save.h"
+#include "program/create_game.h"
 #include "program/list_game.h"
-//gcc program/list_game.c program/save.c program/load.c program/start.c program/ADT/queue/queue.c program/ADT/mesinkarkata/mesinkar.c program/ADT/mesinkarkata/mesinkata.c program/ADT/arraydin/arraydin.c main.c -o main
+#include "program/delete_game.h"
+#include "program/queuegame.h"
+#include "program/playgame.h"
+#include "program/skipgame.h"
+#include "program/help.h"
+
+//gcc program/help.c program/skipgame.c program/playgame.c program/queuegame.c program/delete_game.c program/list_game.c program/save.c program/load.c program/start.c program/ADT/queue/queue.c program/ADT/mesinkarkata/mesinkar.c program/ADT/mesinkarkata/mesinkata.c program/ADT/arraydin/arraydin.c main.c -o main
 
 
 Word stringToWord(char *string) {
@@ -185,37 +191,41 @@ int main() {
         }
         else if(command == 3){
             //CREATE_GAME();
-            printf("CREATE GAME\n");
+            // printf("CREATE GAME\n");
+            creategame(&Games);
         }
         else if(command == 4){
             //LIST_GAME();
-            printf("LIST GAME\n");
+            //printf("LIST GAME\n");
+            listgame(Games);
         }
         else if(command == 5){
             //DELETE_GAME();
-            printf("DELETE GAME\n");
+            //printf("DELETE GAME\n");
+            deletegame(&Games, queuegames);
         }
         else if(command == 6){
             //QUEUE_GAME();
-            /* printf("QUEUE GAME\n"); */
-            //queuegame(&queuegames, Games);
+            //printf("QUEUE GAME\n");
+            queuegame(&queuegames, Games);
         }
         else if(command == 7){
             //PLAY_GAME();
-            /* printf("PLAY GAME\n"); */
-            //playgame(&queuegames, Games);
+            //printf("PLAY GAME\n");
+            playgame(&queuegames, Games);
         }
         else if(command == 8){
             //SKIPGAME();
-            /* printf("SKIPGAME\n"); */
+            printf("SKIPGAME\n");
+
             ADVWORD();
             int nomor;
             nomor = currentWord.TabWord[0] - '0';
-            //skipgame(&queuegames, nomor, Games);
+            skipgame(&queuegames, nomor, Games);
         }
         else if(command == 10){
-            //HELP();
-            printf("HELP\n");
+            help();
+            // printf("HELP\n");
         }
         printf("ENTER COMMAND: ");
         STARTWORD();

@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "list_game.h": "c"
+        "list_game.h": "c",
+        "mesinkata.h": "c"
     }
 }

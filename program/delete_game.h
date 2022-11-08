@@ -1,8 +1,8 @@
-#include "arraydin.h"
-#include "mesinkata.h"
-#include "mesinkar.h"
-#include "queue.h"
-#include "boolean.h"
+#include "ADT/arraydin/arraydin.h"
+#include "ADT/mesinkarkata/mesinkata.h"
+#include "ADT/mesinkarkata/mesinkar.h"
+#include "ADT/queue/queue.h"
+#include "ADT/boolean/boolean.h"
 
 boolean findatqueue(Queue queuegame, int indeksgame);
 /*I.S. Queue game mungkin kosong*/
