@@ -13,7 +13,7 @@
 #include "program/queuegame.h"
 #include "program/playgame.h"
 #include "program/skipgame.h"
-#include "game/help.h"
+#include "program/help.h"
 //gcc program/list_game.c program/save.c program/load.c program/start.c program/ADT/queue/queue.c program/ADT/mesinkarkata/mesinkar.c program/ADT/mesinkarkata/mesinkata.c program/ADT/arraydin/arraydin.c main.c -o main
 
 
@@ -223,7 +223,7 @@ int main() {
             //skipgame(&queuegames, nomor, Games);
         }
         else if(command == 10){
-            HELP();
+            help();
             // printf("HELP\n");
         }
         printf("ENTER COMMAND: ");
