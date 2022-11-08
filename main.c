@@ -4,11 +4,15 @@
 #include "program/ADT/arraydin/arraydin.h"
 #include "program/ADT/boolean/boolean.h"
 #include "program/ADT/queue/queue.h"
-#include "program/queuegame.h"
 #include "program/load.h"
 #include "program/start.h"
 #include "program/save.h"
+#include "program/create_game.h"
 #include "program/list_game.h"
+#include "program/delete_game.h"
+#include "program/queuegame.h"
+#include "program/playgame.h"
+#include "program/skipgame.h"
 //gcc program/list_game.c program/save.c program/load.c program/start.c program/ADT/queue/queue.c program/ADT/mesinkarkata/mesinkar.c program/ADT/mesinkarkata/mesinkata.c program/ADT/arraydin/arraydin.c main.c -o main
 
 
