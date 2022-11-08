@@ -1,16 +1,16 @@
 #include <stdio.h>
 #include "delete_game.h"
 
-boolean findatqueue(Queue queuegame, char* string){
+boolean findatqueue(Queue queuegame, int indeksgame){
 /*I.S. Queue game mungkin kosong*/
 /*F.S. Elemen queue ditemukan atau tidak*/
-    char* temp;
+    int temp;
     dequeue(&queuegame, &temp);
-    while (temp != string && !isEmpty(queuegame))
+    while (temp != indeksgame && !isEmpty(queuegame))
     {   
         dequeue(&queuegame, &temp);
     }
-    return temp == string;
+    return temp == indeksgame;
 }
 
 void deletegame(ArrayDin *array, Queue queuegame){
@@ -21,7 +21,7 @@ void deletegame(ArrayDin *array, Queue queuegame){
     START();
     char input = currentChar - '0';
     IdxType i = input;
-    if (i > 5 && findatqueue(queuegame, (*array).A[i])){
+    if (i > 5 && findatqueue(queuegame, i-1)){
         DeleteAt(array, i-1);
         printf("Game berhasil dihapus");
     }
