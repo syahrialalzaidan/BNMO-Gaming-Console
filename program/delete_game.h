@@ -4,7 +4,7 @@
 #include "queue.h"
 #include "boolean.h"
 
-boolean findatqueue(Queue queuegame, char* string);
+boolean findatqueue(Queue queuegame, int indeksgame);
 /*I.S. Queue game mungkin kosong*/
 /*F.S. Elemen queue ditemukan atau tidak*/
 
