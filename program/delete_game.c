@@ -21,8 +21,8 @@ void deletegame(ArrayDin *array, Queue queuegame){
     START();
     char input = currentChar - '0';
     IdxType i = input;
-    if (i >= 5 && findatqueue(queuegame, (*array).A[i])){
-        DeleteAt(array, i);
+    if (i > 5 && findatqueue(queuegame, (*array).A[i])){
+        DeleteAt(array, i-1);
         printf("Game berhasil dihapus");
     }
     else{
