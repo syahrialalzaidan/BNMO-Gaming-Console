@@ -1,7 +1,5 @@
 #include <stdio.h>
-#include "arraydin.h"
-#include "mesinkata.h"
-#include "mesinkar.h"
+#include "create_game.h"
 
 void creategame (ArrayDin *array){
 /* I.S. sembarang */
@@ -11,15 +9,20 @@ void creategame (ArrayDin *array){
     printf("Masukkan nama game yang akan ditambahkan: ");
     STARTWORD();
     string = currentWord.TabWord;
-    printf("Game berhasil ditambahkan\n");
-    
-
+    if (SearchArrayDin(*array, string) != -1)
+    {
+        printf("Game berhasil ditambahkan\n");
+        InsertLast(array, string);
+    }
+    else{
+        printf("Game telah tersedia\n");
+    }
 
     //printf("Tes %s", string);
 
     //printf("%d", currentWord.Length);
-    InsertLast(&array, *string);
-    printf("Tes %s", (*array).A[(*array).Neff]);
+    
+    //printf("Tes %s", (*array).A[(*array).Neff]);
 }
 
 int main()
