@@ -183,7 +183,6 @@ int main() {
     }
     while (!isWordSame(currentWord, stringToWord("QUIT"))){
         if(command == 2){
-            //SAVE();
             ADVWORD();
             filename = WordToString(currentWord);
             save(&Games, filename);
