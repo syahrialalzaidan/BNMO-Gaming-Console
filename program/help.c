@@ -1,3 +1,5 @@
+#include "help.h"
+
 void HELP (){
     printf("====================Need Help?====================\n");
     printf("1. START -- Untuk menjalankan BNMO\n");
