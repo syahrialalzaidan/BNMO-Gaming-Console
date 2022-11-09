@@ -8,14 +8,19 @@ void creategame (ArrayDin *array){
     char* string;
     printf("Masukkan nama game yang akan ditambahkan: ");
     STARTWORD();
-    string = currentWord.TabWord;
+    string = WordToString(currentWord);
     if (SearchArrayDin(*array, string) == -1)
     {
-        printf("Game berhasil ditambahkan\n");
+        printf(" ____ \n");
+        printf("|,--.| \n");
+        printf("||__||\n");
+        printf("|+  o|  Game berhasil ditambahkan ^^\n");
+        printf("|,'o | \n");
+        printf("`---- \n");
         InsertLast(array, string);
     }
     else{
-        printf("Game telah tersedia\n");
+        printf("Game telah tersedia\n\n");
     }
 
     //printf("Tes %s", string);

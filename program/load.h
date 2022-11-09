@@ -5,4 +5,7 @@
 
 char* AddPath(char* filename);
 
-void loadfile(char* filename, ArrayDin* Games);
+void load(char* filename, ArrayDin* Games);
+/*  Membaca save file yang berisi list game yang dapat dimainkan.
+    I.S. : filename terdefinisi dan array games kosong.
+    F.S. : Array games terisi dengan list game yang ada pada save file. */

@@ -4,7 +4,7 @@
 #ifndef __MESINKATA_H__
 #define __MESINKATA_H__
 
-#include "boolean.h"
+#include "../boolean/boolean.h"
 #include "mesinkar.h"
 
 #define NMax 50
@@ -49,7 +49,5 @@ void CopyWord();
 int WordToInt(Word W);
 
 char *WordToString(Word W);
-
-boolean isstringequal(char *s1, char *s2);
 
 #endif

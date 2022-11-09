@@ -1,16 +1,20 @@
 #include <stdio.h>
 #include "delete_game.h"
 
-boolean findatqueue(Queue queuegame, int indeksgame){
+boolean IsInQueue(Queue queuegame, char* elQ) {
 /*I.S. Queue game mungkin kosong*/
 /*F.S. Elemen queue ditemukan atau tidak*/
-    int temp;
-    dequeue(&queuegame, &temp);
-    while (temp != indeksgame && !isEmpty(queuegame))
-    {   
-        dequeue(&queuegame, &temp);
+    int i;
+    boolean found = false;
+    Word K1 = stringToWord(elQ);
+    while (i <= IDX_TAIL(queuegame) && !found) {
+        Word K2 = stringToWord(queuegame.buffer[i]);
+        if (isWordSame(K1, K2)) {
+            found = true;
+        }
+        i++;
     }
-    return temp == indeksgame;
+    return found;
 }
 
 void deletegame(ArrayDin *array, Queue queuegame){
@@ -18,12 +22,14 @@ void deletegame(ArrayDin *array, Queue queuegame){
 /*F.S. Asumsi nomor game input pasti valid. Nomor games yang ingin dihapus telah hilang dari array*/
     listgame (*array);
     printf("Masukkan nomor game yang akan dihapus: ");
-    START();
-    char input = currentChar - '0';
+    STARTWORD();
+    int input = WordToInt(currentWord);
     IdxType i = input;
-    if (i > 5 && findatqueue(queuegame, i-1)){
+    char* el = array->A[i-1];
+    printf("Game yang akan dihapus: %s\n", el);
+    if (i > 5 && !IsInQueue(queuegame, el)) {
         DeleteAt(array, i-1);
-        printf("Game berhasil dihapus");
+        printf("Game berhasil dihapus\n");
     }
     else{
         printf("Game gagal dihapus");

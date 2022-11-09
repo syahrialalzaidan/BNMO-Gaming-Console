@@ -3,8 +3,9 @@
 #include "ADT/mesinkarkata/mesinkar.h"
 #include "ADT/queue/queue.h"
 #include "ADT/boolean/boolean.h"
+#include "list_game.h"
 
-boolean findatqueue(Queue queuegame, int indeksgame);
+boolean IsInQueue(Queue queuegame, char* elQ);
 /*I.S. Queue game mungkin kosong*/
 /*F.S. Elemen queue ditemukan atau tidak*/
 

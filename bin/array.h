@@ -1,4 +1,4 @@
-#include "boolean.h"
+#include "../boolean/boolean.h"
 
 #ifndef ARRAY_H
 #define ARRAY_H

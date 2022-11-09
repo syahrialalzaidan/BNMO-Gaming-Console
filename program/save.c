@@ -2,6 +2,12 @@
 #include "load.h"
 
 void save(ArrayDin *Games, char* filename) {
+/*  Menyimpan state game pada sistem BNMO (e.g. ketika ada penambahan game
+    menggunakan CREATE GAME).
+    I.S. : Array Games yang diinisialisasi di main.c terdefinisi dan merupakan current state pada sistem.
+            Nama file terdefinisi.
+    F.S. : Isi dari filename akan di-overwrite dengan isi dari array Games. */
+    
     FILE *file;
     char* filepath = AddPath(filename); 
     file = fopen(filepath, "w");
@@ -15,6 +21,7 @@ void save(ArrayDin *Games, char* filename) {
                 fprintf(file, "%s\n", Games->A[i]);
             }
         }
+        printf("Save file berhasil disimpan ^^\n\n");
         fclose(file);
     }
 }
