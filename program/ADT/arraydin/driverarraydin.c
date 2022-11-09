@@ -67,4 +67,6 @@ int main(){
     printf("Delete first arraydin\n");
     DeleteFirst(&array);
     PrintArrayDin(array);
+
+    return 0;
 }
