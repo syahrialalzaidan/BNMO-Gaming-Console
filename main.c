@@ -200,6 +200,8 @@ int main() {
             }
         }
         save(&Games, "savefile1.txt");
+        CreateQueue(&queuegames);
+        printf("Anda Keluar dari game BNMO\nBye byee.........");
         //QUIT();
     } else {
         printf("BNMO Gagal dijalankan.\n");
