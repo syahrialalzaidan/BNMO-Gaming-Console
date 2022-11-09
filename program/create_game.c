@@ -5,11 +5,12 @@
 char* concat(char* s1, char* s2){
     int i = 0, j = 0;
     int lenS1 = strLen(s1), lenS2 = strLen(s2);
-    char* str = (char*) malloc((lenS1+lenS2+1)*sizeof(char));
+    char* str = (char*) malloc(100*sizeof(char));
     while (i < lenS1){
         str[i] = s1[i];
         i++;
     }
+    str[i] =' ';
     i++;
     while (j < lenS2){
         str[i] = s2[j];
@@ -55,10 +56,14 @@ void creategame (ArrayDin *array){
     printf("Masukkan nama game yang akan ditambahkan: ");
     STARTWORD();
     string = WordToString(currentWord);
-    ADVWORD();
-    string1 = WordToString(currentWord);
-    string = concat(string, " ");
-    string = concat(string, string1);
+    // ADVWORD();
+    // string1 = WordToString(currentWord);
+    // string = concat(string, string1);
+    while (!IsEOP()) {
+        ADVWORD();
+        string1 = WordToString(currentWord);
+        string = concat(string, string1);
+    }
     printf("%s", string);
     
     printf("\n");

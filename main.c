@@ -196,6 +196,7 @@ int main() {
                 isCommandValid(currentWord, &command);
             }
         }
+        save(&Games, "savefile1.txt");
         //QUIT();
     } else {
         printf("BNMO Gagal dijalankan.\n");
