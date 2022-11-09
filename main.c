@@ -17,8 +17,8 @@
 #include "bnmo_pic.h"
 
 //gcc bnmo_pic.c program/help.c program/skipgame.c program/playgame.c program/queuegame.c program/delete_game.c program/list_game.c program/create_game.c program/save.c program/load.c program/start.c program/ADT/queue/queue.c program/ADT/mesinkarkata/mesinkar.c program/ADT/mesinkarkata/mesinkata.c program/ADT/arraydin/arraydin.c main.c -o main
-
-boolean isCommandValid(Word kata, int *command)
+//gcc bnmo_pic.c program/help.c program/skipgame.c program/playgame.c program/queuegame.c program/delete_game.c program/list_game.c program/create_game.c program/save.c program/load.c program/start.c program/ADT/queue/queue.c program/ADT/mesinkarkata/mesinkar.c program/ADT/mesinkarkata/mesinkata.c program/ADT/arraydin/arraydin.c main.c game/dinnerdash.c game/rng.c game/tebakkata.c game/queuedinnerdash.c program/ADT/Map/map.c -o main
+boolean isInputValid(Word kata, int *command)
 {
     boolean output;
     if (isWordSame(kata, stringToWord("START"))) {
@@ -112,7 +112,7 @@ int main() {
     printf("\nPILIHAN MENU:\n=> START\n=> LOAD (filename.txt)\n");
     printf("ENTER COMMAND: ");
     STARTWORD();
-    while (!isCommandValid(currentWord, &command)) {
+    while (!isInputValid(currentWord, &command)) {
         printf("Command tidak dikenali, silakan masukkan command yang valid.\n");
         while (!IsEOP()) {
             ADVWORD();
@@ -184,7 +184,7 @@ int main() {
             }
             printf("ENTER COMMAND: ");
             STARTWORD();
-            isCommandValid(currentWord, &command);
+            isInputValid(currentWord, &command);
             while (command == 11 || command == 0 || command == 1) {
                 if (command == 1 || command == 0) {
                     printf("Sistem sudah membaca file, Kamu bisa memulai ulang sistem untuk membaca file lain.\n\n");
@@ -193,7 +193,7 @@ int main() {
                 }
                 printf("ENTER COMMAND: ");
                 STARTWORD();
-                isCommandValid(currentWord, &command);
+                isInputValid(currentWord, &command);
             }
         }
         save(&Games, "savefile1.txt");

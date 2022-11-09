@@ -63,9 +63,10 @@ void playtebakkata(){
     }
 }
 
-
+/*
 int main(){
     playtebakkata();
     srand(0);
     return 0;
 }
+*/

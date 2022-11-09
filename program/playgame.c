@@ -1,5 +1,15 @@
 #include "playgame.h"
 
+boolean isStringSame(char *c1, char*c2){
+    int i=0;
+    while (c1[i] != '\0'){
+        if (c1[i] != c2[i]){
+            return false;
+        }
+        i++;
+    }
+    return true;
+}
 void playgame(Queue *qg, ArrayDin array){
     printf("Berikut adalah daftar game-mu\n");
     if (!isEmpty(*qg)){
@@ -9,31 +19,24 @@ void playgame(Queue *qg, ArrayDin array){
     if (isEmpty(*qg)){
         queuegame(qg, array);
     } else{
-        char* rng = "RNG";
-        char* dinnerdash = "DINNER DASH";
-        char* tictactoe = "TIC TAC TOE";
+        char* katarng = "RNG";
+        char* dinnerdash = "Diner DASH";
+        char* tebak = "Tebak Kata";
         int i;
         printf("\n");
 
-        if ((*qg).buffer[(*qg).idxHead] == rng){
-            printf("Loading RNG ...");
-            /*
+        if (isStringSame((*qg).buffer[(*qg).idxHead], katarng)){
+            printf("Loading RNG ...\n");
             rng();
-            */
-            printf("rng()");
-        } else if((*qg).buffer[(*qg).idxHead] == dinnerdash){
-            printf("Loading Dinner Dash ...");
-            /* 
+        } else if(isStringSame((*qg).buffer[(*qg).idxHead], dinnerdash)){
+            printf("Loading Dinner Dash ...\n");
             srand(time(0));
             playdinnerdash();
-            */
+            
             printf("dinner dash");
-        } else if((*qg).buffer[(*qg).idxHead] == tictactoe){
-            printf("Loading Tic-Tac-Toe");
-            /*
-            playtictactoe;
-            */
-            printf("tictactoe");
+        } else if(isStringSame((*qg).buffer[(*qg).idxHead], tebak)){
+            printf("Loading Tebak Kata\n");
+            playtebakkata();
         } else{
             printf("Game %s masih dalam maintenance, belum dapat dimainkan.\n", (*qg).buffer[(*qg).idxHead]);
             printf("Silahkan pilih game lain.\n");

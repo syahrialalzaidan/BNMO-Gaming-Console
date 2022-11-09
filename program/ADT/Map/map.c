@@ -18,7 +18,7 @@ void CreateEmpty(Map *M){
 }
 
 /* ********* Predikat Untuk test keadaan KOLEKSI ********* */
-boolean IsEmpty(Map M){
+boolean IsMapEmpty(Map M){
 /* Mengirim true jika Map M kosong*/
 /* Ciri Map kosong : count bernilai Nil */
     return (M.Count == Nil);

@@ -32,6 +32,6 @@ void deletegame(ArrayDin *array, Queue queuegame){
         printf("Game berhasil dihapus\n");
     }
     else{
-        printf("Game gagal dihapus");
+        printf("Game gagal dihapus\n");
     }
 }

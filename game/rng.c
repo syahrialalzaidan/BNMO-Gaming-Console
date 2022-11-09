@@ -10,7 +10,7 @@ int wordtoint(Word kata){
     return hasil;
 }
 
-int rng() {
+void rng() {
 /* Fungsi RNG bakal ngereturn score yang diperoleh pemain
  * Jumlah maksimal tebakan adalah 5 kali
  * Fullscore adalah 10 dan akan berkurang 20% seiring dengan berkurangnya guess hingga benar
@@ -42,16 +42,15 @@ int rng() {
     printf("\n");
     if (guess == x){
         printf("Ya, X adalah %d\n", x);
-        return (turn+1);
     }
     else{
         printf("Mohon maaf, kesempatan telah habis.\n");
-        return 0;
     }
 }
 
 // driver buat testing
+/*
 int main(){
-    int x = rng();
-    printf("Skor : %d\n", x);
+    rng();
 }
+*/
