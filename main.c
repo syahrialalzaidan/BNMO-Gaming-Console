@@ -168,7 +168,7 @@ int main() {
             }
             else if(command == 8){
                 //SKIPGAME();
-                printf("SKIPGAME\n");
+                //printf("SKIPGAME\n");
 
                 ADVWORD();
                 int nomor;
