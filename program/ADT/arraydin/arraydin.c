@@ -119,42 +119,42 @@ void DeleteFirst(ArrayDin *array){
     DeleteAt(array, 0);
 }
 
-/**
- * Fungsi untuk melakukan print suatu ArrayDin.
+/*
+ Fungsi untuk melakukan print suatu ArrayDin.
  * Print dilakukan dengan format: [elemen-1, elemen-2, ..., elemen-n]
  * dan diakhiri newline.
  * Prekondisi: array terdefinisi
  */
-// void PrintArrayDin(ArrayDin array){
-//     if(IsEmpty(array)){
-//         printf("[]\n");
-//     }
-//     else{
-//         printf("[");
-//         int i;
-//         for (i = 0; i < array.Neff-1; i++){
-//             printf("%d, ", array.A[i]);
-//         }
-//         printf("%d", array.A[array.Neff-1]);
-//         printf("]\n");
-//     }
+void PrintArrayDin(ArrayDin array){
+     if(IsEmpty(array)){
+         printf("[]\n");
+     }
+     else{
+         printf("[");
+         int i;
+         for (i = 0; i < array.Neff-1; i++){
+             printf("%s, ", array.A[i]);
+         }
+         printf("%s", array.A[array.Neff-1]);
+         printf("]\n");
+     }
     
-// }
+ }
 
 /**
  * Fungsi untuk melakukan reverse suatu ArrayDin.
  * Prekondisi: array terdefinisi
  */
-// void ReverseArrayDin(ArrayDin *array){
-//     int i = 0, j = array->Neff-1, temp;
-//     while(i < j){
-//         temp = array->A[i];
-//         array->A[i] = array->A[j];
-//         array->A[j] = temp;
-//         i++;
-//         j--;
-//     }
-// }
+ // void ReverseArrayDin(ArrayDin *array){
+ //    int i = 0, j = array->Neff-1, temp;
+ //    while(i < j){
+ //        temp = array->A[i];
+ //        array->A[i] = array->A[j];
+ //        array->A[j] = temp;
+ //        i++;
+ //       j--;
+ //    }
+ //}
 
 /**
  * Fungsi untuk melakukan copy suatu ArrayDin.

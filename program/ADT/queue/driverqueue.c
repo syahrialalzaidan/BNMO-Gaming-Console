@@ -44,4 +44,5 @@ int main(){
     if (isFull(q)){
         printf("Queue saat ini full\n");
     }
+    return 0;
 }
