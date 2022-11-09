@@ -11,9 +11,12 @@ boolean isStringSame(char *c1, char*c2){
     return true;
 }
 void playgame(Queue *qg, ArrayDin array){
+/*  Memainkan sebuah permainan.
+    I.S. Array game tidak mungkin kosong.
+    F.S. Game yang berada di posisi Head akan dimainkan. */
     printf("Berikut adalah daftar game-mu\n");
     if (!isEmpty(*qg)){
-        listqueue(qg);
+        printqueue(*qg);
     }
 
     if (isEmpty(*qg)){

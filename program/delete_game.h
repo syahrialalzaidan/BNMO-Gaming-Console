@@ -6,9 +6,11 @@
 #include "list_game.h"
 
 boolean IsInQueue(Queue queuegame, char* elQ);
-/*I.S. Queue game mungkin kosong*/
-/*F.S. Elemen queue ditemukan atau tidak*/
+/* Mengembalikan nilai true jika elemen ada di dalam queue. */
 
 void deletegame(ArrayDin *array, Queue queuegame);
-/*I.S. Array game mungkin kosong*/
-/*F.S. Nomor games yang ingin dihapus telah hilang dari array*/
+/*  Menghapus sebuah game dari daftar game.
+    I.S. Array game tidak mungkin kosong.
+    F.S. Game yang ingin dihapus telah hilang dari array jika 
+         game tersebut tidak ada di dalam daftar game pada
+         file konfigurasi default. */

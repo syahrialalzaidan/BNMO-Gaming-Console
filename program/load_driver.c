@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "ADT/arraydin/arraydin.h"
-#include "ADT/mesinkarkata/mesinkarfile.h"
-#include "ADT/mesinkarkata/mesinkatafile.h"
+#include "ADT/mesinkarkata/mesinkar.h"
+#include "ADT/mesinkarkata/mesinkata.h"
 #include "load.h"
 
 
