@@ -114,6 +114,9 @@ int main() {
     STARTWORD();
     while (!isCommandValid(currentWord, &command)) {
         printf("Command tidak dikenali, silakan masukkan command yang valid.\n");
+        while (!IsEOP()) {
+            ADVWORD();
+        }
         printf("ENTER COMMAND: ");
         STARTWORD();
     }

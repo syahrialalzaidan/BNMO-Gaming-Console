@@ -49,5 +49,6 @@ void CopyWord();
 int WordToInt(Word W);
 
 char *WordToString(Word W);
-
+boolean isWordSame(Word W1, Word W2);
+Word stringToWord(char *s);
 #endif
