@@ -124,7 +124,15 @@ void serve(Queue *q1, Queue *q2, int i, int *saldo, int *count, boolean *sukses)
     }
 }
 
+void printdinnerdash(){
+    printf(" ____  _                    ____          _   \n");
+    printf("|    \\|_|___ ___ ___ ___   |    \\ ___ ___| |_ \n");
+    printf("|  |  | |   |   | -_|  _|  |  |  | .'|_ -|   |\n");
+    printf("|____/|_|_|_|_|_|___|_|    |____/|__,|___|_|_|\n\n");
+}
+
 void playdinnerdash() {
+    printdinnerdash();
     printf("Selamat Datang di Diner Dash!\n");
     printf("\n");
     int saldo = 0, countserve = 0;
