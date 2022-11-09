@@ -80,6 +80,7 @@ boolean isInputValid(Word kata, int *command)
     }
     else if (isWordSame(kata, stringToWord("SKIPGAME")))
     {
+        ADVWORD();
         output = true;
         *command = 8;
     }
@@ -98,7 +99,12 @@ boolean isInputValid(Word kata, int *command)
         output = false;
         *command = 11;
     }
-
+    if(! IsEOP()){
+        output = false;
+        *command = 11;
+    }
+    while(! IsEOP()) ADVWORD();
+    
     return output;
 }
 
@@ -124,7 +130,6 @@ int main() {
     if (command == 1) {
         ADVWORD();
         filename = WordToString(currentWord);
-
         load(filename, &Games);
     } else if (command == 0) {
         start(&Games);
@@ -172,10 +177,8 @@ int main() {
             else if(command == 8){
                 //SKIPGAME();
                 //printf("SKIPGAME\n");
-
-                ADVWORD();
-                int nomor;
-                nomor = currentWord.TabWord[0] - '0';
+                int nomor = WordToInt(currentWord);
+    
                 skipgame(&queuegames, nomor, Games);
             }
             else if(command == 10){
@@ -184,8 +187,8 @@ int main() {
             }
             printf("ENTER COMMAND: ");
             STARTWORD();
-            isInputValid(currentWord, &command);
-            while (command == 11 || command == 0 || command == 1) {
+            boolean cek2 = isInputValid(currentWord, &command);
+            while ((command == 11 || command == 0 || command == 1) || (!cek2)) {
                 if (command == 1 || command == 0) {
                     printf("Sistem sudah membaca file, Kamu bisa memulai ulang sistem untuk membaca file lain.\n\n");
                 } else {
@@ -193,7 +196,7 @@ int main() {
                 }
                 printf("ENTER COMMAND: ");
                 STARTWORD();
-                isInputValid(currentWord, &command);
+                cek2 = isInputValid(currentWord, &command);
             }
         }
         save(&Games, "savefile1.txt");

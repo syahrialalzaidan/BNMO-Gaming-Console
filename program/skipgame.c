@@ -13,8 +13,8 @@ void skipgame(Queue *qg, int x, ArrayDin array){
         if (x > ((*qg).idxTail - (*qg).idxHead + 1)){
             for (i = 0; i < (*qg).idxTail - (*qg).idxHead + 1; i++){
                 dequeue(qg, &a);
-                printf("Tidak ada permainan lagi dalam daftar game-mu.\n");
             }
+            printf("Tidak ada permainan lagi dalam daftar game-mu.\n");
         } else{
             for (i = 0; i < x; i ++){
                 dequeue(qg, &a);

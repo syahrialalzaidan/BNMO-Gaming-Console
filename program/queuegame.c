@@ -15,7 +15,6 @@ void queuegame(Queue *queuegame, ArrayDin array){
     STARTWORD();
     x = currentWord.TabWord[0] - '0';
     printf("\n");
-
     if ((x > array.Neff) || (x < 1)){
         printf("Nomor permainan tidak valid, silahkan masukkan nomor game pada list.\n");
     } else{
@@ -27,6 +26,6 @@ void queuegame(Queue *queuegame, ArrayDin array){
 void listqueue(Queue *queuegame){
     int i;
     for (i = (*queuegame).idxHead; i < (*queuegame).idxTail + 1; i++){
-        printf("%s\n", (*queuegame).buffer[i]);
+        printf("%d. %s\n", i+1,(*queuegame).buffer[i]);
     }
 }
