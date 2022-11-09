@@ -1,6 +1,15 @@
 #ifndef RNG_H
 #define RNG_H
 
+#include<stdio.h>
+#include<stdlib.h>
+#include<time.h>
+#include "../program/ADT/mesinkarkata/mesinkata.h"
+
+
+int wordtoint(Word kata);
+// mengubah kata menjadi integer
+
 
 int rng();
 /* Fungsi RNG bakal ngereturn score yang diperoleh pemain

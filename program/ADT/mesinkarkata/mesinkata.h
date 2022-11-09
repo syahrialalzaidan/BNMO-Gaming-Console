@@ -50,4 +50,6 @@ int WordToInt(Word W);
 
 char *WordToString(Word W);
 
+boolean isstringequal(char *s1, char *s2);
+
 #endif

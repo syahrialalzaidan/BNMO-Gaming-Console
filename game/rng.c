@@ -1,8 +1,4 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<time.h>
-#include "mesinkar.h"
-#include "mesinkata.h"
+#include"rng.h"
 
 int wordtoint(Word kata){
     int i = 0;

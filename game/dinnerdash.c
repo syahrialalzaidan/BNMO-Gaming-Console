@@ -153,6 +153,7 @@ void playdinnerdash() {
             else {
                 if(! IsEOP()) ADVWORD();
                 Word kedua = currentWord;
+                while (! IsEOP()) ADVWORD();
                 if (isdigitvalid(kedua) && kedua.TabWord[0] == 'M' && kedua.Length > 1 && kedua.Length <=3) {
                     int foodid = getID(kedua);
                     if (masak && length(menu) < 8) {
@@ -180,7 +181,8 @@ void playdinnerdash() {
                     
                 }
                 else conds = false;
-            }   
+            }
+            
             if (!isEmpty(cook) && conds && length(menu) < 8) {
             for (int j = 0; j < length(cook); j++) {
                 if (cook.buffer[j].durasi >= 0) {
@@ -193,15 +195,13 @@ void playdinnerdash() {
                         if (cook.buffer[j].ketahanan == 0){
                             printf("Makanan M%d telah hangus\n", cook.buffer[j].id);
                             cook.buffer[j].id = 999;
+                            }
                         }
-
                     }
-                    
                 }
             }
         }
-        }
-        while (! IsEOP()) ADVWORD();
+        while (! IsEOP()) ADVWORD();   
         printf("\n");
     }
     printf("Permainan telah selesai. Anda mendapatkan %d poin.\n", saldo);
