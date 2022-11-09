@@ -14,6 +14,20 @@ int countkata(char *kata){
     return i;
 }
 
+boolean isstringequal(char *kata1, char *kata2){
+    int i=0;
+    if (countkata(kata1) != countkata(kata2)){
+        return false;
+    }
+    while (kata1[i] != '\0'){
+        if (kata1[i] != kata2[i]){
+            return false;
+        }
+        i++;
+    }
+    return true;
+}
+
 void playtebakkata(){
     time_t t;
     srand(time(&t));
@@ -34,7 +48,7 @@ void playtebakkata(){
     while (! win){
         char *guess;
         guess = WordToString(currentWord);
-        while(!IsEOP()) ADVWORD();
+        while(! IsEOP()) ADVWORD();
         boolean found = false;
         found = isstringequal(guess, kamus.Elements[angka].Key);
         if (found){

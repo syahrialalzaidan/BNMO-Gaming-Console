@@ -64,18 +64,19 @@ boolean IsEOP() {
 /* Mengirimkan true jika currentChar = MARK */
     //check if currentChar is blank and the next character is blank  too
     if (!isFile) {
-        if (currentChar == BLANK) {
-            char nextChar;
-            retval = fscanf(pita,"%c",&nextChar);
-            if (nextChar == BLANK) {
-                return true;
-            } else {
-                ungetc(nextChar,pita);
-                return false;
-            }
-        } else {
-            return (currentChar == MARK);
-        }
+        // if (currentChar == BLANK) {
+        //     char nextChar;
+        //     retval = fscanf(pita,"%c",&nextChar);
+        //     if (nextChar == BLANK) {
+        //         return true;
+        //     } else {
+        //         ungetc(nextChar,pita);
+        //         return false;
+        //     }
+        // } else {
+        //     return (currentChar == MARK);
+        // }
+        return (currentChar == MARK);
     } else {
         return (currentChar == EOF || retval == EOF);
         //return (currentChar == MARK);
