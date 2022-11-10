@@ -1,6 +1,7 @@
 #include "playgame.h"
 
 boolean isStringSame(char *c1, char*c2){
+/* Mengembalikan true jika string sama */
     int i=0;
     while (c1[i] != '\0'){
         if (c1[i] != c2[i]){
