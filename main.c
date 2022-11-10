@@ -32,6 +32,7 @@ boolean isInputValid(Word kata, int *command)
     else if (isWordSame(kata, stringToWord("SAVE"))) {
         output = true;
         *command = 2;
+        ADVWORD();
     }
     else if (isWordSame(kata, stringToWord("CREATE")))
     {
@@ -145,7 +146,6 @@ int main() {
         printf("(N adalah jumlah game yang ingin dilewat pada queue)\n");
         while (!isWordSame(currentWord, stringToWord("QUIT"))){
             if(command == 2){
-                ADVWORD();
                 filename = WordToString(currentWord);
                 save(&Games, filename);
             }
