@@ -181,6 +181,7 @@ void playdinnerdash() {
         daftarserve(cook, menu);
         printf("MASUKKAN COMMAND: ");
         STARTWORD();
+        system("cls");
         if (conds) generatemenu(&menu);
         if (isCommandValid(currentWord) && lengthDD(menu) <= 8) {
             boolean masak = isCook(currentWord);

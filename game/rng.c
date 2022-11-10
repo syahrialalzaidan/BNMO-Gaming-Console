@@ -21,6 +21,12 @@ void rng() {
     int x = rand() % 30, turn = 9, guess;
 
     //Algoritma
+    printf("______ _   _ _____ \n");
+    printf("| ___ \\ \\ | |  __ \\ \n");
+    printf("| |_/ /  \\| | |  \\/ \n");
+    printf("|    /| . ` | | __ \n");
+    printf("| |\\ \\| |\\  | |_\\ \\ \n");
+    printf("\\_| \\_\\_| \\_/\\____/\n");
     printf("RNG Telah dimulai. Uji keberuntungan Anda dengan menebak X.\n");
     printf("Tebakan: ");
     

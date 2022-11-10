@@ -38,7 +38,7 @@ void playtebakkata(){
     int angka = rand() % 3;
     printf("Tebak Kata dengan benar!\n");
     printf("Clue : %s\n", Value(kamus, kamus.Elements[angka].Key));
-    for(int i=0; i<countkata(kamus.Elements[angka].Key); i++){
+    for(int i=0; i < countkata(kamus.Elements[angka].Key); i++){
         printf("_ ");
     }
     printf("\n");
@@ -59,6 +59,10 @@ void playtebakkata(){
             printf("Jawaban anda salah!\n");
             count--;
             printf("Tries remaining : %d\n", count);
+            for(int i=0; i < countkata(kamus.Elements[angka].Key); i++){
+                printf("_ ");
+            }
+            printf("\n");
             printf("Masukkan jawaban : ");
             STARTWORD();
         }

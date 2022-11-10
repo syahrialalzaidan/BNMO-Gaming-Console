@@ -143,6 +143,7 @@ int main() {
         } else if (command == 0) {
             printf("\nFile konfigurasi sistem berhasil dibaca. BNMO berhasil dijalankan ^^\n\n");
         }
+        system("cls");
         printf("PILIHAN MENU:\n=> SAVE (filename.txt)\n=> CREATE GAME\n=> LIST GAME\n=> DELETE GAME\n=> QUEUE GAME\n=> PLAY GAME\n=> SKIPGAME (N)\n=> QUIT\n=> HELP\n");
         printf("(N adalah jumlah game yang ingin dilewat pada queue)\n");
         while (!isWordSame(currentWord, stringToWord("QUIT"))){
@@ -200,6 +201,7 @@ int main() {
                 STARTWORD();
                 cek2 = isInputValid(currentWord, &command);
             }
+            system("cls");
         }
         save(&Games, "savefile1.txt");
         CreateQueue(&queuegames);
