@@ -8,6 +8,7 @@ void skipgame(Queue *qg, int x, ArrayDin array) {
             memainkan game ke-(n+1) pada queue.
          Jika game ke-(n+1) tidak terdefinisi, maka queue akan kosong. */
     if (isEmpty(*qg)){
+        printf("Antrian game-mu kosong, tambahkan game terlebih dahulu.\n");
         queuegame(qg, array);
     } else{
         int j;

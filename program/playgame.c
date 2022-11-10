@@ -14,14 +14,15 @@ void playgame(Queue *qg, ArrayDin array){
 /*  Memainkan sebuah permainan.
     I.S. Array game tidak mungkin kosong.
     F.S. Game yang berada di posisi Head akan dimainkan. */
-    printf("Berikut adalah daftar game-mu\n");
-    if (!isEmpty(*qg)){
-        printqueue(*qg);
-    }
+    printf("Berikut adalah daftar antrian game-mu:\n");
 
     if (isEmpty(*qg)){
+        printf("\n");
+        printf("Antrian game-mu kosong, tambahkan game terlebih dahulu.\n");
         queuegame(qg, array);
     } else{
+        printqueue(*qg);
+
         char* katarng = "RNG";
         char* dinnerdash = "Diner DASH";
         char* tebak = "Tebak Kata";
@@ -35,8 +36,6 @@ void playgame(Queue *qg, ArrayDin array){
             printf("Loading Dinner Dash ...\n");
             srand(time(0));
             playdinnerdash();
-            
-            printf("dinner dash");
         } else if(isStringSame((*qg).buffer[(*qg).idxHead], tebak)){
             printf("Loading Tebak Kata ...\n");
             playtebakkata();
