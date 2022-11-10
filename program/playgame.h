@@ -11,10 +11,16 @@
 boolean isStringSame(char *c1, char*c2);
 /* Mengembalikan true jika string sama */
 
+void play();
+/* Memainkan sebuah permainan tanpa menuliskan daftar game
+    I.S. Array game tidak mungkin kosong
+    F.S. Game yang berada di posisi Head akan dimainkan */
+
 void playgame();
 /*  Memainkan sebuah permainan.
-    I.S. Array game tidak mungkin kosong.
-    F.S. Game yang berada di posisi Head akan dimainkan. */
+    I.S. Array game mungkin kosong.
+    F.S. Menuliskan daftar game dan game yang berada di posisi Head akan dimainkan. */
+
 
 
 #endif

@@ -8,17 +8,17 @@ void skipgame(Queue *qg, int x, ArrayDin array) {
             memainkan game ke-(n+1) pada queue.
          Jika game ke-(n+1) tidak terdefinisi, maka queue akan kosong. */
     if (isEmpty(*qg)){
-        printf("Antrian game-mu kosong, tambahkan game terlebih dahulu.\n");
+        printf("Antrian game-mu kosong, tambahkan game terlebih dahulu.\n\n");
         queuegame(qg, array);
     } else{
-        int j;
+        printf("Berikut adalah daftar antrian game-mu:\n");
         printqueue(*qg);
         printf("\n");
 
         int i;
         ElType a;
-        if (x > ((*qg).idxTail - (*qg).idxHead + 1)){
-            for (i = 0; i < (*qg).idxTail - (*qg).idxHead + 1; i++){
+        if (x >= ((*qg).idxTail - (*qg).idxHead + 1)){
+            for (i = (*qg).idxHead ; i <= (*qg).idxTail; i++){
                 dequeue(qg, &a);
             }
             printf("Tidak ada permainan lagi dalam daftar game-mu.\n");
@@ -26,7 +26,7 @@ void skipgame(Queue *qg, int x, ArrayDin array) {
             for (i = 0; i < x; i ++){
                 dequeue(qg, &a);
             }
-            playgame(qg, array);
+            play(qg, array);
         }
     }
 }  
