@@ -43,9 +43,9 @@ void playtebakkata(){
     }
     printf("\n");
     printf("Masukkan jawaban : ");
-    
+    int count = 10;
     STARTWORD();
-    while (! win){
+    while (! win && count > 1){
         char *guess;
         guess = WordToString(currentWord);
         while(! IsEOP()) ADVWORD();
@@ -57,10 +57,14 @@ void playtebakkata(){
         }
         else {
             printf("Jawaban anda salah!\n");
+            count--;
+            printf("Tries remaining : %d\n", count);
             printf("Masukkan jawaban : ");
             STARTWORD();
         }
+        
     }
+    if (! win) printf("Mohon maaf, kesempatan habis.\nJawaban benar: %s\n",kamus.Elements[angka].Key);
 }
 
 /*
