@@ -38,7 +38,7 @@ void playgame(Queue *qg, ArrayDin array){
             
             printf("dinner dash");
         } else if(isStringSame((*qg).buffer[(*qg).idxHead], tebak)){
-            printf("Loading Tebak Kata\n");
+            printf("Loading Tebak Kata ...\n");
             playtebakkata();
         } else{
             printf("Game %s masih dalam maintenance, belum dapat dimainkan.\n", (*qg).buffer[(*qg).idxHead]);
