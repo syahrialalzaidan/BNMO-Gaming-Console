@@ -2,6 +2,7 @@
 #include <stdio.h>
 
 void help() {
+/*  Bantuan yang berisikan command-command lain, serta kegunaannya. */
     printf("                                        'Kamu Nanya Menunya Apa Aja?' \n");
     printf("+---+---------------+-------------------------------------------------------------------------------------------------+\n");
     printf("| 1 | START         | Untuk menjalankan BNMO                                                                          |\n");

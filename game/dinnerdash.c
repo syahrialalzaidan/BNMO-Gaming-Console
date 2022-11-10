@@ -80,7 +80,6 @@ boolean isCommandValid(Word kata) {
 
 boolean isdigitvalid(Word kata) {
 /*Mengecek apakah merupakan digit yang valid*/
-
     //Kamus Lokal
     boolean output = true;
     //Algoritma

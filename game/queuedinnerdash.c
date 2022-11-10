@@ -102,7 +102,8 @@ void dequeueDD(Queue *q, ElType *val) {
 }
 */
 void daftarmenu(Queue q){
-    //menampilkan daftar pesanan
+/*I.S. q bisa kosong
+ *F.S. Menampilkan menu yang harus dibuat*/
     printf("Daftar Pesanan\n");
     printf("Makanan \t| Durasi memasak \t| Ketahanan \t| Harga\n");
     printf("--------------------------------------------------------------\n");
@@ -117,6 +118,8 @@ void daftarmenu(Queue q){
 }
 
 void daftarcook(Queue q){
+/*I.S. q bisa kosong
+ *F.S. Menampilkan cook yang harus dibuat*/
     printf("Daftar Makanan yang sedang dimasak\n");
     printf("Makanan \t| Sisa durasi memasak\n");
     printf("--------------------------------------\n");
@@ -133,6 +136,8 @@ void daftarcook(Queue q){
 }
 
 void daftarserve(Queue q, Queue q1){
+/*I.S. q bisa kosong, q1 tidak mungkin kosong
+ *F.S. Menampilkan menu yang dapat diserve sesuai urutan menu.*/
     printf("Daftar Makanan yang dapat disajikan\n");
     printf("Makanan \t| Sisa ketahanan makanan\n");
     printf("--------------------------------------\n");

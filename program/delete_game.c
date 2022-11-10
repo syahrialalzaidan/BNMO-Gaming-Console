@@ -2,8 +2,7 @@
 #include "delete_game.h"
 
 boolean IsInQueue(Queue queuegame, char* elQ) {
-/*I.S. Queue game mungkin kosong*/
-/*F.S. Elemen queue ditemukan atau tidak*/
+/* Mengembalikan nilai true jika elemen ada di dalam queue. */
     int i;
     boolean found = false;
     Word K1 = stringToWord(elQ);
@@ -18,8 +17,11 @@ boolean IsInQueue(Queue queuegame, char* elQ) {
 }
 
 void deletegame(ArrayDin *array, Queue queuegame){
-/*I.S. Array game mungkin kosong*/
-/*F.S. Asumsi nomor game input pasti valid. Nomor games yang ingin dihapus telah hilang dari array*/
+/*  Menghapus sebuah game dari daftar game.
+    I.S. Array game tidak mungkin kosong.
+    F.S. Game yang ingin dihapus telah hilang dari array jika 
+         game tersebut tidak ada di dalam daftar game pada
+         file konfigurasi default. */
     listgame (*array);
     printf("Masukkan nomor game yang akan dihapus: ");
     STARTWORD();
