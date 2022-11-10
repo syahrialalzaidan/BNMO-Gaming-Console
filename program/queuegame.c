@@ -4,7 +4,7 @@ void queuegame(Queue *queuegame, ArrayDin array) {
 /*  I.S. Queue game mungkin kosong
     F.S. Menambahkan game ke queue */
     int x;
-    printf("Berikut adalah daftar antrian game-mu\n");
+    printf("Berikut adalah daftar antrian game-mu:\n");
     if (!isEmpty(*queuegame)){
         printqueue(*queuegame);
     }
@@ -27,8 +27,10 @@ void queuegame(Queue *queuegame, ArrayDin array) {
 
 void printqueue(Queue queuegame){
 /*  Menampilkan daftar game yang ada di queue ke layar. */
-    int i;
+    int i, no;
+    no = 1;
     for (i = (queuegame).idxHead; i < (queuegame).idxTail + 1; i++){
-        printf("%d. %s\n", i+1,(queuegame).buffer[i]);
+        printf("%d. %s\n", no, (queuegame).buffer[i]);
+        no++;
     }
 }
