@@ -194,7 +194,7 @@ int main() {
                 if (command == 1 || command == 0) {
                     printf("Sistem sudah membaca file, Kamu bisa memulai ulang sistem untuk membaca file lain.\n\n");
                 } else {
-                    printf("Command tidak dikenali, silahkan masukkan command yang valid.\n");
+                    printf("Command tidak dikenali, silahkan masukkan command yang valid.\n\n");
                 }
                 printf("ENTER COMMAND: ");
                 STARTWORD();

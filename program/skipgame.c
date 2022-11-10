@@ -13,7 +13,6 @@ void skipgame(Queue *qg, int x, ArrayDin array) {
     } else{
         printf("Berikut adalah daftar antrian game-mu:\n");
         printqueue(*qg);
-        printf("\n");
 
         int i;
         ElType a;
