@@ -120,95 +120,88 @@ int main() {
     printf("\nPILIHAN MENU:\n=> START\n=> LOAD (filename.txt)\n");
     printf("ENTER COMMAND: ");
     STARTWORD();
-    while (!isInputValid(currentWord, &command)) {
-        printf("Command tidak dikenali, silakan masukkan command yang valid.\n");
-        while (!IsEOP()) {
-            ADVWORD();
-        }
-        printf("ENTER COMMAND: ");
-        STARTWORD();
-    }
-
-    if (command == 1) {
-        //ADVWORD();
-        filename = WordToString(currentWord);
-        load(filename, &Games);
-    } else if (command == 0) {
-        start(&Games);
-    }
-
-    if (!IsEmpty(Games)) {
-        if (command == 1) {
-            printf("\nSave file berhasil dibaca. BNMO berhasil dijalankan ^^\n\n");
-        } else if (command == 0) {
-            printf("\nFile konfigurasi sistem berhasil dibaca. BNMO berhasil dijalankan ^^\n\n");
-        }
-        system("cls");
-        printf("PILIHAN MENU:\n=> SAVE (filename.txt)\n=> CREATE GAME\n=> LIST GAME\n=> DELETE GAME\n=> QUEUE GAME\n=> PLAY GAME\n=> SKIPGAME (N)\n=> QUIT\n=> HELP\n");
-        printf("(N adalah jumlah game yang ingin dilewat pada queue)\n");
-        while (!isWordSame(currentWord, stringToWord("QUIT"))){
-            if(command == 2){
-                //ADVWORD();
-                filename = WordToString(currentWord);
-                save(&Games, filename);
-            }
-            else if(command == 3){
-                //CREATE_GAME();
-                // printf("CREATE GAME\n");
-                creategame(&Games);
-            }
-            else if(command == 4){
-                //LIST_GAME();
-                //printf("LIST GAME\n");
-                listgame(Games);
-            }
-            else if(command == 5){
-                //DELETE_GAME();
-                //printf("DELETE GAME\n");
-                deletegame(&Games, queuegames);
-            }
-            else if(command == 6){
-                //QUEUE_GAME();
-                //printf("QUEUE GAME\n");
-                queuegame(&queuegames, Games);
-            }
-            else if(command == 7){
-                //PLAY_GAME();
-                //printf("PLAY GAME\n");
-                playgame(&queuegames, Games);
-            }
-            else if(command == 8){
-                //SKIPGAME();
-                //printf("SKIPGAME\n");
-                int nomor = WordToInt(currentWord);
-    
-                skipgame(&queuegames, nomor, Games);
-            }
-            else if(command == 10){
-                help();
-                // printf("HELP\n");
+    while (IsEmpty(Games)) {
+        while (!isInputValid(currentWord, &command)) {
+            printf("Command tidak dikenali, silakan masukkan command yang valid.\n\n");
+            while (!IsEOP()) {
+                ADVWORD();
             }
             printf("ENTER COMMAND: ");
             STARTWORD();
-            boolean cek2 = isInputValid(currentWord, &command);
-            while ((command == 11 || command == 0 || command == 1) || (!cek2)) {
-                if (command == 1 || command == 0) {
-                    printf("Sistem sudah membaca file, Kamu bisa memulai ulang sistem untuk membaca file lain.\n\n");
-                } else {
-                    printf("Command tidak dikenali, silahkan masukkan command yang valid.\n\n");
-                }
+        }
+        if (command == 1) {
+            //ADVWORD();
+            filename = WordToString(currentWord);
+            load(filename, &Games);
+            if (IsEmpty(Games)) {
+                printf("File tidak ditemukan, silakan masukkan nama file yang valid.\n\n");
                 printf("ENTER COMMAND: ");
                 STARTWORD();
-                cek2 = isInputValid(currentWord, &command);
             }
-            system("cls");
+        } else if (command == 0) {
+            start(&Games);
         }
-        save(&Games, "savefile1.txt");
-        CreateQueue(&queuegames);
-        printf("Anda Keluar dari game BNMO\nBye byee.........\n");
-        //QUIT();
-    } else {
-        printf("BNMO Gagal dijalankan.\n");
     }
+    
+    if (command == 1) {
+        printf("\nSave file berhasil dibaca. BNMO berhasil dijalankan ^^\n\n");
+    } else if (command == 0) {
+        printf("\nFile konfigurasi sistem berhasil dibaca. BNMO berhasil dijalankan ^^\n\n");
+    }
+
+    system("cls");
+    printf("PILIHAN MENU:\n=> SAVE (filename.txt)\n=> CREATE GAME\n=> LIST GAME\n=> DELETE GAME\n=> QUEUE GAME\n=> PLAY GAME\n=> SKIPGAME (N)\n=> QUIT\n=> HELP\n");
+    printf("(N adalah jumlah game yang ingin dilewat pada queue)\n");
+
+    while (!isWordSame(currentWord, stringToWord("QUIT"))){
+        if(command == 2){
+            filename = WordToString(currentWord);
+            save(&Games, filename);
+        }
+        else if(command == 3){
+            creategame(&Games);
+        }
+        else if(command == 4){
+            listgame(Games);
+        }
+        else if(command == 5){
+            deletegame(&Games, queuegames);
+        }
+        else if(command == 6){
+            queuegame(&queuegames, Games);
+        }
+        else if(command == 7){
+            //PLAY_GAME();
+            //printf("PLAY GAME\n");
+            playgame(&queuegames, Games);
+        }
+        else if(command == 8){
+            //SKIPGAME();
+            //printf("SKIPGAME\n");
+            int nomor = WordToInt(currentWord);
+
+            skipgame(&queuegames, nomor, Games);
+        }
+        else if(command == 10){
+            help();
+        }
+        printf("ENTER COMMAND: ");
+        STARTWORD();
+        boolean cek2 = isInputValid(currentWord, &command);
+        while ((command == 11 || command == 0 || command == 1) || (!cek2)) {
+            if (command == 1 || command == 0) {
+                printf("Sistem sudah membaca file, Kamu bisa memulai ulang sistem untuk membaca file lain.\n\n");
+            } else {
+                printf("Command tidak dikenali, silahkan masukkan command yang valid.\n\n");
+            }
+            printf("ENTER COMMAND: ");
+            STARTWORD();
+            cek2 = isInputValid(currentWord, &command);
+        }
+        system("cls");
+    }
+    save(&Games, "savefile1.txt");
+    CreateQueue(&queuegames);
+    printf("Anda Keluar dari game BNMO\nBye byee.........\n");
     return 0;
 }
