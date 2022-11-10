@@ -4,8 +4,8 @@
 #include "start.h"
 #include "load.h"
 #include "ADT/arraydin/arraydin.h"
-#include "ADT/mesinkarkata/mesinkarfile.h"
-#include "ADT/mesinkarkata/mesinkatafile.h"
+#include "ADT/mesinkarkata/mesinkar.h"
+#include "ADT/mesinkarkata/mesinkata.h"
 
 // gcc program/ADT/mesinkarkata/mesinkarfile.c program/ADT/mesinkarkata/mesinkatafile.c program/ADT/arraydin/arraydin.c program/load.c program/start.c program/start_driver.c -o coba
 

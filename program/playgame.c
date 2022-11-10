@@ -11,14 +11,18 @@ boolean isStringSame(char *c1, char*c2){
     return true;
 }
 void playgame(Queue *qg, ArrayDin array){
-    printf("Berikut adalah daftar game-mu\n");
-    if (!isEmpty(*qg)){
-        listqueue(qg);
-    }
+/*  Memainkan sebuah permainan.
+    I.S. Array game tidak mungkin kosong.
+    F.S. Game yang berada di posisi Head akan dimainkan. */
+    printf("Berikut adalah daftar antrian game-mu:\n");
 
     if (isEmpty(*qg)){
+        printf("\n");
+        printf("Antrian game-mu kosong, tambahkan game terlebih dahulu.\n");
         queuegame(qg, array);
     } else{
+        printqueue(*qg);
+
         char* katarng = "RNG";
         char* dinnerdash = "Diner DASH";
         char* tebak = "Tebak Kata";
@@ -32,10 +36,8 @@ void playgame(Queue *qg, ArrayDin array){
             printf("Loading Dinner Dash ...\n");
             srand(time(0));
             playdinnerdash();
-            
-            printf("dinner dash");
         } else if(isStringSame((*qg).buffer[(*qg).idxHead], tebak)){
-            printf("Loading Tebak Kata\n");
+            printf("Loading Tebak Kata ...\n");
             playtebakkata();
         } else{
             printf("Game %s masih dalam maintenance, belum dapat dimainkan.\n", (*qg).buffer[(*qg).idxHead]);

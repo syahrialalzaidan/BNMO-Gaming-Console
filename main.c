@@ -28,6 +28,7 @@ boolean isInputValid(Word kata, int *command)
     else if (isWordSame(kata, stringToWord("LOAD"))) {
         output = true;
         *command = 1;
+        ADVWORD();
     }
     else if (isWordSame(kata, stringToWord("SAVE"))) {
         output = true;
@@ -129,7 +130,7 @@ int main() {
     }
 
     if (command == 1) {
-        ADVWORD();
+        //ADVWORD();
         filename = WordToString(currentWord);
         load(filename, &Games);
     } else if (command == 0) {
@@ -146,6 +147,7 @@ int main() {
         printf("(N adalah jumlah game yang ingin dilewat pada queue)\n");
         while (!isWordSame(currentWord, stringToWord("QUIT"))){
             if(command == 2){
+                //ADVWORD();
                 filename = WordToString(currentWord);
                 save(&Games, filename);
             }
@@ -200,6 +202,8 @@ int main() {
             }
         }
         save(&Games, "savefile1.txt");
+        CreateQueue(&queuegames);
+        printf("Anda Keluar dari game BNMO\nBye byee.........\n");
         //QUIT();
     } else {
         printf("BNMO Gagal dijalankan.\n");
