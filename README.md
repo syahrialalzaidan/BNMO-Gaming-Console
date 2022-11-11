@@ -45,91 +45,98 @@ Setelah berhasil memperbaiki BNMO, 5 Orang programmer handal tersebut menuangkan
 <p>
 
 ## Directory
-|   README.MD
-|   .DS_Store
-|   bnmo_pic.c
-|   bnmo_pic.h
-|   main.c
-|   
-+---.vscode
-|      settings.json 
-|
-+---bin
-|       Makefile
-|       Main.exe
-|       
-+---data
-|       .DS_Store
-|       config.txt
-|       savefile1.txt
-|       savefile2.txt
-|       
-+---docs
-|       Spesifikasi Tugas Besar 1 IF2111 2022_2023.pdf
-|       IF2111_Form_Asistensi_TB01_01_10 .docx.pdf
-|       IF2111_TB1_01_10 .docx.pdf
-|
-+---game
-|       dinnerdash.c
-|       dinnerdash.h
-|       queuedinnerdash.c
-|       queuedinnerdash.h
-|       rng.c
-|       rng.h
-|       tebakkata.c
-|       tebakkata.h
-|       
-\---program
-    |   .DS_Store
-    |   create_game.c
-    |   create_game.h
-    |   delete_game.c
-    |   delete_game.h
-    |   help.c
-    |   help.h
-    |   list_game.c
-    |   list_game.h
-    |   load.c
-    |   load.h
-    |   load_driver.c
-    |   playgame.c
-    |   playgame.h
-    |   queuegame.c
-    |   queuegame.h
-    |   save.c
-    |   save.h
-    |   save_driver.c
-    |   skipgame.c
-    |   skipgame.h
-    |   start.c
-    |   start.h
-    |   start_driver.c
-    |   test.c
-    |   
-    \---ADT
-            |   .DS_Store
-            |
-            \---Map
-                    drivermap.c
-                    drivermap.exe
-                    map.c
-                    map.h
-            \---arraydin
-                    arraydin.c
-                    arraydin.h
-                    driverarraydin.c
-                    driverarraydin.exe
-            \---boolean
-                    boolean.h
-            \---mesinkarkata
-                    drivermesinkarkata.c
-                    mesinkar.c
-                    mesinkar.h
-                    mesinkata.c
-                    mesinkata.h
-            \---queue
-                    driverqueue.c
-                    driverqueue.exe
-                    queue.c
-                    queue.h
+📦.DS_Store
+ 
+📦README.md
 
+📦bnmo_pic.c
+  
+📦bnmo_pic.h
+
+📦main.c
+  
+📦.vscode
+  
+    ┗ 📜settings.json
+
+📦bin
+ 
+    ┗ 📜Makefile
+
+📦data
+  
+    ┣ 📜.DS_Store
+    ┣ 📜config.txt
+    ┣ 📜savefile1.txt
+    ┗ 📜savefile2.txt
+  
+📦docs
+  
+    ┣ 📜IF2111_Form Asistensi TB01_01_10 .docx.pdf
+    ┣ 📜IF2111_TB1_01_10.docx.pdf
+    ┗ 📜Spesifikasi Tugas Besar 1 IF2111 2022_2023.pdf
+
+📦game
+  
+    ┣ 📜dinnerdash.c
+    ┣ 📜dinnerdash.h
+    ┣ 📜driverqueuedinnerdash.c
+    ┣ 📜queuedinnerdash.c
+    ┣ 📜queuedinnerdash.h
+    ┣ 📜rng.c
+    ┣ 📜rng.h
+    ┣ 📜tebakkata.c
+    ┗ 📜tebakkata.h
+
+📦program
+  
+    ┣ 📂ADT
+    ┃ ┣ 📂arraydin
+    ┃ ┃ ┣ 📜arraydin.c
+    ┃ ┃ ┣ 📜arraydin.h
+    ┃ ┃ ┣ 📜driverarraydin.c
+    ┃ ┃ ┗ 📜driverarraydin.exe
+    ┃ ┣ 📂boolean
+    ┃ ┃ ┗ 📜boolean.h
+    ┃ ┣ 📂Map
+    ┃ ┃ ┣ 📜drivermap.c
+    ┃ ┃ ┣ 📜drivermap.exe
+    ┃ ┃ ┣ 📜map.c
+    ┃ ┃ ┗ 📜map.h
+    ┃ ┣ 📂mesinkarkata
+    ┃ ┃ ┣ 📜drivermesinkarkata.c
+    ┃ ┃ ┣ 📜mesinkar.c
+    ┃ ┃ ┣ 📜mesinkar.h
+    ┃ ┃ ┣ 📜mesinkata.c
+    ┃ ┃ ┗ 📜mesinkata.h
+    ┃ ┣ 📂queue
+    ┃ ┃ ┣ 📜driverqueue.c
+    ┃ ┃ ┣ 📜driverqueue.exe
+    ┃ ┃ ┣ 📜queue.c
+    ┃ ┃ ┗ 📜queue.h
+    ┃ ┗ 📜.DS_Store
+    ┣ 📜.DS_Store
+    ┣ 📜create_game.c
+    ┣ 📜create_game.h
+    ┣ 📜delete_game.c
+    ┣ 📜delete_game.h
+    ┣ 📜help.c
+    ┣ 📜help.h
+    ┣ 📜list_game.c
+    ┣ 📜list_game.h
+    ┣ 📜load.c
+    ┣ 📜load.h
+    ┣ 📜load_driver.c
+    ┣ 📜playgame.c
+    ┣ 📜playgame.h
+    ┣ 📜queuegame.c
+    ┣ 📜queuegame.h
+    ┣ 📜save.c
+    ┣ 📜save.h
+    ┣ 📜save_driver.c
+    ┣ 📜skipgame.c
+    ┣ 📜skipgame.h
+    ┣ 📜start.c
+    ┣ 📜start.h
+    ┣ 📜start_driver.c
+    ┗ 📜test.c
