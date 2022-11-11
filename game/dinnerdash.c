@@ -9,7 +9,7 @@ void generatemenu(Queue *q) {
     //Algoritma
     food.durasi = (rand() % 5) + 1;
     food.ketahanan = (rand() % 5) + 1;
-    food.harga = ((10000) + rand() % 50000);
+    food.harga = ((10000 + rand() % 50000))%50000;
     if (isEmptyDD(*q)) food.id = 0;
     else food.id = IDX_TAIL(*q) + 1;
     enqueueDD(q, food);
@@ -121,10 +121,10 @@ void serve(Queue *q1, Queue *q2, int i, int *saldo, int *count, boolean *sukses)
     else {
         if (done) {
             if (i == IDX_HEAD(*q1)) {
+                *saldo += (HEAD(*q1).harga);
                 dequeueDD(q1, &food);
                 printf("Berhasil mengantar M%d\n", i);
                 *count++;
-                *saldo += (HEAD(*q1).harga);
                 boolean found = false;
                 int x = IDX_HEAD(*q2);
                 while (x < lengthDD(*q2) && !found) {
@@ -150,10 +150,11 @@ void serve(Queue *q1, Queue *q2, int i, int *saldo, int *count, boolean *sukses)
 
 void printdinnerdash(){
     //Print UI dinnerdash
-    printf(" ____  _                    ____          _   \n");
-    printf("|    \\|_|___ ___ ___ ___   |    \\ ___ ___| |_ \n");
-    printf("|  |  | |   |   | -_|  _|  |  |  | .'|_ -|   |\n");
-    printf("|____/|_|_|_|_|_|___|_|    |____/|__,|___|_|_|\n\n");
+    printf("  ____  _                   ____            _     \n");
+    printf(" |  _ \\(_)_ __   ___ _ __  |  _ \\  __ _ ___| |__  \n");
+    printf(" | | | | | '_ \\ / _ \\ '__| | | | |/ _` / __| '_ \\ \n");
+    printf(" | |_| | | | | |  __/ |    | |_| | (_| \\__ \\ | | |\n");
+    printf(" |____/|_|_| |_|\\___|_|    |____/ \\__,_|___/_| |_|\n\n");
 }
 
 void playdinnerdash() {
@@ -181,7 +182,7 @@ void playdinnerdash() {
         daftarserve(cook, menu);
         printf("MASUKKAN COMMAND: ");
         STARTWORD();
-        system("cls");
+        // system("cls");
         if (conds) generatemenu(&menu);
         if (isCommandValid(currentWord) && lengthDD(menu) <= 8) {
             boolean masak = isCook(currentWord);
