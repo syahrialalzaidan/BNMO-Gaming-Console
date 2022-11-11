@@ -39,7 +39,7 @@ void playtebakkata(){
     generatemap(&kamus);
     boolean win = false;
     int angka = rand() % 6;
-    printf("Tebak Kata dengan benar!\n");
+    printf("Tebak Kata dengan benar! (DALAM HURUF KECIL)\n");
     printf("Clue : %s\n", Value(kamus, kamus.Elements[angka].Key));
     int n = 0;
     for(int i=0; i < countkata(kamus.Elements[angka].Key); i++){
