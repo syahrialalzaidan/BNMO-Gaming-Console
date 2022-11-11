@@ -37,10 +37,11 @@
 
 ## Buku Perjalanan Perbaikan BNMO
 <p align="justify">
-Setelah berhasil memperbaiki BNMO, 5 Orang programmer handal tersebut membuat Laporan dari perbaikan BNMO tersebut. KALIMATNYA PIKIRIN DAH GATAU MAU NGOMONG APA <p>
+Setelah berhasil memperbaiki BNMO, 5 Orang programmer handal tersebut membuat Buku perjalanan dari perbaikan BNMO tersebut. KALIMATNYA PIKIRIN DAH GATAU MAU NGOMONG APA <p>
  
 <p align="Center">
-  <a href="https://docs.google.com/document/d/19Pq61fxoZAl6_cM7LAs6e_BfXORPgYZz/edit#heading=h.b9r2vxp40ad7">Visit Buku Perjalanan Perbaikan BNMO!<a>
+  <a href="https://docs.google.com/document/d/19Pq61fxoZAl6_cM7LAs6e_BfXORPgYZz/edit#heading=h.b9r2vxp40ad7">Visit Buku Perjalanan Perbaikan BNMO!
+  <a>
 <p>
 
 ## Directory
@@ -101,7 +102,8 @@ Setelah berhasil memperbaiki BNMO, 5 Orang programmer handal tersebut membuat La
     |   test.c
     |   
     \---ADT
-            .DS_Store 
+            |   .DS_Store
+            |
             \---Map
                     drivermap.c
                     drivermap.exe
