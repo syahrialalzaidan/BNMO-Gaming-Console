@@ -142,21 +142,6 @@ void PrintArrayDin(ArrayDin array){
  }
 
 /**
- * Fungsi untuk melakukan reverse suatu ArrayDin.
- * Prekondisi: array terdefinisi
- */
- // void ReverseArrayDin(ArrayDin *array){
- //    int i = 0, j = array->Neff-1, temp;
- //    while(i < j){
- //        temp = array->A[i];
- //        array->A[i] = array->A[j];
- //        array->A[j] = temp;
- //        i++;
- //       j--;
- //    }
- //}
-
-/**
  * Fungsi untuk melakukan copy suatu ArrayDin.
  * Prekondisi: array terdefinisi
  */
