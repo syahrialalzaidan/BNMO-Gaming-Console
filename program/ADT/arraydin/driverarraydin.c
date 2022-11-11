@@ -33,14 +33,6 @@ int main(){
     ArrayDin Copy = CopyArrayDin(array);
     PrintArrayDin(Copy);
 
-    /*
-    printf("\n");
-    printf("Reverse arraydin\n");
-    ReverseArrayDin(&array);
-    PrintArrayDin(array);
-    printf("\n");
-    */
-
     printf("Mencari Index arraydin ISI 3\n");
     IdxType x = SearchArrayDin(array, isi3);
     printf("index isi 3: %d\n\n", x);
