@@ -3,7 +3,10 @@
 void generatemap(Map *kamus){
     Insert(kamus, "mayornaufal", "K01tertampan");
     Insert(kamus, "gibeh", "dinosaurus");
-    Insert(kamus, "nikolas", "ahok");
+    Insert(kamus, "argentina", "messi");
+    Insert(kamus, "swedia", "negara dengan pulau terbanyak");
+    Insert(kamus, "alstrukdat", "matkul favorit ariq");
+    Insert(kamus, "kalimantan", "pulau terbesar di indonesia");
 }
 
 int countkata(char *kata){
@@ -35,7 +38,7 @@ void playtebakkata(){
     CreateEmpty(&kamus);
     generatemap(&kamus);
     boolean win = false;
-    int angka = rand() % 3;
+    int angka = rand() % 6;
     printf("Tebak Kata dengan benar!\n");
     printf("Clue : %s\n", Value(kamus, kamus.Elements[angka].Key));
     for(int i=0; i < countkata(kamus.Elements[angka].Key); i++){
