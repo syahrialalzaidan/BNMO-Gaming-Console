@@ -5,7 +5,7 @@
 <img align="center" src="https://user-images.githubusercontent.com/110550218/199711955-354632d1-cb0c-449f-8f3a-461be3d38099.png">
 </div>
 
-<p align="justify"> 5 orang mahasiswa sti disuruh ngurusin BNMO (dibaca: Binomo). BNMO (dibaca: Binomo) adalah sebuah robot video game console yang dimiliki oleh Indra dan Doni. Dua bulan yang lalu, ia mengalami kerusakan dan telah berhasil diperbaiki. Sayangnya, setelah diperbaiki ia justru mendapatkan lebih banyak bug dalam sistemnya. Oleh karena itu, Indra dan Doni menyuruh kita (dengan asumsi kita programmer handal) untuk ulang memprogram robot video game console kesayangannya. <p>
+<p align="justify"> 5 orang mahasiswa STI disuruh ngurusin BNMO (dibaca: Binomo). BNMO (dibaca: Binomo) adalah sebuah robot video game console yang dimiliki oleh Indra dan Doni. Dua bulan yang lalu, ia mengalami kerusakan dan telah berhasil diperbaiki. Sayangnya, setelah diperbaiki ia justru mendapatkan lebih banyak bug dalam sistemnya. Oleh karena itu, Indra dan Doni menyuruh kita (dengan asumsi kita programmer handal) untuk memprogram ulang robot video game console kesayangannya. <p>
 
 ## Anggota Kelompok 10
   >Attariq Muhammad Azhar (18221043)
@@ -33,3 +33,9 @@
 > Tebak Kata
 
 ## Directory
+
+## Laporan Perbaikan BNMO
+<p align="justify">
+Setelah berhasil memperbaiki BNMO, 5 Orang programmer handal tersebut membuat Laporan dari perbaikan BNMO tersebut. KALIMATNYA PIKIRIN DAH GATAU MAU NGOMONG APA
+  <a href="https://docs.google.com/document/d/19Pq61fxoZAl6_cM7LAs6e_BfXORPgYZz/edit#heading=h.b9r2vxp40ad7">Visit Laporan Perbaikan BNMO!<a>
+<p>
