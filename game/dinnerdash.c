@@ -112,12 +112,12 @@ void serve(Queue *q1, Queue *q2, int i, int *saldo, int *count, boolean *sukses)
     while (x < lengthDD(*q2) && !found) {
         if ((*q2).buffer[x].id == i) {
             found = true;
-            if ((*q2).buffer[x].durasi <= 0) done = true;
+            if ((*q2).buffer[x].durasi < 0) done = true;
         }
         else x++;
     }
     if (!found) {
-        printf("Masakan belum dimasak\n");
+        printf("Makanan belum dimasak\n");
         *sukses = false;
     }
     else {
