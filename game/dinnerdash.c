@@ -37,10 +37,12 @@ boolean isSkip(Word kata){
     //Kamus Lokal
     boolean output = false;
     //Algoritma
-    if (kata.TabWord[0] == 'S') {
-        if (kata.TabWord[1] == 'K') {
-            if (kata.TabWord[2] == 'I') {
-                if (kata.TabWord[3] == 'P') output = true;
+    if (kata.Length == 4){
+        if (kata.TabWord[0] == 'S') {
+            if (kata.TabWord[1] == 'K') {
+                if (kata.TabWord[2] == 'I') {
+                    if (kata.TabWord[3] == 'P') output = true;
+                }
             }
         }
     }
@@ -239,6 +241,7 @@ void playdinnerdash() {
                 }
             }
         }
+        else conds = false;
         while (! IsEOP()) ADVWORD();   
         printf("\n");
     }
