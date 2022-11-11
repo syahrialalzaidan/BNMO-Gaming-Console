@@ -80,11 +80,14 @@ boolean isInputValid(Word kata, int *command)
             *command = 7;
         }
     }
-    else if (isWordSame(kata, stringToWord("SKIPGAME")))
+    else if (isWordSame(kata, stringToWord("SKIP")))
     {
         ADVWORD();
-        output = true;
-        *command = 8;
+        if (isWordSame(currentWord, stringToWord("GAME"))){
+            output = true;
+            *command = 8;
+        }
+        ADVWORD();
     }
     else if (isWordSame(kata, stringToWord("QUIT")))
     {
@@ -106,7 +109,6 @@ boolean isInputValid(Word kata, int *command)
         *command = 11;
     }
     while(! IsEOP()) ADVWORD();
-    
     return output;
 }
 
