@@ -29,7 +29,7 @@ void deletegame(ArrayDin *array, Queue queuegame){
     IdxType i = input;
     char* el = array->A[i-1];
     printf("Game yang akan dihapus: %s\n", el);
-    if (i > 5 && !IsInQueue(queuegame, el)) {
+    if (i > 6 && !IsInQueue(queuegame, el)) {
         DeleteAt(array, i-1);
         printf("Game berhasil dihapus\n");
     }
