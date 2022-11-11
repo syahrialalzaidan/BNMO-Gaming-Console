@@ -16,8 +16,10 @@
 #include "program/help.h"
 #include "bnmo_pic.h"
 
-//gcc bnmo_pic.c program/help.c program/skipgame.c program/playgame.c program/queuegame.c program/delete_game.c program/list_game.c program/create_game.c program/save.c program/load.c program/start.c program/ADT/queue/queue.c program/ADT/mesinkarkata/mesinkar.c program/ADT/mesinkarkata/mesinkata.c program/ADT/arraydin/arraydin.c main.c -o main
-//gcc bnmo_pic.c program/help.c program/skipgame.c program/playgame.c program/queuegame.c program/delete_game.c program/list_game.c program/create_game.c program/save.c program/load.c program/start.c program/ADT/queue/queue.c program/ADT/mesinkarkata/mesinkar.c program/ADT/mesinkarkata/mesinkata.c program/ADT/arraydin/arraydin.c main.c game/dinnerdash.c game/rng.c game/tebakkata.c game/queuedinnerdash.c program/ADT/Map/map.c -o main
+//  copy paste below to run main
+//  gcc bnmo_pic.c program/help.c program/skipgame.c program/playgame.c program/queuegame.c program/delete_game.c program/list_game.c program/create_game.c program/save.c program/load.c program/start.c program/ADT/queue/queue.c program/ADT/mesinkarkata/mesinkar.c program/ADT/mesinkarkata/mesinkata.c program/ADT/arraydin/arraydin.c main.c game/dinnerdash.c game/rng.c game/tebakkata.c game/queuedinnerdash.c program/ADT/Map/map.c -o main
+//  or try run make main in bin folder
+
 boolean isInputValid(Word kata, int *command)
 {
     boolean output;
@@ -42,6 +44,9 @@ boolean isInputValid(Word kata, int *command)
         {
             output = true;
             *command = 3;
+        } else {
+            output = false;
+            *command = 11;
         }
     }
     else if (isWordSame(kata, stringToWord("LIST")))
@@ -51,6 +56,9 @@ boolean isInputValid(Word kata, int *command)
         {
             output = true;
             *command = 4;
+        } else {
+            output = false;
+            *command = 11;
         }
     }
     else if (isWordSame(kata, stringToWord("DELETE")))
@@ -60,6 +68,9 @@ boolean isInputValid(Word kata, int *command)
         {
             output = true;
             *command = 5;
+        } else {
+            output = false;
+            *command = 11;
         }
     }
     else if (isWordSame(kata, stringToWord("QUEUE")))
@@ -69,6 +80,9 @@ boolean isInputValid(Word kata, int *command)
         {
             output = true;
             *command = 6;
+        } else {
+            output = false;
+            *command = 11;
         }
     }
     else if (isWordSame(kata, stringToWord("PLAY")))
@@ -78,6 +92,9 @@ boolean isInputValid(Word kata, int *command)
         {
             output = true;
             *command = 7;
+        } else {
+            output = false;
+            *command = 11;
         }
     }
     else if (isWordSame(kata, stringToWord("SKIP")))
@@ -86,6 +103,9 @@ boolean isInputValid(Word kata, int *command)
         if (isWordSame(currentWord, stringToWord("GAME"))){
             output = true;
             *command = 8;
+        } else {
+            output = false;
+            *command = 11;
         }
         ADVWORD();
     }
@@ -132,7 +152,6 @@ int main() {
             STARTWORD();
         }
         if (command == 1) {
-            //ADVWORD();
             filename = WordToString(currentWord);
             load(filename, &Games);
             if (IsEmpty(Games)) {
@@ -151,7 +170,6 @@ int main() {
         printf("\nFile konfigurasi sistem berhasil dibaca. BNMO berhasil dijalankan ^^\n\n");
     }
 
-    system("cls");
     printf("PILIHAN MENU:\n=> SAVE (filename.txt)\n=> CREATE GAME\n=> LIST GAME\n=> DELETE GAME\n=> QUEUE GAME\n=> PLAY GAME\n=> SKIPGAME (N)\n=> QUIT\n=> HELP\n");
     printf("(N adalah jumlah game yang ingin dilewat pada queue)\n");
 
@@ -173,13 +191,9 @@ int main() {
             queuegame(&queuegames, Games);
         }
         else if(command == 7){
-            //PLAY_GAME();
-            //printf("PLAY GAME\n");
             playgame(&queuegames, Games);
         }
         else if(command == 8){
-            //SKIPGAME();
-            //printf("SKIPGAME\n");
             int nomor = WordToInt(currentWord);
 
             skipgame(&queuegames, nomor, Games);
@@ -200,7 +214,7 @@ int main() {
             STARTWORD();
             cek2 = isInputValid(currentWord, &command);
         }
-        system("cls");
+        
     }
     save(&Games, "savefile1.txt");
     CreateQueue(&queuegames);
