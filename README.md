@@ -25,7 +25,7 @@
 1. 
 2. 
 
-## Game yang dapat dimainkan ole BNMO
+## Game yang dapat dimainkan oleh BNMO
 > RNG
 
 > Diner Dash
