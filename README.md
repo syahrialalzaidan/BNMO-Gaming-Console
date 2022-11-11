@@ -40,7 +40,7 @@
 Setelah berhasil memperbaiki BNMO, 5 Orang programmer handal tersebut menuangkan cerita pengalaman mereka di dalam suatu buku sakral. <p>
  
 <p align="Center">
-  <a href="https://docs.google.com/document/d/19Pq61fxoZAl6_cM7LAs6e_BfXORPgYZz/edit#heading=h.b9r2vxp40ad7">Visit Buku Perjalanan Perbaikan BNMO!
+  <a href="https://drive.google.com/drive/folders/19nget4JQghYiOb5zmSfVUjlL9DNyzOtn?usp=share_link">Visit Buku Perjalanan Perbaikan BNMO!
   <a>
 <p>
 
@@ -65,8 +65,9 @@ Setelah berhasil memperbaiki BNMO, 5 Orang programmer handal tersebut menuangkan
 |       savefile2.txt
 |       
 +---docs
-|       IF2111_Form_Asistensi_TB01_01_10 .docx.pdf
 |       Spesifikasi Tugas Besar 1 IF2111 2022_2023.pdf
+|       IF2111_Form_Asistensi_TB01_01_10 .docx.pdf
+|       IF2111_TB1_01_10.docx.pdf
 |
 +---game
 |       dinnerdash.c
