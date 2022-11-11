@@ -75,9 +75,7 @@ void CopyWord() {
 /* Word Converter Functions */
 
 int WordToInt(Word W) {
-/* Mengubah Word menjadi integer
-    I.S. : Word W terdefinisi, integer dest belum terdefinisi
-    F.S. : integer dest sudah terdefinisi berdasarkan Word W*/   
+/* Fungsi mengubah Word ke integer */  
     int i;
     int temp = 0;
     for (i = 0; i < W.Length; i++){
@@ -89,6 +87,7 @@ int WordToInt(Word W) {
 }
 
 char *WordToString(Word W) {
+/* Fungsi mengubah Word ke string */
     char *x = malloc(W.Length + 1);
     for (int i = 0; i < W.Length; i++) {
         x[i] = W.TabWord[i];
@@ -97,6 +96,7 @@ char *WordToString(Word W) {
     return x;
 }
 boolean isWordSame(Word W1, Word W2) {
+/* Fungsi untuk membandingkan apakah dua kata sama. */
     if (W1.Length != W2.Length) {
         return false;
     } else {
@@ -112,6 +112,7 @@ boolean isWordSame(Word W1, Word W2) {
 }
 
 Word stringToWord(char *s) {
+/* Fungsi mengubah string ke Word */
     Word W;
     int i = 0;
     while (s[i] != '\0') {

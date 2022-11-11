@@ -6,11 +6,6 @@
 #include<time.h>
 #include "../program/ADT/mesinkarkata/mesinkata.h"
 
-
-int wordtoint(Word kata);
-// mengubah kata menjadi integer
-
-
 void rng();
 /* Fungsi RNG bakal ngereturn score yang diperoleh pemain
  * Jumlah maksimal tebakan adalah 5 kali

@@ -47,8 +47,15 @@ void CopyWord();
           Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
 
 int WordToInt(Word W);
+/* Fungsi mengubah Word ke integer */
 
 char *WordToString(Word W);
+/* Fungsi mengubah Word ke string */
+
 boolean isWordSame(Word W1, Word W2);
+/* Fungsi untuk membandingkan apakah dua kata sama. */
+
 Word stringToWord(char *s);
+/* Fungsi mengubah string ke Word */
+
 #endif

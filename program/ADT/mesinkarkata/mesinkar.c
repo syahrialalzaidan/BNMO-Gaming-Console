@@ -13,11 +13,19 @@ static FILE *pita;
 static int retval;
 
 void LoadPita(char* filename, boolean isF) {
+/*  Membaca pita sesuai dengan tipe yang diinginkan (file atau masukan). 
+    I.S. : sembarang
+    F.S. : Jika pita berbentuk file, maka isFile akan bernilai true 
+           dan filepath akan berisi nama file beserta path-nya.
+           Jika berbentuk masukan maka isFile akan bernilai false. */
     filepath = filename;
     isFile = isF;
 }
 
 void StopLoadPita() {
+/*  Menghentikan pembacaan file. 
+    I.S. : File telah dibaca.
+    F.S. : Pembacaan file dihentikan. */
     isFile = false;
 }
 

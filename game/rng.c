@@ -1,15 +1,5 @@
 #include"rng.h"
 
-int wordtoint(Word kata){
-    int i = 0;
-    int hasil = 0;
-    while(i < kata.Length){
-        hasil = hasil * 10 + (kata.TabWord[i] - '0');
-        i++;
-    }
-    return hasil;
-}
-
 void rng() {
 /* Fungsi RNG bakal ngereturn score yang diperoleh pemain
  * Jumlah maksimal tebakan adalah 5 kali
@@ -31,7 +21,7 @@ void rng() {
     printf("Tebakan: ");
     
     STARTWORD();
-    guess = wordtoint(currentWord);
+    guess = WordToInt(currentWord);
     while((guess != x) && turn > 0){
         if (guess > x){
             printf("Lebih kecil\n");
