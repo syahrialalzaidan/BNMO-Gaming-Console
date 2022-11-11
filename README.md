@@ -67,7 +67,7 @@ Setelah berhasil memperbaiki BNMO, 5 Orang programmer handal tersebut menuangkan
 +---docs
 |       Spesifikasi Tugas Besar 1 IF2111 2022_2023.pdf
 |       IF2111_Form_Asistensi_TB01_01_10 .docx.pdf
-|       IF2111_TB1_01_10.docx.pdf
+|       IF2111_TB1_01_10 .docx.pdf
 |
 +---game
 |       dinnerdash.c
