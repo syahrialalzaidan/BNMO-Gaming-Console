@@ -19,6 +19,10 @@ void play(Queue *qg, ArrayDin array){
     char* katarng = "RNG";
     char* dinnerdash = "Diner DASH";
     char* tebak = "Tebak Kata";
+    char* dinosaur = "DINOSAUR IN EARTH";
+    char* rise = "RISEWOMAN";
+    char* eiffel = "EIFFEL TOWER";
+
     printf("\n");
 
     if (isStringSame((*qg).buffer[(*qg).idxHead], katarng)){
@@ -31,9 +35,12 @@ void play(Queue *qg, ArrayDin array){
     } else if(isStringSame((*qg).buffer[(*qg).idxHead], tebak)){
         printf("Loading Tebak Kata ...\n");
         playtebakkata();
-    } else{
+    } else if(isStringSame((*qg).buffer[(*qg).idxHead], dinosaur) || isStringSame((*qg).buffer[(*qg).idxHead], rise) || isStringSame((*qg).buffer[(*qg).idxHead], eiffel)){
         printf("Game %s masih dalam maintenance, belum dapat dimainkan.\n", (*qg).buffer[(*qg).idxHead]);
         printf("Silahkan pilih game lain.\n");
+    } else {
+        printf("GAME OVER\n");
+        printf("Your score = %d\n", rand()%1000);
     }
     printf("\n");
 
