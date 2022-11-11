@@ -175,16 +175,18 @@ void playdinnerdash() {
     CreateQueueDD(&cook);
     while (lengthDD(menu) <= 7 && countserve <= 15) {
         // ngelayananin input cook/serve
-        printf("============================\n\n");
-        printf("Saldo: %d\n\n", saldo);
-        daftarmenu(menu);
-        daftarcook(cook);
-        daftarserve(cook, menu);
-        printf("MASUKKAN COMMAND: ");
-        STARTWORD();
-        // system("cls");
         if (conds) generatemenu(&menu);
-        if (isCommandValid(currentWord) && lengthDD(menu) <= 8) {
+        if (lengthDD(menu) <= 7){
+            printf("============================\n\n");
+            printf("Saldo: %d\n\n", saldo);
+            daftarmenu(menu);
+            daftarcook(cook);
+            daftarserve(cook, menu);
+            printf("MASUKKAN COMMAND: ");
+            STARTWORD();
+        }
+        // system("cls");
+        if (isCommandValid(currentWord) && lengthDD(menu) <= 7) {
             boolean masak = isCook(currentWord);
             conds = true;
             if (isSkip(currentWord)) conds = true;
@@ -194,7 +196,7 @@ void playdinnerdash() {
                 while (! IsEOP()) ADVWORD();
                 if (isdigitvalid(kedua) && kedua.TabWord[0] == 'M' && kedua.Length > 1 && kedua.Length <=3) {
                     int foodid = getID(kedua);
-                    if (masak && lengthDD(menu) < 8) {
+                    if (masak && lengthDD(menu) < 7) {
                         int i = 0;
                         boolean found = false;
                         if (foodid >= IDX_HEAD(menu) && foodid <= (IDX_TAIL(menu)-1)){
@@ -208,7 +210,7 @@ void playdinnerdash() {
                     }
                     else {
                         if (! masak){
-                            if (!isEmptyDD(cook) && lengthDD(menu) <= 8) serve(&menu, &cook, foodid, &saldo, &countserve, &conds);
+                            if (!isEmptyDD(cook) && lengthDD(menu) <= 7) serve(&menu, &cook, foodid, &saldo, &countserve, &conds);
                             else {
                                 printf("Anda belum memasak makanan\n");
                                 conds = false;
@@ -219,7 +221,7 @@ void playdinnerdash() {
                 }
                 else conds = false;
             }
-            if (!isEmptyDD(cook) && conds && lengthDD(menu) < 8) {
+            if (!isEmptyDD(cook) && conds && lengthDD(menu) < 7) {
             for (int j = 0; j < lengthDD(cook); j++) {
                 if (cook.buffer[j].durasi >= 0) {
                     cook.buffer[j].durasi--;
