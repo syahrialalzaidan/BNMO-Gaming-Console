@@ -1,13 +1,13 @@
 #include "map.c"
 #include <stdio.h>
-#include "boolean.h"
+#include "../boolean/boolean.h"
 
 int main(){
     printf("Membuat map\n");
     Map m;
     CreateEmpty(&m);
     printf("Map terbuat\n");
-    if (IsEmpty(m)){
+    if (IsMapEmpty(m)){
         printf("Map saat ini kosong\n\n");
     }
 
@@ -16,7 +16,7 @@ int main(){
     
     printf("Insert map\n");
     Insert(&m, k, v);
-    if (!IsEmpty(m)){
+    if (!IsMapEmpty(m)){
         printf("Map saat ini tidak kosong\n");
     }
     if (!IsFull(m)){
@@ -29,7 +29,7 @@ int main(){
 
     printf("\nMenghapus di map\n");
     Delete(&m, k);
-    if (IsEmpty(m)){
+    if (IsMapEmpty(m)){
         printf("Map saat ini kosong\n");
     }
     return 0;
