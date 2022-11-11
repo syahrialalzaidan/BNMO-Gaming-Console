@@ -40,7 +40,7 @@
 Setelah berhasil memperbaiki BNMO, 5 Orang programmer handal tersebut menuangkan cerita pengalaman mereka di dalam suatu buku sakral. <p>
  
 <p align="Center">
-  <a href="https://drive.google.com/drive/folders/19nget4JQghYiOb5zmSfVUjlL9DNyzOtn?usp=share_link">Visit Buku Perjalanan Perbaikan BNMO!
+  <a href="https://drive.google.com/drive/folders/19nget4JQghYiOb5zmSfVUjlL9DNyzOtn?usp=share_link">Visit Buku Sakral BNMO!!!
   <a>
 <p>
 
