@@ -32,7 +32,7 @@ void rng() {
         turn--;
         printf("Tebakan: ");
         STARTWORD();
-        guess = wordtoint(currentWord);
+        guess = WordToInt(currentWord);
     }
 
     printf("\n");

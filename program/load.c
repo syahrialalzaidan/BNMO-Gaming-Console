@@ -9,7 +9,7 @@
 
 char* AddPath(char* filename) {
 /*  Fungsi untuk menambahkan file path untuk setiap masukan filename untuk kemudian dibaca pada load. */
-    char* path = "./data/";
+    char* path = "../data/";
     // count length of path
     int i = 0;
     while (path[i] != '\0') {
