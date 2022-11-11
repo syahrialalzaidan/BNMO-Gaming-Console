@@ -72,8 +72,8 @@ Setelah berhasil memperbaiki BNMO, 5 Orang programmer handal tersebut menuangkan
   
 📦docs
   
-    ┣ 📜IF2111_Form Asistensi TB01_01_10 .docx.pdf
-    ┣ 📜IF2111_TB1_01_10.docx.pdf
+    ┣ 📜IF2111_Form Asistensi TB01_01_10.pdf
+    ┣ 📜IF2111_TB1_01_10.pdf
     ┗ 📜Spesifikasi Tugas Besar 1 IF2111 2022_2023.pdf
 
 📦game
