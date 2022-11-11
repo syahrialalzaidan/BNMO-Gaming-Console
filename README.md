@@ -5,7 +5,7 @@
 <img align="center" src="https://user-images.githubusercontent.com/110550218/199711955-354632d1-cb0c-449f-8f3a-461be3d38099.png">
 </div>
 
-<p align="justify"> 5 orang mahasiswa STI disuruh ngurusin BNMO (dibaca: Binomo). BNMO (dibaca: Binomo) adalah sebuah robot video game console yang dimiliki oleh Indra dan Doni. Dua bulan yang lalu, ia mengalami kerusakan dan telah berhasil diperbaiki. Sayangnya, setelah diperbaiki ia justru mendapatkan lebih banyak bug dalam sistemnya. Oleh karena itu, Indra dan Doni menyuruh kita (dengan asumsi kita programmer handal) untuk memprogram ulang robot video game console kesayangannya. <p>
+<p align="justify"> BNMO adalah sistem <i>game console</i> berisi permainan-permainan seru di dalamnya. BNMO juga memiliki beberapa fitur yang dapat merakayasa daftar game yang disediakan oleh BNMO. Namun, karena alasan teknis, tidak semua <i>game</i> di dalam BNMO tidak dapat dimainkan. Sistem BNMO ini diimplementasikan dalam bentuk <i>Command Line Interface</i> menggunakan bahasa C. Dalam menjalankan BNMO, sistem memanfaatkan struktur data array, mesin karakter, mesin kata, queue, dan map untuk menjalankan program-program menu di dalam BNMO. <p>
 
 ## Anggota Kelompok 10
   >Attariq Muhammad Azhar (18221043)
@@ -64,6 +64,10 @@ Setelah berhasil memperbaiki BNMO, 5 Orang programmer handal tersebut membuat Bu
 |       savefile1.txt
 |       savefile2.txt
 |       
++---docs
+|       IF2111_Form_Asistensi_TB01_01_10 .docx.pdf
+|       Spesifikasi Tugas Besar 1 IF2111 2022_2023.pdf
+|
 +---game
 |       dinnerdash.c
 |       dinnerdash.h
