@@ -2,8 +2,8 @@
 
 void rng() {
 /* Fungsi RNG bakal ngereturn score yang diperoleh pemain
- * Jumlah maksimal tebakan adalah 5 kali
- * Fullscore adalah 10 dan akan berkurang 20% seiring dengan berkurangnya guess hingga benar
+ * Jumlah maksimal tebakan adalah 10 kali
+ * Fullscore adalah 10 dan akan berkurang 10% seiring dengan berkurangnya guess hingga benar
 */
     //Kamus Lokal
     time_t t;
@@ -38,6 +38,7 @@ void rng() {
     printf("\n");
     if (guess == x){
         printf("Ya, X adalah %d\n", x);
+        printf("Skor Anda: %d\n", turn + 1);
     }
     else{
         printf("Mohon maaf, kesempatan telah habis.\n");

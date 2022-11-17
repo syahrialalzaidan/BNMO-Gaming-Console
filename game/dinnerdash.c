@@ -7,9 +7,9 @@ void generatemenu(Queue *q) {
     //Kamus Lokal
     ElType food;
     //Algoritma
-    food.durasi = (rand() % 5) + 1;
-    food.ketahanan = (rand() % 5) + 1;
-    food.harga = ((10000 + rand() % 50000))%50000;
+    food.durasi = (rand() % 1) + 1;
+    food.ketahanan = (rand() % 2) + 1;
+    food.harga = ((10000 + rand() % 50000)) % 50000;
     if (isEmptyDD(*q)) food.id = 0;
     else food.id = IDX_TAIL(*q) + 1;
     enqueueDD(q, food);
@@ -190,7 +190,6 @@ void playdinnerdash() {
         // system("cls");
         if (isCommandValid(currentWord) && lengthDD(menu) <= 7) {
             boolean masak = isCook(currentWord);
-            conds = true;
             if (isSkip(currentWord)) conds = true;
             else {
                 if(! IsEOP()) ADVWORD();
@@ -198,12 +197,13 @@ void playdinnerdash() {
                 while (! IsEOP()) ADVWORD();
                 if (isdigitvalid(kedua) && kedua.TabWord[0] == 'M' && kedua.Length > 1 && kedua.Length <=3) {
                     int foodid = getID(kedua);
-                    if (masak && lengthDD(menu) < 7) {
+                    if (masak && lengthDD(menu) <= 7) {
                         int i = 0;
                         boolean found = false;
-                        if (foodid >= IDX_HEAD(menu) && foodid <= (IDX_TAIL(menu)-1)){
-                            printf("Berhasil memasak M%d\n", foodid);
+                        if (foodid >= IDX_HEAD(menu) && foodid <= (IDX_TAIL(menu))){
+                            if (lengthDD(menu) < 7) printf("Berhasil memasak M%d\n", foodid);
                             enqueueDD(&cook, menu.buffer[foodid]);
+                            conds = true;
                         }
                         else {
                             printf("Makanan tidak ada di daftar pesanan!\n");

@@ -113,11 +113,13 @@ boolean isInputValid(Word kata, int *command)
     {
         output = true;
         *command = 9;
+        ADVWORD();
     }
     else if (isWordSame(kata, stringToWord("HELP")))
     {
         output = true;
         *command = 10;
+        ADVWORD();
     }
     else
     {
@@ -145,9 +147,7 @@ int main() {
     while (IsEmpty(Games)) {
         while (!isInputValid(currentWord, &command)) {
             printf("Command tidak dikenali, silakan masukkan command yang valid.\n\n");
-            while (!IsEOP()) {
-                ADVWORD();
-            }
+            while (! IsEOP()) ADVWORD();
             printf("ENTER COMMAND: ");
             STARTWORD();
         }
