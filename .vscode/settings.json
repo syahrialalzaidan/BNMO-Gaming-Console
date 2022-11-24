@@ -2,6 +2,7 @@
     "files.associations": {
         "list_game.h": "c",
         "mesinkata.h": "c",
-        "map.h": "c"
+        "map.h": "c",
+        "stack.h": "c"
     }
 }
