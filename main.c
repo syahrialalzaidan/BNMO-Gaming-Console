@@ -113,7 +113,6 @@ boolean isInputValid(Word kata, int *command)
     {
         output = true;
         *command = 9;
-        ADVWORD();
     }
     else if (isWordSame(kata, stringToWord("HELP")))
     {

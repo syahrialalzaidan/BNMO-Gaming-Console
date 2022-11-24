@@ -122,3 +122,10 @@ Word stringToWord(char *s) {
     W.Length = i;
     return W;
 }
+
+int WordConverter(Word W) {
+    if (currentWord.TabWord[0] == 'A') return 1;
+    else if (currentWord.TabWord[0] == 'B') return 2;
+    else if (currentWord.TabWord[0] == 'C') return 3;
+    else return 0;
+}
