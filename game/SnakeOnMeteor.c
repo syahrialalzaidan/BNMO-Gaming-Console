@@ -301,7 +301,7 @@ void PlaySnakeOnMeteor(int *skor) {
     int FoodX, FoodY, MetX = -1, MetY = -1, turn = 1, command;
     boolean isHitBody = false;
     boolean isMovingBackwards = false;
-    CreateEmpty(&snake);
+    CreateEmptyList(&snake);
     srand(time(NULL));
     printf("Selamat datang di Snake on Meteor!\n");
     printf("Mengenerate peta, snake, dan makanan...\n");

@@ -23,7 +23,7 @@ boolean IsEmpty (List L) {
 }
 
 /****************** PEMBUATAN LIST KOSONG ******************/
-void CreateEmpty (List *L) {
+void CreateEmptyList (List *L) {
 /* I.S. L sembarang  */
 /* F.S. Terbentuk list kosong. Lihat definisi di atas. */
     First(*L) = Nil;
