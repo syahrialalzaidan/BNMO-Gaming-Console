@@ -2,6 +2,9 @@
     "files.associations": {
         "list_game.h": "c",
         "mesinkata.h": "c",
-        "map.h": "c"
+        "map.h": "c",
+        "boolean.h": "c",
+        "math.h": "c",
+        "mesinkar.h": "c"
     }
 }
