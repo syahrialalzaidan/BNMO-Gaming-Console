@@ -1,16 +1,6 @@
 #include <stdio.h>
 #include "stack.h"
 
-/*
-
-NIM				: 18221043
-Nama			: Attariq Muhammmad Azhar
-Tanggal			: 21 Oktober 2022
-Topik praktikum	: Stack
-Deskripsi		: Implementasi stack.h
-
-*/
-
 
 /* ************ Prototype ************ */
 /* *** Konstruktor/Kreator *** */
