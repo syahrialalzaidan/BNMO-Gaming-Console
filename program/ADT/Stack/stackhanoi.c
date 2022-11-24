@@ -1,4 +1,4 @@
-#include "stack.h"
+#include "stackhanoi.h"
 
 
 /* ************ Prototype ************ */
@@ -46,7 +46,7 @@ void Pop(Stack * S, infotype* X){
         if ((*S).T[(*S).TOP - i] != 0){
             *X = (*S).T[(*S).TOP - i];
             (*S).T[(*S).TOP - i] = 0;
-            Top(*S)--;
+    Top(*S)--;
             found = true;
         }
         else i++;

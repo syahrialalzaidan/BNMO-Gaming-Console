@@ -1,5 +1,5 @@
 #include "towerofhanoi.h"
-//gcc -o coba towerofhanoi.c ../program/ADT/Stack/stack.c ../program/ADT/mesinkarkata/mesinkata.c ../program/ADT/mesinkarkata/mesinkar.c
+//gcc -o coba towerofhanoi.c ../program/ADT/Stack/stackhanoi.c ../program/ADT/mesinkarkata/mesinkata.c ../program/ADT/mesinkarkata/mesinkar.c
 // 
 
 void printblank(int n){
