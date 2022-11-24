@@ -14,10 +14,11 @@
 #include "program/playgame.h"
 #include "program/skipgame.h"
 #include "program/help.h"
+#include "program/ADT/stack/stack.h"
 #include "bnmo_pic.h"
 
 //  copy paste below to run main
-//  gcc bnmo_pic.c program/help.c program/skipgame.c program/playgame.c program/queuegame.c program/delete_game.c program/list_game.c program/create_game.c program/save.c program/load.c program/start.c program/ADT/queue/queue.c program/ADT/mesinkarkata/mesinkar.c program/ADT/mesinkarkata/mesinkata.c program/ADT/arraydin/arraydin.c main.c game/dinnerdash.c game/rng.c game/tebakkata.c game/queuedinnerdash.c program/ADT/Map/map.c -o main
+//  gcc program/ADT/queue/queue.c bnmo_pic.c program/help.c program/skipgame.c program/playgame.c program/queuegame.c program/delete_game.c program/list_game.c program/create_game.c program/save.c program/load.c program/start.c program/ADT/queue/queue.c program/ADT/mesinkarkata/mesinkar.c program/ADT/mesinkarkata/mesinkata.c program/ADT/arraydin/arraydin.c main.c game/dinnerdash.c game/rng.c game/tebakkata.c game/queuedinnerdash.c program/ADT/Map/map.c -o main
 //  or try run make main in bin folder
 
 boolean isInputValid(Word kata, int *command)
@@ -136,7 +137,10 @@ boolean isInputValid(Word kata, int *command)
 int main() {
     ArrayDin Games = MakeArrayDin();
     Queue queuegames;
+    Stack history;
+    Map scoreboard;
     CreateQueue(&queuegames);
+    CreateEmptyStack(&history);
     char* filename;
     int command;
     bnmo_pic();

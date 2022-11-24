@@ -40,7 +40,7 @@ char* AddPath(char* filename) {
     return newpath;
 }
 
-void load(char* filename, ArrayDin* Games) {
+void load(char* filename, ArrayDin* Games, Stack *History, Map *Scoreboard) {
 /*  Membaca save file yang berisi list game yang dapat dimainkan.
     I.S. : filename terdefinisi dan array games kosong.
     F.S. : Array games terisi dengan list game yang ada pada save file. */
@@ -56,6 +56,19 @@ void load(char* filename, ArrayDin* Games) {
         char* name = WordToString(currentWord);
         InsertLast(Games, name);
         j++;
+    }
+    PrintArrayDin(*Games);
+    ADVWORD();
+    if (!IsEOP()) {
+        i = WordToInt(currentWord);
+        j = 0;
+        while (j < i) {
+            ADVWORD();
+            char* name = WordToString(currentWord);
+            Push(History, name);
+            printf("%s\n", InfoTop(*History));
+            j++;
+        }
     }
     StopLoadPita();
 }
