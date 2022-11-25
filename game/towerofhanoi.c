@@ -1,6 +1,5 @@
 #include "towerofhanoi.h"
 //gcc -o coba towerofhanoi.c ../program/ADT/Stack/stackhanoi.c ../program/ADT/mesinkarkata/mesinkata.c ../program/ADT/mesinkarkata/mesinkar.c
-// 
 
 void printblank(int n){
     for (int i = 0; i < n; i++) printf(" ");
@@ -85,32 +84,33 @@ void displaytower(int n, Stack tower1, Stack tower2, Stack tower3){
 float playtowerofhanoi(){
     Stack tower1, tower2, tower3, temp;
     int temp1, temp2, info1, info2, info3;
-    float skor, count = 0, optimal;
+    float skor, count = 0, optimal, n;
     boolean valid = false;
 
-    CreateEmpty(&tower1);
+    CreateEmptyHanoi(&tower1);
     setNol(&tower1);
-    CreateEmpty(&tower2);
+    CreateEmptyHanoi(&tower2);
     setNol(&tower2);
-    CreateEmpty(&tower3);
+    CreateEmptyHanoi(&tower3);
     setNol(&tower3);
     while(!valid){
         printf("Masukkan jumlah piringan: ");
         STARTWORD();
         valid = isAngka(currentWord);
         if (currentWord.Length < 1 || WordToInt(currentWord) == 0) valid = false;
+        n = WordToInt(currentWord);
+        optimal = optimummove(n);
+        ADVWORD();
+        if(! IsEOP()) valid = false;
         if (!valid) printf("MASUKAN SALAH!\n");
         while(! IsEOP()) ADVWORD();
     }
     printf("\n");
-    float n;
-    n = WordToInt(currentWord);
-    optimal = optimummove(n);
     while(! IsEOP()) ADVWORD;
     for(int i = n; i > 0; i--){
-        Push(&tower1, i);
-        Push(&tower2, 0);
-        Push(&tower3, 0);
+        PushHanoi(&tower1, i);
+        PushHanoi(&tower2, 0);
+        PushHanoi(&tower3, 0);
     }
     temp = tower1;
     while(! isStackSama(tower3, temp)){
@@ -137,16 +137,16 @@ float playtowerofhanoi(){
         if (temp1 == 1 && info1 != 0){
             if (temp2 == 2){
                 if (info1 < info2 || info2 == 0){
-                    Pop(&tower1, &temp1);
-                    Push(&tower2, temp1);
+                    PopHanoi(&tower1, &temp1);
+                    PushHanoi(&tower2, temp1);
                     count++;
                 }
                 else printf("Tidak bisa dipindahkan!!\n");
             }
             else if (temp2 == 3){
                 if (info1 < info3 || info3 == 0){
-                    Pop(&tower1, &temp1);
-                    Push(&tower3, temp1);
+                    PopHanoi(&tower1, &temp1);
+                    PushHanoi(&tower3, temp1);
                     count++;
                 }
                 else printf("Tidak bisa dipindahkan!!\n");
@@ -156,8 +156,8 @@ float playtowerofhanoi(){
         else if (temp1 == 2 && info2 != 0){
             if (temp2 == 1){
                 if (info2 < info1 || info1 == 0){
-                    Pop(&tower2, &temp1);
-                    Push(&tower1, temp1);
+                    PopHanoi(&tower2, &temp1);
+                    PushHanoi(&tower1, temp1);
                     count++;
                 }
                 else printf("Tidak bisa dipindahkan!!\n");
@@ -165,8 +165,8 @@ float playtowerofhanoi(){
             }
             else if (temp2 == 3){
                 if (info2 < info3 || info3 == 0){
-                    Pop(&tower2, &temp1);
-                    Push(&tower3, temp1);
+                    PopHanoi(&tower2, &temp1);
+                    PushHanoi(&tower3, temp1);
                     count++;
                 }
                 else printf("Tidak bisa dipindahkan!!\n");
@@ -176,8 +176,8 @@ float playtowerofhanoi(){
         else if (temp1 == 3 && info3 != 0){
             if (temp2 == 1){
                 if (info3 < info1 || info1 == 0){
-                    Pop(&tower3, &temp1);
-                    Push(&tower1, temp1);
+                    PopHanoi(&tower3, &temp1);
+                    PushHanoi(&tower1, temp1);
                     count++;
                 }
                 else printf("Tidak bisa dipindahkan!!\n");
@@ -185,8 +185,8 @@ float playtowerofhanoi(){
             }
             else if (temp2 == 2){
                 if (info3 < info2 || info2 == 0){
-                    Pop(&tower3, &temp1);
-                    Push(&tower2, temp1);
+                    PopHanoi(&tower3, &temp1);
+                    PushHanoi(&tower2, temp1);
                     count++;
                 }
                 else printf("Tidak bisa dipindahkan!!\n");
@@ -203,6 +203,5 @@ float playtowerofhanoi(){
 
 int main() {
     float x = playtowerofhanoi();
-    printf("%.2f\n", x);
     return 0;
 }
