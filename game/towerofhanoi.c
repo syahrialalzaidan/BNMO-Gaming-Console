@@ -81,12 +81,19 @@ void displaytower(int n, Stack tower1, Stack tower2, Stack tower3){
     printf("\n\n");
 }
 
+void printart(){
+    printf("  _____                          __   _  _               _ \n");
+    printf(" |_   _|____ __ _____ _ _   ___ / _| | || |__ _ _ _  ___(_)\n");
+    printf("   | |/ _ \\ V  V / -_) '_| / _ \\  _| | __ / _` | ' \\/ _ \\ |\n");
+    printf("   |_|\\___/\\_/\\_/\\___|_|   \\___/_|   |_||_\\__,_|_||_\\___/_|\n\n");
+}
+
 float playtowerofhanoi(){
     Stack tower1, tower2, tower3, temp;
     int temp1, temp2, info1, info2, info3;
     float skor, count = 0, optimal, n;
     boolean valid = false;
-
+    printart();
     CreateEmptyHanoi(&tower1);
     setNol(&tower1);
     CreateEmptyHanoi(&tower2);
