@@ -146,6 +146,11 @@ float playtowerofhanoi(){
                     PopHanoi(&tower1, &temp1);
                     PushHanoi(&tower2, temp1);
                     count++;
+                    printf("Memindahkan ke tower B . ");
+                    sleep(1);
+                    printf(". ");
+                    sleep(1);
+                    printf(".\n\n");
                 }
                 else printf("Tidak bisa dipindahkan!!\n");
             }
@@ -154,6 +159,11 @@ float playtowerofhanoi(){
                     PopHanoi(&tower1, &temp1);
                     PushHanoi(&tower3, temp1);
                     count++;
+                    printf("Memindahkan ke tower C . ");
+                    sleep(1);
+                    printf(". ");
+                    sleep(1);
+                    printf(".\n\n");
                 }
                 else printf("Tidak bisa dipindahkan!!\n");
             }
@@ -165,6 +175,11 @@ float playtowerofhanoi(){
                     PopHanoi(&tower2, &temp1);
                     PushHanoi(&tower1, temp1);
                     count++;
+                    printf("Memindahkan ke tower A . ");
+                    sleep(1);
+                    printf(". ");
+                    sleep(1);
+                    printf(".\n\n");
                 }
                 else printf("Tidak bisa dipindahkan!!\n");
                 
@@ -174,6 +189,11 @@ float playtowerofhanoi(){
                     PopHanoi(&tower2, &temp1);
                     PushHanoi(&tower3, temp1);
                     count++;
+                    printf("Memindahkan ke tower C . ");
+                    sleep(1);
+                    printf(". ");
+                    sleep(1);
+                    printf(".\n\n");
                 }
                 else printf("Tidak bisa dipindahkan!!\n");
             }
@@ -185,6 +205,11 @@ float playtowerofhanoi(){
                     PopHanoi(&tower3, &temp1);
                     PushHanoi(&tower1, temp1);
                     count++;
+                    printf("Memindahkan ke tower A . ");
+                    sleep(1);
+                    printf(". ");
+                    sleep(1);
+                    printf(".\n\n");
                 }
                 else printf("Tidak bisa dipindahkan!!\n");
                 
@@ -194,6 +219,11 @@ float playtowerofhanoi(){
                     PopHanoi(&tower3, &temp1);
                     PushHanoi(&tower2, temp1);
                     count++;
+                    printf("Memindahkan ke tower B . ");
+                    sleep(1);
+                    printf(". ");
+                    sleep(1);
+                    printf(".\n\n");
                 }
                 else printf("Tidak bisa dipindahkan!!\n");
             }
