@@ -107,7 +107,6 @@ float playtowerofhanoi(){
         if (currentWord.Length < 1 || WordToInt(currentWord) == 0) valid = false;
         n = WordToInt(currentWord);
         optimal = optimummove(n);
-        ADVWORD();
         if(! IsEOP()) valid = false;
         if (!valid) printf("MASUKAN SALAH!\n");
         while(! IsEOP()) ADVWORD();
@@ -126,16 +125,16 @@ float playtowerofhanoi(){
         STARTWORD();
         temp1 = WordConverter(currentWord);
         if(currentWord.Length != 1) temp1 = 9;
-        ADVWORD();
         if(! IsEOP()) temp1 = 9;
+        ADVWORD();
         while(! IsEOP()) ADVWORD();
         printf("TOWER TUJUAN: ");
         STARTWORD();
         printf("\n");
         temp2 = WordConverter(currentWord);
         if(currentWord.Length != 1) temp2 = 9;
-        ADVWORD();
         if (! IsEOP()) temp2 = 9;
+        ADVWORD();
         while(! IsEOP()) ADVWORD();
         info1 = InfoTop(tower1);
         info2 = gettop(tower2);
