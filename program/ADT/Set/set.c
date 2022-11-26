@@ -13,7 +13,7 @@ Deklarasi stack yang dengan implementasi array eksplisit-statik rata kiri
 
 /* *** Konstruktor/Kreator *** */
 void CreateEmptySet(Set *S){
-    (*S).Count = Nil;
+    (*S).Count = NilSet;
 }
 /* I.S. Sembarang */
 /* F.S. Membuat sebuah Set S kosong berkapasitas MaxEl */
@@ -21,7 +21,7 @@ void CreateEmptySet(Set *S){
 
 /* ********* Predikat Untuk test keadaan KOLEKSI ********* */
 boolean IsEmpty(Set S){
-    return S.Count == Nil;
+    return S.Count == NilSet;
 }
 /* Mengirim true jika Set S kosong*/
 /* Ciri Set kosong : count bernilai Nil */

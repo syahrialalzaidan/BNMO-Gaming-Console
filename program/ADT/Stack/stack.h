@@ -7,18 +7,18 @@
 
 #include "../boolean/boolean.h"
 
-#define Nil -1
-#define MaxEl 100
+#define NilStack -1
+#define MaxElStack 100
 /* Nil adalah stack dengan elemen kosong . */
 
 typedef char* infotype;
-typedef int address;   /* indeks tabel */
+typedef int idx;   /* indeks tabel */
 
 /* Contoh deklarasi variabel bertype stack dengan ciri TOP : */
 /* Versi I : dengan menyimpan tabel dan alamat top secara eksplisit*/
 typedef struct { 
-  infotype T[MaxEl]; /* tabel penyimpan elemen */
-  address TOP;  /* alamat TOP: elemen puncak */
+  infotype T[MaxElStack]; /* tabel penyimpan elemen */
+  idx TOP;  /* alamat TOP: elemen puncak */
 } Stack;
 /* Definisi stack S kosong : S.TOP = Nil */
 /* Elemen yang dipakai menyimpan nilai Stack T[0]..T[MaxEl-1] */
@@ -45,19 +45,15 @@ boolean IsStackFull(Stack S);
 /* Mengirim true jika tabel penampung nilai elemen stack penuh */
 
 /* ************ Menambahkan sebuah elemen ke Stack ************ */
-void Push(Stack * S, infotype X);
+void Push(Stack *S, infotype X);
 /* Menambahkan X sebagai elemen Stack S. */
 /* I.S. S mungkin kosong, tabel penampung elemen stack TIDAK penuh */
 /* F.S. X menjadi TOP yang baru,TOP bertambah 1 */
 
 /* ************ Menghapus sebuah elemen Stack ************ */
-void Pop(Stack * S, infotype* X);
+void Pop(Stack *S, infotype* X);
 /* Menghapus X dari Stack S. */
 /* I.S. S  tidak mungkin kosong */
 /* F.S. X adalah nilai elemen TOP yang lama, TOP berkurang 1 */
-
-Stack CopyStack(Stack stack);
-
-int nbElmtStack(Stack S);
 
 #endif
