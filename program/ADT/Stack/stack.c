@@ -45,3 +45,32 @@ void Pop(Stack * S, infotype* X)
     *X = InfoTop(*S);
     Top(*S)--;
 }
+
+Stack CopyStack(Stack stack) {
+    Stack newStack, tempStack;
+    CreateEmptyStack(&newStack);
+    CreateEmptyStack(&tempStack);
+    while (!IsStackEmpty(stack)) {
+        infotype X;
+        Pop(&stack, &X);
+        Push(&tempStack, X);
+    }
+    while (!IsStackEmpty(tempStack)) {
+        infotype X;
+        Pop(&tempStack, &X);
+        Push(&stack, X);
+        Push(&newStack, X);
+    }
+    return newStack;
+}
+
+int nbElmtStack(Stack S) {
+    int count = 0;
+    Stack tempStack = CopyStack(S);
+    while (!IsStackEmpty(tempStack)) {
+        infotype X;
+        Pop(&tempStack, &X);
+        count++;
+    }
+    return count;
+}

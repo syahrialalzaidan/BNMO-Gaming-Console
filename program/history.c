@@ -2,24 +2,6 @@
 #include "ADT/mesinkarkata/mesinkar.h"
 #include "ADT/mesinkarkata/mesinkata.h"
 
-Stack CopyStack(Stack stack) {
-    Stack newStack, tempStack;
-    CreateEmptyStack(&newStack);
-    CreateEmptyStack(&tempStack);
-    while (!IsStackEmpty(stack)) {
-        infotype X;
-        Pop(&stack, &X);
-        Push(&tempStack, X);
-    }
-    while (!IsStackEmpty(tempStack)) {
-        infotype X;
-        Pop(&tempStack, &X);
-        Push(&stack, X);
-        Push(&newStack, X);
-    }
-    return newStack;
-}
-
 void PrintHistory(Stack History, int n) {
     Stack tempStack = CopyStack(History);
     int count = 1;
@@ -33,17 +15,6 @@ void PrintHistory(Stack History, int n) {
             count++;
         }
     }
-}
-
-int nbElmtStack(Stack S) {
-    int count = 0;
-    Stack tempStack = CopyStack(S);
-    while (!IsStackEmpty(tempStack)) {
-        infotype X;
-        Pop(&tempStack, &X);
-        count++;
-    }
-    return count;
 }
 
 void ResetHistory(Stack *History) {
