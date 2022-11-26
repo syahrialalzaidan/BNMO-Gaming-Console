@@ -1,4 +1,5 @@
 #include "Hangman.h"
+//gcc -o hangman Hangman.c ../program/ADT/Map/map.c ../program/ADT/Set/set.c ../program/ADT/mesinkarkata/mesinkata.c ../program/ADT/mesinkarkata/mesinkar.c
 
 /*Meng-generate kamus kata yang digunakan untuk permainan*/
 void generatemap(Map *kamus){
