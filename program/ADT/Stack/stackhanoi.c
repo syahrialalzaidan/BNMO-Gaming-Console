@@ -46,7 +46,7 @@ void PopHanoi(Stack * S, infotype* X){
         if ((*S).T[(*S).TOP - i] != 0){
             *X = (*S).T[(*S).TOP - i];
             (*S).T[(*S).TOP - i] = 0;
-    Top(*S)--;
+            Top(*S)--;
             found = true;
         }
         else i++;
