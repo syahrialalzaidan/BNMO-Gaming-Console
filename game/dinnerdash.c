@@ -7,7 +7,7 @@ void generatemenu(Queue *q) {
     //Kamus Lokal
     ElType food;
     //Algoritma
-    food.durasi = (rand() % 1) + 1;
+    food.durasi = (rand() % 5) + 1;
     food.ketahanan = (rand() % 2) + 1;
     food.harga = ((10000 + rand() % 50000)) % 50000;
     if (isEmptyDD(*q)) food.id = 0;

@@ -66,7 +66,6 @@ void load(char* filename, ArrayDin* Games, Stack *History, Map *RNG, Map *DinerD
     int score;
     // LoadPita("./data/config.txt");
     LoadPita(filepath, true);
-
     // load games
     STARTWORD();
     int i = WordToInt(currentWord);
@@ -79,6 +78,7 @@ void load(char* filename, ArrayDin* Games, Stack *History, Map *RNG, Map *DinerD
     }
 
     // load history
+    PrintArrayDin(*Games);
     ADVWORD();
     if (!IsEOP()) {
         i = WordToInt(currentWord);
