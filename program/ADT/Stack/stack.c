@@ -1,6 +1,16 @@
 #include <stdio.h>
 #include "stack.h"
 
+/*
+
+NIM				: 18221043
+Nama			: Attariq Muhammmad Azhar
+Tanggal			: 21 Oktober 2022
+Topik praktikum	: Stack
+Deskripsi		: Implementasi stack.h
+
+*/
+
 
 /* ************ Prototype ************ */
 /* *** Konstruktor/Kreator *** */
@@ -10,20 +20,20 @@ void CreateEmptyStack(Stack *S)
 /* jadi indeksnya antara 0.. MaxEl */
 /* Ciri stack kosong : TOP bernilai Nil */
 {
-    Top(*S) = Nil;
+    Top(*S) = NilStack;
 }
 
 /* ************ Predikat Untuk test keadaan KOLEKSI ************ */
 boolean IsStackEmpty(Stack S)
 /* Mengirim true jika Stack kosong: lihat definisi di atas */
 {
-    return Top(S) == Nil;
+    return Top(S) == NilStack;
 }
 
 boolean IsStackFull(Stack S)
 /* Mengirim true jika tabel penampung nilai elemen stack penuh */
 {
-    return Top(S) == MaxEl - 1;
+    return Top(S) == MaxElStack - 1;
 }
 
 /* ************ Menambahkan sebuah elemen ke Stack ************ */
@@ -45,6 +55,7 @@ void Pop(Stack * S, infotype* X)
     *X = InfoTop(*S);
     Top(*S)--;
 }
+<<<<<<< Updated upstream
 
 /* ************ Mengcopy Stack ************ */
 Stack CopyStack(Stack stack) {
@@ -78,3 +89,5 @@ int nbElmtStack(Stack S) {
     }
     return count;
 }
+=======
+>>>>>>> Stashed changes
