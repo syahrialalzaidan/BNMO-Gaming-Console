@@ -23,21 +23,20 @@ void PrintScoreboard(Map M) {
     if (!IsMapEmpty(M)) {
         int i = 0;
         //find the longest name
-        int maxNameLength = 0;
+        int maxNameLength = 0, maxScoreLength;
         while (i < M.Count) {
             if (StringLength(M.Elements[i].Key) > maxNameLength) {
                 maxNameLength = StringLength(M.Elements[i].Key);
             }
             i++;
         }
-        if (maxNameLength < 4) {
-            maxScoreLength = 4;
-        }
+        if (maxNameLength < 4) maxScoreLength = 4;
+        
         
         //find the longest score
         i = 0;
         int maxScore = M.Elements[0].Value;
-        int maxScoreLength = CountDigits(maxScore);
+        maxScoreLength = CountDigits(maxScore);
         if (maxScoreLength < 4) {
             maxScoreLength = 4;
         }
@@ -96,4 +95,9 @@ void PrintScoreboard(Map M) {
         printf("+-------------+------------+\n");
         printf("—--- SCOREBOARD KOSONG —----\n");
     }
+}
+
+int main() {
+
+    return 0;
 }
