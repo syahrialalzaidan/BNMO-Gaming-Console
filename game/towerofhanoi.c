@@ -1,5 +1,5 @@
 #include "towerofhanoi.h"
-//gcc -o coba towerofhanoi.c ../program/ADT/Stack/stackhanoi.c ../program/ADT/mesinkarkata/mesinkata.c ../program/ADT/mesinkarkata/mesinkar.c
+//gcc -o coba towerofhanoi.c ../program/ADT/StackHanoi/stackhanoi.c ../program/ADT/mesinkarkata/mesinkata.c ../program/ADT/mesinkarkata/mesinkar.c
 
 void printblank(int n){
     for (int i = 0; i < n; i++) printf(" ");
@@ -88,6 +88,16 @@ void printart(){
     printf("   |_|\\___/\\_/\\_/\\___|_|   \\___/_|   |_||_\\__,_|_||_\\___/_|\n\n");
 }
 
+void gameover(){
+    printf("  _ _  _____          __  __ ______    ______      ________ _____    _ _ \n");
+    printf(" | | |/ ____|   /\\   |  \\/  |  ____|  / __ \\ \\    / /  ____|  __ \\  | | |\n");
+    printf(" | | | |  __   /  \\  | \\  / | |__    | |  | \\ \\  / /| |__  | |__) | | | |\n");
+    printf(" | | | | |_ | / /\\ \\ | |\\/| |  __|   | |  | |\\ \\/ / |  __| |  _  /  | | |\n");
+    printf(" | | | |__| |/ ____ \\| |  | | |____  | |__| | \\  /  | |____| | \\ \\  | | |\n");
+    printf(" | | |\\_____/_/    \\_\\_|  |_|______|  \\____/   \\/   |______|_|  \\_\\ | | |\n");
+    printf(" |_|_|                                                              |_|_|\n\n");
+}
+
 float playtowerofhanoi(){
     Stack tower1, tower2, tower3, temp;
     int temp1, temp2, info1, info2, info3;
@@ -119,10 +129,12 @@ float playtowerofhanoi(){
         PushHanoi(&tower3, 0);
     }
     temp = tower1;
+    printf("Ketik 'Q' untuk keluar dari permainan\n\n");
     while(! isStackSama(tower3, temp)){
         displaytower(n, tower1, tower2, tower3);
         printf("TOWER ASAL: ");
         STARTWORD();
+        if (currentWord.TabWord[0] == 'Q') return 0;
         temp1 = WordConverter(currentWord);
         if(currentWord.Length != 1) temp1 = 9;
         if(! IsEOP()) temp1 = 9;
@@ -131,6 +143,7 @@ float playtowerofhanoi(){
         printf("TOWER TUJUAN: ");
         STARTWORD();
         printf("\n");
+        if (currentWord.TabWord[0] == 'Q') return 0;
         temp2 = WordConverter(currentWord);
         if(currentWord.Length != 1) temp2 = 9;
         if (! IsEOP()) temp2 = 9;
@@ -151,6 +164,7 @@ float playtowerofhanoi(){
                     printf(". ");
                     sleep(1);
                     printf(".\n\n");
+                    system("cls");
                 }
                 else printf("Tidak bisa dipindahkan!!\n");
             }
@@ -164,6 +178,7 @@ float playtowerofhanoi(){
                     printf(". ");
                     sleep(1);
                     printf(".\n\n");
+                    system("cls");
                 }
                 else printf("Tidak bisa dipindahkan!!\n");
             }
@@ -180,6 +195,7 @@ float playtowerofhanoi(){
                     printf(". ");
                     sleep(1);
                     printf(".\n\n");
+                    system("cls");
                 }
                 else printf("Tidak bisa dipindahkan!!\n");
                 
@@ -194,6 +210,7 @@ float playtowerofhanoi(){
                     printf(". ");
                     sleep(1);
                     printf(".\n\n");
+                    system("cls");
                 }
                 else printf("Tidak bisa dipindahkan!!\n");
             }
@@ -210,6 +227,7 @@ float playtowerofhanoi(){
                     printf(". ");
                     sleep(1);
                     printf(".\n\n");
+                    system("cls");
                 }
                 else printf("Tidak bisa dipindahkan!!\n");
                 
@@ -224,6 +242,7 @@ float playtowerofhanoi(){
                     printf(". ");
                     sleep(1);
                     printf(".\n\n");
+                    system("cls");
                 }
                 else printf("Tidak bisa dipindahkan!!\n");
             }
@@ -232,6 +251,7 @@ float playtowerofhanoi(){
         else printf("Input INVALID!\n");
     }
     displaytower(n, tower1, tower2, tower3);
+    gameover();
     printf("Selamat anda berhasil menyelesaikan permainan ini!!\n");
     printf("Skor : %.2f\n", (optimal / count) * 10 * (n/5));
     return ((optimal / count) * 10 * (n/5));
