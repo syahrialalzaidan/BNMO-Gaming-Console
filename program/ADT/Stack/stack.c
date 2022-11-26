@@ -46,7 +46,9 @@ void Pop(Stack * S, infotype* X)
     Top(*S)--;
 }
 
+/* ************ Mengcopy Stack ************ */
 Stack CopyStack(Stack stack) {
+/* Mengirimkan salinan dari Stack*/
     Stack newStack, tempStack;
     CreateEmptyStack(&newStack);
     CreateEmptyStack(&tempStack);
@@ -64,7 +66,9 @@ Stack CopyStack(Stack stack) {
     return newStack;
 }
 
+/* ************ Menghitung elemen dari stack ************ */
 int nbElmtStack(Stack S) {
+/*Menghitung jumlah element dalam stack */
     int count = 0;
     Stack tempStack = CopyStack(S);
     while (!IsStackEmpty(tempStack)) {
