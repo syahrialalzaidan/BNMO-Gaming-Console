@@ -14,14 +14,14 @@ void CreateEmpty(Map *M){
 /* I.S. Sembarang */
 /* F.S. Membuat sebuah Map M kosong berkapasitas MaxEl */
 /* Ciri Map kosong :  count bernilai Nil */
-    (*M).Count = Nil;
+    (*M).Count = NilMap;
 }
 
 /* ********* Predikat Untuk test keadaan KOLEKSI ********* */
 boolean IsMapEmpty(Map M){
 /* Mengirim true jika Map M kosong*/
 /* Ciri Map kosong : count bernilai Nil */
-    return (M.Count == Nil);
+    return (M.Count == NilMap);
 }
 boolean IsFull(Map M){
 /* Mengirim true jika Map M penuh */
@@ -53,9 +53,11 @@ void Insert(Map *M, keytype k, valuetype v){
 /* I.S. M mungkin kosong, M tidak penuh
         M mungkin sudah beranggotakan v dengan key k */
 /* F.S. v menjadi anggota dari M dengan key k. Jika k sudah ada, operasi tidak dilakukan */
-    (*M).Elements[(*M).Count].Key = k;
-    (*M).Elements[(*M).Count].Value = v; 
-    (*M).Count ++;
+    if (!IsMemberMap(*M,k)) {
+        (*M).Elements[(*M).Count].Key = k;
+        (*M).Elements[(*M).Count].Value = v; 
+        (*M).Count ++;
+    }
 }  
 
 void Delete(Map *M, keytype k){
@@ -78,4 +80,10 @@ void Delete(Map *M, keytype k){
         (*M).Elements[i] = (*M).Elements[i+1];
     }
     (*M).Count--;
+}
+
+boolean IsMemberMap(Map M, keytype k)
+/* Mengembalikan true jika k adalah member dari M */
+{
+    return Value(M, k) != Undefined;
 }

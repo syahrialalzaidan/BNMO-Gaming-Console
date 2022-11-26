@@ -20,7 +20,7 @@ void CreateEmptySet(Set *S){
 /* Ciri Set kosong : count bernilai Nil */
 
 /* ********* Predikat Untuk test keadaan KOLEKSI ********* */
-boolean IsEmpty(Set S){
+boolean IsEmptySet(Set S){
     return S.Count == NilSet;
 }
 /* Mengirim true jika Set S kosong*/
