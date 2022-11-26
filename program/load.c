@@ -61,7 +61,7 @@ void load(char* filename, ArrayDin* Games, Stack *History, Map *RNG, Map *DinerD
 /*  Membaca save file yang berisi list game yang dapat dimainkan.
     I.S. : filename terdefinisi dan array games kosong.
     F.S. : Array games terisi dengan list game yang ada pada save file. */
-    char* filepath = "savefile1.txt";
+    char* filepath = AddPath(filename);
     char* name;
     int score;
     // LoadPita("./data/config.txt");
