@@ -1,6 +1,10 @@
 {
     "files.associations": {
         "listsetmap.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "boolean.h": "c",
+        "mesinkata.h": "c",
+        "mesinkar.h": "c",
+        "queuedinnerdash.h": "c"
     }
 }

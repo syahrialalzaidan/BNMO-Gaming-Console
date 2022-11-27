@@ -42,21 +42,21 @@ void play(Queue *qg, ArrayDin array, float *skor){
     } else if(isStringSame((*qg).buffer[(*qg).idxHead], dinosaur) || isStringSame((*qg).buffer[(*qg).idxHead], rise) || isStringSame((*qg).buffer[(*qg).idxHead], eiffel)){
         printf("Game %s masih dalam maintenance, belum dapat dimainkan.\n", (*qg).buffer[(*qg).idxHead]);
         printf("Silahkan pilih game lain.\n");
-    /* } else if(isStringSame((*qg).buffer[(*qg).idxHead], hangman)){
-        printf("Loading Hangman ...\n");
-        //hangman();
-        //playtebakkata();
-    } else if(isStringSame((*qg).buffer[(*qg).idxHead], toh)){
-        printf("Loading Tower of Hanoi ...\n");
-        //towerofhanoi();
+    // } else if(isStringSame((*qg).buffer[(*qg).idxHead], hangman)){
+    //     printf("Loading Hangman ...\n");
+    //     //hangman();
+    //     //playtebakkata();
+    // } else if(isStringSame((*qg).buffer[(*qg).idxHead], toh)){
+    //     printf("Loading Tower of Hanoi ...\n");
+    //     //towerofhanoi();
     } else if(isStringSame((*qg).buffer[(*qg).idxHead], som)){
         printf("Loading Snake on Meteor ...\n");
-        //snakeonmeteor();
-    } else if(isStringSame((*qg).buffer[(*qg).idxHead], akinator)){
-        printf("Loading Akinator ...\n");
-        //srand(time(0));
-        //akinator();
-    */
+        PlaySnakeOnMeteor(&skor);
+    // } else if(isStringSame((*qg).buffer[(*qg).idxHead], akinator)){
+    //     printf("Loading Akinator ...\n");
+    //     //srand(time(0));
+    //     //akinator();
+    
     } else {
         printf("GAME OVER\n");
         *skor = 0;

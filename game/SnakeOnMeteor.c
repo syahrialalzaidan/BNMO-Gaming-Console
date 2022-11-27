@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "SnakeOnMeteor.h"
 
+// gcc SnakeOnMeteor.c ../program/ADT/listdp/listdp.c ../program/ADT/mesinkarkata/mesinkar.c ../program/ADT/mesinkarkata/mesinkata.c -o ular
 boolean isInputValid(Word kata, int *command)
 {
     boolean output;
@@ -133,12 +134,12 @@ void CutBody(List *L, int MetX, int MetY) {
     }
 }
 
-void SpawnFood(List snake, int *FoodX, int *FoodY) {
+void SpawnFood(List snake, int *FoodX, int *FoodY, int Obs1X, int Obs1Y, int Obs2X, int Obs2Y) {
     *FoodX = rand() % 5;
     *FoodY = rand() % 5;
     address P = First(snake);
     while (P != Nil) {
-        if (InfoX(P) == *FoodX && InfoY(P) == *FoodY) {
+        if ((InfoX(P) == *FoodX && InfoY(P) == *FoodY) || (*FoodX == Obs1X && *FoodY == Obs1Y) || (*FoodX == Obs2X && *FoodY == Obs2Y)) {
             *FoodX = rand() % 5;
             *FoodY = rand() % 5;
             P = First(snake);
@@ -148,16 +149,42 @@ void SpawnFood(List snake, int *FoodX, int *FoodY) {
     }
 }
 
-void SpawnMeteor(List snake, int *MetX, int *MetY, int FoodX, int FoodY) {
+void SpawnMeteor(List snake, int *MetX, int *MetY, int FoodX, int FoodY, int Obs1X, int Obs1Y, int Obs2X, int Obs2Y) {
     *MetX = rand() % 5;
     *MetY = rand() % 5;
     //if meteor is spawned in food then randomize it again
-    while (*MetX == FoodX && *MetY == FoodY) {
+    while ((*MetX == FoodX && *MetY == FoodY) || (*MetX == Obs1X && *MetY == Obs1Y) || (*MetX == Obs2X && *MetY == Obs2Y)) {
         *MetX = rand() % 5;
         *MetY = rand() % 5;
     }
 }
 
+void SpawnObstacles(List Snake, int *Obs1X, int *Obs1Y, int *Obs2X, int *Obs2Y, int FoodX, int FoodY) {
+    *Obs1X = rand() % 5;
+    *Obs1Y = rand() % 5;
+    address P = First(Snake);
+    while (P != Nil) {
+        if ((InfoX(P) == *Obs1X && InfoY(P) == *Obs1Y) || (*Obs1X == FoodX && *Obs1Y == FoodY)) {
+            *Obs1X = rand() % 5;
+            *Obs1Y = rand() % 5;
+            P = First(Snake);
+        } else {
+            P = Next(P);
+        }
+    }
+    *Obs2X = rand() % 5;
+    *Obs2Y = rand() % 5;
+    P = First(Snake);
+    while (P != Nil) {
+        if ((InfoX(P) == *Obs2X && InfoY(P) == *Obs2Y) || (*Obs2X == FoodX && *Obs2Y == FoodY) || (*Obs2X == *Obs1X && *Obs2Y == *Obs1Y)) {
+            *Obs2X = rand() % 5;
+            *Obs2Y = rand() % 5;
+            P = First(Snake);
+        } else {
+            P = Next(P);
+        }
+    }
+}
 
 boolean isHit(List snake, int MetX, int MetY) {
     address P = First(snake);
@@ -170,7 +197,7 @@ boolean isHit(List snake, int MetX, int MetY) {
     return false;
 }
 
-void MoveSnake(int command, List *snake, int *FoodX, int *FoodY, int MetX, int MetY, boolean *isHitBody) {
+void MoveSnake(int command, List *snake, int *FoodX, int *FoodY, int MetX, int MetY, boolean *isHitBody, int Obs1X, int Obs1Y, int Obs2X, int Obs2Y, boolean *isHitObs) {
     address first = First(*snake);
     address last = Last(*snake);
 
@@ -202,7 +229,7 @@ void MoveSnake(int command, List *snake, int *FoodX, int *FoodY, int MetX, int M
     }
 
     if (InfoX(first) == *FoodX && InfoY(first) == *FoodY) {
-        SpawnFood(*snake, FoodX, FoodY);
+        SpawnFood(*snake, FoodX, FoodY, Obs1X, Obs1Y, Obs2X, Obs2Y);
         addBody(snake);
     }
 
@@ -212,9 +239,12 @@ void MoveSnake(int command, List *snake, int *FoodX, int *FoodY, int MetX, int M
     while (P != Nil) {
         if (InfoX(P) == InfoX(first) && InfoY(P) == InfoY(first)) {
             *isHitBody = true;
-        }
+        } 
         P = Next(P);
     }
+    if ((InfoX(first) == Obs1X && InfoY(first) == Obs1Y) || (InfoX(first) == Obs2X && InfoY(first) == Obs2Y)) {
+        *isHitObs = true;
+    } 
 }
 
 boolean isMoveToMeteor(int command, List L, int MetX, int MetY) {
@@ -254,7 +284,7 @@ boolean isMoveBackwards(int command, List L) {
     return false;
 }
 
-void PrintMapSnake (List L, int FoodX, int FoodY, int MetX, int MetY) {
+void PrintMapSnake (List L, int FoodX, int FoodY, int MetX, int MetY, int Obs1X, int Obs1Y, int Obs2X, int Obs2Y) {
     int MapSnake[5][5] = {{0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}};
     MapSnake[InfoY(First(L))][InfoX(First(L))] = 1;
     address P = Next(First(L));
@@ -268,19 +298,23 @@ void PrintMapSnake (List L, int FoodX, int FoodY, int MetX, int MetY) {
     if (MetX != -1 && MetY != -1) {
         MapSnake[MetY][MetX] = 26;
     }
+    MapSnake[Obs1Y][Obs1X] = 27;
+    MapSnake[Obs2Y][Obs2X] = 27;
     printf("Berikut merupakan peta permainan\n");
     printf("+-----------+ \n");
     for (int i = 0; i < 5; ++i){
         printf("| ");
         for (int j = 0; j < 5; ++j) {
             if (MapSnake[i][j] == 0) {
-                printf("_ ");
+                printf("  ");
             } else if (MapSnake[i][j] == 26) {
                 printf("M "); 
             } else if (i == InfoY(First(L)) && j == InfoX(First(L))) {
                 printf("H ");
             } else if (MapSnake[i][j] == 25) {
                 printf("O ");
+            } else if (MapSnake[i][j] == 27) {
+                printf("X ");
             } else {
                 printf("%d ", MapSnake[i][j]);
             }
@@ -292,29 +326,31 @@ void PrintMapSnake (List L, int FoodX, int FoodY, int MetX, int MetY) {
     printf("+-----------+ \n");
 }
 
-boolean isGameOver(List snake, int MetX, int MetY, boolean isHitBody) {
-    return ((InfoX(First(snake)) == MetX && InfoY(First(snake)) == MetY) || isHitBody);
+boolean isGameOver(List snake, int MetX, int MetY, boolean isHitBody, boolean isHitObs) {
+    return ((InfoX(First(snake)) == MetX && InfoY(First(snake)) == MetY) || isHitBody || isHitObs);
 }
 
 void PlaySnakeOnMeteor(int *skor) {
     List snake;
-    int FoodX, FoodY, MetX = -1, MetY = -1, turn = 1, command;
+    int FoodX, FoodY, MetX = -1, MetY = -1, turn = 1, command, Obs1X = -1, Obs1Y = -1, Obs2X = -1, Obs2Y = -1;
     boolean isHitBody = false;
+    boolean isHitObs = false;
     boolean isMovingBackwards = false;
     CreateEmptyList(&snake);
     srand(time(NULL));
     printf("Selamat datang di Snake on Meteor!\n");
     printf("Mengenerate peta, snake, dan makanan...\n");
     makeSnake(&snake);
-    SpawnFood(snake, &FoodX, &FoodY);
+    SpawnFood(snake, &FoodX, &FoodY, Obs1X, Obs1Y, Obs2X, Obs2Y);
+    SpawnObstacles(snake, &Obs1X, &Obs1Y, &Obs2X, &Obs2Y, FoodX, FoodY);
     printf("Berhasil digenerate!\n");
     printf("====================\n");
-    while (!isGameOver(snake, MetX, MetY, isHitBody)) {
+    while (!isGameOver(snake, MetX, MetY, isHitBody, isHitObs)) {
         if (turn > 1) {
-            SpawnMeteor(snake, &MetX, &MetY, FoodX, FoodY);
+            SpawnMeteor(snake, &MetX, &MetY, FoodX, FoodY, Obs1X, Obs1Y, Obs2X, Obs2Y);
         }
         if (isHit(snake, MetX, MetY)) {
-            PrintMapSnake(snake, FoodX, FoodY, MetX, MetY);
+            PrintMapSnake(snake, FoodX, FoodY, MetX, MetY, Obs1X, Obs1Y, Obs2X, Obs2Y);
             if (MetX == InfoX(First(snake)) && MetY == InfoY(First(snake))) {
                 printf("Kepala snake terkena meteor!\n");
             } else {
@@ -323,7 +359,7 @@ void PlaySnakeOnMeteor(int *skor) {
             }
         }
         if (!isHitBody && !isHit(snake, MetX, MetY)) {
-            PrintMapSnake(snake, FoodX, FoodY, MetX, MetY);
+            PrintMapSnake(snake, FoodX, FoodY, MetX, MetY, Obs1X, Obs1Y, Obs2X, Obs2Y);
             if (turn > 1) {
                 printf("Anda beruntung tidak terkena meteor! Silahkan lanjutkan permainan\n");
             }
@@ -350,7 +386,7 @@ void PlaySnakeOnMeteor(int *skor) {
                     STARTWORD();
                 }
             }
-            MoveSnake(command, &snake, &FoodX, &FoodY, MetX, MetY, &isHitBody);
+            MoveSnake(command, &snake, &FoodX, &FoodY, MetX, MetY, &isHitBody, Obs1X, Obs1Y, Obs2X, Obs2Y, &isHitObs);
             while(isMovingBackwards) {
                 printf("Anda tidak dapat bergerak ke tubuh anda sendiri!\nSilahkan input command yang lain");
                 printf("Silakan masukkan command Anda: ");
@@ -360,6 +396,8 @@ void PlaySnakeOnMeteor(int *skor) {
         }
         if (isHitBody) {
             printf("Kepala snake menabrak badan snake!\n");
+        } else if (isHitObs) {
+            printf("Kepala snake menabrak obstacles!\n");
         }
     }
     if (InfoX(First(snake)) == MetX && InfoY(First(snake)) == MetY) {
@@ -367,5 +405,4 @@ void PlaySnakeOnMeteor(int *skor) {
         DelVFirst(&snake, &HeadX, &HeadY);
     }
     *skor = LengthList(snake)*2;
-    printf("Game berakhir. Skor: %d\n", *skor);
 }

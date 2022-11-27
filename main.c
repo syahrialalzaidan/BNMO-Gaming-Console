@@ -183,7 +183,7 @@ int main() {
     printf("\nPILIHAN MENU:\n=> START\n=> LOAD (filename.txt)\n");
     printf("ENTER COMMAND: ");
     STARTWORD();
-    while (IsEmpty(Games) || IsStackEmpty(history) || IsLSMEmpty(scoreboard)) {
+    while (IsArrayEmpty(Games) || IsStackEmpty(history) || IsLSMEmpty(scoreboard)) {
         while (!isInputValid(currentWord, &command)) {
             printf("Command tidak dikenali, silakan masukkan command yang valid.\n\n");
             while (! IsEOP()) ADVWORD();
@@ -193,7 +193,7 @@ int main() {
         if (command == 1) {
             filename = WordToString(currentWord);
             load(filename, &Games, &history, &scoreboard);
-            if (IsEmpty(Games) || IsStackEmpty(history) || IsLSMEmpty(scoreboard)) {
+            if (IsArrayEmpty(Games) || IsStackEmpty(history) || IsLSMEmpty(scoreboard)) {
                 printf("File tidak ditemukan, silakan masukkan nama file yang valid.\n\n");
                 printf("ENTER COMMAND: ");
                 STARTWORD();
@@ -233,6 +233,7 @@ int main() {
             // get the game name in head of queue
             char* gameName = InfoHead(queuegames);
             playgame(&queuegames, Games, &score);
+            printf("\n\nGame berakhir. Skor: %d\n", score);
             printf("Masukkan nama: ");
             STARTWORD();
             char* name = WordToString(currentWord);

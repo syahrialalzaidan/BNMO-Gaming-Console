@@ -7,6 +7,7 @@
 #include "../game/queuedinnerdash.h"
 #include "../game/rng.h"
 #include "../game/tebakkata.h"
+#include "../game/SnakeOnMeteor.h"
 
 boolean isStringSame(char *c1, char*c2);
 /* Mengembalikan true jika string sama */

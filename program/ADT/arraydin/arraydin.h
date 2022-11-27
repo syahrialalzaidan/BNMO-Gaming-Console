@@ -34,7 +34,7 @@ void DeallocateArrayDin(ArrayDin *array);
  * Fungsi untuk mengetahui apakah suatu array kosong.
  * Prekondisi: array terdefinisi
  */
-boolean IsEmpty(ArrayDin array);
+boolean IsArrayEmpty(ArrayDin array);
 
 /**
  * Fungsi untuk mendapatkan banyaknya elemen efektif array, 0 jika tabel kosong.

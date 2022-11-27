@@ -28,7 +28,7 @@ void DeallocateArrayDin(ArrayDin *array){
  * Fungsi untuk mengetahui apakah suatu array kosong.
  * Prekondisi: array terdefinisi
  */
-boolean IsEmpty(ArrayDin array){
+boolean IsArrayEmpty(ArrayDin array){
     return array.Neff == 0;
 }
 
@@ -126,7 +126,7 @@ void DeleteFirst(ArrayDin *array){
  * Prekondisi: array terdefinisi
  */
 void PrintArrayDin(ArrayDin array){
-     if(IsEmpty(array)){
+     if(IsArrayEmpty(array)){
          printf("[]\n");
      }
      else{
