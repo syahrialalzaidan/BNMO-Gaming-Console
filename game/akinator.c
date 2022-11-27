@@ -1,9 +1,5 @@
 #include <stdlib.h>
 #include <stdio.h>
-//#include "tree.c"
-//#include "mesinkataakinator.c"
-//#include "mesinkarakinator.c"
-//#include "boolean.h"
 #include <time.h>
 #include "akinator.h"
 

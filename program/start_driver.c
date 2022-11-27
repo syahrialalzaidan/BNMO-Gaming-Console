@@ -9,7 +9,6 @@
 
 // gcc program/ADT/mesinkarkata/mesinkarfile.c program/ADT/mesinkarkata/mesinkatafile.c program/ADT/arraydin/arraydin.c program/load.c program/start.c program/start_driver.c -o coba
 
-
 int main() {
     ArrayDin Games = MakeArrayDin();
     start(&Games);

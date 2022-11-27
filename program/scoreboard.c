@@ -32,7 +32,6 @@ void PrintScoreboard(Map M) {
         }
         if (maxNameLength < 4) maxScoreLength = 4;
         
-        
         //find the longest score
         i = 0;
         int maxScore = M.Elements[0].Value;
@@ -140,6 +139,7 @@ void ResetScoreboard(ListSetMap *SM, ArrayDin G) {
     }
 }
 
+/* *** For Test Purposes *** */
 // int main() {
 //     Map score;
 //     CreateEmptyScore(&score);
@@ -149,4 +149,4 @@ void ResetScoreboard(ListSetMap *SM, ArrayDin G) {
 //     PrintScoreboard(score);
 
 //     return 0;
-// }
+// 

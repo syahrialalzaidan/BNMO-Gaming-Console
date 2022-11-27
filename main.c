@@ -238,7 +238,10 @@ int main() {
         }
         else if (command == 9)
         {
-            /* scoreboard */
+            int i = 0;
+            for (i=0;i< Games.Neff;i++){
+                PrintScoreboard (scoreboard.Elements[i].M)
+            }
         }
         else if (command == 10)
         {
