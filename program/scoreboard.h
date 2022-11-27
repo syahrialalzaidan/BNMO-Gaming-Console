@@ -10,4 +10,4 @@ int CountDigits(int n);
 
 void PrintScoreboard(Map M);
 
-void ResetScoreboard(Map *M, ArrayDin G);
+void ResetScoreboard(ListSetMap *SM, ArrayDin G);
