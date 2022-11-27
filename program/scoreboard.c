@@ -72,7 +72,11 @@ void PrintScoreboard(Map M) {
             for (int j = 0; j < maxNameLength - StringLength(M.Elements[i].Key); j++) {
                 printf(" ");
             }
-            printf("  | %.0d", M.Elements[i].Value);
+            if (i == 3) {
+                printf("  | %.2f", M.Elements[i].Value);
+            } else {
+                printf("  | %.0f", M.Elements[i].Value);
+            }
             for (int j = 0; j < maxScoreLength - CountDigits(M.Elements[i].Value); j++) {
                 printf(" ");
             }

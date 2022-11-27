@@ -12,7 +12,7 @@ int main(){
     }
 
     keytype k = "kunci";
-    valuetype v = "isi";
+    valuetype v = 10.5;
     
     printf("Insert map\n");
     Insert(&m, k, v);
