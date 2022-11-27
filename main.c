@@ -15,6 +15,9 @@
 #include "program/skipgame.h"
 #include "program/help.h"
 #include "program/ADT/stack/stack.h"
+#include "program/ADT/listSetMap/listSetMap.h"
+#include "program/history.h"
+#include "program/scoreboard.h"
 #include "bnmo_pic.h"
 
 //  copy paste below to run main
@@ -170,8 +173,8 @@ int main() {
     char* filename;
     int command;
     int score;
-    // ListMapSet scoreboard;
-    // Stack history;
+    ListMapSet scoreboard;
+    Stack history;
 
 
     // First Menu 
