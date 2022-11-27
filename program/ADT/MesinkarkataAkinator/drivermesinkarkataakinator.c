@@ -1,28 +1,28 @@
-#include "mesinkata.c"
-#include "mesinkar.c"
+#include "mesinkataakinator.c"
+#include "mesinkarakinator.c"
 #include <stdio.h>
 
 int main(){
-    STARTWORD();
+    STARTWORDakin();
     for (int i =0; i< currentWord.Length; i++){
         printf("%c", currentWord.TabWord[i]);
     }
     printf("\n");
-    if(IsEOP()) printf("EOP\n");
+    if(IsEOPakin()) printf("EOP\n");
     else printf("Not EOP\n");
-    ADVWORD();
+    ADVWORDakin();
     for (int i =0; i< currentWord.Length; i++){
         printf("%c", currentWord.TabWord[i]);
     }
     printf("\n");
-    if(IsEOP()) printf("EOP\n");
+    if(IsEOPakin()) printf("EOP\n");
     else printf("Not EOP\n");
-    ADVWORD();
+    ADVWORDakin();
     for (int i =0; i< currentWord.Length; i++){
         printf("%c", currentWord.TabWord[i]);
     }
-    if(IsEOP()) printf("EOP\n");
+    if(IsEOPakin()) printf("EOP\n");
     else printf("Not EOP\n");
-    ADVWORD();
+    ADVWORDakin();
     return 0;
 }

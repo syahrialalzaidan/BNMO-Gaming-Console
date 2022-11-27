@@ -3,9 +3,9 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "boolean.h"
-#include "mesinkarakinator.h"
-#include "mesinkataakinator.h"
+#include "../boolean/boolean.h"
+#include "../MesinkarkataAkinator/mesinkarakinator.h"
+#include "../MesinkarkataAkinator/mesinkataakinator.h"
 
 #define NILakin NULL
 /* Selektor */

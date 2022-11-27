@@ -54,6 +54,7 @@ void play(Queue *qg, ArrayDin array){
         //snakeonmeteor();
     } else if(isStringSame((*qg).buffer[(*qg).idxHead], akinator)){
         printf("Loading Akinator ...\n");
+        //srand(time(0));
         //akinator();
     */
     } else {
