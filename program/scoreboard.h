@@ -12,4 +12,4 @@ void PrintScoreboard(Map M);
 /* Menampilkan Scoreboard yang ada ke layar. */
 
 void ResetScoreboard(Map *M, ArrayDin G);
-/* Mereset*/
+/* Mereset Scoreboard yang ada*/
