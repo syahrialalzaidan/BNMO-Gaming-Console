@@ -249,11 +249,12 @@ int main() {
         }
         else if (command == 11)
         {
-            /* history */
+            int nomor = WordToInt(currentWord);
+            PrintHistory(history, nomor);
         }
         else if (command == 12)
         {
-            /* reset history*/
+            ResetHistory(&history);
         }
         else if(command == 13){
             help();
