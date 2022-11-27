@@ -52,7 +52,7 @@ Setelah berhasil memperbaiki BNMO, 5 Orang programmer handal tersebut menuangkan
 <p>
 
 <p align="justify">
-Namun, siapa sangka 5 orang programmer itu melanjutkan kisah dari buku tersebut. Kisah mereka berlanjut dengan pengembangan BNMO. 
+Namun, siapa sangka 5 orang programmer itu melanjutkan kisah tersebut. Kisah mereka berlanjut mengenai pengembangan BNMO. 
 <p>
 
 <p align="Center">
