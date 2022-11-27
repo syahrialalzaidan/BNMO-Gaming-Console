@@ -124,11 +124,11 @@ boolean isInputValid(Word kata, int *command)
     else
     {
         output = false;
-        *command = 11;
+        *command = 30;
     }
     if(! IsEOP()){
         output = false;
-        *command = 11;
+        *command = 30;
     }
     while(! IsEOP()) ADVWORD();
     return output;
@@ -214,7 +214,7 @@ int main() {
         printf("ENTER COMMAND: ");
         STARTWORD();
         boolean cek2 = isInputValid(currentWord, &command);
-        while ((command == 11 || command == 0 || command == 1) || (!cek2)) {
+        while ((command == 30 || command == 0 || command == 1) || (!cek2)) {
             if (command == 1 || command == 0) {
                 printf("Sistem sudah membaca file, Kamu bisa memulai ulang sistem untuk membaca file lain.\n\n");
             } else {
