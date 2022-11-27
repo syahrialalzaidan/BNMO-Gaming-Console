@@ -167,14 +167,15 @@ int main() {
     ArrayDin Games = MakeArrayDin();
     Queue queuegames;
     Stack history;
-    Map scoreboard;
     CreateQueue(&queuegames);
     CreateEmptyStack(&history);
     char* filename;
     int command;
     int score;
-    ListMapSet scoreboard;
+    ListSetMap scoreboard;
+    CreateEmptyLSM(&scoreboard);
     Stack history;
+    CreateEmptyStack(&history);
 
 
     // First Menu 
@@ -182,7 +183,7 @@ int main() {
     printf("\nPILIHAN MENU:\n=> START\n=> LOAD (filename.txt)\n");
     printf("ENTER COMMAND: ");
     STARTWORD();
-    while (IsEmpty(Games)) {
+    while (IsEmpty(Games) || IsStackEmpty(history) || IsLSMEmpty(scoreboard)) {
         while (!isInputValid(currentWord, &command)) {
             printf("Command tidak dikenali, silakan masukkan command yang valid.\n\n");
             while (! IsEOP()) ADVWORD();
@@ -191,8 +192,8 @@ int main() {
         }
         if (command == 1) {
             filename = WordToString(currentWord);
-            load(filename, &Games);
-            if (IsEmpty(Games)) {
+            load(filename, &Games, &history, &scoreboard);
+            if (IsEmpty(Games) || IsStackEmpty(history) || IsLSMEmpty(scoreboard)) {
                 printf("File tidak ditemukan, silakan masukkan nama file yang valid.\n\n");
                 printf("ENTER COMMAND: ");
                 STARTWORD();
@@ -214,7 +215,7 @@ int main() {
     while (!isWordSame(currentWord, stringToWord("QUIT"))){
         if(command == 2){
             filename = WordToString(currentWord);
-            save(&Games, filename);
+            save(&Games, &history, &scoreboard, filename);
         }
         else if(command == 3){
             creategame(&Games);
@@ -244,7 +245,7 @@ int main() {
         }
         else if (command == 10)
         {
-            /* reset scoreboard */
+            ResetScoreboard(&scoreboard, Games);
         }
         else if (command == 11)
         {
@@ -271,7 +272,7 @@ int main() {
             cek2 = isInputValid(currentWord, &command);
         }
     }
-    save(&Games, "savefile1.txt");
+    save(&Games, &history, &scoreboard, "savefile1.txt");
     CreateQueue(&queuegames);
     printf("Anda Keluar dari game BNMO\nBye byee.........\n");
     return 0;

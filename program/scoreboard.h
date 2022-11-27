@@ -11,5 +11,5 @@ int CountDigits(int n);
 void PrintScoreboard(Map M);
 /* Menampilkan Scoreboard yang ada ke layar. */
 
-void ResetScoreboard(Map *M, ArrayDin G);
-/* Mereset Scoreboard yang ada*/
+void ResetScoreboard(ListSetMap *SM, ArrayDin G);
+

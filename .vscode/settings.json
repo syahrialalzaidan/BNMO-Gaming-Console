@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "listsetmap.h": "c",
+        "stdio.h": "c"
+    }
+}

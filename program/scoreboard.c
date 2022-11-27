@@ -96,9 +96,12 @@ void PrintScoreboard(Map M) {
     }
 }
 
-void ResetScoreboard(Map *M, ArrayDin G) {
+void ResetScoreboard(ListSetMap *SM, ArrayDin G) {
     printf("DAFTAR SCOREBOARD:\n");
-    PrintArrayDin(G);
+    printf("0. All\n");
+    for (int i = 0; i < G.Neff; i++) {
+        printf("%d. %s\n", i + 1, G.A[i]);
+    }
     printf("SCOREBOARD YANG INGIN DIHAPUS: ");
     STARTWORD();
     int idx = WordToInt(currentWord);
@@ -108,7 +111,13 @@ void ResetScoreboard(Map *M, ArrayDin G) {
         STARTWORD();
         idx = WordToInt(currentWord);
     }
-    printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD %s (YA/TIDAK)? ", Get(G, idx));
+    char* str;
+    if (idx == 0) {
+        str = "All";
+    } else {
+        str = Get(G, idx);
+    }
+    printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD %s (YA/TIDAK)? ", Get(G, idx-1));
     STARTWORD();
     while(!isWordSame(currentWord, stringToWord("YA")) && !isWordSame(currentWord, stringToWord("TIDAK"))) 
     {
@@ -117,15 +126,16 @@ void ResetScoreboard(Map *M, ArrayDin G) {
         STARTWORD();
     }
     if (isWordSame(currentWord, stringToWord("YA"))) {
-        if (!IsMapEmpty(*M)) {
-            CreateEmpty(M);
+        if (!IsMapEmpty(SM->Elements[idx].M)) {
+            //make SM->Elements[idx].M empty
+            CreateEmpty(&SM->Elements[idx].M);
             printf("Scoreboard berhasil di-reset\n");
         } else {
             printf("Scoreboard kosong\n");
         }
     } else {
         printf("Scoreboard tidak jadi di-reset. Berikut adalah Scoreboard game %s:\n", Get(G, idx));
-        PrintScoreboard(*M);
+        PrintScoreboard(SM->Elements[idx].M);
     }
 }
 
