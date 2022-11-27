@@ -1,6 +1,6 @@
 #include <stdio.h>
-
 #include "scoreboard.h"
+//gcc -o scoreboard scoreboard.c ADT/Map/mapscore.c
 
 int StringLength(char* string) {
     int len = 0;
@@ -20,7 +20,7 @@ int CountDigits(int n) {
 }
 
 void PrintScoreboard(Map M) {
-    if (!IsMapEmpty(M)) {
+    if (!IsMapEmptyScore(M)) {
         int i = 0;
         //find the longest name
         int maxNameLength = 0, maxScoreLength;
@@ -73,7 +73,7 @@ void PrintScoreboard(Map M) {
             for (int j = 0; j < maxNameLength - StringLength(M.Elements[i].Key); j++) {
                 printf(" ");
             }
-            printf("  | %d", M.Elements[i].Value);
+            printf("  | %.0f", M.Elements[i].Value);
             for (int j = 0; j < maxScoreLength - CountDigits(M.Elements[i].Value); j++) {
                 printf(" ");
             }
@@ -97,7 +97,14 @@ void PrintScoreboard(Map M) {
     }
 }
 
+
 int main() {
+    Map score;
+    CreateEmptyScore(&score);
+    InsertScore(&score, "Alan", 100.0);
+    InsertScore(&score, "Alzaidan", 200.0);
+    sortmapdesc(&score);
+    PrintScoreboard(score);
 
     return 0;
 }

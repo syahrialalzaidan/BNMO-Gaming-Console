@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "ADT/Map/map.h"
+#include "ADT/Map/mapscore.h"
 
 int StringLength(char* string);
 
