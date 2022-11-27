@@ -173,7 +173,7 @@ void DelFirst (List *L, address *P) {
 /* First element yg baru adalah suksesor elemen pertama yang lama */
     *P = First(*L);
     if (Next(*P) == Nil) {
-        CreateEmpty(L);
+        CreateEmptyList(L);
     } else {
         First(*L) = Next(*P);
         Prev(First(*L)) = Nil;
@@ -188,7 +188,7 @@ void DelLast (List *L, address *P) {
 /* Last element baru adalah predesesor elemen pertama yg lama, jika ada */
     *P = Last(*L);
     if (Prev(*P) == Nil) {
-        CreateEmpty(L);
+        CreateEmptyList(L);
     } else {
         Last(*L) = Prev(*P);
         Next(Last(*L)) = Nil;
