@@ -199,7 +199,7 @@ int main() {
                 STARTWORD();
             }
         } else if (command == 0) {
-            start(&Games);
+            start(&Games, &history, &scoreboard);
         }
     }
     if (command == 1) {
@@ -240,7 +240,7 @@ int main() {
         {
             int i = 0;
             for (i=0;i< Games.Neff;i++){
-                PrintScoreboard (scoreboard.Elements[i].M)
+                PrintScoreboard (scoreboard.Elements[i].M);
             }
         }
         else if (command == 10)
