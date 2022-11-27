@@ -27,30 +27,33 @@ int main() {
     printf("**** SCOREBOARD GAME Diner Dash ****\n");
     PrintScoreboard(scoreboard.Elements[1].M);
     printf("\n");
-    printf("**** SCOREBOARD GAME Hangman ****\n");
+    printf("**** SCOREBOARD GAME Diner Dash ****\n");
     PrintScoreboard(scoreboard.Elements[2].M);
     printf("\n");
-    printf("**** SCOREBOARD GAME Tower of Hanoi ****\n");
+    printf("**** SCOREBOARD GAME Hangman ****\n");
     PrintScoreboard(scoreboard.Elements[3].M);
     printf("\n");
-    printf("**** SCOREBOARD GAME Snake on Meteor ****\n");
+    printf("**** SCOREBOARD GAME Tower of Hanoi ****\n");
     PrintScoreboard(scoreboard.Elements[4].M);
     printf("\n");
-    printf("**** SCOREBOARD GAME Game Asal ****\n");
+    printf("**** SCOREBOARD GAME Snake on Meteor ****\n");
     PrintScoreboard(scoreboard.Elements[5].M);
     printf("\n");
+    printf("**** SCOREBOARD GAME Akinator ****\n");
+    PrintScoreboard(scoreboard.Elements[6].M);
+    printf("\n");
     //print set manually
-    printf("**** SET GAME ****\n");
-    int i = 0;
-    while (i < scoreboard.Count) {
-        int j = 0;
-        printf("%d.\n", i+1);
-        while (j < scoreboard.Elements[i].S.Count) {
-            printf("%s\n", scoreboard.Elements[i].S.Elements[j]);
-            j++;
-        }
-        i++;
-    }
+    // printf("**** SET GAME ****\n");
+    // int i = 0;
+    // while (i < scoreboard.Count) {
+    //     int j = 0;
+    //     printf("%d.\n", i+1);
+    //     while (j < scoreboard.Elements[i].S.Count) {
+    //         printf("%s\n", scoreboard.Elements[i].S.Elements[j]);
+    //         j++;
+    //     }
+    //     i++;
+    // }
     save(&Games, &History, &scoreboard, "savefile2.txt");
     return 0;
 }

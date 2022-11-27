@@ -123,6 +123,28 @@ Word stringToWord(char *s) {
     return W;
 }
 
+float WordToFloat(Word W) {
+/* Fungsi mengubah Word ke float */
+    int i;
+    float j = 10.00;
+    float temp = 0.00;
+    boolean afterdot = false;
+    for (i = 0; i < W.Length; i++){
+        if (W.TabWord[i] != BLANK && W.TabWord[i] != '.') {
+            if (afterdot) {
+                temp = temp + (W.TabWord[i] - '0') / j;
+                j = j * 10.00;
+            } else {
+                temp = temp * 10 + (W.TabWord[i] - '0');
+            }
+        }
+        if (W.TabWord[i] == '.') {
+            afterdot = true;
+        }
+    }
+    return temp;
+}
+
 int WordConverter(Word W) {
     if (currentWord.TabWord[0] == 'A') return 1;
     else if (currentWord.TabWord[0] == 'B') return 2;

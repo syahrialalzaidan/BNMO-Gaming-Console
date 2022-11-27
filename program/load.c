@@ -63,7 +63,7 @@ void load(char* filename, ArrayDin* Games, Stack *History, ListSetMap *Scoreboar
     F.S. : Array games terisi dengan list game yang ada pada save file. */
     char* filepath = AddPath(filename);
     char* name;
-    int score;
+    float score;
     // LoadPita("./data/config.txt");
     LoadPita(filepath, true);
     // load games
@@ -104,7 +104,7 @@ void load(char* filename, ArrayDin* Games, Stack *History, ListSetMap *Scoreboar
                 Word W1, W2;
                 SeparateWords(currentWord, &W1, &W2);
                 name = WordToString(W1);
-                score = WordToInt(W2);   
+                score = WordToFloat(W2);
                 InsertAtLSM(Scoreboard, j, name, score);
                 k++;
             }

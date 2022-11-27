@@ -10,13 +10,24 @@ int StringLength(char* string) {
     return len;
 }
 
-int CountDigits(int n) {
+int CountDigits(float n) {
+    int i = (int) n * 100;
     int count = 0;
-    while (n != 0) {
-        n /= 10;
+    while (i != 0) {
+        i /= 10.00;
         count++;
     }
-    return count;
+    return count+1;
+}
+
+boolean isZero (float n) {
+/* Fungsi untuk memeriksa apakah bilangan belakang koma adalah 0 */
+    int i = (int) n * 100;
+    if (i == n * 100) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 void PrintScoreboard(Map M) {
@@ -30,7 +41,7 @@ void PrintScoreboard(Map M) {
             }
             i++;
         }
-        if (maxNameLength < 4) maxScoreLength = 4;
+        if (maxNameLength < 4) maxNameLength = 4;
         
         //find the longest score
         i = 0;
@@ -69,16 +80,20 @@ void PrintScoreboard(Map M) {
         printf("+\n");
         while (i < M.Count)  {
             printf("| %s", M.Elements[i].Key);
-            for (int j = 0; j < maxNameLength - StringLength(M.Elements[i].Key); j++) {
+            for (int j = 0; j < maxNameLength - StringLength(M.Elements[i].Key) + 2; j++) {
                 printf(" ");
             }
-            if (i == 3) {
-                printf("  | %.2f", M.Elements[i].Value);
+            // if 2 digits behind decimal point is 0 then print int
+            if (isZero(M.Elements[i].Value)) {
+                printf("| %d", (int) M.Elements[i].Value);
+                for (int j = 0; j < maxScoreLength - CountDigits(M.Elements[i].Value)+3; j++) {
+                    printf(" ");
+                }
             } else {
-                printf("  | %.0f", M.Elements[i].Value);
-            }
-            for (int j = 0; j < maxScoreLength - CountDigits(M.Elements[i].Value); j++) {
-                printf(" ");
+                printf("| %.2f", M.Elements[i].Value);
+                for (int j = 0; j < maxScoreLength - CountDigits(M.Elements[i].Value); j++) {
+                    printf(" ");
+                }
             }
             printf("  |\n");
             i++;

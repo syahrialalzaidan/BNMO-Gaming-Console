@@ -244,6 +244,7 @@ int main() {
                 name = WordToString(currentWord);
             }
             InsertAtLSM(&scoreboard, idx, name, score);
+            sortmapdesc(&scoreboard.Elements[idx].M);
         }
         else if(command == 8){
             int nomor = WordToInt(currentWord);

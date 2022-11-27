@@ -58,6 +58,8 @@ boolean isWordSame(Word W1, Word W2);
 Word stringToWord(char *s);
 /* Fungsi mengubah string ke Word */
 
+float WordToFloat(Word W);
+
 int WordConverter(Word W);
 
 #endif

@@ -6,7 +6,7 @@
 
 int StringLength(char* string);
 
-int CountDigits(int n);
+int CountDigits(float n);
 
 void PrintScoreboard(Map M);
 /* Menampilkan Scoreboard yang ada ke layar. */

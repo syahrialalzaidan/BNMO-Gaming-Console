@@ -1,10 +1,11 @@
-6
+7
 RNG
 Diner DASH
+Tebak Kata
 HANGMAN
 TOWER OF HANOI
 SNAKE ON METEOR
-GAME ASAL
+Akinator
 3
 SNAKE ON METEOR
 TOWER OF HANOI
@@ -18,5 +19,7 @@ Marcelline 30
 0
 0
 1
-Marshall 77
+Marshall 10.52
+1
+Ariq 77
 0
