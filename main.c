@@ -110,12 +110,12 @@ boolean isInputValid(Word kata, int *command)
         }
         ADVWORD();
     }
-    else if (isWordSame(kata, stringToWord("QUIT")))
+    else if (isWordSame(kata, stringToWord("HELP")))
     {
         output = true;
         *command = 9;
     }
-    else if (isWordSame(kata, stringToWord("HELP")))
+    else if (isWordSame(kata, stringToWord("QUIT")))
     {
         output = true;
         *command = 10;
@@ -135,6 +135,7 @@ boolean isInputValid(Word kata, int *command)
 }
 
 int main() {
+    // initialize variables;
     ArrayDin Games = MakeArrayDin();
     Queue queuegames;
     Stack history;
@@ -143,6 +144,12 @@ int main() {
     CreateEmptyStack(&history);
     char* filename;
     int command;
+    int score;
+    // ListMapSet scoreboard;
+    // Stack history;
+
+
+    // First Menu 
     bnmo_pic();
     printf("\nPILIHAN MENU:\n=> START\n=> LOAD (filename.txt)\n");
     printf("ENTER COMMAND: ");
@@ -166,13 +173,13 @@ int main() {
             start(&Games);
         }
     }
-    
     if (command == 1) {
         printf("\nSave file berhasil dibaca. BNMO berhasil dijalankan ^^\n\n");
     } else if (command == 0) {
         printf("\nFile konfigurasi sistem berhasil dibaca. BNMO berhasil dijalankan ^^\n\n");
     }
 
+    // Main Menu
     printf("PILIHAN MENU:\n=> SAVE (filename.txt)\n=> CREATE GAME\n=> LIST GAME\n=> DELETE GAME\n=> QUEUE GAME\n=> PLAY GAME\n=> SKIP GAME (N)\n=> QUIT\n=> HELP\n");
     printf("(N adalah jumlah game yang ingin dilewat pada queue)\n");
 
@@ -201,7 +208,7 @@ int main() {
 
             skipgame(&queuegames, nomor, Games);
         }
-        else if(command == 10){
+        else if(command == 9){
             help();
         }
         printf("ENTER COMMAND: ");
