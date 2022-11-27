@@ -1,6 +1,8 @@
-5 
+7
 RNG
 Diner DASH
+Tebak Kata
 HANGMAN
 TOWER OF HANOI
 SNAKE ON METEOR
+Akinator
