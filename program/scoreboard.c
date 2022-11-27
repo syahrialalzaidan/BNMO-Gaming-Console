@@ -97,28 +97,36 @@ void PrintScoreboard(Map M) {
     }
 }
 
-void ResetScoreboard(Map *M) {
-    printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET HISTORY? (YA/TIDAK) ");
+void ResetScoreboard(Map *M, ArrayDin G) {
+    printf("DAFTAR SCOREBOARD:\n");
+    PrintArrayDin(G);
+    printf("SCOREBOARD YANG INGIN DIHAPUS: ");
+    STARTWORD();
+    int idx = WordToInt(currentWord);
+    while (i < 0 || i > G.Neff) {
+        printf("INPUT TIDAK VALID\n");
+        printf("SCOREBOARD YANG INGIN DIHAPUS: ");
+        STARTWORD();
+        idx = WordToInt(currentWord);
+    }
+    printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD %s (YA/TIDAK)? ", Get(G, idx));
     STARTWORD();
     while(!isWordSame(currentWord, stringToWord("YA")) && !isWordSame(currentWord, stringToWord("TIDAK"))) 
     {
         printf("Input tidak valid!\n");
-        printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET HISTORY? (YA/TIDAK) ");
+        printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD %s (YA/TIDAK)? ", Get(G, idx));
         STARTWORD();
     }
     if (isWordSame(currentWord, stringToWord("YA"))) {
-        if (!IsStackEmpty(*History)){
-            while (!IsStackEmpty(*History)) 
-            {
-                infotype X;
-                Pop(History, &X);
-            }
+        if (!IsMapEmpty(*M)) {
+            CreateEmpty(M);
+            printf("Scoreboard berhasil di-reset\n");
         } else {
-            printf("History kosong, kamu belum memainkan game apapun\n");
+            printf("Scoreboard kosong\n");
         }
     } else {
-        printf("History tidak jadi di-reset. Berikut adalah daftar Game yang telah dimainkan\n");
-        PrintHistory(*History, nbElmtStack(*History));
+        printf("Scoreboard tidak jadi di-reset. Berikut adalah Scoreboard game %s:\n", Get(G, idx));
+        PrintScoreboard(*M);
     }
 }
 

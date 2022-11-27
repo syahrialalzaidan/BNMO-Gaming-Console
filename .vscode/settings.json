@@ -7,7 +7,8 @@
         "math.h": "c",
         "mesinkar.h": "c",
         "stack.h": "c",
-        "set.h": "c"
+        "set.h": "c",
+        "arraydin.h": "c"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }
