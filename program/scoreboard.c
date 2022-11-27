@@ -103,7 +103,7 @@ void ResetScoreboard(Map *M, ArrayDin G) {
     printf("SCOREBOARD YANG INGIN DIHAPUS: ");
     STARTWORD();
     int idx = WordToInt(currentWord);
-    while (i < 0 || i > G.Neff) {
+    while (idx < 0 || idx > G.Neff) {
         printf("INPUT TIDAK VALID\n");
         printf("SCOREBOARD YANG INGIN DIHAPUS: ");
         STARTWORD();
