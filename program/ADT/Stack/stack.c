@@ -1,16 +1,6 @@
 #include <stdio.h>
 #include "stack.h"
 
-/*
-
-NIM				: 18221043
-Nama			: Attariq Muhammmad Azhar
-Tanggal			: 21 Oktober 2022
-Topik praktikum	: Stack
-Deskripsi		: Implementasi stack.h
-
-*/
-
 
 /* ************ Prototype ************ */
 /* *** Konstruktor/Kreator *** */
@@ -55,7 +45,6 @@ void Pop(Stack * S, infotype* X)
     *X = InfoTop(*S);
     Top(*S)--;
 }
-<<<<<<< Updated upstream
 
 /* ************ Mengcopy Stack ************ */
 Stack CopyStack(Stack stack) {
@@ -89,5 +78,3 @@ int nbElmtStack(Stack S) {
     }
     return count;
 }
-=======
->>>>>>> Stashed changes

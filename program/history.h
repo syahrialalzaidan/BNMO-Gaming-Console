@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "ADT/stack/stack.h"
+#include "ADT/Stack/stack.h"
 
 void PrintHistory(Stack History, int n);
 

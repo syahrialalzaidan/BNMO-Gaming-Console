@@ -10,7 +10,7 @@ Deklarasi stack yang dengan implementasi array eksplisit-statik rata kiri
 #define NilSet 0
 #define MaxElset 100
 
-typedef char infotypeset;
+typedef char* infotypeset;
 typedef int address;
 
 typedef struct

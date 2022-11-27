@@ -20,7 +20,7 @@ int CountDigits(int n) {
 }
 
 void PrintScoreboard(Map M) {
-    if (!IsMapEmptyScore(M)) {
+    if (!IsMapEmpty(M)) {
         int i = 0;
         //find the longest name
         int maxNameLength = 0, maxScoreLength;
@@ -73,7 +73,7 @@ void PrintScoreboard(Map M) {
             for (int j = 0; j < maxNameLength - StringLength(M.Elements[i].Key); j++) {
                 printf(" ");
             }
-            printf("  | %.0f", M.Elements[i].Value);
+            printf("  | %.0d", M.Elements[i].Value);
             for (int j = 0; j < maxScoreLength - CountDigits(M.Elements[i].Value); j++) {
                 printf(" ");
             }
@@ -97,14 +97,38 @@ void PrintScoreboard(Map M) {
     }
 }
 
-
-int main() {
-    Map score;
-    CreateEmptyScore(&score);
-    InsertScore(&score, "Alan", 100.0);
-    InsertScore(&score, "Alzaidan", 200.0);
-    sortmapdesc(&score);
-    PrintScoreboard(score);
-
-    return 0;
+void ResetScoreboard(Map *M) {
+    printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET HISTORY? (YA/TIDAK) ");
+    STARTWORD();
+    while(!isWordSame(currentWord, stringToWord("YA")) && !isWordSame(currentWord, stringToWord("TIDAK"))) 
+    {
+        printf("Input tidak valid!\n");
+        printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET HISTORY? (YA/TIDAK) ");
+        STARTWORD();
+    }
+    if (isWordSame(currentWord, stringToWord("YA"))) {
+        if (!IsStackEmpty(*History)){
+            while (!IsStackEmpty(*History)) 
+            {
+                infotype X;
+                Pop(History, &X);
+            }
+        } else {
+            printf("History kosong, kamu belum memainkan game apapun\n");
+        }
+    } else {
+        printf("History tidak jadi di-reset. Berikut adalah daftar Game yang telah dimainkan\n");
+        PrintHistory(*History, nbElmtStack(*History));
+    }
 }
+
+// int main() {
+//     Map score;
+//     CreateEmptyScore(&score);
+//     InsertScore(&score, "Alan", 100.0);
+//     InsertScore(&score, "Alzaidan", 200.0);
+//     sortmapdesc(&score);
+//     PrintScoreboard(score);
+
+//     return 0;
+// }

@@ -32,7 +32,7 @@ boolean IsFull(Map M){
 valuetype Value(Map M, keytype k){
 /* Mengembalikan nilai value dengan key k dari M */
 /* Jika tidak ada key k pada M, akan mengembalikan Undefined */ 
-    valuetype output = "Undefined";
+    valuetype output = Undefined;
     boolean found = false;
     int i = 0;
     while (i < M.Count && !found) {
@@ -56,11 +56,11 @@ void Insert(Map *M, keytype k, valuetype v){
     if (!IsMemberMap(*M,k)) {
         (*M).Elements[(*M).Count].Key = k;
         (*M).Elements[(*M).Count].Value = v; 
-        (*M).Count ++;
+        (*M).Count++;
     }
 }  
 
-void Delete(Map *M, keytype k){
+void DeleteMap(Map *M, keytype k){
 /* Menghapus Elmt dari Map M. */
 /* I.S. M tidak kosong
         element dengan key k mungkin anggota / bukan anggota dari M */
@@ -86,4 +86,18 @@ boolean IsMemberMap(Map M, keytype k)
 /* Mengembalikan true jika k adalah member dari M */
 {
     return Value(M, k) != Undefined;
+}
+
+void sortmapdesc(Map *M){
+    int i, j;
+    infotypeMap temp;
+    for (i = 0; i < (*M).Count; i++) {
+        for (j = i+1; j < (*M).Count; j++) {
+            if ((*M).Elements[i].Value < (*M).Elements[j].Value) {
+                temp = (*M).Elements[i];
+                (*M).Elements[i] = (*M).Elements[j];
+                (*M).Elements[j] = temp;
+            }
+        }
+    }
 }

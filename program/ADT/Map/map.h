@@ -10,21 +10,21 @@ Deklarasi stack yang dengan implementasi array eksplisit-statik rata kiri
 // #define false 0
 // #define true 1
 #define NilMap 0
-#define MaxEl 10
+#define MaxEl 100
 #define Undefined -999
 
 // typedef int bool;
 typedef char *keytype;
-typedef char *valuetype;
+typedef int valuetype;
 typedef int addressMap;
 
 typedef struct {
 	keytype Key;
 	valuetype Value;
-} infotype;
+} infotypeMap;
 
 typedef struct {
-	infotype Elements[MaxEl];
+	infotypeMap Elements[MaxEl];
 	addressMap Count;
 } Map;
 
@@ -68,5 +68,6 @@ void Delete(Map *M, keytype k);
 
 boolean IsMemberMap(Map M, keytype k);
 
+void sortmapdesc(Map *M);
 
 #endif

@@ -6,7 +6,7 @@ void PrintHistory(Stack History, int n) {
     Stack tempStack = CopyStack(History);
     int count = 1;
     printf("Berikut adalah daftar Game yang telah dimainkan:\n");
-    if!IsStackEmpty(tempStack){
+    if(!IsStackEmpty(tempStack)){
         while (!IsStackEmpty(tempStack)) {
             infotype X;
             Pop(&tempStack, &X);
@@ -17,7 +17,7 @@ void PrintHistory(Stack History, int n) {
             }
         }
     }else {
-        printf("Kamu belum memainkan game apapun\n")
+        printf("Kamu belum memainkan game apapun\n");
     }
 }
 
@@ -38,7 +38,7 @@ void ResetHistory(Stack *History) {
                 Pop(History, &X);
             }
         } else {
-            printf("History kosong, kamu belum memainkan game apapun\n")
+            printf("History kosong, kamu belum memainkan game apapun\n");
         }
     } else {
         printf("History tidak jadi di-reset. Berikut adalah daftar Game yang telah dimainkan\n");

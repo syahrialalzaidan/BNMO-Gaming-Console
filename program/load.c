@@ -57,7 +57,7 @@ void SeparateWords(Word W, Word *W1, Word *W2) {
     W2->Length = j;
 }
 
-void load(char* filename, ArrayDin* Games, Stack *History, Map *RNG, Map *DinerDash, Map *Hangman, Map *TowerOfHanoi, Map *SnakeOnMeteor) {
+void load(char* filename, ArrayDin* Games, Stack *History, ListSetMap *Scoreboard) {
 /*  Membaca save file yang berisi list game yang dapat dimainkan.
     I.S. : filename terdefinisi dan array games kosong.
     F.S. : Array games terisi dengan list game yang ada pada save file. */
@@ -68,9 +68,9 @@ void load(char* filename, ArrayDin* Games, Stack *History, Map *RNG, Map *DinerD
     LoadPita(filepath, true);
     // load games
     STARTWORD();
-    int i = WordToInt(currentWord);
+    int jmlGame = WordToInt(currentWord);
     int j = 0;
-    while (j < i) {
+    while (j < jmlGame) {
         ADVWORD();
         char* name = WordToString(currentWord);
         InsertLast(Games, name);
@@ -78,10 +78,10 @@ void load(char* filename, ArrayDin* Games, Stack *History, Map *RNG, Map *DinerD
     }
 
     // load history
-    PrintArrayDin(*Games);
+    //PrintArrayDin(*Games);
     ADVWORD();
     if (!IsEOP()) {
-        i = WordToInt(currentWord);
+        int i = WordToInt(currentWord);
         j = 0;
         while (j < i) {
             ADVWORD();
@@ -90,79 +90,29 @@ void load(char* filename, ArrayDin* Games, Stack *History, Map *RNG, Map *DinerD
             j++;
         }
     }
-
     // load scoreboard
     ADVWORD();
+
     if (!IsEOP()) {
-        i = WordToInt(currentWord);
         j = 0;
-        if (i != 0) {
-            while (j < i) {
+        while (j < jmlGame) {
+            int jmlScoreboard = WordToInt(currentWord);
+            int k = 0;
+            while (k < jmlScoreboard) {
                 ADVWORD();
+                //separate
                 Word W1, W2;
                 SeparateWords(currentWord, &W1, &W2);
                 name = WordToString(W1);
-                score = WordToInt(W2);
-                Insert(RNG, name, score);
-                j++;
+                score = WordToInt(W2);   
+                InsertAtLSM(Scoreboard, j, name, score);
+                k++;
             }
-        }
-        ADVWORD();
-        i = WordToInt(currentWord);
-        j = 0;
-        if (i != 0) {
-            while (j < i) {
-                ADVWORD();
-                Word W1, W2;
-                SeparateWords(currentWord, &W1, &W2);
-                name = WordToString(W1);
-                score = WordToInt(W2);
-                Insert(DinerDash, name, score);
-                j++;
-            }
-        }
-        ADVWORD();
-        i = WordToInt(currentWord);
-        j = 0; 
-        if (i != 0) {
-            while (j < i) {
-                ADVWORD();
-                Word W1, W2;
-                SeparateWords(currentWord, &W1, &W2);
-                name = WordToString(W1);
-                score = WordToInt(W2);
-                Insert(Hangman, name, score);
-                j++;
-            }
-        }
-        ADVWORD();
-        i = WordToInt(currentWord);
-        j = 0;
-        if (i != 0) {
-            while (j < i) {
-                ADVWORD();
-                Word W1, W2;
-                SeparateWords(currentWord, &W1, &W2);
-                name = WordToString(W1);
-                score = WordToInt(W2);
-                Insert(TowerOfHanoi, name, score);
-                j++;
-            }
-        }
-        ADVWORD();
-        i = WordToInt(currentWord);
-        j = 0;
-        if (i != 0) {
-            while (j < i) {
-                ADVWORD();
-                Word W1, W2;
-                SeparateWords(currentWord, &W1, &W2);
-                name = WordToString(W1);
-                score = WordToInt(W2);
-                Insert(SnakeOnMeteor, name, score);
-                j++;
-            }
+            Scoreboard->Count++;
+            ADVWORD();
+            j++;
         }
     }
+        
     StopLoadPita();
 }
