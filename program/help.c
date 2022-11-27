@@ -18,7 +18,7 @@ void help() {
     printf("| 11| RESET SCOREBOARD | Untuk mereset scoreboard permainan kamu                                                         |\n");
     printf("| 12| HISTORY <n>      | Untuk melihat kenangan permainan yang telah kamu mainkan, sebanyak yang kamu mau                |\n");
     printf("| 13| RESET HISTORY    | Untuk menghapus semua kenangan permainan yang kamu mainkan                                      |\n");
-    printf("| 11| QUIT             | Untuk keluar dari program                                                                       |\n");
-    printf("| 12| HELP             | Untuk bantuin kamu                                                                              |\n");
+    printf("| 14| QUIT             | Untuk keluar dari program                                                                       |\n");
+    printf("| 15| HELP             | Untuk bantuin kamu                                                                              |\n");
     printf("+---+------------------+-------------------------------------------------------------------------------------------------+\n");
 }   
