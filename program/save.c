@@ -33,7 +33,7 @@ void save(ArrayDin *Games, Stack *History, ListSetMap *Scoreboard, char* filenam
             if (i == Games->Neff - 1) {
                 fprintf(file, "%d", Scoreboard->Elements[i].M.Count);
             } else if (i == 0) { 
-                fprintf(file, "\n%d\n", Scoreboard->Elements[i].M.Count);
+                fprintf(file, "%d\n", Scoreboard->Elements[i].M.Count);
             } else {
                 fprintf(file, "%d\n", Scoreboard->Elements[i].M.Count);
             }

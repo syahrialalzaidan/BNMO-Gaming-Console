@@ -12,7 +12,7 @@ boolean isStringSame(char *c1, char*c2){
     return true;
 }
 
-void play(Queue *qg, ArrayDin array){
+void play(Queue *qg, ArrayDin array, float *skor){
 /* Memainkan sebuah permainan tanpa menuliskan daftar game
     I.S. Array game tidak mungkin kosong
     F.S. Game yang berada di posisi Head akan dimainkan */
@@ -59,6 +59,7 @@ void play(Queue *qg, ArrayDin array){
     */
     } else {
         printf("GAME OVER\n");
+        *skor = 0;
         printf("Your score = %d\n", rand()%1000);
     }
     printf("\n");
@@ -67,7 +68,7 @@ void play(Queue *qg, ArrayDin array){
     dequeue(qg, &a);
 }
 
-void playgame(Queue *qg, ArrayDin array){
+void playgame(Queue *qg, ArrayDin array, float *skor){
 /*  Memainkan sebuah permainan.
     I.S. Array game mungkin kosong.
     F.S. Menuliskan daftar game dan game yang berada di posisi Head akan dimainkan. */
@@ -78,6 +79,6 @@ void playgame(Queue *qg, ArrayDin array){
         queuegame(qg, array);
     } else{
         printqueue(*qg);
-        play(qg, array);
+        play(qg, array, skor);
     }
 }

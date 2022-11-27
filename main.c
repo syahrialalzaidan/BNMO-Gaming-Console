@@ -171,7 +171,7 @@ int main() {
     CreateEmptyStack(&history);
     char* filename;
     int command;
-    int score;
+    float score;
     ListSetMap scoreboard;
     CreateEmptyLSM(&scoreboard);
     Stack history;
@@ -230,7 +230,20 @@ int main() {
             queuegame(&queuegames, Games);
         }
         else if(command == 7){
-            playgame(&queuegames, Games);
+            // get the game name in head of queue
+            char* gameName = InfoHead(queuegames);
+            playgame(&queuegames, Games, &score);
+            printf("Masukkan nama: ");
+            STARTWORD();
+            char* name = WordToString(currentWord);
+            IdxType idx = SearchArrayDin(Games, gameName);
+            while (IsMember(scoreboard.Elements[idx].S, name)) {
+                printf("Nama sudah ada, silakan masukkan nama yang lain.\n");
+                printf("Masukkan nama: ");
+                STARTWORD();
+                name = WordToString(currentWord);
+            }
+            InsertAtLSM(&scoreboard, idx, name, score);
         }
         else if(command == 8){
             int nomor = WordToInt(currentWord);
