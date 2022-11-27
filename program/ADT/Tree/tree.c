@@ -26,7 +26,7 @@ address newTreeNode (ElType value)
 // { Jika alokasi gagal, mengirimkan NIL }
 
 boolean isTreeEmpty(BinTree tree){
-    return (tree == NIL);
+    return (tree == NILakin);
 }
 
 void CreateTree(Tree* tree, address node)
@@ -48,7 +48,7 @@ membutuhkan mesin karakter */
     /* Algoritma */
     ADVWORDakin(); /* advance */
     if (currentWord.TabWord[0] == ')'){ /* Basis: pohon kosong */
-        *t = NIL;
+        *t = NILakin;
         if (x == 0){
             *root = *t;
             x++;
