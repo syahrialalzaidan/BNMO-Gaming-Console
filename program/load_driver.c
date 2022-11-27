@@ -2,7 +2,8 @@
 #include "history.h"
 #include "scoreboard.h"
 #include "ADT/listSetMap/listSetMap.h"
-// gcc ADT/listSetMap/listSetMap.c scoreboard.c history.c load_driver.c load.c ADT/mesinkarkata/mesinkar.c ADT/mesinkarkata/mesinkata.c ADT/arraydin/arraydin.c ADT/Stack/stack.c ADT/Map/map.c -o load_driver
+#include "save.h"
+// gcc save.c ADT/listSetMap/listSetMap.c scoreboard.c history.c load_driver.c load.c ADT/mesinkarkata/mesinkar.c ADT/mesinkarkata/mesinkata.c ADT/arraydin/arraydin.c ADT/Stack/stack.c ADT/Map/map.c -o load_driver
 
 int main() {
     ArrayDin Games = MakeArrayDin();
@@ -50,5 +51,6 @@ int main() {
         }
         i++;
     }
+    save(&Games, &History, &scoreboard, "savefile2.txt");
     return 0;
 }
