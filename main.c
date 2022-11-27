@@ -47,7 +47,7 @@ boolean isInputValid(Word kata, int *command)
             *command = 3;
         } else {
             output = false;
-            *command = 11;
+            *command = 15;
         }
     }
     else if (isWordSame(kata, stringToWord("LIST")))
@@ -59,7 +59,7 @@ boolean isInputValid(Word kata, int *command)
             *command = 4;
         } else {
             output = false;
-            *command = 11;
+            *command = 15;
         }
     }
     else if (isWordSame(kata, stringToWord("DELETE")))
@@ -71,7 +71,7 @@ boolean isInputValid(Word kata, int *command)
             *command = 5;
         } else {
             output = false;
-            *command = 11;
+            *command = 15;
         }
     }
     else if (isWordSame(kata, stringToWord("QUEUE")))
@@ -83,7 +83,7 @@ boolean isInputValid(Word kata, int *command)
             *command = 6;
         } else {
             output = false;
-            *command = 11;
+            *command = 15;
         }
     }
     else if (isWordSame(kata, stringToWord("PLAY")))
@@ -95,7 +95,7 @@ boolean isInputValid(Word kata, int *command)
             *command = 7;
         } else {
             output = false;
-            *command = 11;
+            *command = 15;
         }
     }
     else if (isWordSame(kata, stringToWord("SKIP")))
@@ -106,29 +106,54 @@ boolean isInputValid(Word kata, int *command)
             *command = 8;
         } else {
             output = false;
-            *command = 11;
+            *command = 15;
+        }
+        ADVWORD();
+    }
+    else if (isWordSame(kata, stringToWord("SCOREBOARD")))
+    {
+        output = true;
+        *command = 9;
+    } 
+    else if (isWordSame(kata, stringToWord("HISTORY")))
+    {
+        output = true;
+        *command = 11;
+    } 
+    else if (isWordSame(kata, stringToWord("RESET")))
+    {
+        ADVWORD();
+        if (isWordSame(currentWord, stringToWord("SCOREBOARD"))){
+            output = true;
+            *command = 10;
+        } else if (isWordSame(currentWord, stringToWord("HISTORY"))) {
+            output = true;
+            *command = 12;
+        } else{
+            output = false;
+            *command = 15;
         }
         ADVWORD();
     }
     else if (isWordSame(kata, stringToWord("HELP")))
     {
         output = true;
-        *command = 9;
+        *command = 13;
     }
     else if (isWordSame(kata, stringToWord("QUIT")))
     {
         output = true;
-        *command = 10;
+        *command = 14;
         ADVWORD();
     }
     else
     {
         output = false;
-        *command = 30;
+        *command = 15;
     }
     if(! IsEOP()){
         output = false;
-        *command = 30;
+        *command = 15;
     }
     while(! IsEOP()) ADVWORD();
     return output;
@@ -205,16 +230,31 @@ int main() {
         }
         else if(command == 8){
             int nomor = WordToInt(currentWord);
-
             skipgame(&queuegames, nomor, Games);
         }
-        else if(command == 9){
+        else if (command == 9)
+        {
+            /* scoreboard */
+        }
+        else if (command == 10)
+        {
+            /* reset scoreboard */
+        }
+        else if (command == 11)
+        {
+            /* history */
+        }
+        else if (command == 12)
+        {
+            /* reset history*/
+        }
+        else if(command == 13){
             help();
         }
         printf("ENTER COMMAND: ");
         STARTWORD();
         boolean cek2 = isInputValid(currentWord, &command);
-        while ((command == 30 || command == 0 || command == 1) || (!cek2)) {
+        while ((command == 15 || command == 0 || command == 1) || (!cek2)) {
             if (command == 1 || command == 0) {
                 printf("Sistem sudah membaca file, Kamu bisa memulai ulang sistem untuk membaca file lain.\n\n");
             } else {
@@ -224,7 +264,6 @@ int main() {
             STARTWORD();
             cek2 = isInputValid(currentWord, &command);
         }
-        
     }
     save(&Games, "savefile1.txt");
     CreateQueue(&queuegames);
