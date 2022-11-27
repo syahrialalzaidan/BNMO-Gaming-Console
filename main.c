@@ -199,7 +199,7 @@ int main() {
                 STARTWORD();
             }
         } else if (command == 0) {
-            start(&Games);
+            start(&Games, &history, &scoreboard);
         }
     }
     if (command == 1) {
