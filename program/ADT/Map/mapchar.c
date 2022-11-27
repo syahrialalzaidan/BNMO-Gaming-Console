@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "../boolean/boolean.h"
-#include "mapscore.h"
+#include "mapchar.h"
 
 
 /* Definisi Map M kosong : M.Count = Nil */
@@ -10,7 +10,7 @@
 /* ********* Prototype ********* */
 
 /* *** Konstruktor/Kreator *** */
-void CreateEmptyScore(Map *M){
+void CreateEmptyChar(Map *M){
 /* I.S. Sembarang */
 /* F.S. Membuat sebuah Map M kosong berkapasitas MaxEl */
 /* Ciri Map kosong :  count bernilai Nil */
@@ -18,21 +18,21 @@ void CreateEmptyScore(Map *M){
 }
 
 /* ********* Predikat Untuk test keadaan KOLEKSI ********* */
-boolean IsMapEmptyScore(Map M){
+boolean IsMapEmptyChar(Map M){
 /* Mengirim true jika Map M kosong*/
 /* Ciri Map kosong : count bernilai Nil */
     return (M.Count == NilMap);
 }
-boolean IsFullScore(Map M){
+boolean IsFullChar(Map M){
 /* Mengirim true jika Map M penuh */
 /* Ciri Map penuh : count bernilai MaxEl */
     return (M.Count == MaxEl);
 }
 /* ********** Operator Dasar Map ********* */
-valuetype ValueScore(Map M, keytype k){
+valuetypechar ValueChar(Map M, keytype k){
 /* Mengembalikan nilai value dengan key k dari M */
 /* Jika tidak ada key k pada M, akan mengembalikan Undefined */ 
-    valuetype output = Undefined;
+    valuetypechar output = "Undefined";
     boolean found = false;
     int i = 0;
     while (i < M.Count && !found) {
@@ -48,19 +48,19 @@ valuetype ValueScore(Map M, keytype k){
     
 }
 
-void InsertScore(Map *M, keytype k, valuetype v){
+void InsertChar(Map *M, keytype k, valuetypechar v){
 /* Menambahkan Elmt sebagai elemen Map M. */
 /* I.S. M mungkin kosong, M tidak penuh
         M mungkin sudah beranggotakan v dengan key k */
 /* F.S. v menjadi anggota dari M dengan key k. Jika k sudah ada, operasi tidak dilakukan */
-    if (!IsMemberMapScore(*M,k)) {
+    if (!IsMemberChar(*M,k)) {
         (*M).Elements[(*M).Count].Key = k;
         (*M).Elements[(*M).Count].Value = v; 
         (*M).Count ++;
     }
 }  
 
-void DeleteScore(Map *M, keytype k){
+void DeleteChar(Map *M, keytype k){
 /* Menghapus Elmt dari Map M. */
 /* I.S. M tidak kosong
         element dengan key k mungkin anggota / bukan anggota dari M */
@@ -82,10 +82,10 @@ void DeleteScore(Map *M, keytype k){
     (*M).Count--;
 }
 
-boolean IsMemberMapScore(Map M, keytype k)
+boolean IsMemberChar(Map M, keytype k)
 /* Mengembalikan true jika k adalah member dari M */
 {
-    return ValueScore(M, k) != Undefined;
+    return ValueChar(M, k) != "Undefined";
 }
 
 void sortmapdesc(Map *M){

@@ -1,12 +1,13 @@
 #include "tebakkata.h"
+//gcc 
 
 void generatemap(Map *kamus){
-    Insert(kamus, "mayornaufal", "K01tertampan");
-    Insert(kamus, "gibeh", "dinosaurus");
-    Insert(kamus, "argentina", "messi");
-    Insert(kamus, "swedia", "negara dengan pulau terbanyak");
-    Insert(kamus, "alstrukdat", "matkul favorit ariq");
-    Insert(kamus, "kalimantan", "pulau terbesar di indonesia");
+    InsertChar(kamus, "mayornaufal", "K01tertampan");
+    InsertChar(kamus, "gibeh", "dinosaurus");
+    InsertChar(kamus, "argentina", "messi");
+    InsertChar(kamus, "swedia", "negara dengan pulau terbanyak");
+    InsertChar(kamus, "alstrukdat", "matkul favorit ariq");
+    InsertChar(kamus, "kalimantan", "pulau terbesar di indonesia");
 }
 
 int countkata(char *kata){
@@ -31,16 +32,16 @@ boolean isstringequal(char *kata1, char *kata2){
     return true;
 }
 
-void playtebakkata(){
+int playtebakkata(){
     time_t t;
     srand(time(&t));
     Map kamus;
-    CreateEmpty(&kamus);
+    CreateEmptyChar(&kamus);
     generatemap(&kamus);
     boolean win = false;
     int angka = rand() % 6;
     printf("Tebak Kata dengan benar! (DALAM HURUF KECIL)\n");
-    printf("Clue : %s\n", Value(kamus, kamus.Elements[angka].Key));
+    printf("Clue : %s\n", ValueChar(kamus, kamus.Elements[angka].Key));
     int n = 0;
     for(int i=0; i < countkata(kamus.Elements[angka].Key); i++){
         printf("_ ");
@@ -60,6 +61,7 @@ void playtebakkata(){
         if (found){
             printf("Selamat jawaban anda benar!\n");
             printf("Anda mendapatkan %d poin!\n", count+1);
+            return count+1;
             win = true;
         }
         else {
