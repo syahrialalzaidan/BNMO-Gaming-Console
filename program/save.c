@@ -19,43 +19,59 @@ void save(ArrayDin *Games, Stack *History, ListSetMap *Scoreboard, char* filenam
                 fprintf(file, "%s\n", Games->A[i]);
             }
         }
-        fprintf(file, "\n%d\n", nbElmtStack(*History));
+        fprintf(file, "\n%d", nbElmtStack(*History));
         infotype e;
-        for (int i = 0; i < nbElmtStack(*History); i++) {
-            if (i == nbElmtStack(*History) - 1) {
-                fprintf(file, "%s", InfoTop(*History));
-            } else {
-                fprintf(file, "%s\n", InfoTop(*History));
-            }
-            Pop(History, &e);
-        }
-        for (int i = 0; i < Games->Neff; i++) {
-            if (i == Games->Neff - 1) {
-                fprintf(file, "%d", Scoreboard->Elements[i].M.Count);
-            } else if (i == 0) { 
-                fprintf(file, "\n%d\n", Scoreboard->Elements[i].M.Count);
-            } else {
-                fprintf(file, "%d\n", Scoreboard->Elements[i].M.Count);
-            }
-            for(int j = 0; j < Scoreboard->Elements[i].M.Count; j++) {
-                if (i == Scoreboard->Count - 1) {
-                    fprintf(file, "%s ", Scoreboard->Elements[i].M.Elements[j].Key);
-                    float el = Scoreboard->Elements[i].M.Elements[j].Value;
-                    int el1 = (int) el * 100;
-                    if (el1 == el * 100) {
-                        fprintf(file, "%.0f", el);
-                    } else {
-                        fprintf(file, "%.2f", el);
-                    }
+        Stack CopyHistory = CopyStack(*History);
+        if (nbElmtStack(*History) > 0) {
+            for (int i = 0; i < nbElmtStack(*History); i++) {
+                Pop(&CopyHistory, &e);
+                if (i == nbElmtStack(*History) - 1) {
+                    fprintf(file, "%s", e);
+                } else if (i == 0) {
+                    fprintf(file, "\n%s\n", e);
                 } else {
-                    fprintf(file, "%s ", Scoreboard->Elements[i].M.Elements[j].Key);
-                    float el = Scoreboard->Elements[i].M.Elements[j].Value;
-                    int el1 = (int) el * 100;
-                    if (el1 == el * 100) {
-                        fprintf(file, "%.0f\n", el);
+                    fprintf(file, "%s\n", e);
+                }
+            }
+        }
+        printf("History saved\n"); 
+        if (Games->Neff != 0) {
+            for (int i = 0; i < Games->Neff; i++) {
+                if (i == Games->Neff - 1) {
+                    fprintf(file, "%d", Scoreboard->Elements[i].M.Count);
+                } else if (i == 0) { 
+                    fprintf(file, "\n%d\n", Scoreboard->Elements[i].M.Count);
+                } else {
+                    fprintf(file, "%d\n", Scoreboard->Elements[i].M.Count);
+                }
+                for(int j = 0; j < Scoreboard->Elements[i].M.Count; j++) {
+                    if (i == Scoreboard->Count - 1) {
+                        fprintf(file, "%s ", Scoreboard->Elements[i].M.Elements[j].Key);
+                        float el = Scoreboard->Elements[i].M.Elements[j].Value;
+                        int el1 = (int) el * 100;
+                        if (el1 == el * 100) {
+                            fprintf(file, "%.0f", el);
+                        } else {
+                            fprintf(file, "%.2f", el);
+                        }
                     } else {
-                        fprintf(file, "%.2f\n", el);
+                        fprintf(file, "%s ", Scoreboard->Elements[i].M.Elements[j].Key);
+                        float el = Scoreboard->Elements[i].M.Elements[j].Value;
+                        int el1 = (int) el * 100;
+                        if (el1 == el * 100) {
+                            fprintf(file, "%.0f\n", el);
+                        } else {
+                            fprintf(file, "%.2f\n", el);
+                        }
                     }
+                }
+            }
+        } else {
+            for (int i = 0; i < Games->Neff; i++) {
+                if (i == Games->Neff - 1) {
+                    fprintf(file, "%d", 0);
+                } else {
+                    fprintf(file, "%d\n", 0);
                 }
             }
         }
