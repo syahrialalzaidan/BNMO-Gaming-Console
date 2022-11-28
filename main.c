@@ -15,14 +15,14 @@
 #include "program/skipgame.h"
 #include "program/help.h"
 #include "program/ADT/Stack/stack.h"
-#include "program/ADT/listSetMap/listSetMap.h"
+#include "program/ADT/Map/map.h"
 #include "program/history.h"
 #include "program/scoreboard.h"
 #include "bnmo_pic.h"
 
 //  copy paste below to run main
 //  gcc program/ADT/queue/queue.c bnmo_pic.c program/help.c program/skipgame.c program/playgame.c program/queuegame.c program/delete_game.c program/list_game.c program/create_game.c program/save.c program/load.c program/start.c program/ADT/queue/queue.c program/ADT/mesinkarkata/mesinkar.c program/ADT/mesinkarkata/mesinkata.c program/ADT/arraydin/arraydin.c main.c game/dinnerdash.c game/rng.c game/tebakkata.c game/queuedinnerdash.c program/ADT/Map/map.c -o main
-// gcc program/ADT/mesinkarkata/mesinkata.c program/ADT/mesinkarkata/mesinkar.c program/ADT/arraydin/arraydin.c program/ADT/queue/queue.c program/load.c program/start.c program/save.c program/create_game.c program/list_game.c program/delete_game.c program/queuegame.c program/playgame.c program/skipgame.c program/help.c program/ADT/stack/stack.c program/ADT/listSetMap/listSetMap.c program/history.c program/scoreboard.c bnmo_pic.c main.c game/dinnerdash.c game/SnakeOnMeteor.c game/towerofhanoi.c game/rng.c game/tebakkata.c game/queuedinnerdash.c program/ADT/Map/map.c program/ADT/listdp/listdp.c program/ADT/Map/mapchar.c program/ADT/StackHanoi/stackhanoi.c program/ADT/Set/set.c -o main
+// gcc program/ADT/mesinkarkata/mesinkata.c program/ADT/mesinkarkata/mesinkar.c program/ADT/arraydin/arraydin.c program/ADT/queue/queue.c program/load.c program/start.c program/save.c program/create_game.c program/list_game.c program/delete_game.c program/queuegame.c program/playgame.c program/skipgame.c program/help.c program/ADT/stack/stack.c program/ADT/Map/map.c program/history.c program/scoreboard.c bnmo_pic.c main.c game/dinnerdash.c game/SnakeOnMeteor.c game/towerofhanoi.c game/rng.c game/tebakkata.c game/queuedinnerdash.c program/ADT/listdp/listdp.c program/ADT/Map/mapchar.c program/ADT/StackHanoi/stackhanoi.c program/ADT/Set/set.c -o main
 //  or try run make main in bin folder
 
 boolean isInputValid(Word kata, int *command)
@@ -173,8 +173,8 @@ int main() {
     char* filename;
     int command;
     float score;
-    ListSetMap scoreboard;
-    CreateEmptyLSM(&scoreboard);
+    ListMap scoreboard;
+    CreateEmptyLM(&scoreboard);
 
 
     // First Menu 
@@ -182,7 +182,7 @@ int main() {
     printf("\nPILIHAN MENU:\n=> START\n=> LOAD (filename.txt)\n");
     printf("ENTER COMMAND: ");
     STARTWORD();
-    while (IsArrayEmpty(Games) || IsStackEmpty(history) || IsLSMEmpty(scoreboard)) {
+    while (IsArrayEmpty(Games) || IsStackEmpty(history) || IsLMEmpty(scoreboard)) {
         while (!isInputValid(currentWord, &command)) {
             printf("Command tidak dikenali, silakan masukkan command yang valid.\n\n");
             while (! IsEOP()) ADVWORD();
@@ -192,7 +192,7 @@ int main() {
         if (command == 1) {
             filename = WordToString(currentWord);
             load(filename, &Games, &history, &scoreboard);
-            if (IsArrayEmpty(Games) || IsStackEmpty(history) || IsLSMEmpty(scoreboard)) {
+            if (IsArrayEmpty(Games) || IsStackEmpty(history) || IsLMEmpty(scoreboard)) {
                 printf("File tidak ditemukan, silakan masukkan nama file yang valid.\n\n");
                 printf("ENTER COMMAND: ");
                 STARTWORD();
@@ -211,7 +211,7 @@ int main() {
     }
 
     // Main Menu
-    printf("PILIHAN MENU:\n=> SAVE (filename.txt)\n=> CREATE GAME\n=> LIST GAME\n=> DELETE GAME\n=> QUEUE GAME\n=> PLAY GAME\n=> SKIP GAME (N)\n=> QUIT\n=> HELP\n");
+    printf("PILIHAN MENU:\n=> SAVE (filename.txt)\n=> CREATE GAME\n=> LIST GAME\n=> DELETE GAME\n=> QUEUE GAME\n=> PLAY GAME\n=> SKIP GAME (N)\n=> SCOREBOARD\n=>RESET SCOREBOARD\n=>HISTORY\n=>RESET HISTORY\n=> QUIT\n=> HELP\n");
     printf("(N adalah jumlah game yang ingin dilewat pada queue)\n");
 
     while (!isWordSame(currentWord, stringToWord("QUIT"))){
@@ -220,13 +220,13 @@ int main() {
             save(&Games, &history, &scoreboard, filename);
         }
         else if(command == 3){
-            creategame(&Games);
+            creategame(&Games, &scoreboard);
         }
         else if(command == 4){
             listgame(Games);
         }
         else if(command == 5){
-            deletegame(&Games, queuegames);
+            deletegame(&Games, queuegames, &scoreboard);
         }
         else if(command == 6){
             queuegame(&queuegames, Games);
@@ -239,14 +239,15 @@ int main() {
             STARTWORD();
             char* name = WordToString(currentWord);
             IdxType idx = SearchArrayDin(Games, gameName);
-            while (IsMember(scoreboard.Elements[idx].S, name)) {
+            while (IsMemberMap(scoreboard.Elmt[idx], name)) {
                 printf("Nama sudah ada, silakan masukkan nama yang lain.\n");
                 printf("Masukkan nama: ");
                 STARTWORD();
                 name = WordToString(currentWord);
             }
-            InsertAtLSM(&scoreboard, idx, name, score);
-            sortmapdesc(&scoreboard.Elements[idx].M);
+            Insert(&scoreboard.Elmt[idx], name, score);
+            printf("\nScore player %s berhasil dimasukkan!\n", name);
+            sortmapdesc(&scoreboard.Elmt[idx]);
         }
         else if(command == 8){
             int nomor = WordToInt(currentWord);
@@ -257,7 +258,7 @@ int main() {
             int i = 0;
             for (i=0;i< Games.Neff;i++){
                 printf("** SCOREBOARD GAME %s **\n", Games.A[i]);
-                PrintScoreboard (scoreboard.Elements[i].M);
+                PrintScoreboard (scoreboard.Elmt[i]);
                 printf("\n");
             }
         }
@@ -279,6 +280,7 @@ int main() {
         }
         printf("ENTER COMMAND: ");
         STARTWORD();
+        printf("\n");
         boolean cek2 = isInputValid(currentWord, &command);
         while ((command == 15 || command == 0 || command == 1) || (!cek2)) {
             if (command == 1 || command == 0) {
@@ -291,7 +293,7 @@ int main() {
             cek2 = isInputValid(currentWord, &command);
         }
     }
-    save(&Games, &history, &scoreboard, "savefile1.txt");
+    save(&Games, &history, &scoreboard, "currentbackup.txt");
     CreateQueue(&queuegames);
     printf("Anda Keluar dari game BNMO\nBye byee.........\n");
     return 0;

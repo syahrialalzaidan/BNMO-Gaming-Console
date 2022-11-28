@@ -23,7 +23,7 @@ void play(Queue *qg, ArrayDin array, float *skor){
     char* rise = "RISEWOMAN";
     char* eiffel = "EIFFEL TOWER";
     char* toh = "Tower of Hanoi";
-    char* som = "Snake on Meteor";
+    char* som = "SNAKE ON METEOR";
     char* hangman = "Hangman";
     char* akinator = "Akinator";
 
@@ -59,8 +59,8 @@ void play(Queue *qg, ArrayDin array, float *skor){
     
     } else {
         printf("GAME OVER\n");
-        *skor = 0;
-        printf("Your score = %d\n", rand()%1000);
+        *skor = rand()%1000;
+        printf("Your score = %d\n", *skor);
     }
     printf("\n");
 

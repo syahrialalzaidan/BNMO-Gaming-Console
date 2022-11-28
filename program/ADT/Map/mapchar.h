@@ -2,7 +2,7 @@
 #define mapChar_H
 #include <stdio.h>
 #include "../boolean/boolean.h"
-
+#include "../mesinkarkata/mesinkata.h"
 /* MODUL Map
 Deklarasi stack yang dengan implementasi array eksplisit-statik rata kiri
 */

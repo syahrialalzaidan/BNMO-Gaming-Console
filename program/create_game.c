@@ -49,7 +49,7 @@ Word concatword(Word w1, Word w2) {
     return stringToWord(str);
 }
 
-void creategame (ArrayDin *array){
+void creategame (ArrayDin *array, ListMap *scoreboard) {
 /*  Menambahkan game baru pada daftar game 
     I.S. Array games terdefinisi dan terisi.
     F.S. Game yang baru ditambahkan jika game belum ada di daftar game. */
@@ -77,6 +77,8 @@ void creategame (ArrayDin *array){
         printf("|,'o | \n");
         printf("`---- \n");
         InsertLastArray(array, string);
+        scoreboard->Neff++;
+        CreateEmpty(&scoreboard->Elmt[scoreboard->Neff - 1]);
     }
     else{
         printf("Game telah tersedia\n\n");

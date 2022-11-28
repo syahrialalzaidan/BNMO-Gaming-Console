@@ -85,7 +85,7 @@ void DeleteChar(MapChar *M, keytype k){
 boolean IsMemberChar(MapChar M, keytype k)
 /* Mengembalikan true jika k adalah member dari M */
 {
-    return ValueChar(M, k) != "Undefined";
+    return !isWordSame(stringToWord(ValueChar(M, k)), stringToWord("Undefined"));
 }
 
 void sortMapCharchardesc(MapChar *M){

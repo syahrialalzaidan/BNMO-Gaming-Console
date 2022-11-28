@@ -8,7 +8,8 @@
         "queuedinnerdash.h": "c",
         "start.h": "c",
         "delete_game.h": "c",
-        "stackhanoi.h": "c"
+        "stackhanoi.h": "c",
+        "save.h": "c"
     },
     "C_Cpp.dimInactiveRegions": false
 }

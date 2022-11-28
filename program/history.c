@@ -37,6 +37,7 @@ void ResetHistory(Stack *History) {
                 infotype X;
                 Pop(History, &X);
             }
+            printf("History berhasil di-reset\n");
         } else {
             printf("History kosong, kamu belum memainkan game apapun\n");
         }

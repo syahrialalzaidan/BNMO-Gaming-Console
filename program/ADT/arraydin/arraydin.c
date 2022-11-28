@@ -163,7 +163,7 @@ ArrayDin CopyArrayDin(ArrayDin array){
 IdxType SearchArrayDin(ArrayDin array, ElType el){
     int e = -1, i=0;
     while (i < array.Neff && e == -1) {
-        if (array.A[i] == el) {
+        if (isWordSame(stringToWord(array.A[i]), stringToWord(el))) {
             e = i;
         }
         i++;

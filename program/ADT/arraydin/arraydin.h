@@ -1,6 +1,8 @@
 #ifndef __ARRAY_DINAMIK__
 #define __ARRAY_DINAMIK__
 
+
+#include "../mesinkarkata/mesinkata.h"
 // Boolean
 #define boolean unsigned char
 #define true 1

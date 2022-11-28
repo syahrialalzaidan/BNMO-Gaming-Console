@@ -4,7 +4,6 @@
 #include "ADT/mesinkarkata/mesinkar.h"
 #include "ADT/mesinkarkata/mesinkata.h"
 #include "load.h"
-// gcc program/ADT/mesinkarkata/mesinkar.c program/ADT/mesinkarkata/mesinkata.c program/ADT/arraydin/arraydin.c program/load.c program/load_driver.c -o load_driver
 
 
 char* AddPath(char* filename) {
@@ -57,7 +56,7 @@ void SeparateWords(Word W, Word *W1, Word *W2) {
     W2->Length = j;
 }
 
-void load(char* filename, ArrayDin* Games, Stack *History, ListSetMap *Scoreboard) {
+void load(char* filename, ArrayDin* Games, Stack *History, ListMap *Scoreboard) {
 /*  Membaca save file yang berisi list game yang dapat dimainkan.
     I.S. : filename terdefinisi dan array games kosong.
     F.S. : Array games terisi dengan list game yang ada pada save file. */
@@ -97,6 +96,9 @@ void load(char* filename, ArrayDin* Games, Stack *History, ListSetMap *Scoreboar
         if (!IsEOP()) {
             j = 0;
             while (j < jmlGame) {
+                // Map M;
+                // CreateEmpty(&M);
+                // InsertMapAt(Scoreboard, M, j);
                 int jmlScoreboard = WordToInt(currentWord);
                 int k = 0;
                 while (k < jmlScoreboard) {
@@ -106,10 +108,10 @@ void load(char* filename, ArrayDin* Games, Stack *History, ListSetMap *Scoreboar
                     SeparateWords(currentWord, &W1, &W2);
                     name = WordToString(W1);
                     score = WordToFloat(W2);
-                    InsertAtLSM(Scoreboard, j, name, score);
+                    Insert(&Scoreboard->Elmt[j], name, score);
                     k++;
                 }
-                Scoreboard->Count++;
+                Scoreboard->Neff++;
                 ADVWORD();
                 j++;
             }

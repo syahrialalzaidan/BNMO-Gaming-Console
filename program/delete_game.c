@@ -16,7 +16,7 @@ boolean IsInQueue(Queue queuegame, char* elQ) {
     return found;
 }
 
-void deletegame(ArrayDin *array, Queue queuegame){
+void deletegame(ArrayDin *array, Queue queuegame, ListMap *scoreboard){
 /*  Menghapus sebuah game dari daftar game.
     I.S. Array game tidak mungkin kosong.
     F.S. Game yang ingin dihapus telah hilang dari array jika 
@@ -29,8 +29,9 @@ void deletegame(ArrayDin *array, Queue queuegame){
     IdxType i = input;
     char* el = array->A[i-1];
     printf("Game yang akan dihapus: %s\n", el);
-    if (i > 6 && !IsInQueue(queuegame, el)) {
+    if (i > 7 && !IsInQueue(queuegame, el)) {
         DeleteAt(array, i-1);
+        DeleteMapAt(scoreboard, i-1);
         printf("Game berhasil dihapus\n");
     }
     else{

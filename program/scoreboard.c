@@ -115,7 +115,7 @@ void PrintScoreboard(Map M) {
     }
 }
 
-void ResetScoreboard(ListSetMap *SM, ArrayDin G) {
+void ResetScoreboard(ListMap *LM, ArrayDin G) {
     printf("DAFTAR SCOREBOARD:\n");
     printf("0. All\n");
     for (int i = 0; i < G.Neff; i++) {
@@ -134,7 +134,7 @@ void ResetScoreboard(ListSetMap *SM, ArrayDin G) {
     if (idx == 0) {
         str = "All";
     } else {
-        str = Get(G, idx);
+        str = Get(G, idx-1);
     }
     printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD %s (YA/TIDAK)? ", Get(G, idx-1));
     STARTWORD();
@@ -145,16 +145,35 @@ void ResetScoreboard(ListSetMap *SM, ArrayDin G) {
         STARTWORD();
     }
     if (isWordSame(currentWord, stringToWord("YA"))) {
-        if (!IsMapEmpty(SM->Elements[idx].M)) {
-            //make SM->Elements[idx].M empty
-            CreateEmpty(&SM->Elements[idx].M);
-            printf("Scoreboard berhasil di-reset\n");
+        if (idx != 0) {
+            if (!IsMapEmpty(LM->Elmt[idx])) {
+                //make SM->Elements[idx].M empty
+                CreateEmpty(&LM->Elmt[idx-1]);
+                printf("Scoreboard berhasil di-reset\n");
+            } else {
+                printf("Scoreboard kosong\n");
+            }
         } else {
-            printf("Scoreboard kosong\n");
+            for (int i = 0; i < G.Neff; i++) {
+                if (!IsMapEmpty(LM->Elmt[i])) {
+                    //make SM->Elements[idx].M empty
+                    CreateEmpty(&LM->Elmt[i]);
+                }
+            }
+            printf("Scoreboard berhasil di-reset\n");
         }
     } else {
         printf("Scoreboard tidak jadi di-reset. Berikut adalah Scoreboard game %s:\n", Get(G, idx));
-        PrintScoreboard(SM->Elements[idx].M);
+        if (idx != 0) {
+            PrintScoreboard(LM->Elmt[idx-1]);
+            printf("\n");
+        } else {
+            for (int i = 0; i < G.Neff; i++) {
+                printf("Scoreboard game %s:\n", Get(G, i));
+                PrintScoreboard(LM->Elmt[i]);
+                printf("\n");
+            }
+        }
     }
 }
 

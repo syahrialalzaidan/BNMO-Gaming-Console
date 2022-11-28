@@ -17,11 +17,19 @@ void CreateEmpty(Map *M){
     (*M).Count = NilMap;
 }
 
+void CreateEmptyLM(ListMap *LM){
+    (*LM).Neff = NilMap;
+}
+
 /* ********* Predikat Untuk test keadaan KOLEKSI ********* */
 boolean IsMapEmpty(Map M){
 /* Mengirim true jika Map M kosong*/
 /* Ciri Map kosong : count bernilai Nil */
     return (M.Count == NilMap);
+}
+
+boolean IsLMEmpty(ListMap LM) {
+    return (LM.Neff == NilMap);
 }
 boolean IsFull(Map M){
 /* Mengirim true jika Map M penuh */
@@ -36,7 +44,7 @@ valuetype Value(Map M, keytype k){
     boolean found = false;
     int i = 0;
     while (i < M.Count && !found) {
-        if ((M.Elements[i]).Key == k){
+        if (isWordSame(stringToWord(M.Elements[i].Key), stringToWord(k))) {
             found = true;
             output = (M.Elements[i]).Value;
         }
@@ -60,12 +68,18 @@ void Insert(Map *M, keytype k, valuetype v){
     }
 }  
 
+// void InsertMapAt(ListMap *LM, Map M, addressMap i) {
+//     if (i < MaxEl) {
+//         (*LM).Elmt[i] = M;
+//         (*LM).Neff++;
+//     }
+// }
+
 void DeleteMap(Map *M, keytype k){
 /* Menghapus Elmt dari Map M. */
 /* I.S. M tidak kosong
         element dengan key k mungkin anggota / bukan anggota dari M */
 /* F.S. element dengan key k bukan anggota dari M */
-
     boolean found = false;
     int i = 0;
     while (i < (*M).Count && !found) {
@@ -80,6 +94,13 @@ void DeleteMap(Map *M, keytype k){
         (*M).Elements[i] = (*M).Elements[i+1];
     }
     (*M).Count--;
+}
+
+void DeleteMapAt(ListMap *LM, addressMap i) {
+    for (i; i < (*LM).Neff-1; i++) {
+        (*LM).Elmt[i] = (*LM).Elmt[i+1];
+    }
+    (*LM).Neff--;
 }
 
 boolean IsMemberMap(Map M, keytype k)
