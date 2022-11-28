@@ -11,6 +11,8 @@ void namahewan(char* file,char* hewan[41]);
 
 void jawab(char* file, char* jawaban[41], int nomer[41]);
 
+void printakinator();
+
 int akinator(); 
 
 #endif
