@@ -159,7 +159,8 @@ void printdinnerdash(){
     printf(" |____/|_|_| |_|\\___|_|    |____/ \\__,_|___/_| |_|\n\n");
 }
 
-void playdinnerdash(float *skor) {
+
+void playdinnerdash(float *score) {
     //Program utama untuk menjalankan game
 
     //Kamus Lokal
@@ -245,8 +246,9 @@ void playdinnerdash(float *skor) {
         while (! IsEOP()) ADVWORD();   
         printf("\n");
     }
-    *skor = (float) saldo;
-    printf("Permainan telah selesai. Anda mendapatkan %.0f poin.\n", *skor);
+    printf("Permainan telah selesai. Anda mendapatkan %d poin.\n", saldo);
+    *score += saldo;
+
 }
 
 /*

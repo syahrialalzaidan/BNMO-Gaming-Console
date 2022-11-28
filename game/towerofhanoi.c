@@ -98,7 +98,9 @@ void gameover(){
     printf(" |_|_|                                                              |_|_|\n\n");
 }
 
-void playtowerofhanoi(float *skor){
+
+void playtowerofhanoi(float *score){
+
     Stack tower1, tower2, tower3, temp;
     int temp1, temp2, info1, info2, info3;
     float count = 0, optimal, n;
@@ -134,7 +136,7 @@ void playtowerofhanoi(float *skor){
         displaytower(n, tower1, tower2, tower3);
         printf("TOWER ASAL: ");
         STARTWORD();
-        if (currentWord.TabWord[0] == 'Q' && currentWord.Length == 1) *skor = 0;
+        if (currentWord.TabWord[0] == 'Q' && currentWord.Length == 1) break;
         temp1 = WordConverter(currentWord);
         if(currentWord.Length != 1) temp1 = 9;
         if(! IsEOP()) temp1 = 9;
@@ -143,7 +145,7 @@ void playtowerofhanoi(float *skor){
         printf("TOWER TUJUAN: ");
         STARTWORD();
         printf("\n");
-        if (currentWord.TabWord[0] == 'Q' && currentWord.Length == 1) *skor = 0;
+        if (currentWord.TabWord[0] == 'Q' && currentWord.Length == 1) break;
         temp2 = WordConverter(currentWord);
         if(currentWord.Length != 1) temp2 = 9;
         if (! IsEOP()) temp2 = 9;
@@ -250,15 +252,24 @@ void playtowerofhanoi(float *skor){
         }
         else printf("Input INVALID!\n");
     }
-    displaytower(n, tower1, tower2, tower3);
-    gameover();
-    printf("Selamat Anda berhasil menyelesaikan permainan ini!!\n");
-    *skor = (optimal / count) * 10 * (n/5);
-    printf("Skor : %.2f\n", skor);
+    if (count >= optimal){
+        displaytower(n, tower1, tower2, tower3);
+        gameover();
+        printf("Selamat Anda berhasil menyelesaikan permainan ini!!\n");
+        *score += ((optimal / count) * 10 * (n/5));
+        printf("Skor : %.2f\n", *score);
+    }
+    else {
+        gameover();
+        printf("Kok nyerah??\n");
+    }
 }
 
-// int main() {
-//     float x;
-//     playtowerofhanoi(&x);
-//     return 0;
-// }
+/* Driver
+int main() {
+    float x = 0;
+    playtowerofhanoi(&x);
+    printf("Skor akhir : %.2f\n", x);
+    return 0;
+}
+*/
