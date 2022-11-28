@@ -22,7 +22,7 @@ void printart();
 
 void gameover();
 
-float playtowerofhanoi();
+void playtowerofhanoi(float *score);
 
 
 

@@ -32,7 +32,7 @@ boolean isstringequal(char *kata1, char *kata2){
     return true;
 }
 
-int playtebakkata(){
+void playtebakkata(float *score){
     time_t t;
     srand(time(&t));
     Map kamus;
@@ -61,7 +61,7 @@ int playtebakkata(){
         if (found){
             printf("Selamat jawaban anda benar!\n");
             printf("Anda mendapatkan %d poin!\n", count+1);
-            return count+1;
+            *score += (count+1);
             win = true;
         }
         else {

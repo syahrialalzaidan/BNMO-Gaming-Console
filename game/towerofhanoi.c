@@ -98,7 +98,7 @@ void gameover(){
     printf(" |_|_|                                                              |_|_|\n\n");
 }
 
-float playtowerofhanoi(){
+void playtowerofhanoi(float *score){
     Stack tower1, tower2, tower3, temp;
     int temp1, temp2, info1, info2, info3;
     float skor, count = 0, optimal, n;
@@ -134,7 +134,7 @@ float playtowerofhanoi(){
         displaytower(n, tower1, tower2, tower3);
         printf("TOWER ASAL: ");
         STARTWORD();
-        if (currentWord.TabWord[0] == 'Q' && currentWord.Length == 1) return 0;
+        if (currentWord.TabWord[0] == 'Q' && currentWord.Length == 1) break;
         temp1 = WordConverter(currentWord);
         if(currentWord.Length != 1) temp1 = 9;
         if(! IsEOP()) temp1 = 9;
@@ -143,7 +143,7 @@ float playtowerofhanoi(){
         printf("TOWER TUJUAN: ");
         STARTWORD();
         printf("\n");
-        if (currentWord.TabWord[0] == 'Q' && currentWord.Length == 1) return 0;
+        if (currentWord.TabWord[0] == 'Q' && currentWord.Length == 1) break;;
         temp2 = WordConverter(currentWord);
         if(currentWord.Length != 1) temp2 = 9;
         if (! IsEOP()) temp2 = 9;
@@ -250,14 +250,24 @@ float playtowerofhanoi(){
         }
         else printf("Input INVALID!\n");
     }
-    displaytower(n, tower1, tower2, tower3);
-    gameover();
-    printf("Selamat Anda berhasil menyelesaikan permainan ini!!\n");
-    printf("Skor : %.2f\n", (optimal / count) * 10 * (n/5));
-    return ((optimal / count) * 10 * (n/5));
+    if (count >= optimal){
+        displaytower(n, tower1, tower2, tower3);
+        gameover();
+        printf("Selamat Anda berhasil menyelesaikan permainan ini!!\n");
+        printf("Skor : %.2f\n", (optimal / count) * 10 * (n/5));
+        *score += ((optimal / count) * 10 * (n/5));
+    }
+    else {
+        gameover();
+        printf("Kok nyerah??\n");
+    }
 }
 
+/* Driver
 int main() {
-    float x = playtowerofhanoi();
+    float x = 0;
+    playtowerofhanoi(&x);
+    printf("Skor akhir : %.2f\n", x);
     return 0;
 }
+*/

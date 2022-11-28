@@ -1,6 +1,6 @@
 #include"rng.h"
 
-int rng() {
+void rng(float *score) {
 /* Fungsi RNG bakal ngereturn score yang diperoleh pemain
  * Jumlah maksimal tebakan adalah 10 kali
  * Fullscore adalah 10 dan akan berkurang 10% seiring dengan berkurangnya guess hingga benar
@@ -34,15 +34,19 @@ int rng() {
     printf("\n");
     if (guess == x){
         printf("Ya, X adalah %d\n", x);
-        printf("Skor Anda: %d\n", turn + 1);
+        printf("Skor Anda: %.0f\n", turn + 1);
     }
     else printf("Mohon maaf, kesempatan telah habis.\n");
-    return turn + 1;
+    *score += (turn + 1);
 }
 
 // driver buat testing
 /*
 int main(){
-    rng();
+    float score = 0;
+    rng(&score);
+    printf("%.0f", score);
+    return 0;
 }
 */
+

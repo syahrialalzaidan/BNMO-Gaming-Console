@@ -159,7 +159,7 @@ void printdinnerdash(){
     printf(" |____/|_|_| |_|\\___|_|    |____/ \\__,_|___/_| |_|\n\n");
 }
 
-int playdinnerdash() {
+void playdinnerdash(float *score) {
     //Program utama untuk menjalankan game
 
     //Kamus Lokal
@@ -246,7 +246,7 @@ int playdinnerdash() {
         printf("\n");
     }
     printf("Permainan telah selesai. Anda mendapatkan %d poin.\n", saldo);
-    return saldo;
+    *score += saldo;
 }
 
 /*
