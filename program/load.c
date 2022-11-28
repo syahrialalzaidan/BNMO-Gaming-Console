@@ -79,40 +79,41 @@ void load(char* filename, ArrayDin* Games, Stack *History, ListSetMap *Scoreboar
 
     // load history
     //PrintArrayDin(*Games);
-    ADVWORD();
-    if (!IsEOP()) {
-        int i = WordToInt(currentWord);
-        j = 0;
-        while (j < i) {
-            ADVWORD();
-            char* name = WordToString(currentWord);
-            Push(History, name);
-            j++;
-        }
-    }
-    // load scoreboard
-    ADVWORD();
-
-    if (!IsEOP()) {
-        j = 0;
-        while (j < jmlGame) {
-            int jmlScoreboard = WordToInt(currentWord);
-            int k = 0;
-            while (k < jmlScoreboard) {
+    // if file is not config then proceeed
+    if (!isWordSame(stringToWord(filepath), stringToWord("./data/config.txt"))) {
+        ADVWORD();
+        if (!IsEOP()) {
+            int i = WordToInt(currentWord);
+            j = 0;
+            while (j < i) {
                 ADVWORD();
-                //separate
-                Word W1, W2;
-                SeparateWords(currentWord, &W1, &W2);
-                name = WordToString(W1);
-                score = WordToFloat(W2);
-                InsertAtLSM(Scoreboard, j, name, score);
-                k++;
+                char* name = WordToString(currentWord);
+                Push(History, name);
+                j++;
             }
-            Scoreboard->Count++;
-            ADVWORD();
-            j++;
+        }
+        // load scoreboard
+        ADVWORD();
+        if (!IsEOP()) {
+            j = 0;
+            while (j < jmlGame) {
+                int jmlScoreboard = WordToInt(currentWord);
+                int k = 0;
+                while (k < jmlScoreboard) {
+                    ADVWORD();
+                    //separate
+                    Word W1, W2;
+                    SeparateWords(currentWord, &W1, &W2);
+                    name = WordToString(W1);
+                    score = WordToFloat(W2);
+                    InsertAtLSM(Scoreboard, j, name, score);
+                    k++;
+                }
+                Scoreboard->Count++;
+                ADVWORD();
+                j++;
+            }
         }
     }
-        
     StopLoadPita();
 }

@@ -148,7 +148,7 @@ boolean isInputValid(Word kata, int *command)
     {
         output = true;
         *command = 14;
-        ADVWORD();
+        //ADVWORD();
     }
     else
     {
@@ -199,8 +199,11 @@ int main() {
             }
         } else if (command == 0) {
             start(&Games, &history, &scoreboard);
+            printf("loaded!\n");
+            break;
         }
     }
+
     if (command == 1) {
         printf("\nSave file berhasil dibaca. BNMO berhasil dijalankan ^^\n\n");
     } else if (command == 0) {
