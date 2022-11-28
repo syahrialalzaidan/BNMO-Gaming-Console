@@ -49,15 +49,16 @@ void playtebakkata(float *score){
     }
     printf("(%d huruf)", n);
     printf("\n");
-    printf("Masukkan jawaban : ");
     int count = 9;
-    STARTWORD();
     while (! win && count > 0){
+        printf("Masukkan jawaban : ");
+        STARTWORD();
         char *guess;
         guess = WordToString(currentWord);
         while(! IsEOP()) ADVWORD();
         boolean found = false;
         found = isstringequal(guess, kamus.Elements[angka].Key);
+        clear();
         if (found){
             printf("Selamat jawaban anda benar!\n");
             printf("Anda mendapatkan %d poin!\n", count+1);
@@ -65,6 +66,8 @@ void playtebakkata(float *score){
             win = true;
         }
         else {
+            printf("Tebak Kata dengan benar! (DALAM HURUF KECIL)\n");
+            printf("Clue : %s\n", ValueChar(kamus, kamus.Elements[angka].Key));
             printf("Jawaban anda salah!\n");
             printf("Tries remaining : %d\n", count);
             for(int i=0; i < countkata(kamus.Elements[angka].Key); i++){
@@ -72,8 +75,6 @@ void playtebakkata(float *score){
             }
             printf("(%d huruf)", n);
             printf("\n");
-            printf("Masukkan jawaban : ");
-            STARTWORD();
         }
         count--;
         
