@@ -297,7 +297,7 @@ int main() {
         }
         clear();
     }
-    save(&Games, &history, &scoreboard, "currentbackup.txt");
+    save(&Games, &history, &scoreboard, "backup.txt");
     CreateQueue(&queuegames);
     printf("Anda Keluar dari game BNMO\nBye byee.........\n");
     return 0;

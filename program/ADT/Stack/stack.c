@@ -66,6 +66,25 @@ Stack CopyStack(Stack stack) {
     return newStack;
 }
 
+Stack ReversedStack(Stack S) {
+/* Mengirimkan salinan dari Stack dengan urutan elemen terbalik*/
+    Stack newStack, tempStack;
+    CreateEmptyStack(&newStack);
+    CreateEmptyStack(&tempStack);
+    while (!IsStackEmpty(S)) {
+        infotype X;
+        Pop(&S, &X);
+        Push(&newStack, X);
+        Push(&tempStack, X);
+    }
+    while (!IsStackEmpty(tempStack)) {
+        infotype X;
+        Pop(&tempStack, &X);
+        Push(&S, X);
+    }
+    return newStack;
+}
+
 /* ************ Menghitung elemen dari stack ************ */
 int nbElmtStack(Stack S) {
 /*Menghitung jumlah element dalam stack */

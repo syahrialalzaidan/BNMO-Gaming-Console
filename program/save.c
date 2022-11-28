@@ -21,7 +21,7 @@ void save(ArrayDin *Games, Stack *History, ListMap *Scoreboard, char* filename) 
         }
         fprintf(file, "\n%d", nbElmtStack(*History));
         infotype e;
-        Stack CopyHistory = CopyStack(*History);
+        Stack CopyHistory = ReversedStack(*History);
         if (nbElmtStack(*History) > 0) {
             for (int i = 0; i < nbElmtStack(*History); i++) {
                 Pop(&CopyHistory, &e);
