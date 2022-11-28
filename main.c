@@ -211,7 +211,7 @@ int main() {
     }
 
     // Main Menu
-    printf("PILIHAN MENU:\n=> SAVE (filename.txt)\n=> CREATE GAME\n=> LIST GAME\n=> DELETE GAME\n=> QUEUE GAME\n=> PLAY GAME\n=> SKIP GAME (N)\n=> SCOREBOARD\n=>RESET SCOREBOARD\n=>HISTORY\n=>RESET HISTORY\n=> QUIT\n=> HELP\n");
+    printf("PILIHAN MENU:\n=> SAVE (filename.txt)\n=> CREATE GAME\n=> LIST GAME\n=> DELETE GAME\n=> QUEUE GAME\n=> PLAY GAME\n=> SKIP GAME (N)\n=> SCOREBOARD\n=> RESET SCOREBOARD\n=> HISTORY\n=> RESET HISTORY\n=> QUIT\n=> HELP\n");
     printf("(N adalah jumlah game yang ingin dilewat pada queue)\n");
 
     while (!isWordSame(currentWord, stringToWord("QUIT"))){
@@ -295,7 +295,7 @@ int main() {
             cek2 = isInputValid(currentWord, &command);
         }
     }
-    save(&Games, &history, &scoreboard, "currentbackup.txt");
+    save(&Games, &history, &scoreboard, "backup.txt");
     CreateQueue(&queuegames);
     printf("Anda Keluar dari game BNMO\nBye byee.........\n");
     return 0;
