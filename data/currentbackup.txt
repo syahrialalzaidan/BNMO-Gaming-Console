@@ -1,4 +1,4 @@
-7
+8
 RNG
 Diner DASH
 Tebak Kata
@@ -6,7 +6,12 @@ HANGMAN
 TOWER OF HANOI
 SNAKE ON METEOR
 Akinator
-0
+VALORANT
+4
+HANGMAN
+TOWER OF HANOI
+SNAKE ON METEOR
+VALORANT
 2
 BNMO 19
 Finn 12
@@ -20,4 +25,5 @@ Marcelline 30
 Marshall 10.52
 1
 Ariq 77
+0
 0

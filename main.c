@@ -226,7 +226,7 @@ int main() {
             listgame(Games);
         }
         else if(command == 5){
-            deletegame(&Games, queuegames, &scoreboard);
+            deletegame(&Games, queuegames, &history, &scoreboard);
         }
         else if(command == 6){
             queuegame(&queuegames, Games);
@@ -234,7 +234,9 @@ int main() {
         else if(command == 7){
             // get the game name in head of queue
             char* gameName = HEAD(queuegames);
+            printf("Playing %s...\n", gameName);
             playgame(&queuegames, Games, &score);
+            Push(&history, gameName);
             printf("Masukkan nama: ");
             STARTWORD();
             char* name = WordToString(currentWord);

@@ -36,7 +36,7 @@ void save(ArrayDin *Games, Stack *History, ListMap *Scoreboard, char* filename) 
         }
         if (Games->Neff != 0) {
             for (int i = 0; i < Games->Neff; i++) {
-                if (i == Games->Neff - 1) {
+                if (i == Games->Neff - 1 && Scoreboard->Elmt[i].Count == 0) {
                     fprintf(file, "%d", Scoreboard->Elmt[i].Count);
                 } else if (i == 0) { 
                     fprintf(file, "\n%d\n", Scoreboard->Elmt[i].Count);
@@ -58,9 +58,17 @@ void save(ArrayDin *Games, Stack *History, ListMap *Scoreboard, char* filename) 
                         float el = Scoreboard->Elmt[i].Elements[j].Value;
                         int el1 = (int) el * 100;
                         if (el1 == el * 100) {
-                            fprintf(file, "%.0f\n", el);
+                            if (j != Scoreboard->Elmt[i].Count - 1 || i != Games->Neff - 1) {
+                                fprintf(file, "%.0f\n", el);
+                            } else {
+                                fprintf(file, "%.0f", el);
+                            }
                         } else {
-                            fprintf(file, "%.2f\n", el);
+                            if (j != Scoreboard->Elmt[i].Count - 1 || i != Games->Neff - 1) {
+                                fprintf(file, "%.2f\n", el);
+                            } else {
+                                fprintf(file, "%.2f", el);
+                            }
                         }
                     }
                 }

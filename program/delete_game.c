@@ -16,7 +16,7 @@ boolean IsInQueue(Queue queuegame, char* elQ) {
     return found;
 }
 
-void deletegame(ArrayDin *array, Queue queuegame, ListMap *scoreboard){
+void deletegame(ArrayDin *array, Queue queuegame, Stack *History, ListMap *scoreboard){
 /*  Menghapus sebuah game dari daftar game.
     I.S. Array game tidak mungkin kosong.
     F.S. Game yang ingin dihapus telah hilang dari array jika 
@@ -32,6 +32,19 @@ void deletegame(ArrayDin *array, Queue queuegame, ListMap *scoreboard){
     if (i > 7 && !IsInQueue(queuegame, el)) {
         DeleteAt(array, i-1);
         DeleteMapAt(scoreboard, i-1);
+        Stack temp;
+        infotype X;
+        CreateEmptyStack(&temp);
+        while (!IsStackEmpty(*History)) {
+            Pop(History, &el);
+            if (!isWordSame(stringToWord(X), stringToWord(el))) {
+                Push(&temp, el);
+            }
+        }
+        while (!IsStackEmpty(temp)) {
+            Pop(&temp, &el);
+            Push(History, el);
+        }
         printf("Game berhasil dihapus\n");
     }
     else{

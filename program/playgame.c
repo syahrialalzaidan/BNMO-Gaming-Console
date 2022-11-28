@@ -59,11 +59,12 @@ void play(Queue *qg, ArrayDin array, float *skor){
     
     } else {
         printf("GAME OVER\n");
+        srand(time(NULL));
         *skor = rand()%1000;
-        printf("Your score = %d\n", *skor);
+        printf("Your score = %.0f\n", *skor);
     }
     printf("\n");
-
+    char* temp = HEAD(*qg);
     ElType a;
     dequeue(qg, &a);
 }

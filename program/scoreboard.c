@@ -146,7 +146,7 @@ void ResetScoreboard(ListMap *LM, ArrayDin G) {
     }
     if (isWordSame(currentWord, stringToWord("YA"))) {
         if (idx != 0) {
-            if (!IsMapEmpty(LM->Elmt[idx])) {
+            if (!IsMapEmpty(LM->Elmt[idx-1])) {
                 //make SM->Elements[idx].M empty
                 CreateEmpty(&LM->Elmt[idx-1]);
                 printf("Scoreboard berhasil di-reset\n");
