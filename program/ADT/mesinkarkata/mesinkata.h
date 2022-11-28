@@ -62,4 +62,6 @@ float WordToFloat(Word W);
 
 int WordConverter(Word W);
 
+void clear();
+
 #endif

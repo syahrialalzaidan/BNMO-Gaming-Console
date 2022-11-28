@@ -151,3 +151,11 @@ int WordConverter(Word W) {
     else if (currentWord.TabWord[0] == 'C') return 3;
     else return 0;
 }
+
+void clear(){
+    #if defined(_WIN32) || defined(_WIN64)
+        system("cls");
+    #else
+        system("clear");
+    #endif
+}

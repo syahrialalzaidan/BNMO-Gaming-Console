@@ -131,6 +131,12 @@ void playtowerofhanoi(float *score){
         PushHanoi(&tower3, 0);
     }
     temp = tower1;
+    printf("Menyiapkan tower of hanoi.");
+    sleep(1);
+    printf(" .");
+    sleep(1);
+    printf(" .\n");
+    clear();
     printf("Ketik 'Q' untuk keluar dari permainan\n\n");
     while(! isStackSama(tower3, temp)){
         displaytower(n, tower1, tower2, tower3);
@@ -166,7 +172,7 @@ void playtowerofhanoi(float *score){
                     printf(". ");
                     sleep(1);
                     printf(".\n\n");
-                    system("cls");
+                    clear();
                 }
                 else printf("Tidak bisa dipindahkan!!\n");
             }
@@ -180,7 +186,7 @@ void playtowerofhanoi(float *score){
                     printf(". ");
                     sleep(1);
                     printf(".\n\n");
-                    system("cls");
+                    clear();
                 }
                 else printf("Tidak bisa dipindahkan!!\n");
             }
@@ -197,7 +203,7 @@ void playtowerofhanoi(float *score){
                     printf(". ");
                     sleep(1);
                     printf(".\n\n");
-                    system("cls");
+                    clear();
                 }
                 else printf("Tidak bisa dipindahkan!!\n");
                 
@@ -212,7 +218,7 @@ void playtowerofhanoi(float *score){
                     printf(". ");
                     sleep(1);
                     printf(".\n\n");
-                    system("cls");
+                    clear();
                 }
                 else printf("Tidak bisa dipindahkan!!\n");
             }
@@ -229,7 +235,7 @@ void playtowerofhanoi(float *score){
                     printf(". ");
                     sleep(1);
                     printf(".\n\n");
-                    system("cls");
+                    clear();
                 }
                 else printf("Tidak bisa dipindahkan!!\n");
                 
@@ -244,7 +250,7 @@ void playtowerofhanoi(float *score){
                     printf(". ");
                     sleep(1);
                     printf(".\n\n");
-                    system("cls");
+                    clear();
                 }
                 else printf("Tidak bisa dipindahkan!!\n");
             }

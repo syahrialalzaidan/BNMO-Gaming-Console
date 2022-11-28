@@ -22,9 +22,9 @@ void play(Queue *qg, ArrayDin array, float *skor){
     char* dinosaur = "DINOSAUR IN EARTH";
     char* rise = "RISEWOMAN";
     char* eiffel = "EIFFEL TOWER";
-    char* toh = "Tower of Hanoi";
+    char* toh = "TOWER OF HANOI";
     char* som = "SNAKE ON METEOR";
-    char* hangman = "Hangman";
+    char* hangmanword = "HANGMAN";
     char* akinator = "Akinator";
 
     printf("\n");
@@ -42,9 +42,9 @@ void play(Queue *qg, ArrayDin array, float *skor){
     // } else if(isStringSame((*qg).buffer[(*qg).idxHead], dinosaur) || isStringSame((*qg).buffer[(*qg).idxHead], rise) || isStringSame((*qg).buffer[(*qg).idxHead], eiffel)){
     //     printf("Game %s masih dalam maintenance, belum dapat dimainkan.\n", (*qg).buffer[(*qg).idxHead]);
     //     printf("Silahkan pilih game lain.\n");
-    // } else if(isStringSame((*qg).buffer[(*qg).idxHead], hangman)){
+    // } else if(isStringSame((*qg).buffer[(*qg).idxHead], hangmanword)){
     //     printf("Loading Hangman ...\n");
-    //     //hangman();
+    //     hangman(skor);
     //     //playtebakkata();
     } else if(isStringSame((*qg).buffer[(*qg).idxHead], toh)){
         printf("Loading Tower of Hanoi ...\n");

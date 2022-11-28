@@ -203,7 +203,7 @@ int main() {
             break;
         }
     }
-
+    clear();
     if (command == 1) {
         printf("\nSave file berhasil dibaca. BNMO berhasil dijalankan ^^\n\n");
     } else if (command == 0) {
@@ -211,6 +211,7 @@ int main() {
     }
 
     // Main Menu
+    clear();
     printf("PILIHAN MENU:\n=> SAVE (filename.txt)\n=> CREATE GAME\n=> LIST GAME\n=> DELETE GAME\n=> QUEUE GAME\n=> PLAY GAME\n=> SKIP GAME (N)\n=> SCOREBOARD\n=>RESET SCOREBOARD\n=>HISTORY\n=>RESET HISTORY\n=> QUIT\n=> HELP\n");
     printf("(N adalah jumlah game yang ingin dilewat pada queue)\n");
 
@@ -294,6 +295,7 @@ int main() {
             STARTWORD();
             cek2 = isInputValid(currentWord, &command);
         }
+        clear();
     }
     save(&Games, &history, &scoreboard, "currentbackup.txt");
     CreateQueue(&queuegames);
