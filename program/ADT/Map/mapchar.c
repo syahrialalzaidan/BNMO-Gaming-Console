@@ -3,33 +3,33 @@
 #include "mapchar.h"
 
 
-/* Definisi Map M kosong : M.Count = Nil */
-/* M.Count = jumlah element Map */
-/* M.Elements = tempat penyimpanan element Map */
+/* Definisi MapChar M kosong : M.Count = Nil */
+/* M.Count = jumlah element MapChar */
+/* M.Elements = tempat penyimpanan element MapChar */
 
 /* ********* Prototype ********* */
 
 /* *** Konstruktor/Kreator *** */
-void CreateEmptyChar(Map *M){
+void CreateEmptyChar(MapChar *M){
 /* I.S. Sembarang */
-/* F.S. Membuat sebuah Map M kosong berkapasitas MaxEl */
-/* Ciri Map kosong :  count bernilai Nil */
+/* F.S. Membuat sebuah MapChar M kosong berkapasitas MaxEl */
+/* Ciri MapChar kosong :  count bernilai Nil */
     (*M).Count = NilMap;
 }
 
 /* ********* Predikat Untuk test keadaan KOLEKSI ********* */
-boolean IsMapEmptyChar(Map M){
-/* Mengirim true jika Map M kosong*/
-/* Ciri Map kosong : count bernilai Nil */
+boolean IsMapCharEmptyChar(MapChar M){
+/* Mengirim true jika MapChar M kosong*/
+/* Ciri MapChar kosong : count bernilai Nil */
     return (M.Count == NilMap);
 }
-boolean IsFullChar(Map M){
-/* Mengirim true jika Map M penuh */
-/* Ciri Map penuh : count bernilai MaxEl */
-    return (M.Count == MaxEl);
+boolean IsFullChar(MapChar M){
+/* Mengirim true jika MapChar M penuh */
+/* Ciri MapChar penuh : count bernilai MaxEl */
+    return (M.Count == maxEl);
 }
-/* ********** Operator Dasar Map ********* */
-valuetypechar ValueChar(Map M, keytype k){
+/* ********** Operator Dasar MapChar ********* */
+valuetypechar ValueChar(MapChar M, keytype k){
 /* Mengembalikan nilai value dengan key k dari M */
 /* Jika tidak ada key k pada M, akan mengembalikan Undefined */ 
     valuetypechar output = "Undefined";
@@ -48,8 +48,8 @@ valuetypechar ValueChar(Map M, keytype k){
     
 }
 
-void InsertChar(Map *M, keytype k, valuetypechar v){
-/* Menambahkan Elmt sebagai elemen Map M. */
+void InsertChar(MapChar *M, keytype k, valuetypechar v){
+/* Menambahkan Elmt sebagai elemen MapChar M. */
 /* I.S. M mungkin kosong, M tidak penuh
         M mungkin sudah beranggotakan v dengan key k */
 /* F.S. v menjadi anggota dari M dengan key k. Jika k sudah ada, operasi tidak dilakukan */
@@ -60,8 +60,8 @@ void InsertChar(Map *M, keytype k, valuetypechar v){
     }
 }  
 
-void DeleteChar(Map *M, keytype k){
-/* Menghapus Elmt dari Map M. */
+void DeleteChar(MapChar *M, keytype k){
+/* Menghapus Elmt dari MapChar M. */
 /* I.S. M tidak kosong
         element dengan key k mungkin anggota / bukan anggota dari M */
 /* F.S. element dengan key k bukan anggota dari M */
@@ -82,15 +82,15 @@ void DeleteChar(Map *M, keytype k){
     (*M).Count--;
 }
 
-boolean IsMemberChar(Map M, keytype k)
+boolean IsMemberChar(MapChar M, keytype k)
 /* Mengembalikan true jika k adalah member dari M */
 {
     return ValueChar(M, k) != "Undefined";
 }
 
-void sortmapdesc(Map *M){
+void sortMapCharchardesc(MapChar *M){
     int i, j;
-    infotype temp;
+    infotypeMC temp;
     for (i = 0; i < (*M).Count; i++) {
         for (j = i+1; j < (*M).Count; j++) {
             if ((*M).Elements[i].Value < (*M).Elements[j].Value) {

@@ -9,7 +9,7 @@
 
 char* AddPath(char* filename) {
 /*  Fungsi untuk menambahkan file path untuk setiap masukan filename untuk kemudian dibaca pada load. */
-    char* path = "../data/";
+    char* path = "./data/";
     // count length of path
     int i = 0;
     while (path[i] != '\0') {
@@ -73,7 +73,7 @@ void load(char* filename, ArrayDin* Games, Stack *History, ListSetMap *Scoreboar
     while (j < jmlGame) {
         ADVWORD();
         char* name = WordToString(currentWord);
-        InsertLast(Games, name);
+        InsertLastArray(Games, name);
         j++;
     }
 

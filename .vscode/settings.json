@@ -5,6 +5,10 @@
         "boolean.h": "c",
         "mesinkata.h": "c",
         "mesinkar.h": "c",
-        "queuedinnerdash.h": "c"
-    }
+        "queuedinnerdash.h": "c",
+        "start.h": "c",
+        "delete_game.h": "c",
+        "stackhanoi.h": "c"
+    },
+    "C_Cpp.dimInactiveRegions": false
 }

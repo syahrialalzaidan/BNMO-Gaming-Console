@@ -9,7 +9,7 @@
 #include "list_game.h"
 
 void queuegame();
-/* Mendaftarkan permainan ke dalam list queue.
+/* Mendaftarkan permainan ke dalam list queue.*/
 /* I.S. Queue game mungkin kosong. */
 /* F.S. Game ditambahkan ke queue. */
 

@@ -1,7 +1,7 @@
 #include "tebakkata.h"
 //gcc 
 
-void generatemap(Map *kamus){
+void generatemap(MapChar *kamus){
     InsertChar(kamus, "mayornaufal", "K01tertampan");
     InsertChar(kamus, "gibeh", "dinosaurus");
     InsertChar(kamus, "argentina", "messi");
@@ -35,7 +35,7 @@ boolean isstringequal(char *kata1, char *kata2){
 int playtebakkata(){
     time_t t;
     srand(time(&t));
-    Map kamus;
+    MapChar kamus;
     CreateEmptyChar(&kamus);
     generatemap(&kamus);
     boolean win = false;

@@ -79,7 +79,7 @@ void InsertAt(ArrayDin *array, ElType el, IdxType i){
  * Fungsi untuk menambahkan elemen baru di akhir array.
  * Prekondisi: array terdefinisi
  */
-void InsertLast(ArrayDin *array, ElType el){
+void InsertLastArray(ArrayDin *array, ElType el){
     InsertAt(array, el, array->Neff);
 }
 
@@ -87,7 +87,7 @@ void InsertLast(ArrayDin *array, ElType el){
  * Fungsi untuk menambahkan elemen baru di awal array.
  * Prekondisi: array terdefinisi
  */
-void InsertFirst(ArrayDin *array, ElType el){
+void InsertFirstArray(ArrayDin *array, ElType el){
     InsertAt(array, el, 0);
 }
 
@@ -149,7 +149,7 @@ ArrayDin CopyArrayDin(ArrayDin array){
     ArrayDin copyArr = MakeArrayDin();
     int i;
     for (i = 0; i < array.Neff; i++){
-        InsertLast(&copyArr, array.A[i]);
+        InsertLastArray(&copyArr, array.A[i]);
     }
     return copyArr;
 }

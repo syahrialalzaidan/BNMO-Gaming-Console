@@ -33,4 +33,4 @@ void PrintMapSnake(List L, int FoodX, int FoodY, int MetX, int MetY, int Obs1X, 
 
 boolean isGameOver(List snake, int MetX, int MetY, boolean isHitBody, boolean isHitObs);
 
-void PlaySnakeOnMeteor(int *skor);
+void PlaySnakeOnMeteor(float *skor);

@@ -2,7 +2,7 @@
 #include "SnakeOnMeteor.h"
 
 // gcc SnakeOnMeteor.c ../program/ADT/listdp/listdp.c ../program/ADT/mesinkarkata/mesinkar.c ../program/ADT/mesinkarkata/mesinkata.c -o ular
-boolean isInputValid(Word kata, int *command)
+boolean isValid(Word kata, int *command)
 {
     boolean output;
     if (isWordSame(kata, stringToWord("w"))) {
@@ -45,7 +45,7 @@ void addBody(List *L) {
     if (x < 0) {
         isSpawn = false;
     }
-    while (P1 != Nil && isSpawn) {
+    while (P1 != NilListDP && isSpawn) {
         if (InfoX(P1) == x && InfoY(P1) == y) {
             isSpawn = false;
         }
@@ -59,7 +59,7 @@ void addBody(List *L) {
             isSpawn = false;
         }
         P1 = First(*L);
-        while (P1 != Nil && isSpawn) {
+        while (P1 != NilListDP && isSpawn) {
             if (InfoX(P1) == x && InfoY(P1) == y) {
                 isSpawn = false;
             }
@@ -73,7 +73,7 @@ void addBody(List *L) {
                 isSpawn = false;
             }
             P1 = First(*L);
-            while (P1 != Nil && isSpawn) {
+            while (P1 != NilListDP && isSpawn) {
                 if (InfoX(P1) == x && InfoY(P1) == y) {
                     isSpawn = false;
                 }
@@ -125,7 +125,7 @@ void makeSnake(List *L) {
 
 void CutBody(List *L, int MetX, int MetY) {
     address P = First(*L);
-    while (P != Nil) {
+    while (P != NilListDP) {
         if (InfoX(P) == MetX && InfoY(P) == MetY) {
             DelAfter(L, &P, Prev(P));
             Dealokasi(P);
@@ -138,7 +138,7 @@ void SpawnFood(List snake, int *FoodX, int *FoodY, int Obs1X, int Obs1Y, int Obs
     *FoodX = rand() % 5;
     *FoodY = rand() % 5;
     address P = First(snake);
-    while (P != Nil) {
+    while (P != NilListDP) {
         if ((InfoX(P) == *FoodX && InfoY(P) == *FoodY) || (*FoodX == Obs1X && *FoodY == Obs1Y) || (*FoodX == Obs2X && *FoodY == Obs2Y)) {
             *FoodX = rand() % 5;
             *FoodY = rand() % 5;
@@ -163,7 +163,7 @@ void SpawnObstacles(List Snake, int *Obs1X, int *Obs1Y, int *Obs2X, int *Obs2Y, 
     *Obs1X = rand() % 5;
     *Obs1Y = rand() % 5;
     address P = First(Snake);
-    while (P != Nil) {
+    while (P != NilListDP) {
         if ((InfoX(P) == *Obs1X && InfoY(P) == *Obs1Y) || (*Obs1X == FoodX && *Obs1Y == FoodY)) {
             *Obs1X = rand() % 5;
             *Obs1Y = rand() % 5;
@@ -175,7 +175,7 @@ void SpawnObstacles(List Snake, int *Obs1X, int *Obs1Y, int *Obs2X, int *Obs2Y, 
     *Obs2X = rand() % 5;
     *Obs2Y = rand() % 5;
     P = First(Snake);
-    while (P != Nil) {
+    while (P != NilListDP) {
         if ((InfoX(P) == *Obs2X && InfoY(P) == *Obs2Y) || (*Obs2X == FoodX && *Obs2Y == FoodY) || (*Obs2X == *Obs1X && *Obs2Y == *Obs1Y)) {
             *Obs2X = rand() % 5;
             *Obs2Y = rand() % 5;
@@ -188,7 +188,7 @@ void SpawnObstacles(List Snake, int *Obs1X, int *Obs1Y, int *Obs2X, int *Obs2Y, 
 
 boolean isHit(List snake, int MetX, int MetY) {
     address P = First(snake);
-    while (P != Nil) {
+    while (P != NilListDP) {
         if (InfoX(P) == MetX && InfoY(P) == MetY) {
             return true;
         }
@@ -236,7 +236,7 @@ void MoveSnake(int command, List *snake, int *FoodX, int *FoodY, int MetX, int M
     P = Next(first);
     P = Next(P);
     
-    while (P != Nil) {
+    while (P != NilListDP) {
         if (InfoX(P) == InfoX(first) && InfoY(P) == InfoY(first)) {
             *isHitBody = true;
         } 
@@ -289,7 +289,7 @@ void PrintMapSnake (List L, int FoodX, int FoodY, int MetX, int MetY, int Obs1X,
     MapSnake[InfoY(First(L))][InfoX(First(L))] = 1;
     address P = Next(First(L));
     int count  = 1;
-    while (P != Nil) {
+    while (P != NilListDP) {
         MapSnake[InfoY(P)][InfoX(P)] = count;
         P = Next(P);
         count++;
@@ -330,7 +330,7 @@ boolean isGameOver(List snake, int MetX, int MetY, boolean isHitBody, boolean is
     return ((InfoX(First(snake)) == MetX && InfoY(First(snake)) == MetY) || isHitBody || isHitObs);
 }
 
-void PlaySnakeOnMeteor(int *skor) {
+void PlaySnakeOnMeteor(float *skor) {
     List snake;
     int FoodX, FoodY, MetX = -1, MetY = -1, turn = 1, command, Obs1X = -1, Obs1Y = -1, Obs2X = -1, Obs2Y = -1;
     boolean isHitBody = false;
@@ -366,7 +366,7 @@ void PlaySnakeOnMeteor(int *skor) {
             printf("TURN %d\n", turn);
             printf("Silakan masukkan command Anda: ");
             STARTWORD();
-            while (!isInputValid(currentWord, &command)) {
+            while (!isValid(currentWord, &command)) {
                 printf("Command tidak valid! Silahkan input command menggunakan huruf w/a/s/d\n");
                 printf("Silakan masukkan command Anda: ");
                 STARTWORD();
@@ -380,7 +380,7 @@ void PlaySnakeOnMeteor(int *skor) {
                 printf("Silakan input command yang lain\n");
                 printf("Silakan masukkan command Anda: ");
                 STARTWORD();
-                while (!isInputValid(currentWord, &command)) {
+                while (!isValid(currentWord, &command)) {
                     printf("Command tidak valid! Silahkan input command menggunakan huruf w/a/s/d\n");
                     printf("Silakan masukkan command Anda: ");
                     STARTWORD();
@@ -401,8 +401,9 @@ void PlaySnakeOnMeteor(int *skor) {
         }
     }
     if (InfoX(First(snake)) == MetX && InfoY(First(snake)) == MetY) {
-        infotype HeadX, HeadY;
+        infotypeList HeadX, HeadY;
         DelVFirst(&snake, &HeadX, &HeadY);
     }
     *skor = LengthList(snake)*2;
+    printf("\n\nGame berakhir. Skor: %.0f\n", *skor);
 }

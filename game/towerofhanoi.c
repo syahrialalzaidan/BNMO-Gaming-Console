@@ -98,10 +98,10 @@ void gameover(){
     printf(" |_|_|                                                              |_|_|\n\n");
 }
 
-float playtowerofhanoi(){
+void playtowerofhanoi(float *skor){
     Stack tower1, tower2, tower3, temp;
     int temp1, temp2, info1, info2, info3;
-    float skor, count = 0, optimal, n;
+    float count = 0, optimal, n;
     boolean valid = false;
     printart();
     CreateEmptyHanoi(&tower1);
@@ -122,7 +122,7 @@ float playtowerofhanoi(){
         while(! IsEOP()) ADVWORD();
     }
     printf("\n");
-    while(! IsEOP()) ADVWORD;
+    while(! IsEOP()) ADVWORD();
     for(int i = n; i > 0; i--){
         PushHanoi(&tower1, i);
         PushHanoi(&tower2, 0);
@@ -134,7 +134,7 @@ float playtowerofhanoi(){
         displaytower(n, tower1, tower2, tower3);
         printf("TOWER ASAL: ");
         STARTWORD();
-        if (currentWord.TabWord[0] == 'Q' && currentWord.Length == 1) return 0;
+        if (currentWord.TabWord[0] == 'Q' && currentWord.Length == 1) *skor = 0;
         temp1 = WordConverter(currentWord);
         if(currentWord.Length != 1) temp1 = 9;
         if(! IsEOP()) temp1 = 9;
@@ -143,7 +143,7 @@ float playtowerofhanoi(){
         printf("TOWER TUJUAN: ");
         STARTWORD();
         printf("\n");
-        if (currentWord.TabWord[0] == 'Q' && currentWord.Length == 1) return 0;
+        if (currentWord.TabWord[0] == 'Q' && currentWord.Length == 1) *skor = 0;
         temp2 = WordConverter(currentWord);
         if(currentWord.Length != 1) temp2 = 9;
         if (! IsEOP()) temp2 = 9;
@@ -253,11 +253,12 @@ float playtowerofhanoi(){
     displaytower(n, tower1, tower2, tower3);
     gameover();
     printf("Selamat Anda berhasil menyelesaikan permainan ini!!\n");
-    printf("Skor : %.2f\n", (optimal / count) * 10 * (n/5));
-    return ((optimal / count) * 10 * (n/5));
+    *skor = (optimal / count) * 10 * (n/5);
+    printf("Skor : %.2f\n", skor);
 }
 
-int main() {
-    float x = playtowerofhanoi();
-    return 0;
-}
+// int main() {
+//     float x;
+//     playtowerofhanoi(&x);
+//     return 0;
+// }

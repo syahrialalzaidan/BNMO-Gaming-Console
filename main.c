@@ -14,7 +14,7 @@
 #include "program/playgame.h"
 #include "program/skipgame.h"
 #include "program/help.h"
-#include "program/ADT/stack/stack.h"
+#include "program/ADT/Stack/stack.h"
 #include "program/ADT/listSetMap/listSetMap.h"
 #include "program/history.h"
 #include "program/scoreboard.h"
@@ -22,6 +22,7 @@
 
 //  copy paste below to run main
 //  gcc program/ADT/queue/queue.c bnmo_pic.c program/help.c program/skipgame.c program/playgame.c program/queuegame.c program/delete_game.c program/list_game.c program/create_game.c program/save.c program/load.c program/start.c program/ADT/queue/queue.c program/ADT/mesinkarkata/mesinkar.c program/ADT/mesinkarkata/mesinkata.c program/ADT/arraydin/arraydin.c main.c game/dinnerdash.c game/rng.c game/tebakkata.c game/queuedinnerdash.c program/ADT/Map/map.c -o main
+// gcc program/ADT/mesinkarkata/mesinkata.c program/ADT/mesinkarkata/mesinkar.c program/ADT/arraydin/arraydin.c program/ADT/queue/queue.c program/load.c program/start.c program/save.c program/create_game.c program/list_game.c program/delete_game.c program/queuegame.c program/playgame.c program/skipgame.c program/help.c program/ADT/stack/stack.c program/ADT/listSetMap/listSetMap.c program/history.c program/scoreboard.c bnmo_pic.c main.c game/dinnerdash.c game/SnakeOnMeteor.c game/towerofhanoi.c game/rng.c game/tebakkata.c game/queuedinnerdash.c program/ADT/Map/map.c program/ADT/listdp/listdp.c program/ADT/Map/mapchar.c program/ADT/StackHanoi/stackhanoi.c program/ADT/Set/set.c -o main
 //  or try run make main in bin folder
 
 boolean isInputValid(Word kata, int *command)
@@ -174,8 +175,6 @@ int main() {
     float score;
     ListSetMap scoreboard;
     CreateEmptyLSM(&scoreboard);
-    Stack history;
-    CreateEmptyStack(&history);
 
 
     // First Menu 
@@ -231,9 +230,8 @@ int main() {
         }
         else if(command == 7){
             // get the game name in head of queue
-            char* gameName = InfoHead(queuegames);
+            char* gameName = HEAD(queuegames);
             playgame(&queuegames, Games, &score);
-            printf("\n\nGame berakhir. Skor: %d\n", score);
             printf("Masukkan nama: ");
             STARTWORD();
             char* name = WordToString(currentWord);
@@ -249,13 +247,15 @@ int main() {
         }
         else if(command == 8){
             int nomor = WordToInt(currentWord);
-            skipgame(&queuegames, nomor, Games);
+            skipgame(&queuegames, nomor, Games, &score);
         }
         else if (command == 9)
         {
             int i = 0;
             for (i=0;i< Games.Neff;i++){
+                printf("** SCOREBOARD GAME %s **\n", Games.A[i]);
                 PrintScoreboard (scoreboard.Elements[i].M);
+                printf("\n");
             }
         }
         else if (command == 10)

@@ -24,7 +24,7 @@ boolean isCommandValid(Word kata);
 boolean isdigitvalid(Word kata);
 int getID(Word kata);
 void serve(Queue *q1, Queue *q2, int i, int *saldo, int *count, boolean *sukses);
-void playdinnerdash();
+void playdinnerdash(float *skor);
 
 
 #endif

@@ -1,6 +1,6 @@
 #include "skipgame.h"
 
-void skipgame(Queue *qg, int x, ArrayDin array) {
+void skipgame(Queue *qg, int x, ArrayDin array, float *skor) {
 /*  Melewatkan permainan sebanyak n.
     I.S. Array game tidak mungkin kosong.
          Queue game mungkin kosong.
@@ -25,7 +25,7 @@ void skipgame(Queue *qg, int x, ArrayDin array) {
             for (i = 0; i < x; i ++){
                 dequeue(qg, &a);
             }
-            play(qg, array);
+            play(qg, array, skor);
         }
     }
 }  

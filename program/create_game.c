@@ -76,7 +76,7 @@ void creategame (ArrayDin *array){
         printf("|+  o|  Game %s berhasil ditambahkan ^^\n", string);
         printf("|,'o | \n");
         printf("`---- \n");
-        InsertLast(array, string);
+        InsertLastArray(array, string);
     }
     else{
         printf("Game telah tersedia\n\n");

@@ -8,7 +8,7 @@
 #define NilSM 0
 #define MaxElSM 100
 #define UndefinedLSM -999
-typedef int address;
+typedef int addressLSM;
 
 typedef struct {
     Set S;
@@ -17,7 +17,7 @@ typedef struct {
 
 typedef struct {
     infotypeLSM Elements[MaxEl];
-    address Count;
+    addressLSM Count;
 } ListSetMap;
 
 
