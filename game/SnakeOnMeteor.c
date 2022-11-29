@@ -300,51 +300,113 @@ void PrintMapSnake (List L, int FoodX, int FoodY, int MetX, int MetY, int Obs1X,
     }
     MapSnake[Obs1Y][Obs1X] = 27;
     MapSnake[Obs2Y][Obs2X] = 27;
-    printf("Berikut merupakan peta permainan\n");
-    printf("+-----------+ \n");
+    printf("Berikut merupakan peta permainan\n\n");
+    printf("      ▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤ \n");
     for (int i = 0; i < 5; ++i){
-        printf("| ");
+        printf("      ▓");
         for (int j = 0; j < 5; ++j) {
             if (MapSnake[i][j] == 0) {
-                printf("  ");
+                if (j != 4) {
+                    printf("   |");
+                } else {
+                    printf("   ");
+                }
+                
             } else if (MapSnake[i][j] == 26) {
-                printf("M "); 
+                if (j != 4) {
+                    printf(" M |"); 
+                } else {
+                    printf(" M ");  
+                }
             } else if (i == InfoY(First(L)) && j == InfoX(First(L))) {
-                printf("H ");
+                if (j != 4) {
+                    printf(" H |"); 
+                } else {
+                    printf(" H ");
+                }
             } else if (MapSnake[i][j] == 25) {
-                printf("O ");
+                if (j != 4) {
+                    printf(" O |"); 
+                } else {
+                    printf(" O ");
+                }
             } else if (MapSnake[i][j] == 27) {
-                printf("X ");
+                if (j != 4) {
+                    printf(" X |"); 
+                } else {
+                    printf(" X ");
+                }
+                
             } else {
-                printf("%d ", MapSnake[i][j]);
+                if (j != 4) {
+                    printf(" %d |", MapSnake[i][j]); 
+                } else {
+                    printf(" %d ", MapSnake[i][j]);
+                }
             }
             if (j == 4) {
-                printf("|\n");
+                if (i != 4) {
+                    printf("▓\n      ▓-------------------▓\n");   
+                } else {
+                    printf("▓\n");
+                }
             }
         }
     }
-    printf("+-----------+ \n");
+    printf("      ▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤ \n\n");
+    printf("      Legends:\n");
+    printf("      H, 1, 2, and other digits : Snake\n");     
+    printf("      O : Food\n");
+    printf("      M : Meteor\n");
+    printf("      X : Obstacle\n\n");
 }
 
 boolean isGameOver(List snake, int MetX, int MetY, boolean isHitBody, boolean isHitObs) {
     return ((InfoX(First(snake)) == MetX && InfoY(First(snake)) == MetY) || isHitBody || isHitObs);
 }
 
+void print_logo_snake() {                                               
+    printf("\n");
+    printf("                      ::::::::  ::::    :::     :::     :::    ::: :::::::::: \n");
+    printf("                    :+:    :+: :+:+:   :+:   :+: :+:   :+:   :+:  :+:         \n");
+    printf("                   +:+        :+:+:+  +:+  +:+   +:+  +:+  +:+   +:+          \n");
+    printf("                  +#++:++#++ +#+ +:+ +#+ +#++:++#++: +#++:++    +#++:++#      \n");
+    printf("                        +#+ +#+  +#+#+# +#+     +#+ +#+  +#+   +#+            \n");
+    printf("                #+#    #+# #+#   #+#+# #+#     #+# #+#   #+#  #+#             \n");
+    printf("                ########  ###    #### ###     ### ###    ### ##########       \n");
+    printf("                                  ::::::::  ::::    :::                       \n");
+    printf("                                :+:    :+: :+:+:   :+:                        \n");
+    printf("                               +:+    +:+ :+:+:+  +:+                         \n");
+    printf("                              +#+    +:+ +#+ +:+ +#+                          \n");
+    printf("                             +#+    +#+ +#+  +#+#+#                           \n");
+    printf("                            #+#    #+# #+#   #+#+#                            \n");
+    printf("                            ########  ###    ####                             \n");
+    printf("        :::   :::   :::::::::: ::::::::::: :::::::::: ::::::::  :::::::::     \n");
+    printf("      :+:+: :+:+:  :+:            :+:     :+:       :+:    :+: :+:    :+:     \n");
+    printf("    +:+ +:+:+ +:+ +:+            +:+     +:+       +:+    +:+ +:+    +:+      \n");
+    printf("   +#+  +:+  +#+ +#++:++#       +#+     +#++:++#  +#+    +:+ +#++:++#:        \n");
+    printf("  +#+       +#+ +#+            +#+     +#+       +#+    +#+ +#+    +#+        \n");
+    printf(" #+#       #+# #+#            #+#     #+#       #+#    #+# #+#    #+#         \n");
+    printf("###       ### ##########     ###     ########## ########  ###    ###          \n\n");
+
+}
 void PlaySnakeOnMeteor(float *skor) {
     List snake;
     int FoodX, FoodY, MetX = -1, MetY = -1, turn = 1, command, Obs1X = -1, Obs1Y = -1, Obs2X = -1, Obs2Y = -1;
     boolean isHitBody = false;
     boolean isHitObs = false;
+    boolean isBodyCut = false;
     boolean isMovingBackwards = false;
     CreateEmptyList(&snake);
     srand(time(NULL));
+    print_logo_snake();
     printf("Selamat datang di Snake on Meteor!\n");
     printf("Mengenerate peta, snake, dan makanan...\n");
     makeSnake(&snake);
     SpawnFood(snake, &FoodX, &FoodY, Obs1X, Obs1Y, Obs2X, Obs2Y);
     SpawnObstacles(snake, &Obs1X, &Obs1Y, &Obs2X, &Obs2Y, FoodX, FoodY);
     printf("Berhasil digenerate!\n");
-    printf("====================\n");
+    printf("================================\n");
     while (!isGameOver(snake, MetX, MetY, isHitBody, isHitObs)) {
         if (turn > 1) {
             SpawnMeteor(snake, &MetX, &MetY, FoodX, FoodY, Obs1X, Obs1Y, Obs2X, Obs2Y);
@@ -355,13 +417,18 @@ void PlaySnakeOnMeteor(float *skor) {
                 printf("Kepala snake terkena meteor!\n");
             } else {
                 printf("\nAnda terkena meteor!\n");
+                isBodyCut = true;
                 CutBody(&snake, MetX, MetY);
             }
         }
         if (!isHitBody && !isHit(snake, MetX, MetY)) {
             PrintMapSnake(snake, FoodX, FoodY, MetX, MetY, Obs1X, Obs1Y, Obs2X, Obs2Y);
             if (turn > 1) {
-                printf("Anda beruntung tidak terkena meteor! Silahkan lanjutkan permainan\n");
+                if (!isBodyCut) {
+                    printf("Anda beruntung tidak terkena meteor! Silahkan lanjutkan permainan\n");
+                } else {
+                    isBodyCut = false;
+                }
             }
             printf("TURN %d\n", turn);
             printf("Silakan masukkan command Anda: ");
@@ -405,5 +472,5 @@ void PlaySnakeOnMeteor(float *skor) {
         DelVFirst(&snake, &HeadX, &HeadY);
     }
     *skor = LengthList(snake)*2;
-    printf("\n\nGame berakhir. Skor: %.0f\n", *skor);
+    printf("\n): 🅖 🅐 🅜 🅔   🅞 🅥 🅔 🅡  :( \n\nSkor: %.0f\n\n", *skor);
 }
