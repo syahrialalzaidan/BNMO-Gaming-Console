@@ -1,14 +1,37 @@
 #include "Hangman.h"
-//gcc -o hangman Hangman.c ../program/ADT/Map/mapchar.c ../program/ADT/Set/sethangman.c ../program/ADT/mesinkarkata/mesinkata.c ../program/ADT/mesinkarkata/mesinkar.c
+//gcc -o hangman Hangman.c ../program/ADT/Map/mapchar.c ../program/ADT/Set/sethangman.c ../program/ADT/mesinkarkata/mesinkata.c ../program/ADT/mesinkarkata/mesinkar.c ../program/ADT/Set/set.c ../program/load.c ../program/ADT/Stack/stack.c ../program/ADT/Map/map.c ../program/ADT/arraydin/arraydin.c
 
 /*Meng-generate kamus kata yang digunakan untuk permainan*/
-void generatemap(MapChar *kamus){
-    InsertChar(kamus, "MAYORNAUFAL", "K01tertampan");
-    InsertChar(kamus, "GIBEH", "dinosaurus");
-    InsertChar(kamus, "ARGENTINA", "messi");
-    InsertChar(kamus, "SWEDIA", "negara dengan pulau terbanyak");
-    InsertChar(kamus, "ALSTRUKDAT", "matkul favorit ariq");
-    InsertChar(kamus, "KALIMANTAN", "pulau terbesar di indonesia");
+// void generatemap(MapChar *kamus){
+//     InsertChar(kamus, "MAYORNAUFAL", "K01tertampan");
+//     InsertChar(kamus, "GIBEH", "dinosaurus");
+//     InsertChar(kamus, "ARGENTINA", "messi");
+//     InsertChar(kamus, "SWEDIA", "negara dengan pulau terbanyak");
+//     InsertChar(kamus, "ALSTRUKDAT", "matkul favorit ariq");
+//     InsertChar(kamus, "KALIMANTAN", "pulau terbesar di indonesia");
+// }
+
+/*Me-load kamus*/
+void loadkamus(char* filename, Set* kamus) {
+/*  Membaca save file yang berisi list game yang dapat dimainkan.
+    I.S. : filename terdefinisi dan array games kosong.
+    F.S. : Array games terisi dengan list game yang ada pada save file. */
+    char* filepath = AddPath(filename);
+    char* name;
+    float score;
+    // LoadPita("./data/config.txt");
+    LoadPita(filepath, true);
+    // load games
+    STARTWORD();
+    int jmlGame = WordToInt(currentWord);
+    int j = 0;
+    while (j < jmlGame) {
+        ADVWORD();
+        char* name = WordToString(currentWord);
+        InsertSet(kamus, name);
+        j++;
+    }
+    StopLoadPita();
 }
 
 /*Mengubah semua huruf kecil ke huruf besar*/
@@ -50,11 +73,12 @@ void playtebakkata(int* scoretotal){
     int skor = 0; //Skor game
     time_t t;
     srand(time(&t)); //Seed for random number
-    MapChar kamus;
-    CreateEmptyChar(&kamus);
-    generatemap(&kamus); //Meng-generate kamus kata ke kamus lokal
+    Set kamus;
+    CreateEmptySet(&kamus);
+    loadkamus("kamus.txt", &kamus);
+    //generatemap(&kamus); //Meng-generate kamus kata ke kamus lokal
     boolean win = false;
-    int angka = rand() % 6; //Randomize kata yang dipilih
+    int angka = rand() % kamus.Count; //Randomize kata yang dipilih
     
     //ADT Set
     SetChar SKunjaw, SAnswer;
@@ -63,32 +87,33 @@ void playtebakkata(int* scoretotal){
 
     //Displaying soal awal
     printf("Selamat Datang di Hangman!\nTebak kata berikut dengan benar! (DALAM HURUF BESAR)\n");
-    int n = 0;
+    int poin = 0;
+    char* soal = kamus.Elements[angka]; //Soal hasil randomizer
 
     //Buat set kunjaw
-    for(int i=0; i < countkata(kamus.Elements[angka].Key); i++){
-        InsertSetChar(&SKunjaw, kamus.Elements[angka].Key[i]);
-        n++;
+    for(int i=0; i < countkata(soal); i++){
+        InsertSetChar(&SKunjaw, soal[i]);
+        poin++;
     }
     int nyawa = 10;
 
     //Rilis soal
     while (!IsSubsetSetChar(SAnswer, SKunjaw) && nyawa > 0){
         //Cetak soal setelah ditebak
-        printf("\nClue : %s\n", ValueChar(kamus, kamus.Elements[angka].Key));
+        //printf("\nClue : %s\n", ValueChar(kamus, kamus.Elements));
         printf("Huruf yang udah kamu tebak : ");
         PrintSetChar(SAnswer);
         //printf("\n");
 
-        for(int i=0; i < countkata(kamus.Elements[angka].Key); i++){
-            if (IsMemberSetChar(SAnswer, kamus.Elements[angka].Key[i])){
-                printf("%c ", kamus.Elements[angka].Key[i]);
+        for(int i=0; i < countkata(soal); i++){
+            if (IsMemberSetChar(SAnswer, soal[i])){
+                printf("%c ", soal[i]);
             }
             else{
                 printf("_ ");
             }
         }
-        printf("(%d huruf)\n", n);
+        printf("(%d huruf)\n", poin);
         printf("Sisa nyawa kamu : %d\n", nyawa);
         printf("Masukkan huruf jawaban : ");
         START();  //Diasumsikan input selalu character, bukan string
@@ -114,14 +139,14 @@ void playtebakkata(int* scoretotal){
     
     //Saat jawaban benar
     if (IsSubsetSetChar(SAnswer, SKunjaw)){
-        printf("Selamat jawaban kamu benar! Kamu berhasil menebak kata %s!\n", kamus.Elements[angka].Key);
-        printf("Kamu mendapatkan %d poin!\n\n", n);
-        (*scoretotal) = n;
+        printf("Selamat jawaban kamu benar! Kamu berhasil menebak kata %s!\n", soal);
+        printf("Kamu mendapatkan %d poin!\n\n", poin);
+        (*scoretotal) = poin;
     }
 
     //Saat kesempatan habis
     else{
-        printf("\nMohon maaf, nyawamu habis.\nJawaban yang benar: %s\n",kamus.Elements[angka].Key);
+        printf("\nMohon maaf, nyawamu habis.\nJawaban yang benar: %s\n", soal);
     }
 }
 
@@ -162,9 +187,9 @@ void Hangman(float *skor){
 }
 
 //Driver test
-// int main(){
-//     float skor;
-//     Hangman(&skor);
-//     srand(0);
-//     return 0;
-// }
+int main(){
+    float skor;
+    Hangman(&skor);
+    srand(0);
+    return 0;
+}

@@ -1,12 +1,15 @@
 #include "../program/ADT/Map/mapchar.h"
 #include "../program/ADT/Set/sethangman.h"
 #include "../program/ADT/mesinkarkata/mesinkata.h"
+#include "../program/ADT/Set/set.h"
+#include "../program/load.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <time.h>
 
-void generatemap(MapChar *kamus);
+//void generatemap(MapChar *kamus);
+void loadkamus(char* filename, Set* kamus);
 char UpperHuruf(char input);
 int countkata(char *kata);
 void playtebakkata(int* scoretotal);
