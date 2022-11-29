@@ -1,14 +1,14 @@
 #include "Hangman.h"
-//gcc -o hangman Hangman.c ../program/ADT/Map/map.c ../program/ADT/Set/set.c ../program/ADT/mesinkarkata/mesinkata.c ../program/ADT/mesinkarkata/mesinkar.c
+//gcc -o hangman Hangman.c ../program/ADT/Map/mapchar.c ../program/ADT/Set/sethangman.c ../program/ADT/mesinkarkata/mesinkata.c ../program/ADT/mesinkarkata/mesinkar.c
 
 /*Meng-generate kamus kata yang digunakan untuk permainan*/
-void generatemap(Map *kamus){
-    Insert(kamus, "MAYORNAUFAL", "K01tertampan");
-    Insert(kamus, "GIBEH", "dinosaurus");
-    Insert(kamus, "ARGENTINA", "messi");
-    Insert(kamus, "SWEDIA", "negara dengan pulau terbanyak");
-    Insert(kamus, "ALSTRUKDAT", "matkul favorit ariq");
-    Insert(kamus, "KALIMANTAN", "pulau terbesar di indonesia");
+void generatemap(MapChar *kamus){
+    InsertChar(kamus, "MAYORNAUFAL", "K01tertampan");
+    InsertChar(kamus, "GIBEH", "dinosaurus");
+    InsertChar(kamus, "ARGENTINA", "messi");
+    InsertChar(kamus, "SWEDIA", "negara dengan pulau terbanyak");
+    InsertChar(kamus, "ALSTRUKDAT", "matkul favorit ariq");
+    InsertChar(kamus, "KALIMANTAN", "pulau terbesar di indonesia");
 }
 
 /*Mengubah semua huruf kecil ke huruf besar*/
@@ -50,16 +50,16 @@ void playtebakkata(int* scoretotal){
     int skor = 0; //Skor game
     time_t t;
     srand(time(&t)); //Seed for random number
-    Map kamus;
-    CreateEmpty(&kamus); 
+    MapChar kamus;
+    CreateEmptyChar(&kamus);
     generatemap(&kamus); //Meng-generate kamus kata ke kamus lokal
     boolean win = false;
     int angka = rand() % 6; //Randomize kata yang dipilih
     
     //ADT Set
-    Set SKunjaw, SAnswer;
-    CreateEmptySet(&SAnswer);
-    CreateEmptySet(&SKunjaw);
+    SetChar SKunjaw, SAnswer;
+    CreateEmptySetChar(&SAnswer);
+    CreateEmptySetChar(&SKunjaw);
 
     //Displaying soal awal
     printf("Selamat Datang di Hangman!\nTebak kata berikut dengan benar! (DALAM HURUF BESAR)\n");
@@ -67,21 +67,21 @@ void playtebakkata(int* scoretotal){
 
     //Buat set kunjaw
     for(int i=0; i < countkata(kamus.Elements[angka].Key); i++){
-        InsertSet(&SKunjaw, kamus.Elements[angka].Key[i]);
+        InsertSetChar(&SKunjaw, kamus.Elements[angka].Key[i]);
         n++;
     }
     int nyawa = 10;
 
     //Rilis soal
-    while (!IsSubsetSet(SAnswer, SKunjaw) && nyawa > 0){
+    while (!IsSubsetSetChar(SAnswer, SKunjaw) && nyawa > 0){
         //Cetak soal setelah ditebak
-        printf("\nClue : %s\n", Value(kamus, kamus.Elements[angka].Key));
+        printf("\nClue : %s\n", ValueChar(kamus, kamus.Elements[angka].Key));
         printf("Huruf yang udah kamu tebak : ");
-        PrintSet(SAnswer);
+        PrintSetChar(SAnswer);
         //printf("\n");
 
         for(int i=0; i < countkata(kamus.Elements[angka].Key); i++){
-            if (IsMember(SAnswer, kamus.Elements[angka].Key[i])){
+            if (IsMemberSetChar(SAnswer, kamus.Elements[angka].Key[i])){
                 printf("%c ", kamus.Elements[angka].Key[i]);
             }
             else{
@@ -96,24 +96,24 @@ void playtebakkata(int* scoretotal){
 
         //Saat jawaban salah jika kondisinya Huruf belum pernah ditebak tapi memang tidak ada di kunjaw
         //Tidak salaah jika kondisinya huruf pernah ditebak
-        if (!IsMember(SKunjaw, currentChar) && !IsMember(SAnswer, currentChar))
+        if (!IsMemberSetChar(SKunjaw, currentChar) && !IsMemberSetChar(SAnswer, currentChar))
         {
             nyawa--;
             printf("\n-------------------\n");
             printf("Jawaban kamu salah!\n");
             printf("-------------------\n");
         }
-        else if (IsMember(SAnswer, currentChar)){
+        else if (IsMemberSetChar(SAnswer, currentChar)){
             printf("\n-----------------------\n");
             printf("Huruf %c sudah kamu tebak\n", currentChar);
             printf("-------------------------\n");
         }
-        InsertSet(&SAnswer, currentChar);
+        InsertSetChar(&SAnswer, currentChar);
         while (! IsEOP()) ADV();
 }
     
     //Saat jawaban benar
-    if (IsSubsetSet(SAnswer, SKunjaw)){
+    if (IsSubsetSetChar(SAnswer, SKunjaw)){
         printf("Selamat jawaban kamu benar! Kamu berhasil menebak kata %s!\n", kamus.Elements[angka].Key);
         printf("Kamu mendapatkan %d poin!\n\n", n);
         (*scoretotal) = n;
@@ -126,7 +126,7 @@ void playtebakkata(int* scoretotal){
 }
 
 //Fungsi utama yang dipanggil
-void Hangman(){
+void Hangman(float *skor){
     int skortemp, skortotal = 0;
     playtebakkata(&skortemp);
     skortotal += skortemp;
@@ -134,10 +134,11 @@ void Hangman(){
     //Asking for mengulangi permainan
     char valid;
     boolean main_lagi = true;
-    printf("\nApakah kamu ingin bermain lagi? (y/n) : ");
+    // printf("\nApakah kamu ingin bermain lagi? (y/n) : ");
     //printf("%c\n", valid);
     while (main_lagi){
         //printf("%c\n", valid);
+        printf("\nApakah kamu ingin bermain lagi? (y/n) : ");
         START();
         valid = currentChar;
         //printf("%c", valid);
@@ -148,6 +149,7 @@ void Hangman(){
         skortotal += skortemp;
         }
         else if (valid == 'n' || valid == 'N'){ //Jika tidak ingin main lagi, game berakhir
+        (*skor) = skortotal;
         printf("Selamat kamu berhasil mendapatkan %d poin pada game ini!\n", skortotal);
         printf("Selamat mengerjakan tubes lainnya, Bye-bye! :D\n");
         main_lagi = false;
@@ -155,14 +157,13 @@ void Hangman(){
         else {
         printf("Coba pilih antara y atau n, bukan antara kamu atau dia ya :(\n");
         }
-        printf("\nApakah kamu ingin bermain lagi? (y/n) : ");
     }
     //ALGORITMA MASUKIN SCOREBOARD
 }
 
 //Driver test
-int main(){
-    Hangman();
-    srand(0);
-    return 0;
-}
+// int main(){
+//     Hangman();
+//     srand(0);
+//     return 0;
+// }
