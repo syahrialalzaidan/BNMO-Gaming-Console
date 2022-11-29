@@ -236,15 +236,53 @@ void MoveSnake(int command, List *snake, int *FoodX, int *FoodY, int MetX, int M
     P = Next(first);
     P = Next(P);
     
-    while (P != NilListDP) {
-        if (InfoX(P) == InfoX(first) && InfoY(P) == InfoY(first)) {
-            *isHitBody = true;
-        } 
-        P = Next(P);
-    }
+    // while (P != NilListDP) {
+    //     if (InfoX(P) == InfoX(first) && InfoY(P) == InfoY(first)) {
+    //         *isHitBody = true;
+    //     } 
+    //     P = Next(P);
+    // }
     if ((InfoX(first) == Obs1X && InfoY(first) == Obs1Y) || (InfoX(first) == Obs2X && InfoY(first) == Obs2Y)) {
         *isHitObs = true;
     } 
+}
+
+boolean isMoveToBody(int command, List L) {
+    address first = First(L);
+    address P = Next(first);
+    boolean found = false;
+    int newX, newY;
+    if (command == 0) {
+        newY = InfoY(first) - 1;
+        newX = InfoX(first);
+    } else if (command == 1) {
+        newX = InfoX(first) - 1;
+        newY = InfoY(first);
+    } else if (command == 2) {
+        newY = InfoY(first) + 1;
+        newX = InfoX(first);
+    } else if (command == 3) {
+        newX = InfoX(first) + 1;
+        newY = InfoY(first);
+    }
+
+    if (newX < 0) {
+        newX = 4;
+    } else if (newX > 4) {
+        newX = 0;
+    } else if (newY < 0) {
+        newY = 4;
+    } else if (newY > 4) {
+        newY = 0;
+    }
+
+    while (P != NilListDP && !found) {
+        if (InfoX(P) == newX && InfoY(P) == newY) {
+            found = true;
+        } 
+        P = Next(P);
+    }
+    return found;
 }
 
 boolean isMoveToMeteor(int command, List L, int MetX, int MetY) {
@@ -265,24 +303,24 @@ boolean isMoveToMeteor(int command, List L, int MetX, int MetY) {
     return false;
 }
 
-boolean isMoveBackwards(int command, List L) {
-    address first = First(L);
-    address second = Next(first);
-    if (command == 0) {
-        // return true if meteor is above the head of snake
-        return InfoX(second) == InfoX(first) && InfoY(second) + 1 == InfoY(first);
-    } else if (command == 1) {
-        // return true if meteor is left of the head of snake
-        return InfoX(second) + 1 == InfoX(first) && InfoY(second) == InfoY(first);
-    } else if (command == 2) {
-        // return true if meteor is below the head of snake
-        return InfoX(second) == InfoX(first) && InfoY(second) - 1 == InfoY(first);
-    } else if (command == 3) {
-        // return true if meteor is right of the head of snake
-        return InfoX(second) - 1 == InfoX(first) && InfoY(second) == InfoY(first);
-    }
-    return false;
-}
+// boolean isMoveBackwards(int command, List L) {
+//     address first = First(L);
+//     address second = Next(first);
+//     if (command == 0) {
+//         // return true if meteor is above the head of snake
+//         return InfoX(second) == InfoX(first) && InfoY(second) + 1 == InfoY(first);
+//     } else if (command == 1) {
+//         // return true if meteor is left of the head of snake
+//         return InfoX(second) + 1 == InfoX(first) && InfoY(second) == InfoY(first);
+//     } else if (command == 2) {
+//         // return true if meteor is below the head of snake
+//         return InfoX(second) == InfoX(first) && InfoY(second) - 1 == InfoY(first);
+//     } else if (command == 3) {
+//         // return true if meteor is right of the head of snake
+//         return InfoX(second) - 1 == InfoX(first) && InfoY(second) == InfoY(first);
+//     }
+//     return false;
+// }
 
 void PrintMapSnake (List L, int FoodX, int FoodY, int MetX, int MetY, int Obs1X, int Obs1Y, int Obs2X, int Obs2Y) {
     int MapSnake[5][5] = {{0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}};
@@ -438,10 +476,10 @@ void PlaySnakeOnMeteor(float *skor) {
                 printf("Silakan masukkan command Anda: ");
                 STARTWORD();
             }
-            while(isMoveToMeteor(command, snake, MetX, MetY) || isMoveBackwards(command, snake)) {
+            while(isMoveToMeteor(command, snake, MetX, MetY) || isMoveToBody(command, snake)) {
                 if (isMoveToMeteor(command, snake, MetX, MetY)) {
                     printf("Anda tidak bisa bergerak ke meteor!\n");
-                } else if (isMoveBackwards(command, snake)) {
+                } else if (isMoveToBody(command, snake)) {
                     printf("Anda tidak dapat bergerak ke tubuh anda sendiri!\n");
                 }
                 printf("Silakan input command yang lain\n");
