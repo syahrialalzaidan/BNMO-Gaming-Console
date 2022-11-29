@@ -163,7 +163,8 @@ void Hangman(float *skor){
 
 //Driver test
 // int main(){
-//     Hangman();
+//     float skor;
+//     Hangman(&skor);
 //     srand(0);
 //     return 0;
 // }
