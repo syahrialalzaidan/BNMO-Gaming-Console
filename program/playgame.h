@@ -9,7 +9,7 @@
 #include "../game/tebakkata.h"
 #include "../game/SnakeOnMeteor.h"
 #include "../game/towerofhanoi.h"
-// #include "../game/Hangman.h"
+#include "../game/Hangman.h"
 
 boolean isStringSame(char *c1, char*c2);
 /* Mengembalikan true jika string sama */

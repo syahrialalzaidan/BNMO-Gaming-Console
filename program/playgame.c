@@ -42,9 +42,9 @@ void play(Queue *qg, ArrayDin array, float *skor){
     // } else if(isStringSame((*qg).buffer[(*qg).idxHead], dinosaur) || isStringSame((*qg).buffer[(*qg).idxHead], rise) || isStringSame((*qg).buffer[(*qg).idxHead], eiffel)){
     //     printf("Game %s masih dalam maintenance, belum dapat dimainkan.\n", (*qg).buffer[(*qg).idxHead]);
     //     printf("Silahkan pilih game lain.\n");
-    // } else if(isStringSame((*qg).buffer[(*qg).idxHead], hangmanword)){
-    //     printf("Loading Hangman ...\n");
-    //     hangman(skor);
+    } else if(isStringSame((*qg).buffer[(*qg).idxHead], hangmanword)){
+        printf("Loading Hangman ...\n");
+        Hangman(skor);
     //     //playtebakkata();
     } else if(isStringSame((*qg).buffer[(*qg).idxHead], toh)){
         printf("Loading Tower of Hanoi ...\n");

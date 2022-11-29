@@ -104,7 +104,7 @@ boolean IsSubsetSetChar(SetChar SAnswer, SetChar SKunjaw){
 void PrintSetChar(SetChar S){
     for (int i = 0; i<S.Count; i++)
     {
-        printf("%c", S.Elements[i]);
+        printf("%c ", S.Elements[i]);
     }
     printf("\n");
 }

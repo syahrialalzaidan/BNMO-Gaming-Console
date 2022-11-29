@@ -44,7 +44,7 @@ char UpperHuruf(char input){
 }
 
 /*Menghitung panjang kata*/
-int countkata(char *kata){
+int countkataHM(char *kata){
     int i=0;
     while (kata[i] != '\0'){
         i++;
@@ -54,9 +54,9 @@ int countkata(char *kata){
 
 /*Fungsi untuk cek apakah dua string yang dimasukkan sama.
 Ini dimanfaatkan untuk memvalidasi masukkan pengguna apakah sesuai KJ*/
-boolean isstringequal(char *kata1, char *kata2){
+boolean isstringequalHM(char *kata1, char *kata2){
     int i=0;
-    if (countkata(kata1) != countkata(kata2)){
+    if (countkataHM(kata1) != countkataHM(kata2)){
         return false;
     }
     while (kata1[i] != '\0'){
@@ -69,7 +69,7 @@ boolean isstringequal(char *kata1, char *kata2){
 }
 
 /*Permainan utama*/
-void playtebakkata(int* scoretotal){
+void playtebakkataHM(float* scoretotal){
     int skor = 0; //Skor game
     time_t t;
     srand(time(&t)); //Seed for random number
@@ -87,15 +87,15 @@ void playtebakkata(int* scoretotal){
 
     //Displaying soal awal
     printf("Selamat Datang di Hangman!\nTebak kata berikut dengan benar! (DALAM HURUF BESAR)\n");
-    int poin = 0;
+    float poin = 0;
     char* soal = kamus.Elements[angka]; //Soal hasil randomizer
 
     //Buat set kunjaw
-    for(int i=0; i < countkata(soal); i++){
+    for(int i=0; i < countkataHM(soal); i++){
         InsertSetChar(&SKunjaw, soal[i]);
         poin++;
     }
-    int nyawa = 10;
+    float nyawa = 10;
 
     //Rilis soal
     while (!IsSubsetSetChar(SAnswer, SKunjaw) && nyawa > 0){
@@ -105,7 +105,7 @@ void playtebakkata(int* scoretotal){
         PrintSetChar(SAnswer);
         //printf("\n");
 
-        for(int i=0; i < countkata(soal); i++){
+        for(int i=0; i < countkataHM(soal); i++){
             if (IsMemberSetChar(SAnswer, soal[i])){
                 printf("%c ", soal[i]);
             }
@@ -113,8 +113,8 @@ void playtebakkata(int* scoretotal){
                 printf("_ ");
             }
         }
-        printf("(%d huruf)\n", poin);
-        printf("Sisa nyawa kamu : %d\n", nyawa);
+        printf("(%.0f huruf)\n", poin);
+        printf("Sisa nyawa kamu : %.0f\n", nyawa);
         printf("Masukkan huruf jawaban : ");
         START();  //Diasumsikan input selalu character, bukan string
         currentChar = UpperHuruf(currentChar); //Memastikan semua input dalam Uppercase
@@ -135,13 +135,14 @@ void playtebakkata(int* scoretotal){
         }
         InsertSetChar(&SAnswer, currentChar);
         while (! IsEOP()) ADV();
+        clear();
 }
     
     //Saat jawaban benar
     if (IsSubsetSetChar(SAnswer, SKunjaw)){
-        printf("Selamat jawaban kamu benar! Kamu berhasil menebak kata %s!\n", soal);
-        printf("Kamu mendapatkan %d poin!\n\n", poin);
-        (*scoretotal) = poin;
+        printf("Selamat jawaban kamu benar! Kamu berhasil menebak kata %s !\n", soal);
+        printf("Kamu mendapatkan %.0f poin!\n\n", nyawa);
+        (*scoretotal) = nyawa;
     }
 
     //Saat kesempatan habis
@@ -152,8 +153,8 @@ void playtebakkata(int* scoretotal){
 
 //Fungsi utama yang dipanggil
 void Hangman(float *skor){
-    int skortemp, skortotal = 0;
-    playtebakkata(&skortemp);
+    float skortemp, skortotal = 0;
+    playtebakkataHM(&skortemp);
     skortotal += skortemp;
 
     //Asking for mengulangi permainan
@@ -168,14 +169,15 @@ void Hangman(float *skor){
         valid = currentChar;
         //printf("%c", valid);
         while (! IsEOP()) ADV();
+        clear();
         if (valid == 'y' || valid == 'Y') //Jika ingin main lagi
         {
-        playtebakkata(&skortemp);
+        playtebakkataHM(&skortemp);
         skortotal += skortemp;
         }
         else if (valid == 'n' || valid == 'N'){ //Jika tidak ingin main lagi, game berakhir
         (*skor) = skortotal;
-        printf("Selamat kamu berhasil mendapatkan %d poin pada game ini!\n", skortotal);
+        printf("Selamat kamu berhasil mendapatkan %.0f poin pada game ini!\n", skortotal);
         printf("Selamat mengerjakan tubes lainnya, Bye-bye! :D\n");
         main_lagi = false;
         }
@@ -186,10 +188,10 @@ void Hangman(float *skor){
     //ALGORITMA MASUKIN SCOREBOARD
 }
 
-//Driver test
-int main(){
-    float skor;
-    Hangman(&skor);
-    srand(0);
-    return 0;
-}
+// //Driver test
+// int main(){
+//     float skor;
+//     Hangman(&skor);
+//     srand(0);
+//     return 0;
+// }
