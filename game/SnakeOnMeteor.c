@@ -36,8 +36,6 @@ boolean isValid(Word kata, int *command)
 void addBody(List *L) {
     address tail = Last(*L);
     address P;
-    // if there is no body in x - 1 of tail then the body will be spawned
-    // in x - 1 of tail
     int x = InfoX(tail) - 1;
     int y = InfoY(tail);
     boolean isSpawn = true;
@@ -235,13 +233,6 @@ void MoveSnake(int command, List *snake, int *FoodX, int *FoodY, int MetX, int M
 
     P = Next(first);
     P = Next(P);
-    
-    // while (P != NilListDP) {
-    //     if (InfoX(P) == InfoX(first) && InfoY(P) == InfoY(first)) {
-    //         *isHitBody = true;
-    //     } 
-    //     P = Next(P);
-    // }
     if ((InfoX(first) == Obs1X && InfoY(first) == Obs1Y) || (InfoX(first) == Obs2X && InfoY(first) == Obs2Y)) {
         *isHitObs = true;
     } 
@@ -303,24 +294,9 @@ boolean isMoveToMeteor(int command, List L, int MetX, int MetY) {
     return false;
 }
 
-// boolean isMoveBackwards(int command, List L) {
-//     address first = First(L);
-//     address second = Next(first);
-//     if (command == 0) {
-//         // return true if meteor is above the head of snake
-//         return InfoX(second) == InfoX(first) && InfoY(second) + 1 == InfoY(first);
-//     } else if (command == 1) {
-//         // return true if meteor is left of the head of snake
-//         return InfoX(second) + 1 == InfoX(first) && InfoY(second) == InfoY(first);
-//     } else if (command == 2) {
-//         // return true if meteor is below the head of snake
-//         return InfoX(second) == InfoX(first) && InfoY(second) - 1 == InfoY(first);
-//     } else if (command == 3) {
-//         // return true if meteor is right of the head of snake
-//         return InfoX(second) - 1 == InfoX(first) && InfoY(second) == InfoY(first);
-//     }
-//     return false;
-// }
+boolean isSurrounded(List L) {
+    return (isMoveToBody(0, L) && isMoveToBody(1, L) && isMoveToBody(2, L) && isMoveToBody(3, L));
+}
 
 void PrintMapSnake (List L, int FoodX, int FoodY, int MetX, int MetY, int Obs1X, int Obs1Y, int Obs2X, int Obs2Y) {
     int MapSnake[5][5] = {{0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}};
@@ -377,9 +353,17 @@ void PrintMapSnake (List L, int FoodX, int FoodY, int MetX, int MetY, int Obs1X,
                 
             } else {
                 if (j != 4) {
-                    printf(" %d |", MapSnake[i][j]); 
+                    if (MapSnake[i][j] < 10) {
+                        printf(" %d |", MapSnake[i][j]);
+                    } else {
+                        printf("%d |", MapSnake[i][j]);
+                    }
                 } else {
-                    printf(" %d ", MapSnake[i][j]);
+                    if (MapSnake[i][j] < 10) {
+                        printf(" %d ", MapSnake[i][j]);
+                    } else {
+                        printf("%d ", MapSnake[i][j]);
+                    }
                 }
             }
             if (j == 4) {
@@ -400,7 +384,7 @@ void PrintMapSnake (List L, int FoodX, int FoodY, int MetX, int MetY, int Obs1X,
 }
 
 boolean isGameOver(List snake, int MetX, int MetY, boolean isHitBody, boolean isHitObs) {
-    return ((InfoX(First(snake)) == MetX && InfoY(First(snake)) == MetY) || isHitBody || isHitObs);
+    return ((InfoX(First(snake)) == MetX && InfoY(First(snake)) == MetY) || isHitBody || isHitObs || isSurrounded(snake));
 }
 
 void print_logo_snake() {                                               
@@ -499,8 +483,9 @@ void PlaySnakeOnMeteor(float *skor) {
             }
             turn++;
         }
-        if (isHitBody) {
-            printf("Kepala snake menabrak badan snake!\n");
+        if (isSurrounded(snake)) {
+            PrintMapSnake(snake, FoodX, FoodY, MetX, MetY, Obs1X, Obs1Y, Obs2X, Obs2Y);
+            printf("Kepala snake sudah tidak bisa bergerak ke mana-mana\n");
         } else if (isHitObs) {
             printf("Kepala snake menabrak obstacles!\n");
         }

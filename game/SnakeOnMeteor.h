@@ -25,9 +25,13 @@ boolean isHit(List snake, int MetX, int MetY);
 
 void MoveSnake(int command, List *snake, int *FoodX, int *FoodY, int MetX, int MetY, boolean *isHitBody, int Obs1X, int Obs1Y, int Obs2X, int Obs2Y, boolean *isHitObs);
 
+boolean isMoveToBody(int command, List L);
+
 boolean isMoveToMeteor(int command, List L, int MetX, int MetY);
 
-boolean isMoveBackwards(int command, List L);
+// boolean isMoveBackwards(int command, List L);
+
+boolean isSurrounded(List L);
 
 void PrintMapSnake(List L, int FoodX, int FoodY, int MetX, int MetY, int Obs1X, int Obs1Y, int Obs2X, int Obs2Y);
 
