@@ -62,7 +62,7 @@ void playtebakkata(float *score){
         if (found){
             printf("Selamat jawaban anda benar!\n");
             printf("Anda mendapatkan %d poin!\n", count+1);
-            *score += (count+1);
+            *score = (count+1);
             win = true;
         }
         else {

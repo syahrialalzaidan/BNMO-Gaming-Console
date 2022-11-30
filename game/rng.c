@@ -37,7 +37,7 @@ void rng(float *score) {
         printf("Ya, X adalah %d\n", x);
         printf("Skor Anda: %.0f\n", turn + 1);
     } else printf("Mohon maaf, kesempatan telah habis.\n");
-    *score += (turn + 1);
+    *score = (turn + 1);
 }
 
 // driver buat testing

@@ -262,7 +262,7 @@ void playtowerofhanoi(float *score){
         displaytower(n, tower1, tower2, tower3);
         gameover();
         printf("Selamat Anda berhasil menyelesaikan permainan ini!!\n");
-        *score += ((optimal / count) * 10 * (n/5));
+        *score = ((optimal / count) * 10 * (n/5));
         printf("Skor : %.2f\n", *score);
     }
     else {

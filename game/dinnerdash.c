@@ -247,7 +247,7 @@ void playdinnerdash(float *score) {
         printf("\n");
     }
     printf("Permainan telah selesai. Anda mendapatkan %d poin.\n", saldo);
-    *score += saldo;
+    *score = saldo;
 
 }
 
