@@ -53,7 +53,7 @@ void printakinator(){
 void playakinator(float *score){
     printakinator();
 
-    LoadPitaAkin("./DataAkinator/akinator.txt", true);
+    LoadPitaAkin("DataAkinator/akinator.txt", true);
     STARTWORDakin();
 
     Tree pohon, root, akinator;
