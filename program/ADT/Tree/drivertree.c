@@ -12,7 +12,7 @@ int main(){
 
     printf("Membuat tree dan address\n");
     Tree pohon1, pohon2, pohon3;
-    address p, pp, ppp;
+    addresst p, pp, ppp;
     int stop = 0;
 
     printf("Membuat tree\n");

@@ -1,7 +1,6 @@
 #ifndef AKINATOR_H
 #define AKINATOR_H
 
-#include "tree.h"
 #include "../program/ADT/MesinkarkataAkinator/mesinkataakinator.h"
 #include "../program/ADT/tree/tree.h"
 
@@ -13,6 +12,6 @@ void jawab(char* file, char* jawaban[41], int nomer[41]);
 
 void printakinator();
 
-int akinator(); 
+void playakinator(float *score);
 
 #endif

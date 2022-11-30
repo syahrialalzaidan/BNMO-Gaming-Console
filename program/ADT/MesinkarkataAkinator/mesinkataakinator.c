@@ -9,7 +9,7 @@ void IgnoreBlanksakin() {
 /* Mengabaikan satu atau beberapa BLANK
    I.S. : currentChar sembarang
    F.S. : currentChar ≠ BLANK atau currentChar = MARK */
-    while (((currentChar == BLANK) && (!isFile)) || ((isFile) && (currentChar == ',')) || ((isFile) && (currentChar == BLANK))) {
+    while (((currentChar == BLANK) && (!isFileakin)) || ((isFileakin) && (currentChar == ',')) || ((isFileakin) && (currentChar == BLANK))) {
         ADVakin();
     } 
 }
@@ -37,12 +37,12 @@ void ADVWORDakin() {
           Jika currentChar = MARK, EndWord = true.
    Proses : Akuisisi kata menggunakan procedure SalinWord */
     IgnoreBlanksakin();
-    if ((currentChar == BLANK && !isFile) || (EOP && isFile)) {
+    if ((currentChar == BLANK && !isFileakin) || (EOP && isFileakin)) {
         EndWord = true;
     } else { 
         EndWord = false;
         CopyWordakin();
-        if (!isFile) {
+        if (!isFileakin) {
             IgnoreBlanksakin();
         }
     }
@@ -56,7 +56,7 @@ void CopyWordakin() {
           currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
           Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
     int i = 0;
-    if (isFile) {
+    if (isFileakin) {
         while ((i < NMax) && (currentChar != ',') && !IsEOPakin()) {
             currentWord.TabWord[i] = currentChar;
             ADVakin();

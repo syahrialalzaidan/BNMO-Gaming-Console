@@ -11,14 +11,14 @@
 /* Selektor */
 
 typedef char* ElType;
-typedef struct tNode* address;
-typedef address BinTree;
-typedef address Tree;
+typedef struct tNode* addresst;
+typedef addresst BinTree;
+typedef addresst Tree;
 
 typedef struct tNode {
     ElType info;
-    address left;
-    address right;
+    addresst left;
+    addresst right;
 } Node;
 
 #define INFO(p) (p).info
@@ -28,9 +28,9 @@ typedef struct tNode {
 /* Definisi PohonBiner */
 /* pohon Biner kosong p = NIL */
 
-address newTreeNode (ElType value);
+addresst newTreeNode (ElType value);
 
-void CreateTree (Tree* tree, address node);
+void CreateTree (Tree* tree, addresst node);
 // { I.S. Sembarang }
 // { F.S. Menghasilkan sebuah pohon p }
 // { Menghasilkan pohon p yang kosong (NIL) jika alokasi gagal }

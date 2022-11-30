@@ -10,6 +10,7 @@
 #include "../game/SnakeOnMeteor.h"
 #include "../game/towerofhanoi.h"
 #include "../game/Hangman.h"
+#include "../game/akinator.h"
 
 boolean isStringSame(char *c1, char*c2);
 /* Mengembalikan true jika string sama */

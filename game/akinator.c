@@ -42,22 +42,22 @@ void jawab(char* file, char* jawaban[41], int nomer[41]){
 void printakinator(){
     printf("  /$$$$$$  /$$       /$$                       /$$                        \n");
     printf(" /$$__  $$| $$      |__/                      | $$                        \n");
-    printf("| $$  \ $$| $$   /$$ /$$ /$$$$$$$   /$$$$$$  /$$$$$$    /$$$$$$   /$$$$$$ \n");
+    printf("| $$  \$$| $$   /$$ /$$ /$$$$$$$   /$$$$$$  /$$$$$$    /$$$$$$   /$$$$$$ \n");
     printf("| $$$$$$$$| $$  /$$/| $$| $$__  $$ |____  $$|_  $$_/   /$$__  $$ /$$__  $$\n");
     printf("| $$__  $$| $$$$$$/ | $$| $$  \ $$  /$$$$$$$  | $$    | $$  \ $$| $$  \__/\n");
     printf("| $$  | $$| $$_  $$ | $$| $$  | $$ /$$__  $$  | $$ /$$| $$  | $$| $$      \n");
-    printf("| $$  | $$| $$ \  $$| $$| $$  | $$|  $$$$$$$  |  $$$$/|  $$$$$$/| $$      \n");
-    printf("|__/  |__/|__/  \__/|__/|__/  |__/ \_______/   \___/   \______/ |__/     \n\n");
+    printf("| $$  | $$| $$ \\$$| $$| $$  | $$|  $$$$$$$  |  $$$$/|  $$$$$$/| $$      \n");
+    printf("|__/  |__/|__/  \\__/|__/|__/  |__/ \_______/   \___/   \______/ |__/     \n\n");
 }
 
-int akinator(){
+void playakinator(float *score){
     printakinator();
 
-    LoadPitaAkin("DataAkinator/akinator.txt", true);
+    LoadPitaAkin("./DataAkinator/akinator.txt", true);
     STARTWORDakin();
 
     Tree pohon, root, akinator;
-    address p, pp, ppp;
+    addresst p, pp, ppp;
     int stop = 0;
 
     CreateTree(&pohon, p);
@@ -92,7 +92,7 @@ int akinator(){
         // int input;
         printf("%s\n", INFO(*akinator));
         printf("Yes (y) / No (n): ");
-        isFile = false;
+        isFileakin = false;
         STARTWORDakin();
         char* input = WordToStringakin(currentWord);
         //scanf("%d", &input);
@@ -134,17 +134,17 @@ int akinator(){
     pj = panjangjawaban[idx];
     jawab = INFO(*akinator);
     hasil = (ssum/pj) * 100;
-    int hasil_int = hasil;
 
     printf("Jawaban kamu ");
     if (isStringSameakin(tebakan, jawab)){
         printf("benar semua\n");
-        printf("Skor: %d\n", hasil_int);
+        printf("Skor: %d\n", hasil);
     } else{
         printf("salah\n");
-        printf("Skor: %d\n", hasil_int);
+        printf("Skor: %d\n", hasil);
     }
-    return hasil_int;
+
+    *score = hasil;
    
    /*
     printf("%s\n", INFO(*akinator));
@@ -159,10 +159,4 @@ int akinator(){
     akinator = RIGHT(akinator);
     printf("%s\n", INFO(*akinator));
     */
-}
-
-int main(){
-    int x = akinator();
-    //printf("%d", x);
-    return 0;
 }
