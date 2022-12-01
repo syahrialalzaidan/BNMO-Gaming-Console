@@ -16,44 +16,46 @@ boolean isStringSameakin(char *c1, char*c2){
 }
 
 void namahewan(char* file,char* hewan[41]){
-    LoadPitaAkin("DataAkinator/hewan.txt", true);
+    LoadPitaAkin("hewan.txt", true);
     STARTWORDakin();
-    hewan[0] = WordToStringakin(currentWord);
+    hewan[0] = WordToStringakin(currentWordakin);
     int i;
     for (i = 1; i < 41; i++){
         ADVWORDakin();
-        hewan[i] = WordToStringakin(currentWord);
+        hewan[i] = WordToStringakin(currentWordakin);
     }
 }
 
 void jawab(char* file, char* jawaban[41], int nomer[41]){
-    LoadPitaAkin("DataAkinator/jawaban.txt", true);
+    LoadPitaAkin("jawabanakinator.txt", true);
     STARTWORDakin();
-    jawaban[0] = WordToStringakin(currentWord);
-    nomer[0] = currentWord.Length;
+    jawaban[0] = WordToStringakin(currentWordakin);
+    nomer[0] = currentWordakin.Length;
     int i;
     for (i = 1; i < 41; i++){
         ADVWORDakin();
-        jawaban[i] = WordToStringakin(currentWord);
-        nomer[i] = currentWord.Length;
+        jawaban[i] = WordToStringakin(currentWordakin);
+        nomer[i] = currentWordakin.Length;
     }
 }
 
 void printakinator(){
     printf("  /$$$$$$  /$$       /$$                       /$$                        \n");
     printf(" /$$__  $$| $$      |__/                      | $$                        \n");
-    printf("| $$  \$$| $$   /$$ /$$ /$$$$$$$   /$$$$$$  /$$$$$$    /$$$$$$   /$$$$$$ \n");
+    printf("| $$  \ $$| $$   /$$ /$$ /$$$$$$$   /$$$$$$  /$$$$$$    /$$$$$$   /$$$$$$ \n");
     printf("| $$$$$$$$| $$  /$$/| $$| $$__  $$ |____  $$|_  $$_/   /$$__  $$ /$$__  $$\n");
     printf("| $$__  $$| $$$$$$/ | $$| $$  \ $$  /$$$$$$$  | $$    | $$  \ $$| $$  \__/\n");
     printf("| $$  | $$| $$_  $$ | $$| $$  | $$ /$$__  $$  | $$ /$$| $$  | $$| $$      \n");
-    printf("| $$  | $$| $$ \\$$| $$| $$  | $$|  $$$$$$$  |  $$$$/|  $$$$$$/| $$      \n");
-    printf("|__/  |__/|__/  \\__/|__/|__/  |__/ \_______/   \___/   \______/ |__/     \n\n");
+    printf("| $$  | $$| $$ \  $$| $$| $$  | $$|  $$$$$$$  |  $$$$/|  $$$$$$/| $$      \n");
+    printf("|__/  |__/|__/  \__/|__/|__/  |__/ \_______/   \___/   \______/ |__/     \n\n");
 }
 
-void playakinator(float *score){
+void playakinator(float *skor){
     printakinator();
 
-    LoadPitaAkin("DataAkinator/akinator.txt", true);
+    //LoadPitaAkin("akinator.txt", true);
+    char* filepathakin = "akinator.txt";
+    isFileakin = true;
     STARTWORDakin();
 
     Tree pohon, root, akinator;
@@ -69,8 +71,8 @@ void playakinator(float *score){
     char* hewan[41];
     char* jawaban[41];
     int panjangjawaban[41];
-    namahewan("DataAkinator/hewan.txt", hewan);
-    jawab("DataAkinator/jawaban.txt", jawaban, panjangjawaban);
+    namahewan("hewan.txt", hewan);
+    jawab("jawabanakinator.txt", jawaban, panjangjawaban);
 
     time_t t;
     srand(time(&t));
@@ -94,18 +96,18 @@ void playakinator(float *score){
         printf("Yes (y) / No (n): ");
         isFileakin = false;
         STARTWORDakin();
-        char* input = WordToStringakin(currentWord);
+        char* input = WordToStringakin(currentWordakin);
         //scanf("%d", &input);
 
-        while (((!isStringSameakin(Y, input)) && (!isStringSameakin(N, input))) || (currentWord.Length != 1)){
+        while (((!isStringSameakin(Y, input)) && (!isStringSameakin(N, input))) || (currentWordakin.Length != 1)){
             printf("\n");
-            printf("Jawaban yang diterima hanya y atau n\n\n");
+            printf("\nJawaban yang diterima hanya y atau n\n\n");
             printf("Hewan yang kamu harus tebak adalah %s\n", tebakan);
             printf("%s\n", INFO(*akinator));
             printf("Yes (y) / No (n): ");
             //scanf("%d", &input);
             STARTWORDakin();
-            input = WordToStringakin(currentWord);
+            input = WordToStringakin(currentWordakin);
         }
 
         kodeA = kode%10;
@@ -138,13 +140,12 @@ void playakinator(float *score){
     printf("Jawaban kamu ");
     if (isStringSameakin(tebakan, jawab)){
         printf("benar semua\n");
-        printf("Skor: %d\n", hasil);
+        printf("Skor: %f\n", hasil);
     } else{
         printf("salah\n");
-        printf("Skor: %d\n", hasil);
+        printf("Skor: %f\n", hasil);
     }
-
-    *score = hasil;
+    *skor = hasil;
    
    /*
     printf("%s\n", INFO(*akinator));

@@ -1,40 +1,40 @@
 /* File: mesinkarakter.h */
 /* Definisi Mesin Karakter */
 
-#ifndef __MESIN_KAR_H_
-#define __MESIN_KAR_H_
+#ifndef __MESIN_KARAKINATOR_H_
+#define __MESIN_KARAKINATOR_H_
 
 #include "../boolean/boolean.h"
-#define MARK '\n'
-#define BLANK ' '
+#define MARKakin '\n'
+#define BLANKakin ' '
 /* State Mesin */
-extern char currentChar;
-extern boolean EOP;
+extern char currentCharakin;
+extern boolean EOPakin;
 extern boolean isFileakin;
 
-void LoadPitaAkin(char* filename, boolean isF);
+void LoadPitaAkin(char* filenameakin, boolean isFakin);
 void StopLoadPitaAkin();
 void STARTakin();
 /* Mesin siap dioperasikan. Pita disiapkan untuk dibaca.
    Karakter pertama yang ada pada pita posisinya adalah pada jendela.
    Pita baca diambil dari stdin.
    I.S. : sembarang
-   F.S. : currentChar adalah karakter pertama pada pita
-          Jika currentChar != MARK maka EOP akan padam (false)
-          Jika currentChar = MARK maka EOP akan menyala (true) */
+   F.S. : currentCharakin adalah karakter pertama pada pita
+          Jika currentCharakin != MARK maka EOP akan padam (false)
+          Jika currentCharakin = MARK maka EOP akan menyala (true) */
 
 void ADVakin();
 /* Pita dimajukan satu karakter.
-   I.S. : Karakter pada jendela = currentChar, currentChar != MARK
-   F.S. : currentChar adalah karakter berikutnya dari currentChar yang lama,
-          currentChar mungkin = MARK
-          Jika  currentChar = MARK maka EOP akan menyala (true) */
+   I.S. : Karakter pada jendela = currentCharakin, currentCharakin != MARK
+   F.S. : currentCharakin adalah karakter berikutnya dari currentCharakin yang lama,
+          currentCharakin mungkin = MARK
+          Jika  currentCharakin = MARK maka EOP akan menyala (true) */
 
 char GetCCakin();
-/* Mengirimkan currentChar */
+/* Mengirimkan currentCharakin */
 
 boolean IsEOPakin();
-/* Mengirimkan true jika currentChar = MARK */
+/* Mengirimkan true jika currentCharakin = MARK */
 
 
 #endif

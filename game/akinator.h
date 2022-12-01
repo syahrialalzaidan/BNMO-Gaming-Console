@@ -12,6 +12,6 @@ void jawab(char* file, char* jawaban[41], int nomer[41]);
 
 void printakinator();
 
-void playakinator(float *score);
+void playakinator(float *skor); 
 
 #endif

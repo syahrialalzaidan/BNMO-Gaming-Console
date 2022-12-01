@@ -20,8 +20,8 @@ addresst newTreeNode (ElType value)
         return node;
     }
 }
-// { Mengirimkan address hasil alokasi sebuah elemen bernilai x }
-// { Jika alokasi berhasil, maka address tidak NIL, dan misalnya
+// { Mengirimkan addresst hasil alokasi sebuah elemen bernilai x }
+// { Jika alokasi berhasil, maka addresst tidak NIL, dan misalnya
 // menghasilkan p, maka p↑.info=x, p↑.left=NIL, p↑.right=NIL }
 // { Jika alokasi gagal, mengirimkan NIL }
 
@@ -47,14 +47,14 @@ membutuhkan mesin karakter */
 {   /* Kamus Lokal */
     /* Algoritma */
     ADVWORDakin(); /* advance */
-    if (currentWord.TabWord[0] == ')'){ /* Basis: pohon kosong */
+    if (currentWordakin.TabWord[0] == ')'){ /* Basis: pohon kosong */
         *t = NILakin;
         if (x == 0){
             *root = *t;
             x++;
         }
     } else { /* Rekurens */
-        char* isi = WordToStringakin(currentWord);
+        char* isi = WordToStringakin(currentWordakin);
         *t = newTreeNode(isi);
         if (x == 0){
             *root = *t;
