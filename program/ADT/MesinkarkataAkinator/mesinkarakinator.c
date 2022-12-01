@@ -4,22 +4,22 @@
 
 // ASLINYA "mesinkarakter.h"
 
-char currentCharakin;
-boolean EOPakin;
+char currentCharakinakin;
+boolean EOPakinakin;
 boolean isFileakin = false;
-char* filepathakin;
+char* filepathakinakin;
 
-static FILE *pita;
-static int retval;
+static FILE *pitaakin;
+static int retvalakin;
 
-void LoadPitaAkin(char* filename, boolean isF) {
+void LoadPitaAkin(char* filenameakin, boolean isFakin) {
 /*  Membaca pita sesuai dengan tipe yang diinginkan (file atau masukan). 
     I.S. : sembarang
-    F.S. : Jika pita berbentuk file, maka isFileakin akan bernilai true 
-           dan filepath akan berisi nama file beserta path-nya.
-           Jika berbentuk masukan maka isFileakin akan bernilai false. */
-    filepathakin = filename;
-    isFileakin = isF;
+    F.S. : Jika pita berbentuk file, maka isFile akan bernilai true 
+           dan filepathakin akan berisi nama file beserta path-nya.
+           Jika berbentuk masukan maka isFile akan bernilai false. */
+    filepathakin = filenameakin;
+    isFileakin = isFakin;
 }
 
 void StopLoadPitaAkin() {
@@ -34,47 +34,47 @@ void STARTakin() {
    Karakter pertama yang ada pada pita posisinya adalah pada jendela.
    Pita baca diambil dari stdin.
    I.S. : sembarang
-   F.S. : currentChar adalah karakter pertama pada pita
-          Jika currentChar != MARK maka EOP akan padam (false)
-          Jika currentChar = MARK maka EOP akan menyala (true) */
+   F.S. : currentCharakin adalah karakter pertama pada pita
+          Jika currentCharakin != MARK maka EOP akan padam (false)
+          Jika currentCharakin = MARK maka EOP akan menyala (true) */
     if (isFileakin) {
-        pita = fopen(filepathakin, "r");
-        if (pita == NULL) {
+        pitaakin = fopen(filepathakin, "r");
+        if (pitaakin == NULL) {
             printf("404 FILE NOT FOUND X_X \n");
         } else {
             ADVakin();
         }
     } else {
-        pita = stdin;
+        pitaakin = stdin;
         ADVakin();
     }
 }
 
 void ADVakin() {
 /* Pita dimajukan satu karakter.
-   I.S. : Karakter pada jendela = currentChar, currentChar != MARK
-   F.S. : currentChar adalah karakter berikutnya dari currentChar yang lama,
-          currentChar mungkin = MARK
-          Jika  currentChar = MARK maka EOP akan menyala (true) */
-    retval = fscanf(pita,"%c",&currentCharakin);
+   I.S. : Karakter pada jendela = currentCharakin, currentCharakin != MARK
+   F.S. : currentCharakin adalah karakter berikutnya dari currentCharakin yang lama,
+          currentCharakin mungkin = MARK
+          Jika  currentCharakin = MARK maka EOP akan menyala (true) */
+    retvalakin = fscanf(pitaakin,"%c",&currentCharakin);
     EOPakin = IsEOPakin();
     if (EOPakin && isFileakin) {
-        fclose(pita);
+        fclose(pitaakin);
     }
 }
 
 char GetCCakin() {
-/* Mengirimkan currentChar */
+/* Mengirimkan currentCharakin */
     return currentCharakin;
 }
 
 boolean IsEOPakin() {
-/* Mengirimkan true jika currentChar = MARK */
-    //check if currentChar is blank and the next character is blank  too
+/* Mengirimkan true jika currentCharakin = MARK */
+    //check if currentCharakin is blank and the next character is blank  too
     if (!isFileakin) {
-        // if (currentChar == BLANK) {
+        // if (currentCharakin == BLANK) {
         //     char nextChar;
-        //     retval = fscanf(pita,"%c",&nextChar);
+        //     retvalakin = fscanf(pita,"%c",&nextChar);
         //     if (nextChar == BLANK) {
         //         return true;
         //     } else {
@@ -82,12 +82,12 @@ boolean IsEOPakin() {
         //         return false;
         //     }
         // } else {
-        //     return (currentChar == MARK);
+        //     return (currentCharakin == MARK);
         // }
-        return (currentCharakin == MARK);
+        return (currentCharakin == MARKakin);
     } else {
-        return (currentCharakin == EOF || retval == EOF);
-        //return (currentChar == MARK);
+        return (currentCharakin == EOF || retvalakin == EOF);
+        //return (currentCharakin == MARK);
     }
 }
 

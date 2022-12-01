@@ -1,24 +1,24 @@
 /* File: mesinkata.h */
 /* Definisi Mesin Kata: Model Akuisisi Versi I */
 
-#ifndef __MESINKATA_H__
-#define __MESINKATA_H__
+#ifndef __MESINKATAAKINATOR_H__
+#define __MESINKATAAKINATOR_H__
 
 #include "../boolean/boolean.h"
 #include "mesinkarakinator.h"
 
-#define NMax 50
+#define NMaxakin 50
 // #define BLANK ' '
 
 typedef struct
 {
-   char TabWord[NMax]; /* container penyimpan kata, indeks yang dipakai [0..NMax-1] */
+   char TabWord[NMaxakin]; /* container penyimpan kata, indeks yang dipakai [0..NMax-1] */
    int Length;
 } Wordakin;
 
 /* State Mesin Kata */
-extern boolean EndWord;
-extern Wordakin currentWord;
+extern boolean EndWordakin;
+extern Wordakin currentWordakin;
 
 void IgnoreBlanksakin();
 /* Mengabaikan satu atau beberapa BLANK

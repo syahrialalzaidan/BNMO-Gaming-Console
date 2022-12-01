@@ -3,6 +3,7 @@
 #include <stdlib.h>
 
 addresst newTreeNode (ElType value)
+/* Membuat tree node baru*/
 {
     /* KAMUS LOKAL */
     addresst node;
@@ -20,41 +21,32 @@ addresst newTreeNode (ElType value)
         return node;
     }
 }
-// { Mengirimkan address hasil alokasi sebuah elemen bernilai x }
-// { Jika alokasi berhasil, maka address tidak NIL, dan misalnya
-// menghasilkan p, maka p↑.info=x, p↑.left=NIL, p↑.right=NIL }
-// { Jika alokasi gagal, mengirimkan NIL }
 
 boolean isTreeEmpty(BinTree tree){
+/* Mengecek apakah tree kosong*/
     return (tree == NILakin);
 }
 
 void CreateTree(Tree* tree, addresst node)
-// I.S. Tree sembarang
-// F.S. Tree terdefinisi
+/* Membuat tree baru*/
 {
   *tree = node;
 }
 
 
 void BuildTree(Tree *t, Tree *root, int x)
-/* Dipakai jika input dari pita karakter */
-/* I.S. cc berisi '(' */
-/* F.S. t terdefinisi */
-/* Proses: Membaca isi pita karakter dan membangun pohon secara rekursif, hanya
-membutuhkan mesin karakter */
-
+/* Membuat tree dari file txt*/
 {   /* Kamus Lokal */
     /* Algoritma */
     ADVWORDakin(); /* advance */
-    if (currentWord.TabWord[0] == ')'){ /* Basis: pohon kosong */
+    if (currentWordakin.TabWord[0] == ')'){ /* Basis: pohon kosong */
         *t = NILakin;
         if (x == 0){
             *root = *t;
             x++;
         }
     } else { /* Rekurens */
-        char* isi = WordToStringakin(currentWord);
+        char* isi = WordToStringakin(currentWordakin);
         *t = newTreeNode(isi);
         if (x == 0){
             *root = *t;
@@ -71,11 +63,7 @@ membutuhkan mesin karakter */
 
 
 void addLeft (BinTree p, ElType x){
-// { I.S. p boleh kosong }
-// { F.S. p bertambah simpulnya, dengan x sebagai simpul daun terkiri }
-// KAMUS LOKAL
-
-// ALGORITMA
+/* Menambahkan child kiri tree*/
     if (!isTreeEmpty(p)){
         p = newTreeNode(x);
     } else{
@@ -84,11 +72,7 @@ void addLeft (BinTree p, ElType x){
 }
 
 void addRight (BinTree p, ElType x){
-// { I.S. p boleh kosong }
-// { F.S. p bertambah simpulnya, dengan x sebagai simpul daun terkiri }
-// KAMUS LOKAL
-
-// ALGORITMA
+/* Menambahkan child kanan tree*/
     if (!isTreeEmpty(p)){
         p = newTreeNode(x);
     } else{

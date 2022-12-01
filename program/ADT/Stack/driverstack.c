@@ -7,7 +7,7 @@ int main(){
     Stack s;
     CreateEmptyStack(&s);
     if (IsStackEmpty(s)){
-        printf("Stack saat ini kosong\n");
+        printf("Stack saat ini kosong\n\n");
     }
     infotype i = "ISI";
     printf("Menambahkan isi stack\n");
@@ -19,7 +19,7 @@ int main(){
         printf("Stack saat ini tidak full\n");
     }
     int jumlah = nbElmtStack(s);
-    printf("Jumlah stack saat ini: %d\n", jumlah);
+    printf("Jumlah stack saat ini: %d\n\n", jumlah);
     printf("Menghapus isi stack\n");
     Pop(&s, &i);
     if (IsStackEmpty(s)){

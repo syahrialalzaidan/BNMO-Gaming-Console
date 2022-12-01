@@ -7,18 +7,18 @@ Wordakin currentWordakin;
 
 void IgnoreBlanksakin() {
 /* Mengabaikan satu atau beberapa BLANK
-   I.S. : currentChar sembarang
-   F.S. : currentChar ≠ BLANK atau currentChar = MARK */
-    while (((currentCharakin == BLANK) && (!isFileakin)) || ((isFileakin) && (currentCharakin == ',')) || ((isFileakin) && (currentCharakin == BLANK))) {
+   I.S. : currentCharakin sembarang
+   F.S. : currentCharakin ≠ BLANK atau currentCharakin = MARK */
+    while (((currentCharakin == BLANKakin) && (!isFileakin)) || ((isFileakin) && (currentCharakin == ',')) || ((isFileakin) && (currentCharakin == BLANKakin))) {
         ADVakin();
     } 
 }
 
 void STARTWORDakin() {
-/* I.S. : currentChar sembarang
-   F.S. : EndWord = true, dan currentChar = MARK;
+/* I.S. : currentCharakin sembarang
+   F.S. : EndWord = true, dan currentCharakin = MARK;
           atau EndWord = false, currentWord adalah kata yang sudah diakuisisi,
-          currentChar karakter pertama sesudah karakter terakhir kata */
+          currentCharakin karakter pertama sesudah karakter terakhir kata */
     STARTakin();
     //IgnoreBlanks();
     if (IsEOPakin()) {
@@ -31,13 +31,13 @@ void STARTWORDakin() {
 }
 
 void ADVWORDakin() {
-/* I.S. : currentChar adalah karakter pertama kata yang akan diakuisisi
+/* I.S. : currentCharakin adalah karakter pertama kata yang akan diakuisisi
    F.S. : currentWord adalah kata terakhir yang sudah diakuisisi,
-          currentChar adalah karakter pertama dari kata berikutnya, mungkin MARK
-          Jika currentChar = MARK, EndWord = true.
+          currentCharakin adalah karakter pertama dari kata berikutnya, mungkin MARK
+          Jika currentCharakin = MARK, EndWord = true.
    Proses : Akuisisi kata menggunakan procedure SalinWord */
     IgnoreBlanksakin();
-    if ((currentCharakin == BLANK && !isFileakin) || (EOPakin && isFileakin)) {
+    if ((currentCharakin == BLANKakin && !isFileakin) || (EOPakin && isFileakin)) {
         EndWordakin = true;
     } else { 
         EndWordakin = false;
@@ -50,23 +50,23 @@ void ADVWORDakin() {
 
 void CopyWordakin() {
 /* Mengakuisisi kata, menyimpan dalam currentWord
-   I.S. : currentChar adalah karakter pertama dari kata
+   I.S. : currentCharakin adalah karakter pertama dari kata
    F.S. : currentWord berisi kata yang sudah diakuisisi;
-          currentChar = BLANK atau currentChar = MARK;
-          currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
+          currentCharakin = BLANK atau currentCharakin = MARK;
+          currentCharakin adalah karakter sesudah karakter terakhir yang diakuisisi.
           Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
     int i = 0;
     if (isFileakin) {
-        while ((i < NMax) && (currentCharakin != ',') && !IsEOPakin()) {
-            currentWord.TabWord[i] = currentCharakin;
+        while ((i < NMaxakin) && (currentCharakin != ',') && !IsEOPakin()) {
+            currentWordakin.TabWord[i] = currentCharakin;
             ADVakin();
             i++;
         }
     } else {
         char y = 'y';
         char n = 'n';
-        while ((currentCharakin != BLANK) && (i < NMax) && (currentCharakin != MARK)) {
-            currentWord.TabWord[i] = currentCharakin;
+        while ((currentCharakin != BLANKakin) && (i < NMaxakin) && (currentCharakin != MARKakin)) {
+            currentWordakin.TabWord[i] = currentCharakin;
             ADVakin();
             i++;
         }
@@ -81,7 +81,7 @@ int WordToIntakin(Wordakin W) {
     int i;
     int temp = 0;
     for (i = 0; i < W.Length; i++){
-        if (W.TabWord[i] != BLANK) {
+        if (W.TabWord[i] != BLANKakin) {
             temp = temp * 10 + (W.TabWord[i] - '0');
         }
     }

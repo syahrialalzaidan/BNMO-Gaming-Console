@@ -29,24 +29,22 @@ typedef struct tNode {
 /* pohon Biner kosong p = NIL */
 
 addresst newTreeNode (ElType value);
+/* Membuat tree node baru*/
 
 void CreateTree (Tree* tree, addresst node);
-// { I.S. Sembarang }
-// { F.S. Menghasilkan sebuah pohon p }
-// { Menghasilkan pohon p yang kosong (NIL) jika alokasi gagal }
+/* Mengecek apakah tree kosong*/
 
 boolean isTreeEmpty(BinTree tree);
+/* Membuat tree baru*/
 
 void BuildTree(Tree *t, Tree *root, int x);
-/* Dipakai jika input dari pita karakter */
-/* I.S. cc berisi '(' */
-/* F.S. t terdefinisi */
-/* Proses: Membaca isi pita karakter dan membangun pohon secara rekursif, hanya
-membutuhkan mesin karakter */
+/* Membuat tree dari file txt*/
 
 void addLeft (BinTree p, ElType x);
+/* Menambahkan child kiri tree*/
 
 void addRight (BinTree p, ElType x);
+/* Menambahkan child kanan tree*/
 
 
 #endif

@@ -5,13 +5,18 @@
 #include "../program/ADT/tree/tree.h"
 
 boolean isStringSameakin(char *c1, char*c2);
+/* Mengembalikan true jika string sama */
 
-void namahewan(char* file,char* hewan[41]);
+void namahewan(char* hewan[41]);
+/* Membaca nama-nama hewan yang tersedia*/
 
-void jawab(char* file, char* jawaban[41], int nomer[41]);
+void jawab(char* jawaban[41], int nomer[41]);
+/* Membaca jawaban yang benar*/
 
 void printakinator();
+/* Menampilkan tulisan akinator*/
 
-void playakinator(float *score);
+void playakinator(float *skor); 
+/* Program utama untuk menjalankan game*/
 
 #endif
