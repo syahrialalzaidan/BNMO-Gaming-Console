@@ -138,10 +138,10 @@ void playakinator(float *skor){
     printf("Jawaban kamu ");
     if (isStringSameakin(tebakan, jawab)){
         printf("benar semua\n");
-        printf("Skor: %f\n", hasil);
+        printf("Skor: %.2f\n", hasil);
     } else{
         printf("salah\n");
-        printf("Skor: %f\n", hasil);
+        printf("Skor: %.2f\n", hasil);
     }
     *skor = hasil;
 }
