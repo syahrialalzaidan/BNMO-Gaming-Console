@@ -15,4 +15,4 @@ char UpperHuruf(char input);
 int countkataHM(char *kata);
 void playtebakkataHM(float* scoretotal);
 boolean isstringequalHM(char *kata1, char *kata2);
-void Hangman(float *skor);
+void Hangman(float *skor, boolean *playtebakkataHM);

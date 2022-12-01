@@ -16,7 +16,7 @@
 boolean isStringSame(char *c1, char*c2);
 /* Mengembalikan true jika string sama */
 
-void play(Queue *qg, ArrayDin array, float *skor);
+void play(Queue *qg, ArrayDin array, float *skor, boolean *play);
 /* Memainkan sebuah permainan tanpa menuliskan daftar game
     I.S. Array game tidak mungkin kosong
     F.S. Game yang berada di posisi Head akan dimainkan */

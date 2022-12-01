@@ -8,8 +8,8 @@
 #define MARK '\n'
 #define BLANK ' '
 /* State Mesin */
-extern char currentChar;
-extern boolean EOP;
+extern char currentCharakin;
+extern boolean EOPakin;
 extern boolean isFileakin;
 
 void LoadPitaAkin(char* filename, boolean isF);

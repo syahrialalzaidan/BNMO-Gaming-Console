@@ -42,6 +42,19 @@ char UpperHuruf(char input){
     }
     return input;
 }
+void hangmanart(){
+    printf("\nur dead bruh\n\n");
+    printf("  _________\n");
+    printf("  |/      |\n");
+    printf("  |      (_)\n");
+    printf("  |      \\|/\n");
+    printf("  |       |\n");
+    printf("  |      / \\\n");
+    printf("  |\n");
+    printf("__|________\n");
+    printf("|         |\n");
+    printf("|_________|\n");
+}
 
 /*Menghitung panjang kata*/
 int countkataHM(char *kata){
@@ -68,6 +81,7 @@ boolean isstringequalHM(char *kata1, char *kata2){
     return true;
 }
 
+
 /*Permainan utama*/
 void playtebakkataHM(float* scoretotal){
     int skor = 0; //Skor game
@@ -86,7 +100,7 @@ void playtebakkataHM(float* scoretotal){
     CreateEmptySetChar(&SKunjaw);
 
     //Displaying soal awal
-    printf("Selamat Datang di Hangman!\nTebak kata berikut dengan benar! (DALAM HURUF BESAR)\n");
+    printf("Selamat Datang di Hangman!\nTebak kata berikut dengan benar! (DALAM HURUF BESAR)\nEdisi Nama-nama Negara di Asia\n");
     float poin = 0;
     char* soal = kamus.Elements[angka]; //Soal hasil randomizer
 
@@ -118,24 +132,23 @@ void playtebakkataHM(float* scoretotal){
         printf("Masukkan huruf jawaban : ");
         START();  //Diasumsikan input selalu character, bukan string
         currentChar = UpperHuruf(currentChar); //Memastikan semua input dalam Uppercase
-
+        clear();
         //Saat jawaban salah jika kondisinya Huruf belum pernah ditebak tapi memang tidak ada di kunjaw
         //Tidak salaah jika kondisinya huruf pernah ditebak
         if (!IsMemberSetChar(SKunjaw, currentChar) && !IsMemberSetChar(SAnswer, currentChar))
         {
             nyawa--;
-            printf("\n-------------------\n");
+            printf("-------------------\n");
             printf("Jawaban kamu salah!\n");
             printf("-------------------\n");
         }
         else if (IsMemberSetChar(SAnswer, currentChar)){
-            printf("\n-----------------------\n");
+            printf("-----------------------\n");
             printf("Huruf %c sudah kamu tebak\n", currentChar);
             printf("-------------------------\n");
         }
         InsertSetChar(&SAnswer, currentChar);
         while (! IsEOP()) ADV();
-        clear();
 }
     
     //Saat jawaban benar
@@ -148,44 +161,91 @@ void playtebakkataHM(float* scoretotal){
     //Saat kesempatan habis
     else{
         printf("\nMohon maaf, nyawamu habis.\nJawaban yang benar: %s\n", soal);
+        hangmanart();
     }
 }
 
-//Fungsi utama yang dipanggil
-void Hangman(float *skor){
-    float skortemp, skortotal = 0;
-    playtebakkataHM(&skortemp);
-    skortotal += skortemp;
-
-    //Asking for mengulangi permainan
-    char valid;
-    boolean main_lagi = true;
-    // printf("\nApakah kamu ingin bermain lagi? (y/n) : ");
-    //printf("%c\n", valid);
-    while (main_lagi){
-        //printf("%c\n", valid);
-        printf("\nApakah kamu ingin bermain lagi? (y/n) : ");
-        START();
-        valid = currentChar;
-        //printf("%c", valid);
-        while (! IsEOP()) ADV();
-        clear();
-        if (valid == 'y' || valid == 'Y') //Jika ingin main lagi
-        {
-        playtebakkataHM(&skortemp);
-        skortotal += skortemp;
+void savekamus(Set kamus){
+    char* filepath = AddPath("kamus.txt");
+    FILE* fp = fopen(filepath, "w");
+    fprintf(fp, "%d\n", kamus.Count);
+    for (int i = 0; i < kamus.Count; i++){
+        if (i != kamus.Count - 1){
+            fprintf(fp, "%s\n", kamus.Elements[i]);
         }
-        else if (valid == 'n' || valid == 'N'){ //Jika tidak ingin main lagi, game berakhir
-        (*skor) = skortotal;
-        printf("Selamat kamu berhasil mendapatkan %.0f poin pada game ini!\n", skortotal);
-        printf("Selamat mengerjakan tubes lainnya, Bye-bye! :D\n");
-        main_lagi = false;
-        }
-        else {
-        printf("Coba pilih antara y atau n, bukan antara kamu atau dia ya :(\n");
+        else{
+            fprintf(fp, "%s", kamus.Elements[i]);
         }
     }
-    //ALGORITMA MASUKIN SCOREBOARD
+    fclose(fp);
+}
+
+//Fungsi utama yang dipanggil
+void Hangman(float *skor, boolean *play){
+    float skortemp, skortotal = 0;
+    *play = true;
+    int pilihan;
+    boolean valid = false;
+    printf("Selamat datang di Hangman!\n");
+    printf("Ketik 1 untuk main\nKetik 2 untuk menambahkan kata ke daftar kata\n");
+    while(! valid){
+        printf("Masukkan command: ");
+        STARTWORD();
+        pilihan = WordToInt(currentWord);
+        if(pilihan == 1){
+            valid = true;
+            playtebakkataHM(&skortemp);
+            skortotal += skortemp;
+
+            //Asking for mengulangi permainan
+            char valid;
+            boolean main_lagi = true;
+            // printf("\nApakah kamu ingin bermain lagi? (y/n) : ");
+            //printf("%c\n", valid);
+            while (main_lagi){
+                //printf("%c\n", valid);
+                printf("\nApakah kamu ingin bermain lagi? (y/n) : ");
+                START();
+                valid = currentChar;
+                //printf("%c", valid);
+                while (! IsEOP()) ADV();
+                clear();
+                if (valid == 'y' || valid == 'Y') //Jika ingin main lagi
+                {
+                playtebakkataHM(&skortemp);
+                skortotal += skortemp;
+                }
+                else if (valid == 'n' || valid == 'N'){ //Jika tidak ingin main lagi, game berakhir
+                (*skor) = skortotal;
+                printf("Selamat kamu berhasil mendapatkan %.0f poin pada game ini!\n", skortotal);
+                printf("Selamat mengerjakan tubes lainnya, Bye-bye! :D\n");
+                main_lagi = false;
+                }
+                else {
+                printf("Coba pilih antara y atau n, bukan antara kamu atau dia ya :(\n");
+                }
+            }
+        //ALGORITMA MASUKIN SCOREBOARD
+        }
+        else if (pilihan == 2){
+            valid = true;
+            *play = false;
+            Set kamus;
+            printf("Masukkan kata yang ingin ditambahkan ke daftar kata : ");
+            STARTWORD();
+            char* kata = WordToString(currentWord);
+            while (! IsEOP()) ADV();
+            clear();
+            CreateEmptySet(&kamus);
+            loadkamus("kamus.txt", &kamus);
+            InsertSet(&kamus, kata);
+            savekamus(kamus);
+            printf("Kata %s berhasil ditambahkan ke daftar kata!\n", kata);
+        }
+        else{
+            printf("Pilihan tidak valid, coba lagi ya!\n");
+        }
+    }
 }
 
 // //Driver test

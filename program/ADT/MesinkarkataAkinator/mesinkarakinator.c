@@ -4,10 +4,10 @@
 
 // ASLINYA "mesinkarakter.h"
 
-char currentChar;
-boolean EOP;
+char currentCharakin;
+boolean EOPakin;
 boolean isFileakin = false;
-char* filepath;
+char* filepathakin;
 
 static FILE *pita;
 static int retval;
@@ -18,7 +18,7 @@ void LoadPitaAkin(char* filename, boolean isF) {
     F.S. : Jika pita berbentuk file, maka isFileakin akan bernilai true 
            dan filepath akan berisi nama file beserta path-nya.
            Jika berbentuk masukan maka isFileakin akan bernilai false. */
-    filepath = filename;
+    filepathakin = filename;
     isFileakin = isF;
 }
 
@@ -38,7 +38,7 @@ void STARTakin() {
           Jika currentChar != MARK maka EOP akan padam (false)
           Jika currentChar = MARK maka EOP akan menyala (true) */
     if (isFileakin) {
-        pita = fopen(filepath, "r");
+        pita = fopen(filepathakin, "r");
         if (pita == NULL) {
             printf("404 FILE NOT FOUND X_X \n");
         } else {
@@ -56,16 +56,16 @@ void ADVakin() {
    F.S. : currentChar adalah karakter berikutnya dari currentChar yang lama,
           currentChar mungkin = MARK
           Jika  currentChar = MARK maka EOP akan menyala (true) */
-    retval = fscanf(pita,"%c",&currentChar);
-    EOP = IsEOPakin();
-    if (EOP && isFileakin) {
+    retval = fscanf(pita,"%c",&currentCharakin);
+    EOPakin = IsEOPakin();
+    if (EOPakin && isFileakin) {
         fclose(pita);
     }
 }
 
 char GetCCakin() {
 /* Mengirimkan currentChar */
-    return currentChar;
+    return currentCharakin;
 }
 
 boolean IsEOPakin() {
@@ -84,9 +84,9 @@ boolean IsEOPakin() {
         // } else {
         //     return (currentChar == MARK);
         // }
-        return (currentChar == MARK);
+        return (currentCharakin == MARK);
     } else {
-        return (currentChar == EOF || retval == EOF);
+        return (currentCharakin == EOF || retval == EOF);
         //return (currentChar == MARK);
     }
 }

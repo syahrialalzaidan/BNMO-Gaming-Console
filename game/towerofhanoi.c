@@ -138,8 +138,8 @@ void playtowerofhanoi(float *score){
     printf(" .\n");
     clear();
     printf("Ketik 'Q' untuk keluar dari permainan\n\n");
+    displaytower(n, tower1, tower2, tower3);
     while(! isStackSama(tower3, temp)){
-        displaytower(n, tower1, tower2, tower3);
         printf("TOWER ASAL: ");
         STARTWORD();
         if (currentWord.TabWord[0] == 'Q' && currentWord.Length == 1) break;
@@ -173,8 +173,9 @@ void playtowerofhanoi(float *score){
                     sleep(1);
                     printf(".\n\n");
                     clear();
+                    displaytower(n, tower1, tower2, tower3);
                 }
-                else printf("Tidak bisa dipindahkan!!\n");
+                else printf("Tidak bisa dipindahkan!!\n\n");
             }
             else if (temp2 == 3){
                 if (info1 < info3 || info3 == 0){
@@ -187,10 +188,11 @@ void playtowerofhanoi(float *score){
                     sleep(1);
                     printf(".\n\n");
                     clear();
+                    displaytower(n, tower1, tower2, tower3);
                 }
-                else printf("Tidak bisa dipindahkan!!\n");
+                else printf("Tidak bisa dipindahkan!!\n\n");
             }
-            else printf("Input INVALID!\n");
+            else printf("Input INVALID!\n\n");
         }
         else if (temp1 == 2 && info2 != 0){
             if (temp2 == 1){
@@ -204,8 +206,9 @@ void playtowerofhanoi(float *score){
                     sleep(1);
                     printf(".\n\n");
                     clear();
+                    displaytower(n, tower1, tower2, tower3);
                 }
-                else printf("Tidak bisa dipindahkan!!\n");
+                else printf("Tidak bisa dipindahkan!!\n\n");
                 
             }
             else if (temp2 == 3){
@@ -219,10 +222,11 @@ void playtowerofhanoi(float *score){
                     sleep(1);
                     printf(".\n\n");
                     clear();
+                    displaytower(n, tower1, tower2, tower3);
                 }
-                else printf("Tidak bisa dipindahkan!!\n");
+                else printf("Tidak bisa dipindahkan!!\n\n");
             }
-            else printf("Input INVALID!\n");
+            else printf("Input INVALID!\n\n");
         }
         else if (temp1 == 3 && info3 != 0){
             if (temp2 == 1){
@@ -236,8 +240,9 @@ void playtowerofhanoi(float *score){
                     sleep(1);
                     printf(".\n\n");
                     clear();
+                    displaytower(n, tower1, tower2, tower3);
                 }
-                else printf("Tidak bisa dipindahkan!!\n");
+                else printf("Tidak bisa dipindahkan!!\n\n");
                 
             }
             else if (temp2 == 2){
@@ -251,12 +256,13 @@ void playtowerofhanoi(float *score){
                     sleep(1);
                     printf(".\n\n");
                     clear();
+                    displaytower(n, tower1, tower2, tower3);
                 }
-                else printf("Tidak bisa dipindahkan!!\n");
+                else printf("Tidak bisa dipindahkan!!\n\n");
             }
-            else printf("Input INVALID!\n");
+            else printf("Input INVALID!\n\n");
         }
-        else printf("Input INVALID!\n");
+        else printf("Input INVALID!\n\n");
     }
     if (count >= optimal){
         displaytower(n, tower1, tower2, tower3);

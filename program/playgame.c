@@ -12,7 +12,7 @@ boolean isStringSame(char *c1, char*c2){
     return true;
 }
 
-void play(Queue *qg, ArrayDin array, float *skor){
+void play(Queue *qg, ArrayDin array, float *skor, boolean *play){
 /* Memainkan sebuah permainan tanpa menuliskan daftar game
     I.S. Array game tidak mungkin kosong
     F.S. Game yang berada di posisi Head akan dimainkan */
@@ -44,7 +44,7 @@ void play(Queue *qg, ArrayDin array, float *skor){
     //     printf("Silahkan pilih game lain.\n");
     } else if(isStringSame((*qg).buffer[(*qg).idxHead], hangmanword)){
         printf("Loading Hangman ...\n");
-        Hangman(skor);
+        Hangman(skor, play);
     //     //playtebakkata();
     } else if(isStringSame((*qg).buffer[(*qg).idxHead], toh)){
         printf("Loading Tower of Hanoi ...\n");
@@ -81,7 +81,7 @@ void playgame(Queue *qg, ArrayDin array, float *skor, boolean *found){
         *found = false;
     } else{
         printqueue(*qg);
-        play(qg, array, skor);
         *found = true;
+        play(qg, array, skor, found);
     }
 }

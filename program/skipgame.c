@@ -25,7 +25,8 @@ void skipgame(Queue *qg, int x, ArrayDin array, float *skor) {
             for (i = 0; i < x; i ++){
                 dequeue(qg, &a);
             }
-            play(qg, array, skor);
+            boolean found;
+            play(qg, array, skor, &found);
         }
     }
 }  

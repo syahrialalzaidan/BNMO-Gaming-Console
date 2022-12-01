@@ -2,14 +2,14 @@
 #include <stdlib.h>
 #include "mesinkataakinator.h"
 
-boolean EndWord;
-Wordakin currentWord;
+boolean EndWordakin;
+Wordakin currentWordakin;
 
 void IgnoreBlanksakin() {
 /* Mengabaikan satu atau beberapa BLANK
    I.S. : currentChar sembarang
    F.S. : currentChar ≠ BLANK atau currentChar = MARK */
-    while (((currentChar == BLANK) && (!isFileakin)) || ((isFileakin) && (currentChar == ',')) || ((isFileakin) && (currentChar == BLANK))) {
+    while (((currentCharakin == BLANK) && (!isFileakin)) || ((isFileakin) && (currentCharakin == ',')) || ((isFileakin) && (currentCharakin == BLANK))) {
         ADVakin();
     } 
 }
@@ -22,11 +22,11 @@ void STARTWORDakin() {
     STARTakin();
     //IgnoreBlanks();
     if (IsEOPakin()) {
-        EndWord = true;
+        EndWordakin = true;
     } else { 
         CopyWordakin();
         // ADV();
-        EndWord = false;
+        EndWordakin = false;
     }
 }
 
@@ -37,10 +37,10 @@ void ADVWORDakin() {
           Jika currentChar = MARK, EndWord = true.
    Proses : Akuisisi kata menggunakan procedure SalinWord */
     IgnoreBlanksakin();
-    if ((currentChar == BLANK && !isFileakin) || (EOP && isFileakin)) {
-        EndWord = true;
+    if ((currentCharakin == BLANK && !isFileakin) || (EOPakin && isFileakin)) {
+        EndWordakin = true;
     } else { 
-        EndWord = false;
+        EndWordakin = false;
         CopyWordakin();
         if (!isFileakin) {
             IgnoreBlanksakin();
@@ -57,21 +57,21 @@ void CopyWordakin() {
           Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
     int i = 0;
     if (isFileakin) {
-        while ((i < NMax) && (currentChar != ',') && !IsEOPakin()) {
-            currentWord.TabWord[i] = currentChar;
+        while ((i < NMax) && (currentCharakin != ',') && !IsEOPakin()) {
+            currentWord.TabWord[i] = currentCharakin;
             ADVakin();
             i++;
         }
     } else {
         char y = 'y';
         char n = 'n';
-        while ((currentChar != BLANK) && (i < NMax) && (currentChar != MARK)) {
-            currentWord.TabWord[i] = currentChar;
+        while ((currentCharakin != BLANK) && (i < NMax) && (currentCharakin != MARK)) {
+            currentWord.TabWord[i] = currentCharakin;
             ADVakin();
             i++;
         }
     }
-    currentWord.Length = i;
+    currentWordakin.Length = i;
 }
 
 /* Word Converter Functions */
