@@ -4,10 +4,10 @@
 
 // ASLINYA "mesinkarakter.h"
 
-char currentCharakinakin;
-boolean EOPakinakin;
+char currentCharakin;
+boolean EOPakin;
 boolean isFileakin = false;
-char* filepathakinakin;
+char* filepathakin;
 
 static FILE *pitaakin;
 static int retvalakin;
