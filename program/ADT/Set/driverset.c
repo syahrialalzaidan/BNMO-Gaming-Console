@@ -11,7 +11,7 @@ int main(){
         printf("Saat ini set kosong\n");
     }
     if (!IsFullSet(s)){
-        printf("Saat ini set tidak full\n");
+        printf("Saat ini set tidak full\n\n");
     }
     char* x = "ISI";
     printf("Memasukkan isi ke set\n");
@@ -20,7 +20,7 @@ int main(){
         printf("Saat ini set tidak kosong\n");
     }
     if (IsMember(s, x)){
-        printf("ISI merupakan member dari set\n");
+        printf("ISI merupakan member dari set\n\n");
     }
     printf("Menghapus ISI dari set\n");
     DeleteSet(&s, x);

@@ -47,8 +47,7 @@ valuetype Value(Map M, keytype k){
         if (isWordSame(stringToWord(M.Elements[i].Key), stringToWord(k))) {
             found = true;
             output = (M.Elements[i]).Value;
-        }
-        else {
+        }else {
             i++;
         }
     }

@@ -4,7 +4,7 @@
 
 int main(){
     printf("Membuat map\n");
-    Map m;
+    MapChar m;
     CreateEmptyChar(&m);
     printf("Map terbuat\n");
     if (IsMapEmptyChar(m)){

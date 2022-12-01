@@ -28,7 +28,7 @@ int main(){
     printf("Value: %s\n", vv);
 
     printf("\nMenghapus di map\n");
-    Delete(&m, k);
+    DeleteMap(&m, k);
     if (IsMapEmpty(m)){
         printf("Map saat ini kosong\n");
     }
