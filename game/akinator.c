@@ -57,7 +57,7 @@ void printakinator(){
 void playakinator(float *skor){
 /* Program utama untuk menjalankan game*/
     printakinator();
-    char* filepath = AddPath("akinator.txt");
+    //char* filepath = AddPath("akinator.txt");
 
     LoadPitaAkin("./game/DataAkinator/akinator.txt", true);
     STARTWORDakin();
