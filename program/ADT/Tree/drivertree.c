@@ -7,7 +7,7 @@
 
 int main(){
     printf("Membaca file txt\n");
-    LoadPitaAkin("tree.txt", true);
+    LoadPitaAkin("./program/ADT/Tree/tree.txt", true);
     STARTWORDakin();
 
     printf("Membuat tree dan address\n");

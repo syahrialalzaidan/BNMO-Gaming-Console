@@ -16,6 +16,7 @@ boolean isStringSameakin(char *c1, char*c2){
 }
 
 void namahewan(char* hewan[41]){
+/* Membaca nama-nama hewan yang tersedia*/
     LoadPitaAkin("./game/DataAkinator/hewan.txt", true);
     STARTWORDakin();
     hewan[0] = WordToStringakin(currentWordakin);
@@ -27,6 +28,7 @@ void namahewan(char* hewan[41]){
 }
 
 void jawab(char* jawaban[41], int nomer[41]){
+/* Membaca jawaban yang benar*/
     LoadPitaAkin("./game/DataAkinator/jawaban.txt", true);
     STARTWORDakin();
     jawaban[0] = WordToStringakin(currentWordakin);
@@ -40,6 +42,7 @@ void jawab(char* jawaban[41], int nomer[41]){
 }
 
 void printakinator(){
+/* Menampilkan tulisan akinator*/
     printf("  /$$$$$$  /$$       /$$                       /$$                        \n");
     printf(" /$$__  $$| $$      |__/                      | $$                        \n");
     printf("| $$  \ $$| $$   /$$ /$$ /$$$$$$$   /$$$$$$  /$$$$$$    /$$$$$$   /$$$$$$ \n");
@@ -51,12 +54,10 @@ void printakinator(){
 }
 
 void playakinator(float *skor){
+/* Program utama untuk menjalankan game*/
     printakinator();
 
     LoadPitaAkin("./game/DataAkinator/akinator.txt", true);
-    // LoadPitaAkin("C:/Users/Iskandar/Documents/GitHub/TUBES-ALSTRUKDAT-KELOMPOK-10/game/DataAkinator/akinator.txt", true);
-    //char* filepathakin = "akinator.txt";
-    //isFileakin = true;
     STARTWORDakin();
 
     Tree pohon, root, akinator;
@@ -89,16 +90,13 @@ void playakinator(float *skor){
 
     printf("Hewan yang kamu harus tebak adalah %s\n", tebakan);
     while ((RIGHT(akinator) != NILakin) && (valid)){
-        // char* input;
         char* Y = "y";
         char* N = "n";
-        // int input;
         printf("%s\n", INFO(*akinator));
         printf("Yes (y) / No (n): ");
         isFileakin = false;
         STARTWORDakin();
         char* input = WordToStringakin(currentWordakin);
-        //scanf("%d", &input);
 
         while (((!isStringSameakin(Y, input)) && (!isStringSameakin(N, input))) || (currentWordakin.Length != 1)){
             printf("\n");
@@ -106,7 +104,6 @@ void playakinator(float *skor){
             printf("Hewan yang kamu harus tebak adalah %s\n", tebakan);
             printf("%s\n", INFO(*akinator));
             printf("Yes (y) / No (n): ");
-            //scanf("%d", &input);
             STARTWORDakin();
             input = WordToStringakin(currentWordakin);
         }
@@ -147,18 +144,4 @@ void playakinator(float *skor){
         printf("Skor: %f\n", hasil);
     }
     *skor = hasil;
-   
-   /*
-    printf("%s\n", INFO(*akinator));
-    akinator = RIGHT(akinator);
-    printf("%s\n", INFO(*akinator));
-    akinator = LEFT(akinator);
-    printf("%s\n", INFO(*akinator));
-    akinator = RIGHT(akinator);
-    printf("%s\n", INFO(*akinator));
-    akinator = LEFT(akinator);
-    printf("%s\n", INFO(*akinator));
-    akinator = RIGHT(akinator);
-    printf("%s\n", INFO(*akinator));
-    */
 }
