@@ -4,10 +4,10 @@
 
 // ASLINYA "mesinkarakter.h"
 
-char currentCharakinakin;
-boolean EOPakinakin;
+char currentCharakin;
+boolean EOPakin;
 boolean isFileakin = false;
-char* filepathakinakin;
+char* filepathakin;
 
 static FILE *pitaakin;
 static int retvalakin;
@@ -18,7 +18,7 @@ void LoadPitaAkin(char* filenameakin, boolean isFakin) {
     F.S. : Jika pita berbentuk file, maka isFile akan bernilai true 
            dan filepathakin akan berisi nama file beserta path-nya.
            Jika berbentuk masukan maka isFile akan bernilai false. */
-    filepathakin = filenameakin;
+    filenameakin = filenameakin;
     isFileakin = isFakin;
 }
 
