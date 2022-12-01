@@ -52,10 +52,10 @@ void play(Queue *qg, ArrayDin array, float *skor){
     } else if(isStringSame((*qg).buffer[(*qg).idxHead], som)){
         printf("Loading Snake on Meteor ...\n");
         PlaySnakeOnMeteor(skor);
-    // } else if(isStringSame((*qg).buffer[(*qg).idxHead], akinator)){
-    //     printf("Loading Akinator ...\n");
-    //     //srand(time(0));
-    //     //akinator();
+    } else if(isStringSame((*qg).buffer[(*qg).idxHead], akinator)){
+        printf("Loading Akinator ...\n");
+        srand(time(0));
+        playakinator(skor);
     
     } else {
         printf("GAME OVER\n");

@@ -2,16 +2,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-address newTreeNode (ElType value)
+addresst newTreeNode (ElType value)
 {
     /* KAMUS LOKAL */
-    address node;
+    addresst node;
     Tree p;
     CreateTree(&p, node);
     Node n;
 
     /* ALGORITMA */
-    node = (address) malloc(sizeof(Node));
+    node = (addresst) malloc(sizeof(Node));
     if (node != NULL) {
         INFO(n) = value;
         n.right = NULL;
@@ -29,7 +29,7 @@ boolean isTreeEmpty(BinTree tree){
     return (tree == NILakin);
 }
 
-void CreateTree(Tree* tree, address node)
+void CreateTree(Tree* tree, addresst node)
 // I.S. Tree sembarang
 // F.S. Tree terdefinisi
 {
