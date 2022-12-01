@@ -81,6 +81,25 @@ boolean isstringequalHM(char *kata1, char *kata2){
     return true;
 }
 
+void hangmanascii(){
+    printf("HHHHHHHHH     HHHHHHHHH               AAA               NNNNNNNN        NNNNNNNN        GGGGGGGGGGGGGMMMMMMMM               MMMMMMMM               AAA               NNNNNNNN        NNNNNNNN\n");
+    printf("H:::::::H     H:::::::H              A:::A              N:::::::N       N::::::N     GGG::::::::::::GM:::::::M             M:::::::M              A:::A              N:::::::N       N::::::N\n");    
+    printf("H:::::::H     H:::::::H             A:::::A             N::::::::N      N::::::N   GG:::::::::::::::GM::::::::M           M::::::::M             A:::::A             N::::::::N      N::::::N\n");     
+    printf("HH::::::H     H::::::HH            A:::::::A            N:::::::::N     N::::::N  G:::::GGGGGGGG::::GM:::::::::M         M:::::::::M            A:::::::A            N:::::::::N     N::::::N\n");    
+    printf("  H:::::H     H:::::H             A:::::::::A           N::::::::::N    N::::::N G:::::G       GGGGGGM::::::::::M       M::::::::::M           A:::::::::A           N::::::::::N    N::::::N\n");    
+    printf("  H:::::H     H:::::H            A:::::A:::::A          N:::::::::::N   N::::::NG:::::G              M:::::::::::M     M:::::::::::M          A:::::A:::::A          N:::::::::::N   N::::::N\n");   
+    printf("  H::::::HHHHH::::::H           A:::::A A:::::A         N:::::::N::::N  N::::::NG:::::G              M:::::::M::::M   M::::M:::::::M         A:::::A A:::::A         N:::::::N::::N  N::::::N\n");     
+    printf("  H:::::::::::::::::H          A:::::A   A:::::A        N::::::N N::::N N::::::NG:::::G    GGGGGGGGGGM::::::M M::::M M::::M M::::::M        A:::::A   A:::::A        N::::::N N::::N N::::::N\n");     
+    printf("  H:::::::::::::::::H         A:::::A     A:::::A       N::::::N  N::::N:::::::NG:::::G    G::::::::GM::::::M  M::::M::::M  M::::::M       A:::::A     A:::::A       N::::::N  N::::N:::::::N\n");     
+    printf("  H::::::HHHHH::::::H        A:::::AAAAAAAAA:::::A      N::::::N   N:::::::::::NG:::::G    GGGGG::::GM::::::M   M:::::::M   M::::::M      A:::::AAAAAAAAA:::::A      N::::::N   N:::::::::::N\n");     
+    printf("  H:::::H     H:::::H       A:::::::::::::::::::::A     N::::::N    N::::::::::NG:::::G        G::::GM::::::M    M:::::M    M::::::M     A:::::::::::::::::::::A     N::::::N    N::::::::::N\n");     
+    printf("  H:::::H     H:::::H      A:::::AAAAAAAAAAAAA:::::A    N::::::N     N:::::::::N G:::::G       G::::GM::::::M     MMMMM     M::::::M    A:::::AAAAAAAAAAAAA:::::A    N::::::N     N:::::::::N\n");     
+    printf("HH::::::H     H::::::HH   A:::::A             A:::::A   N::::::N      N::::::::N  G:::::GGGGGGGG::::GM::::::M               M::::::M   A:::::A             A:::::A   N::::::N      N::::::::N\n");     
+    printf("H:::::::H     H:::::::H  A:::::A               A:::::A  N::::::N       N:::::::N   GG:::::::::::::::GM::::::M               M::::::M  A:::::A               A:::::A  N::::::N       N:::::::N\n");     
+    printf("H:::::::H     H:::::::H A:::::A                 A:::::A N::::::N        N::::::N     GGG::::::GGG:::GM::::::M               M::::::M A:::::A                 A:::::A N::::::N        N::::::N\n");     
+    printf("HHHHHHHHH     HHHHHHHHHAAAAAAA                   AAAAAAANNNNNNNN         NNNNNNN        GGGGGG   GGGGMMMMMMMM               MMMMMMMMAAAAAAA                   AAAAAAANNNNNNNN         NNNNNNN\n\n");
+}
+
 
 /*Permainan utama*/
 void playtebakkataHM(float* scoretotal){
@@ -186,6 +205,7 @@ void Hangman(float *skor, boolean *play){
     *play = true;
     int pilihan;
     boolean valid = false;
+    hangmanascii();
     printf("Selamat datang di Hangman!\n");
     printf("Ketik 1 untuk main\nKetik 2 untuk menambahkan kata ke daftar kata\n");
     while(! valid){
