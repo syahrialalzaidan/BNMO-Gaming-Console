@@ -236,23 +236,26 @@ int main() {
         else if(command == 7){
             // get the game name in head of queue
             char* gameName = HEAD(queuegames);
-            printf("Playing %s...\n", gameName);
-            playgame(&queuegames, Games, &score);
-            Push(&history, gameName);
-            printf("Masukkan nama: ");
-            STARTWORD();
-            char* name = WordToString(currentWord);
-            IdxType idx = SearchArrayDin(Games, gameName);
-            while (IsMemberMap(scoreboard.Elmt[idx], name)) {
-                printf("Nama sudah ada, silakan masukkan nama yang lain.\n");
+            boolean found = false;
+            if (gameName != NULL) printf("Playing %s...\n", gameName);
+            playgame(&queuegames, Games, &score, &found);
+            if (found){
+                Push(&history, gameName);
                 printf("Masukkan nama: ");
                 STARTWORD();
-                name = WordToString(currentWord);
+                char* name = WordToString(currentWord);
+                IdxType idx = SearchArrayDin(Games, gameName);
+                while (IsMemberMap(scoreboard.Elmt[idx], name)) {
+                    printf("Nama sudah ada, silakan masukkan nama yang lain.\n");
+                    printf("Masukkan nama: ");
+                    STARTWORD();
+                    name = WordToString(currentWord);
+                }
+                Insert(&scoreboard.Elmt[idx], name, score);
+                printf("\nScore player %s berhasil dimasukkan!\n", name);
+                sortmapdesc(&scoreboard.Elmt[idx]);
+                score = 0;
             }
-            Insert(&scoreboard.Elmt[idx], name, score);
-            printf("\nScore player %s berhasil dimasukkan!\n", name);
-            sortmapdesc(&scoreboard.Elmt[idx]);
-            score = 0;
         }
         else if(command == 8){
             int nomor = WordToInt(currentWord);

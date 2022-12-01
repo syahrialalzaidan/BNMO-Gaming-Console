@@ -69,17 +69,19 @@ void play(Queue *qg, ArrayDin array, float *skor){
     dequeue(qg, &a);
 }
 
-void playgame(Queue *qg, ArrayDin array, float *skor){
+void playgame(Queue *qg, ArrayDin array, float *skor, boolean *found){
 /*  Memainkan sebuah permainan.
     I.S. Array game mungkin kosong.
     F.S. Menuliskan daftar game dan game yang berada di posisi Head akan dimainkan. */
-    printf("Berikut adalah daftar antrian game-mu:\n");
+    if (HEAD(*qg) != NULL) printf("Berikut adalah daftar antrian game-mu:\n");
     if (isEmpty(*qg)){
         printf("\n");
         printf("Antrian game-mu kosong, tambahkan game terlebih dahulu.\n");
         queuegame(qg, array);
+        *found = false;
     } else{
         printqueue(*qg);
         play(qg, array, skor);
+        *found = true;
     }
 }
