@@ -42,18 +42,19 @@ void jawab(char* file, char* jawaban[41], int nomer[41]){
 void printakinator(){
     printf("  /$$$$$$  /$$       /$$                       /$$                        \n");
     printf(" /$$__  $$| $$      |__/                      | $$                        \n");
-    printf("| $$  \$$| $$   /$$ /$$ /$$$$$$$   /$$$$$$  /$$$$$$    /$$$$$$   /$$$$$$ \n");
+    printf("| $$  \\$$| $$   /$$ /$$ /$$$$$$$   /$$$$$$  /$$$$$$    /$$$$$$   /$$$$$$ \n");
     printf("| $$$$$$$$| $$  /$$/| $$| $$__  $$ |____  $$|_  $$_/   /$$__  $$ /$$__  $$\n");
-    printf("| $$__  $$| $$$$$$/ | $$| $$  \ $$  /$$$$$$$  | $$    | $$  \ $$| $$  \__/\n");
+    printf("| $$__  $$| $$$$$$/ | $$| $$  \\ $$  /$$$$$$$  | $$    | $$  \\ $$| $$  \\__/\n");
     printf("| $$  | $$| $$_  $$ | $$| $$  | $$ /$$__  $$  | $$ /$$| $$  | $$| $$      \n");
     printf("| $$  | $$| $$ \\$$| $$| $$  | $$|  $$$$$$$  |  $$$$/|  $$$$$$/| $$      \n");
-    printf("|__/  |__/|__/  \\__/|__/|__/  |__/ \_______/   \___/   \______/ |__/     \n\n");
+    printf("|__/  |__/|__/  \\__/|__/|__/  |__/ \\_______/   \\___/   \\______/ |__/     \n\n");
 }
 
 void playakinator(float *score){
     printakinator();
+    char* filepath = AddPath("akinator.txt");
 
-    LoadPitaAkin("DataAkinator/akinator.txt", true);
+    LoadPitaAkin(filepath, true);
     STARTWORDakin();
 
     Tree pohon, root, akinator;
@@ -69,8 +70,8 @@ void playakinator(float *score){
     char* hewan[41];
     char* jawaban[41];
     int panjangjawaban[41];
-    namahewan("DataAkinator/hewan.txt", hewan);
-    jawab("DataAkinator/jawaban.txt", jawaban, panjangjawaban);
+    namahewan("hewan.txt", hewan);
+    jawab("jawaban.txt", jawaban, panjangjawaban);
 
     time_t t;
     srand(time(&t));
