@@ -18,7 +18,7 @@ void LoadPitaAkin(char* filenameakin, boolean isFakin) {
     F.S. : Jika pita berbentuk file, maka isFile akan bernilai true 
            dan filepathakin akan berisi nama file beserta path-nya.
            Jika berbentuk masukan maka isFile akan bernilai false. */
-    filenameakin = filenameakin;
+    filepathakin = filenameakin;
     isFileakin = isFakin;
 }
 
