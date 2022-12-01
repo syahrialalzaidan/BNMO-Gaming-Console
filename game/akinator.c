@@ -54,6 +54,20 @@ void printakinator(){
     printf("|__/  |__/|__/  \\__/|__/|__/  |__/ \\_______/   \\___/   \\______/ |__/     \n\n");
 }
 
+boolean inputcheck(Wordakin W){
+/* Mengecek input*/
+    if (W.Length == 1){
+        if (!IsEOPakin()){
+            return false;
+            EndWordakin = true;
+        } else{
+            return true;
+        }
+    } else{
+        return false;
+    }
+}
+
 void playakinator(float *skor){
 /* Program utama untuk menjalankan game*/
     printakinator();
@@ -100,7 +114,11 @@ void playakinator(float *skor){
         STARTWORDakin();
         char* input = WordToStringakin(currentWordakin);
 
-        while (((!isStringSameakin(Y, input)) && (!isStringSameakin(N, input))) || (currentWordakin.Length != 1)){
+        while (((!isStringSameakin(Y, input)) && (!isStringSameakin(N, input))) || (!inputcheck(currentWordakin))){
+            ADVWORDakin();
+            if (!IsEOPakin()){
+                EndWordakin = true;
+            }
             printf("\n");
             printf("\nJawaban yang diterima hanya y atau n\n\n");
             printf("Hewan yang kamu harus tebak adalah %s\n", tebakan);

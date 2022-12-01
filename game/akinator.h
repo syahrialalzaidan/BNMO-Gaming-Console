@@ -16,6 +16,9 @@ void jawab(char* jawaban[41], int nomer[41]);
 void printakinator();
 /* Menampilkan tulisan akinator*/
 
+boolean inputcheck(Wordakin W);
+/* Mengecek input*/
+
 void playakinator(float *skor); 
 /* Program utama untuk menjalankan game*/
 
