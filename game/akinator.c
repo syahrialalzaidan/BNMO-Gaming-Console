@@ -15,8 +15,8 @@ boolean isStringSameakin(char *c1, char*c2){
     return true;
 }
 
-void namahewan(char* file,char* hewan[41]){
-    LoadPitaAkin("hewan.txt", true);
+void namahewan(char* hewan[41]){
+    LoadPitaAkin("./game/DataAkinator/hewan.txt", true);
     STARTWORDakin();
     hewan[0] = WordToStringakin(currentWordakin);
     int i;
@@ -26,8 +26,8 @@ void namahewan(char* file,char* hewan[41]){
     }
 }
 
-void jawab(char* file, char* jawaban[41], int nomer[41]){
-    LoadPitaAkin("jawabanakinator.txt", true);
+void jawab(char* jawaban[41], int nomer[41]){
+    LoadPitaAkin("./game/DataAkinator/jawaban.txt", true);
     STARTWORDakin();
     jawaban[0] = WordToStringakin(currentWordakin);
     nomer[0] = currentWordakin.Length;
@@ -53,9 +53,10 @@ void printakinator(){
 void playakinator(float *skor){
     printakinator();
 
-    //LoadPitaAkin("akinator.txt", true);
-    char* filepathakin = "akinator.txt";
-    isFileakin = true;
+    LoadPitaAkin("./game/DataAkinator/akinator.txt", true);
+    // LoadPitaAkin("C:/Users/Iskandar/Documents/GitHub/TUBES-ALSTRUKDAT-KELOMPOK-10/game/DataAkinator/akinator.txt", true);
+    //char* filepathakin = "akinator.txt";
+    //isFileakin = true;
     STARTWORDakin();
 
     Tree pohon, root, akinator;
@@ -71,8 +72,8 @@ void playakinator(float *skor){
     char* hewan[41];
     char* jawaban[41];
     int panjangjawaban[41];
-    namahewan("hewan.txt", hewan);
-    jawab("jawabanakinator.txt", jawaban, panjangjawaban);
+    namahewan(hewan);
+    jawab(jawaban, panjangjawaban);
 
     time_t t;
     srand(time(&t));

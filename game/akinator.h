@@ -6,9 +6,9 @@
 
 boolean isStringSameakin(char *c1, char*c2);
 
-void namahewan(char* file,char* hewan[41]);
+void namahewan(char* hewan[41]);
 
-void jawab(char* file, char* jawaban[41], int nomer[41]);
+void jawab(char* jawaban[41], int nomer[41]);
 
 void printakinator();
 
