@@ -2,6 +2,9 @@
 //gcc 
 
 void generatemap(MapChar *kamus){
+/*  Memasukkan key dan value ke dalam kamus. 
+    I.S.: kamus kosong.
+    F.S.: kamus terisi. */
     InsertChar(kamus, "mayornaufal", "K01tertampan");
     InsertChar(kamus, "gibeh", "dinosaurus");
     InsertChar(kamus, "argentina", "messi");
@@ -11,6 +14,7 @@ void generatemap(MapChar *kamus){
 }
 
 int countkata(char *kata){
+/*  Mengembalikan jumlaha karakter dalam suatu kata. */
     int i=0;
     while (kata[i] != '\0'){
         i++;
@@ -19,6 +23,7 @@ int countkata(char *kata){
 }
 
 boolean isstringequal(char *kata1, char *kata2){
+/* Mengembalikan nilai true jika kata1 dan kata2 sama. */
     int i=0;
     if (countkata(kata1) != countkata(kata2)){
         return false;
@@ -33,6 +38,9 @@ boolean isstringequal(char *kata1, char *kata2){
 }
 
 void playtebakkata(float *score){
+/*  Memainkan permainan tebak kata.
+    I.S.: score sembarang.
+    F.S.: Permainan tebak kata dimainkan dan score berubah. */
     time_t t;
     srand(time(&t));
     MapChar kamus;

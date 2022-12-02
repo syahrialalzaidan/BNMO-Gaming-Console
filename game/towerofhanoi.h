@@ -8,13 +8,10 @@
 #include <stdio.h>
 
 void printblank(int n);
-// I.S. n terdefinisi
-// F.S. n spasi tercetak
+/* Mencetak spasi. */
 
 void printbintang(int n);
-/* I.S. n terdefinisi
- * F.S. n bintang tercetak
- */
+/* Mencetak bintang dengan jumlah sesuai masukan n. */
 
 float optimummove(int n);
 // menghasilkan jumlah langkah minimum untuk menyelesaikan tower of hanoi dengan n disk
@@ -32,9 +29,8 @@ void gameover();
 //Menampilkan gambar art game over
 
 void playtowerofhanoi(float *score, boolean *play);
-//Memainkan game tower of hanoi
-
-
-
+/* Memainkan permainan Tower of Hanoi dan mengubah nilai skor
+   I.S. skor sembarang
+   F.S. Permainan Tower of Hanoi dimainkan dan skor berubah ketika permainan berakhir. */
 
 #endif

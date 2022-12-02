@@ -1,28 +1,28 @@
 #include <stdio.h>
 #include "SnakeOnMeteor.h"
 
-// gcc SnakeOnMeteor.c ../program/ADT/listdp/listdp.c ../program/ADT/mesinkarkata/mesinkar.c ../program/ADT/mesinkarkata/mesinkata.c -o ular
 boolean isValid(Word kata, int *command)
 {
+/* Mengembalikan nilai true jika input valid. */
     boolean output;
     if (isWordSame(kata, stringToWord("w"))) {
         output = true;
-        *command = 0; // 0 = up
+        *command = 0; 
     }
     else if (isWordSame(kata, stringToWord("a"))) {
         output = true;
-        *command = 1; // 1 = left
+        *command = 1; 
         ADVWORD();
     }
     else if (isWordSame(kata, stringToWord("s"))) {
         output = true;
-        *command = 2; // 2 = down
+        *command = 2; 
         ADVWORD();
     }
     else if (isWordSame(kata, stringToWord("d")))
     {
         output = true;
-        *command = 3; // 3 = right
+        *command = 3; 
         ADVWORD();
     }
     if(! IsEOP()){
@@ -34,6 +34,7 @@ boolean isValid(Word kata, int *command)
 }
 
 void addBody(List *L) {
+/* Menambahkan badan pada snake. */
     address tail = Last(*L);
     address P;
     int x = InfoX(tail) - 1;
@@ -88,40 +89,22 @@ void addBody(List *L) {
 }
 
 void makeSnake(List *L) {
+/* Men-generate snake. 
+   I.S.: Snake kosong (belum mempunyai head dan body).
+   F.S.: Head dan 2 badan awal di-generate. */
     int HeadX, HeadY, Badan1X, Badan1Y, Badan2X, Badan2Y;
     HeadX = rand() % 5;
     HeadY = rand() % 5;
-    // Badan1X = rand() % 5;
-    // Badan1Y = rand() % 5;
-    // if ((Badan1X != HeadX || Badan1Y != HeadY - 1) && (Badan1X != HeadX - 1 || Badan1Y != HeadY)) {
-    //     while ((Badan1X != HeadX || Badan1Y != HeadY - 1) && (Badan1X != HeadX - 1 || Badan1Y != HeadY)) {
-    //         HeadX = rand() % 5;
-    //         HeadY = rand() % 5;
-    //         Badan1X = rand() % 5;
-    //         Badan1Y = rand() % 5;
-    //     }
-    // }
-
-    // Badan2X = rand() % 5;
-    // Badan2Y = rand() % 5;
-    // if ((Badan2X != Badan1X || Badan2Y != Badan1Y - 1) && (Badan2X != Badan1X - 1 || Badan2Y != Badan1Y)) {
-    //     while ((Badan2X != Badan1X || Badan2Y != Badan1Y - 1) && (Badan2X != Badan1X - 1 || Badan2Y != Badan1Y)) {
-    //         Badan2X = rand() % 5;
-    //         Badan2Y = rand() % 5;
-    //     }
-    // }
-
     address P = Alokasi(HeadX, HeadY);
     InsertLast(L, P);
     addBody(L);
     addBody(L);
-    // P = Alokasi(Badan1X, Badan1Y);
-    // InsertLast(L, P);
-    // P = Alokasi(Badan2X, Badan2Y);
-    // InsertLast(L, P);
 }
 
 void CutBody(List *L, int MetX, int MetY) {
+/* Memotong tubuh snake.
+   I.S.: Badan snake utuh.
+   F.S.: Badan snake berkurang 1. */
     address P = First(*L);
     while (P != NilListDP) {
         if (InfoX(P) == MetX && InfoY(P) == MetY) {
@@ -133,6 +116,12 @@ void CutBody(List *L, int MetX, int MetY) {
 }
 
 void SpawnFood(List snake, int *FoodX, int *FoodY, int Obs1X, int Obs1Y, int Obs2X, int Obs2Y) {
+/* Menghasilkan titik koordinat food secara random. 
+   I.S.: Titik koordinat food sembarang.
+   F.S.: Titik koordinat food di-generate secara random dengan syarat:
+          - Titik koordinat food tidak sama dengan titik koordinat head dan badan snake.
+          - Titik koordinat food tidak sama dengan titik koordinat obstacles. 
+          Jika tidak memenuhi syarat di atas, maka akan di-generate ulang. */
     *FoodX = rand() % 5;
     *FoodY = rand() % 5;
     address P = First(snake);
@@ -148,9 +137,14 @@ void SpawnFood(List snake, int *FoodX, int *FoodY, int Obs1X, int Obs1Y, int Obs
 }
 
 void SpawnMeteor(List snake, int *MetX, int *MetY, int FoodX, int FoodY, int Obs1X, int Obs1Y, int Obs2X, int Obs2Y) {
+/* Menghasilkan titik koordinat meteor secara random. 
+   I.S.: Titik koordinat meteor sembarang.
+   F.S.: Titik koordinat meteor di-generate secara random dengan syarat:
+          - Titik koordinat meteor tidak sama dengan titik koordinat food. 
+          - Titik koordinat meteor tidak sama dengan titik koordinat obstacles. 
+          Jika tidak memenuhi syarat di atas, maka akan di-generate ulang. */
     *MetX = rand() % 5;
     *MetY = rand() % 5;
-    //if meteor is spawned in food then randomize it again
     while ((*MetX == FoodX && *MetY == FoodY) || (*MetX == Obs1X && *MetY == Obs1Y) || (*MetX == Obs2X && *MetY == Obs2Y)) {
         *MetX = rand() % 5;
         *MetY = rand() % 5;
@@ -158,6 +152,12 @@ void SpawnMeteor(List snake, int *MetX, int *MetY, int FoodX, int FoodY, int Obs
 }
 
 void SpawnObstacles(List Snake, int *Obs1X, int *Obs1Y, int *Obs2X, int *Obs2Y, int FoodX, int FoodY) {
+/*  Menghasilkan titik koordinat obstacles secara random. 
+    I.S.: Titik koordinat obstacles sembarang.
+    F.S.: Titik koordinat obstacles di-generate secara random dengan syarat:
+            - Titik koordinat obstacles tidak sama dengan titik koordinat head dan badan snake. 
+            - Titik koordinat obstacles tidak sama dengan titik koordinat food. 
+            Jika tidak memenuhi syarat di atas, maka akan di-generate ulang. */
     *Obs1X = rand() % 5;
     *Obs1Y = rand() % 5;
     address P = First(Snake);
@@ -185,6 +185,7 @@ void SpawnObstacles(List Snake, int *Obs1X, int *Obs1Y, int *Obs2X, int *Obs2Y, 
 }
 
 boolean isHit(List snake, int MetX, int MetY) {
+/* Mengembalikan true jika badan atau head snake terkena meteor. */
     address P = First(snake);
     while (P != NilListDP) {
         if (InfoX(P) == MetX && InfoY(P) == MetY) {
@@ -196,6 +197,13 @@ boolean isHit(List snake, int MetX, int MetY) {
 }
 
 void MoveSnake(int command, List *snake, int *FoodX, int *FoodY, int MetX, int MetY, boolean *isHitBody, int Obs1X, int Obs1Y, int Obs2X, int Obs2Y, boolean *isHitObs) {
+/* Menggerakkan snake.
+   I.S.: Snake terletak di dalam map. 
+   F.S.: Snake bergerak satu unit bergantung pada masukan:
+        - Apabila masukan 'w', maka snake bergerak satu unit ke atas.
+        - Apabila masukan 'a', maka snake bergerak satu unit ke kiri.
+        - Apabila masukan 's', maka snake bergerak satu unit ke bawah.
+        - Apabila masukan 'd', maka snake bergerak satu unit ke kanan.*/
     address first = First(*snake);
     address last = Last(*snake);
 
@@ -239,6 +247,7 @@ void MoveSnake(int command, List *snake, int *FoodX, int *FoodY, int MetX, int M
 }
 
 boolean isMoveToBody(int command, List L) {
+/*  Mengembalikan nilai true jika snake bergerak ke badan snake. */
     address first = First(L);
     address P = Next(first);
     boolean found = false;
@@ -277,28 +286,27 @@ boolean isMoveToBody(int command, List L) {
 }
 
 boolean isMoveToMeteor(int command, List L, int MetX, int MetY) {
+/*  Mengembalikan nilai true jika snake bergerak ke meteor. */
     address first = First(L);
     if (command == 0) {
-        // return true if meteor is above the head of snake
         return (InfoX(first) == MetX && InfoY(first) - 1 == MetY) || (InfoY(first) == 0 && MetY == 4 && InfoX(first) == MetX);
     } else if (command == 1) {
-        // return true if meteor is left of the head of snake
         return (InfoX(first) - 1 == MetX && InfoY(first) == MetY) || (InfoX(first) == 0 && MetX == 4 && InfoY(first) == MetY);
     } else if (command == 2) {
-        // return true if meteor is below the head of snake
         return (InfoX(first) == MetX && InfoY(first) + 1 == MetY) || (InfoY(first) == 4 && MetY == 0 && InfoX(first) == MetX);
     } else if (command == 3) {
-        // return true if meteor is right of the head of snake
         return (InfoX(first) + 1 == MetX && InfoY(first) == MetY) || (InfoX(first) == 4 && MetX == 0 && InfoY(first) == MetY);
     }
     return false;
 }
 
 boolean isSurrounded(List L) {
+/*  Mengembalikan nilai true jika snake dikelilingi oleh badan sendiri. */
     return (isMoveToBody(0, L) && isMoveToBody(1, L) && isMoveToBody(2, L) && isMoveToBody(3, L));
 }
 
 void PrintMapSnake (List L, int FoodX, int FoodY, int MetX, int MetY, int Obs1X, int Obs1Y, int Obs2X, int Obs2Y) {
+/*  Mencetak map snake sesuai titik koordinat dari food, meteor, snake, dan obstacles. */
     int MapSnake[5][5] = {{0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}};
     MapSnake[InfoY(First(L))][InfoX(First(L))] = 1;
     address P = Next(First(L));
@@ -384,10 +392,12 @@ void PrintMapSnake (List L, int FoodX, int FoodY, int MetX, int MetY, int Obs1X,
 }
 
 boolean isGameOver(List snake, int MetX, int MetY, boolean isHitBody, boolean isHitObs) {
+/*  Mengembalikan nilai true jika permainan berakhir. */
     return ((InfoX(First(snake)) == MetX && InfoY(First(snake)) == MetY) || isHitBody || isHitObs || isSurrounded(snake));
 }
 
-void print_logo_snake() {                                               
+void print_logo_snake() {  
+/* Mencetak logo permainan Snake on Meteor. */                                             
     printf("\n");
     printf("                      ::::::::  ::::    :::     :::     :::    ::: :::::::::: \n");
     printf("                    :+:    :+: :+:+:   :+:   :+: :+:   :+:   :+:  :+:         \n");
@@ -413,6 +423,9 @@ void print_logo_snake() {
 
 }
 void PlaySnakeOnMeteor(float *skor) {
+/* Memainkan permainan Snake on Meteor dan mengubah nilai skor
+   I.S. skor sembarang
+   F.S. Permainan Snake on Meteor dimainkan dan skor berubah ketika permainan berakhir. */
     List snake;
     int FoodX, FoodY, MetX = -1, MetY = -1, turn = 1, command, Obs1X = -1, Obs1Y = -1, Obs2X = -1, Obs2Y = -1;
     boolean isHitBody = false;

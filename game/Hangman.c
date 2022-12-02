@@ -1,15 +1,6 @@
 #include "Hangman.h"
 //gcc -o hangman Hangman.c ../program/ADT/Map/mapchar.c ../program/ADT/Set/sethangman.c ../program/ADT/mesinkarkata/mesinkata.c ../program/ADT/mesinkarkata/mesinkar.c ../program/ADT/Set/set.c ../program/load.c ../program/ADT/Stack/stack.c ../program/ADT/Map/map.c ../program/ADT/arraydin/arraydin.c
 
-/*Meng-generate kamus kata yang digunakan untuk permainan*/
-// void generatemap(MapChar *kamus){
-//     InsertChar(kamus, "MAYORNAUFAL", "K01tertampan");
-//     InsertChar(kamus, "GIBEH", "dinosaurus");
-//     InsertChar(kamus, "ARGENTINA", "messi");
-//     InsertChar(kamus, "SWEDIA", "negara dengan pulau terbanyak");
-//     InsertChar(kamus, "ALSTRUKDAT", "matkul favorit ariq");
-//     InsertChar(kamus, "KALIMANTAN", "pulau terbesar di indonesia");
-// }
 
 /*Me-load kamus*/
 void loadkamus(char* filename, Set* kamus) {

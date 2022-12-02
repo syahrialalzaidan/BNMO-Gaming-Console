@@ -2,10 +2,12 @@
 
 
 void rng(float *score) {
-/* Fungsi RNG bakal ngereturn score yang diperoleh pemain
- * Jumlah maksimal tebakan adalah 10 kali
- * Fullscore adalah 10 dan akan berkurang 10% seiring dengan berkurangnya guess hingga benar
-*/
+/* Memainkan permainan RNG dan mengubah nilai skor
+ * I.S. skor sembarang
+   F.S. Permainan RNG dimainkan dan skor berubah.
+   Jumlah maksimal tebakan adalah 5 kali. Fullscore adalah 10 dan akan berkurang 
+   20% seiring dengan berkurangnya guess hingga benar. */
+   
     //Kamus Lokal
     time_t t;
     srand(time(&t));
@@ -40,13 +42,4 @@ void rng(float *score) {
     *score = (turn + 1);
 }
 
-// driver buat testing
-/*
-int main(){
-    float score = 0;
-    rng(&score);
-    printf("%.0f", score);
-    return 0;
-}
-*/
 

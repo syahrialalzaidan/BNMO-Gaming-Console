@@ -11,11 +11,19 @@
 
 
 void generatemap(MapChar *kamus);
+/*  Memasukkan key dan value ke dalam kamus. 
+    I.S.: kamus kosong.
+    F.S.: kamus terisi. */
 
 int countkata(char *kata);
+/*  Mengembalikan jumlaha karakter dalam suatu kata. */
 
 boolean isstringequal(char *kata1, char *kata2);
+/* Mengembalikan nilai true jika kata1 dan kata2 sama. */
 
 void playtebakkata(float *score);
+/*  Memainkan permainan tebak kata.
+    I.S.: score sembarang.
+    F.S.: Permainan tebak kata dimainkan dan score berubah. */
 
 #endif

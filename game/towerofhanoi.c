@@ -2,15 +2,12 @@
 //gcc -o coba towerofhanoi.c ../program/ADT/StackHanoi/stackhanoi.c ../program/ADT/mesinkarkata/mesinkata.c ../program/ADT/mesinkarkata/mesinkar.c
 
 void printblank(int n){
-// I.S. n terdefinisi
-// F.S. n spasi tercetak
+/* Mencetak spasi. */
     for (int i = 0; i < n; i++) printf(" ");
 }
 
 void printbintang(int n){
-/* I.S. n terdefinisi
- * F.S. n bintang tercetak
- */
+/* Mencetak bintang dengan jumlah sesuai masukan n. */
     for (int i = 0; i < n; i++) printf("*");
 }
 
@@ -110,7 +107,9 @@ void gameover(){
 
 
 void playtowerofhanoi(float *score, boolean *play){
-//Memainkan game tower of hanoi
+/* Memainkan permainan Tower of Hanoi dan mengubah nilai skor
+ * I.S. skor sembarang
+   F.S. Permainan Tower of Hanoi dimainkan dan skor berubah ketika permainan berakhir. */
     Stack tower1, tower2, tower3, temp;
     int temp1, temp2, info1, info2, info3;
     float count = 0, optimal, n;
@@ -274,12 +273,3 @@ void playtowerofhanoi(float *score, boolean *play){
         *play = false;
     }
 }
-
-/* Driver
-int main() {
-    float x = 0;
-    playtowerofhanoi(&x);
-    printf("Skor akhir : %.2f\n", x);
-    return 0;
-}
-*/
