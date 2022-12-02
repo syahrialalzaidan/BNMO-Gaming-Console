@@ -28,7 +28,6 @@ void play(Queue *qg, ArrayDin array, float *skor, boolean *play){
     char* akinator = "Akinator";
 
     printf("\n");
-    printf("isStringSame: %d\n", isStringSame(katarng, (*qg).buffer[(*qg).idxHead]));
     if (isStringSame(katarng, (*qg).buffer[(*qg).idxHead])){
         printf("Loading RNG ...\n");
         rng(skor);

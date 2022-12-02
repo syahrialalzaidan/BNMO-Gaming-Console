@@ -145,8 +145,7 @@ void ResetScoreboard(ListMap *LM, ArrayDin G) {
     } else {
         str = Get(G, idx-1);
     }
-    if (idx != 0) printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD %s (YA/TIDAK)? ", Get(G, idx-1));
-    else printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD %s (YA/TIDAK)? ", Get(G, idx));
+    printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD %s (YA/TIDAK)? ", str);
     STARTWORD();
     while(!isWordSame(currentWord, stringToWord("YA")) && !isWordSame(currentWord, stringToWord("TIDAK"))) 
     {

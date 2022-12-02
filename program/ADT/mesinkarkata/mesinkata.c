@@ -57,7 +57,7 @@ void CopyWord() {
           Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
     int i = 0;
     if (isFile) {
-        while ((i < NMax) && (currentChar != '\n') && !IsEOP()) {
+        while ((i < NMax) && ((currentChar != '\n')) && !IsEOP()) {
             currentWord.TabWord[i] = currentChar;
             ADV();
             i++;
@@ -72,19 +72,33 @@ void CopyWord() {
     currentWord.Length = i;
 }
 
+
+int stringlength(char *s) {
+/*Mengembalikan panjang string*/
+    int i = 0;
+    while (s[i] != '\0' && s[i] != '\r') {
+        i++;
+    }
+    return i;
+}
+
 /* Word Converter Functions */
 
 int WordToInt(Word W) {
 /* Fungsi mengubah Word ke integer */  
     int i;
     int temp = 0;
-    for (i = 0; i < W.Length; i++){
+    char * kata;
+    kata = WordToString(W);
+    int len = stringlength(kata);
+    for (i = 0; i < len; i++){
         if (W.TabWord[i] != BLANK) {
             temp = temp * 10 + (W.TabWord[i] - '0');
         }
     }
     return temp;
 }
+
 
 char *WordToString(Word W) {
 /* Fungsi mengubah Word ke string */
