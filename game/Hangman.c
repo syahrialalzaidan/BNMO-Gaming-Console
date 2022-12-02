@@ -102,7 +102,7 @@ void hangmanascii(){
 
 
 /*Permainan utama*/
-void playtebakkataHM(float* scoretotal){
+void playtebakkataHM(float* scoretotal, float* nyawa){
     int skor = 0; //Skor game
     time_t t;
     srand(time(&t)); //Seed for random number
@@ -128,10 +128,10 @@ void playtebakkataHM(float* scoretotal){
         InsertSetChar(&SKunjaw, soal[i]);
         poin++;
     }
-    float nyawa = 10;
+    //float nyawa = 10;
 
     //Rilis soal
-    while (!IsSubsetSetChar(SAnswer, SKunjaw) && nyawa > 0){
+    while (!IsSubsetSetChar(SAnswer, SKunjaw) && (*nyawa) > 0){
         //Cetak soal setelah ditebak
         //printf("\nClue : %s\n", ValueChar(kamus, kamus.Elements));
         printf("Huruf yang udah kamu tebak : ");
@@ -147,7 +147,7 @@ void playtebakkataHM(float* scoretotal){
             }
         }
         printf("(%.0f huruf)\n", poin);
-        printf("Sisa nyawa kamu : %.0f\n", nyawa);
+        printf("Sisa nyawa kamu : %.0f\n", (*nyawa));
         printf("Masukkan huruf jawaban : ");
         START();  //Diasumsikan input selalu character, bukan string
         currentChar = UpperHuruf(currentChar); //Memastikan semua input dalam Uppercase
@@ -156,7 +156,7 @@ void playtebakkataHM(float* scoretotal){
         //Tidak salaah jika kondisinya huruf pernah ditebak
         if (!IsMemberSetChar(SKunjaw, currentChar) && !IsMemberSetChar(SAnswer, currentChar))
         {
-            nyawa--;
+            (*nyawa)--;
             printf("-------------------\n");
             printf("Jawaban kamu salah!\n");
             printf("-------------------\n");
@@ -173,8 +173,8 @@ void playtebakkataHM(float* scoretotal){
     //Saat jawaban benar
     if (IsSubsetSetChar(SAnswer, SKunjaw)){
         printf("Selamat jawaban kamu benar! Kamu berhasil menebak kata %s !\n", soal);
-        printf("Kamu mendapatkan %.0f poin!\n\n", nyawa);
-        (*scoretotal) = nyawa;
+        printf("Kamu mendapatkan %.0f poin!\n\n", poin);
+        (*scoretotal) = poin;
     }
 
     //Saat kesempatan habis
@@ -201,7 +201,7 @@ void savekamus(Set kamus){
 
 //Fungsi utama yang dipanggil
 void Hangman(float *skor, boolean *play){
-    float skortemp, skortotal = 0;
+    float skortemp, skortotal = 0, nyawa = 10;
     *play = true;
     int pilihan;
     boolean valid = false;
@@ -214,7 +214,7 @@ void Hangman(float *skor, boolean *play){
         pilihan = WordToInt(currentWord);
         if(pilihan == 1){
             valid = true;
-            playtebakkataHM(&skortemp);
+            playtebakkataHM(&skortemp, &nyawa);
             skortotal += skortemp;
 
             //Asking for mengulangi permainan
@@ -222,7 +222,7 @@ void Hangman(float *skor, boolean *play){
             boolean main_lagi = true;
             // printf("\nApakah kamu ingin bermain lagi? (y/n) : ");
             //printf("%c\n", valid);
-            while (main_lagi){
+            while (main_lagi && nyawa > 0){
                 //printf("%c\n", valid);
                 printf("\nApakah kamu ingin bermain lagi? (y/n) : ");
                 START();
@@ -232,7 +232,7 @@ void Hangman(float *skor, boolean *play){
                 clear();
                 if (valid == 'y' || valid == 'Y') //Jika ingin main lagi
                 {
-                playtebakkataHM(&skortemp);
+                playtebakkataHM(&skortemp, &nyawa);
                 skortotal += skortemp;
                 }
                 else if (valid == 'n' || valid == 'N'){ //Jika tidak ingin main lagi, game berakhir

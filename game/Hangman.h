@@ -13,6 +13,6 @@
 void loadkamus(char* filename, Set* kamus);
 char UpperHuruf(char input);
 int countkataHM(char *kata);
-void playtebakkataHM(float* scoretotal);
+void playtebakkataHM(float* scoretotal, float* nyawa);
 boolean isstringequalHM(char *kata1, char *kata2);
 void Hangman(float *skor, boolean *playtebakkataHM);
