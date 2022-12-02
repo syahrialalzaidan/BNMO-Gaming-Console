@@ -42,6 +42,19 @@ char UpperHuruf(char input){
     }
     return input;
 }
+
+/*Membuat input kata menjadi huruf besar semua*/
+char* UpperKata(char* input){
+    int i = 0;
+    while (input[i] != '\0')
+    {
+        input[i] = UpperHuruf(input[i]);
+        i++;
+    }
+    return input;
+}
+
+/*Animasi kekalahan HAHAHA*/
 void hangmanart(){
     printf("\nur dead bruh\n\n");
     printf("  _________\n");
@@ -260,6 +273,7 @@ void Hangman(float *skor, boolean *play){
             clear();
             CreateEmptySet(&kamus);
             loadkamus("kamus.txt", &kamus);
+            kata = UpperKata(kata);
             InsertSet(&kamus, kata);
             savekamus(kamus);
             printf("Kata %s berhasil ditambahkan ke daftar kata!\n", kata);
