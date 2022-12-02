@@ -54,6 +54,9 @@ void PopHanoi(Stack * S, infotype* X){
 }
 
 int lengthS(Stack S){
+/* Mencari panjang dari stack
+   I.S. S mungkin kosong
+   F.S. Panjang dari S*/
     int i = 0;
     while (i <= Top(S)){
         if (InfoTop(S) != 0) i++;

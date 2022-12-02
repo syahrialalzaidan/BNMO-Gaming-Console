@@ -3,7 +3,11 @@
 #include <stdlib.h>
 
 addresst newTreeNode (ElType value)
-/* Membuat tree node baru*/
+/* Alokasi sebuah address p, bernilai tidak NULL jika berhasil */
+/* Mengirimkan address hasil alokasi sebuah elemen bernilai val
+   Jika alokasi berhasil, maka address tidak NULL, dan misalnya 
+   menghasilkan p, maka p↑.info=val, p↑.left=NULL, p↑.right=NULL 
+   Jika alokasi gagal, mengirimkan NULL */
 {
     /* KAMUS LOKAL */
     addresst node;
@@ -23,12 +27,14 @@ addresst newTreeNode (ElType value)
 }
 
 boolean isTreeEmpty(BinTree tree){
-/* Mengecek apakah tree kosong*/
+/* Mengirimkan true tree kosong*/
     return (tree == NILakin);
 }
 
 void CreateTree(Tree* tree, addresst node)
 /* Membuat tree baru*/
+/* I.S. Sembarang
+   F.S. Menghasilkan tree */
 {
   *tree = node;
 }
@@ -36,6 +42,8 @@ void CreateTree(Tree* tree, addresst node)
 
 void BuildTree(Tree *t, Tree *root, int x)
 /* Membuat tree dari file txt*/
+/* I.S. Sebuah tree untuk dijadikan tree, sebuah tree untuk dijadikan sebagai root, dan integer x untuk mengecek
+   F.S. Sebuah tree dan root*/
 {   /* Kamus Lokal */
     /* Algoritma */
     ADVWORDakin(); /* advance */
@@ -64,6 +72,8 @@ void BuildTree(Tree *t, Tree *root, int x)
 
 void addLeft (BinTree p, ElType x){
 /* Menambahkan child kiri tree*/
+/* I.S. Sebuah tree dan value
+   F.S. Menambahkan child kiri pada tree dengan value*/
     if (!isTreeEmpty(p)){
         p = newTreeNode(x);
     } else{
@@ -73,6 +83,8 @@ void addLeft (BinTree p, ElType x){
 
 void addRight (BinTree p, ElType x){
 /* Menambahkan child kanan tree*/
+/* I.S. Sebuah tree dan value
+   F.S. Menambahkan child kanan pada tree dengan value*/
     if (!isTreeEmpty(p)){
         p = newTreeNode(x);
     } else{
