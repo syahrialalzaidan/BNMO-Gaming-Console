@@ -119,7 +119,7 @@ void playtebakkataHM(float* scoretotal, float* nyawa){
     CreateEmptySetChar(&SKunjaw);
 
     //Displaying soal awal
-    printf("Selamat Datang di Hangman!\nTebak kata berikut dengan benar! (DALAM HURUF BESAR)\nEdisi Nama-nama Negara di Asia\n");
+    //printf("Selamat Datang di Hangman!\nTebak kata berikut dengan benar! (DALAM HURUF BESAR)\nEdisi Nama-nama Negara di Asia\n");
     float poin = 0;
     char* soal = kamus.Elements[angka]; //Soal hasil randomizer
 
@@ -130,6 +130,7 @@ void playtebakkataHM(float* scoretotal, float* nyawa){
     }
     //float nyawa = 10;
 
+    printf("---Mari mulai bermain!---\n\n");
     //Rilis soal
     while (!IsSubsetSetChar(SAnswer, SKunjaw) && (*nyawa) > 0){
         //Cetak soal setelah ditebak
@@ -216,35 +217,36 @@ void Hangman(float *skor, boolean *play){
             valid = true;
             playtebakkataHM(&skortemp, &nyawa);
             skortotal += skortemp;
-
+            printf("Selamat Datang di Hangman!\nTebak kata berikut dengan benar! (DALAM HURUF BESAR)\nEdisi Nama-nama Negara di Asia\n");
             //Asking for mengulangi permainan
-            char valid;
-            boolean main_lagi = true;
+            //char valid;
+            //boolean main_lagi = true;
             // printf("\nApakah kamu ingin bermain lagi? (y/n) : ");
             //printf("%c\n", valid);
-            while (main_lagi && nyawa > 0){
+            while (nyawa > 0){
                 //printf("%c\n", valid);
-                printf("\nApakah kamu ingin bermain lagi? (y/n) : ");
-                START();
-                valid = currentChar;
-                //printf("%c", valid);
-                while (! IsEOP()) ADV();
-                clear();
-                if (valid == 'y' || valid == 'Y') //Jika ingin main lagi
-                {
+                //printf("\nApakah kamu ingin bermain lagi? (y/n) : ");
+                // START();
+                // valid = currentChar;
+                // //printf("%c", valid);
+                // while (! IsEOP()) ADV();
+                //clear();
+                // if (valid == 'y' || valid == 'Y') //Jika ingin main lagi
+                // {
                 playtebakkataHM(&skortemp, &nyawa);
                 skortotal += skortemp;
-                }
-                else if (valid == 'n' || valid == 'N'){ //Jika tidak ingin main lagi, game berakhir
+                //}
+                // else if (valid == 'n' || valid == 'N'){ //Jika tidak ingin main lagi, game berakhir
                 (*skor) = skortotal;
-                printf("Selamat kamu berhasil mendapatkan %.0f poin pada game ini!\n", skortotal);
-                printf("Selamat mengerjakan tubes lainnya, Bye-bye! :D\n");
-                main_lagi = false;
-                }
-                else {
-                printf("Coba pilih antara y atau n, bukan antara kamu atau dia ya :(\n");
-                }
+                // printf("Selamat mengerjakan tubes lainnya, Bye-bye! :D\n");
+                //main_lagi = false;
+                // }
+                // else {
+                // printf("Coba pilih antara y atau n, bukan antara kamu atau dia ya :(\n");
+                // }
             }
+            printf("Yah nyawa kamu habis, tapi ... Selamat kamu berhasil mendapatkan %.0f poin pada game ini!\n", skortotal);
+            printf("Selamat mengerjakan tubes lainnya, Bye-bye! :D\n");
         //ALGORITMA MASUKIN SCOREBOARD
         }
         else if (pilihan == 2){
