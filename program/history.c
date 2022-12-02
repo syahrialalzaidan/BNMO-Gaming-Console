@@ -51,3 +51,4 @@ void ResetHistory(Stack *History)
         printf("History tidak jadi di-reset. Berikut adalah daftar Game yang telah dimainkan\n");
         PrintHistory(*History, nbElmtStack(*History));
     }
+}
