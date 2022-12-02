@@ -22,11 +22,23 @@
 <p align="justify"> Alur penggunaan dari BNMO ini dimulai dengan cara menekan tombol START nya. Sebelum memainkan game kita harus melakukan Load Game terhadap file yang pernah kita simpan sebelumnya. Tujuannya adalah agar pencapaian permainan kita sebelumnya dan dapat diteruskan, alias tidak memulai dari nol lagi. Setelah itu, kita bisa memainkan game yang kita inginkan dengan menambahkannya terlebih dahulu dalam semacam playlist dengan fitur Queue Game. Kita hanya bisa memainkan game sesuai urutannya. Namun, jika kita bosan dan sudah terlanjur memasukkannya dalam playlist tadi, kita bisa menggunakan Skip Game untuk segera menuju game yang kita inginkan. Jika kita bingung ingin memilih game apa, cukup gunakan List Game. Namun, jika masih belum menemukan game yang diinginkan, kita bisa memakai fitur Create Game untuk memasukkan game yang kita inginkan. Jika kita bosan dengan game yang ada, kita juga bisa menghapusnya dari BNMO dengan Delete Game. Selanjutnya pada BNMO versi terbaru, terdapat fitur Scoreboad, serta Reset Scoreboard. Hal ini dibuat untuk meningkatkan sifat kompetitif pemain. Selain itu, juga terdapat tambahin fitur berupa History. Fitur tersebut berfungsi untuk mengecek permainan apa saja yang telah dimainkan. Kemudian, dengan BNMO versi terbaru ini pemain juga dapat mereset history dengan menggunakan fitur Reset History. Jangan lupa gunakan fitur Help jika masih bingung dengan cara memakai BNMO dan tekan Quit jika sudah tidak memakainya lagi agar hemat energi. <p>
 
 ## How to use BNMO ??
-1. Buka command prompt pada folder bin
-2. Ketik make main
-3. Ketik main
-4. BNMO siap dimainkan 
+make main way :
+  
+    1. Buka command prompt pada folder bin
+    2. Ketik make main
+    3. Ketik main
+    4. BNMO siap dimainkan 
 
+gcc way:
+  
+    1. Buka command prompt pada folder bin
+    2. Ketik 
+  
+          "gcc program/ADT/mesinkarkata/mesinkata.c program/ADT/mesinkarkata/mesinkar.c program/ADT/arraydin/arraydin.c program/ADT/queue/queue.c program/load.c    program/start.c program/save.c program/create_game.c program/list_game.c program/delete_game.c program/queuegame.c program/playgame.c program/skipgame.c program/help.c program/ADT/stack/stack.c program/ADT/Map/map.c program/history.c program/scoreboard.c bnmo_pic.c main.c game/dinnerdash.c game/SnakeOnMeteor.c game/towerofhanoi.c game/rng.c game/tebakkata.c game/queuedinnerdash.c game/hangman.c program/ADT/Set/sethangman.c program/ADT/listdp/listdp.c program/ADT/Map/mapchar.c program/ADT/StackHanoi/stackhanoi.c program/ADT/Set/set.c  game/akinator.c program/ADT/Tree/tree.c program/ADT/MesinkarkataAkinator/mesinkarakinator.c program/ADT/MesinkarkataAkinator/mesinkataakinator.c -o main"
+
+    3. Ketik /.main
+    4. BNMO siap dimainkan
+  
 ## Game yang dapat dimainkan oleh BNMO
 > Akinator (New!)
 
