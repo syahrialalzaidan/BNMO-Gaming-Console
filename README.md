@@ -61,3 +61,171 @@ Namun, siapa sangka 5 orang programmer itu melanjutkan kisah tersebut. Kisah mer
 <p>
 
 ## Directory
+📦.vscode
+  
+    ┗ 📜settings.json
+
+📦bin
+  
+    ┣ 📜main
+    ┗ 📜Makefile
+
+📦data
+  
+    ┣ 📜.DS_Store
+    ┣ 📜backup.txt
+    ┣ 📜config.txt
+    ┣ 📜haha.txt
+    ┣ 📜kamus.txt
+    ┣ 📜ngasal.txt
+    ┣ 📜savefile1.txt
+    ┗ 📜savefile2.txt
+
+📦docs
+  
+    ┣ 📜IF2111_Form Asistensi TB1_01_10.pdf
+    ┣ 📜IF2111_TB1_01_10.pdf
+    ┗ 📜Spesifikasi Tugas Besar 1 IF2111 2022_2023.pdf
+
+📦game
+  
+    ┣ 📂DataAkinator
+    ┃ ┣ 📜akinator.txt
+    ┃ ┣ 📜hewan.txt
+    ┃ ┗ 📜jawaban.txt
+    ┣ 📜akinator.c
+    ┣ 📜akinator.h
+    ┣ 📜dinnerdash.c
+    ┣ 📜dinnerdash.h
+    ┣ 📜driverqueuedinnerdash.c
+    ┣ 📜Hangman.c
+    ┣ 📜Hangman.h
+    ┣ 📜queuedinnerdash.c
+    ┣ 📜queuedinnerdash.h
+    ┣ 📜rng.c
+    ┣ 📜rng.h
+    ┣ 📜SnakeOnMeteor.c
+    ┣ 📜SnakeOnMeteor.h
+    ┣ 📜snake_driver.c
+    ┣ 📜tebakkata.c
+    ┣ 📜tebakkata.h
+    ┣ 📜towerofhanoi.c
+    ┣ 📜towerofhanoi.h
+    ┗ 📜ular
+
+📦program
+  
+    ┣ 📂ADT
+    ┃ ┣ 📂arraydin
+    ┃ ┃ ┣ 📜arraydin.c
+    ┃ ┃ ┣ 📜arraydin.h
+    ┃ ┃ ┣ 📜driverarraydin.c
+    ┃ ┃ ┗ 📜driverarraydin.exe
+    ┃ ┣ 📂boolean
+    ┃ ┃ ┗ 📜boolean.h
+    ┃ ┣ 📂listdp
+    ┃ ┃ ┣ 📜driverlistdp.c
+    ┃ ┃ ┣ 📜driverlistdp.exe
+    ┃ ┃ ┣ 📜listdp.c
+    ┃ ┃ ┗ 📜listdp.h
+    ┃ ┣ 📂listSetMap
+    ┃ ┃ ┣ 📜driverlistSetMap.c
+    ┃ ┃ ┣ 📜driverlistSetMap.exe
+    ┃ ┃ ┣ 📜listSetMap.c
+    ┃ ┃ ┗ 📜listSetMap.h
+    ┃ ┣ 📂Map
+    ┃ ┃ ┣ 📜drivermap.c
+    ┃ ┃ ┣ 📜drivermap.exe
+    ┃ ┃ ┣ 📜drivermapchar.c
+    ┃ ┃ ┣ 📜drivermapchar.exe
+    ┃ ┃ ┣ 📜map.c
+    ┃ ┃ ┣ 📜map.h
+    ┃ ┃ ┣ 📜mapchar.c
+    ┃ ┃ ┗ 📜mapchar.h
+    ┃ ┣ 📂mesinkarkata
+    ┃ ┃ ┣ 📜drivermesinkarkata.c
+    ┃ ┃ ┣ 📜drivermesinkarkata.exe
+    ┃ ┃ ┣ 📜mesinkar.c
+    ┃ ┃ ┣ 📜mesinkar.h
+    ┃ ┃ ┣ 📜mesinkata.c
+    ┃ ┃ ┗ 📜mesinkata.h
+    ┃ ┣ 📂MesinkarkataAkinator
+    ┃ ┃ ┣ 📜drivermesinkarkataakinator.c
+    ┃ ┃ ┣ 📜drivermesinkarkataakinator.exe
+    ┃ ┃ ┣ 📜mesinkarakinator.c
+    ┃ ┃ ┣ 📜mesinkarakinator.h
+    ┃ ┃ ┣ 📜mesinkataakinator.c
+    ┃ ┃ ┗ 📜mesinkataakinator.h
+    ┃ ┣ 📂queue
+    ┃ ┃ ┣ 📜driverqueue.c
+    ┃ ┃ ┣ 📜driverqueue.exe
+    ┃ ┃ ┣ 📜queue.c
+    ┃ ┃ ┗ 📜queue.h
+    ┃ ┣ 📂Set
+    ┃ ┃ ┣ 📜driverset.c
+    ┃ ┃ ┣ 📜driverset.exe
+    ┃ ┃ ┣ 📜set.c
+    ┃ ┃ ┣ 📜set.h
+    ┃ ┃ ┣ 📜sethangman.c
+    ┃ ┃ ┗ 📜sethangman.h
+    ┃ ┣ 📂Stack
+    ┃ ┃ ┣ 📜driverstack.c
+    ┃ ┃ ┣ 📜driverstack.exe
+    ┃ ┃ ┣ 📜stack.c
+    ┃ ┃ ┗ 📜stack.h
+    ┃ ┣ 📂StackHanoi
+    ┃ ┃ ┣ 📜driverstackhanoi.c
+    ┃ ┃ ┣ 📜driverstackhanoi.exe
+    ┃ ┃ ┣ 📜stackhanoi.c
+    ┃ ┃ ┗ 📜stackhanoi.h
+    ┃ ┣ 📂Tree
+    ┃ ┃ ┣ 📜drivertree.c
+    ┃ ┃ ┣ 📜drivertree.exe
+    ┃ ┃ ┣ 📜tree.c
+    ┃ ┃ ┣ 📜tree.h
+    ┃ ┃ ┗ 📜tree.txt
+    ┃ ┗ 📜.DS_Store
+    ┣ 📜.DS_Store
+    ┣ 📜create_game.c
+    ┣ 📜create_game.h
+    ┣ 📜delete_game.c
+    ┣ 📜delete_game.h
+    ┣ 📜help.c
+    ┣ 📜help.h
+    ┣ 📜history.c
+    ┣ 📜history.h
+    ┣ 📜list_game.c
+    ┣ 📜list_game.h
+    ┣ 📜load.c
+    ┣ 📜load.h
+    ┣ 📜loadhangman.c
+    ┣ 📜load_driver
+    ┣ 📜load_driver.c
+    ┣ 📜playgame.c
+    ┣ 📜playgame.h
+    ┣ 📜queuegame.c
+    ┣ 📜queuegame.h
+    ┣ 📜save.c
+    ┣ 📜save.h
+    ┣ 📜save_driver.c
+    ┣ 📜scoreboard.c
+    ┣ 📜scoreboard.h
+    ┣ 📜skipgame.c
+    ┣ 📜skipgame.h
+    ┣ 📜start.c
+    ┣ 📜start.h
+    ┗ 📜start_driver.c
+ 
+📦bnmo_pic.c
+ 
+📦bnmo_pic.exe
+ 
+📦bnmo_pic.h
+
+📦load_driver
+
+📦main
+
+📦main.c
+
+📦README.md
