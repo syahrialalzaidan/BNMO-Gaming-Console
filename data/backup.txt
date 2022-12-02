@@ -6,7 +6,7 @@ HANGMAN
 TOWER OF HANOI
 SNAKE ON METEOR
 Akinator
-7
+13
 RNG
 RNG
 Diner DASH
@@ -14,6 +14,12 @@ Diner DASH
 Diner DASH
 Tebak Kata
 Tebak Kata
+HANGMAN
+HANGMAN
+HANGMAN
+SNAKE ON METEOR
+Akinator
+Akinator
 2
 rahmansatya 8
 qraify 7
@@ -23,7 +29,11 @@ mieyuon 45503
 2
 paneeyaaa 10
 american.standard 10
+1
+viinnnsst 16
 0
-0
-0
-0
+1
+riandrabeo 14
+2
+tryoutify 100
+ilmatiga 20
