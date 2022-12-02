@@ -41,6 +41,7 @@ void START() {
         pita = fopen(filepath, "r");
         if (pita == NULL) {
             printf("404 FILE NOT FOUND X_X \n");
+            StopLoadPita();
         } else {
             ADV();
         }
