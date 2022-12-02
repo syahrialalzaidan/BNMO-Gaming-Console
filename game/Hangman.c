@@ -220,7 +220,7 @@ void Hangman(float *skor, boolean *play){
     int pilihan;
     boolean valid = false;
     hangmanascii();
-    printf("Selamat datang di Hangman!\n");
+    printf("Selamat Datang di Hangman!\nTebak kata berikut dengan benar! (DALAM HURUF BESAR)\nEdisi Nama-nama Negara di Asia\n");
     printf("Ketik 1 untuk main\nKetik 2 untuk menambahkan kata ke daftar kata\n");
     while(! valid){
         printf("Masukkan command: ");
@@ -230,7 +230,6 @@ void Hangman(float *skor, boolean *play){
             valid = true;
             playtebakkataHM(&skortemp, &nyawa);
             skortotal += skortemp;
-            printf("Selamat Datang di Hangman!\nTebak kata berikut dengan benar! (DALAM HURUF BESAR)\nEdisi Nama-nama Negara di Asia\n");
             //Asking for mengulangi permainan
             //char valid;
             //boolean main_lagi = true;

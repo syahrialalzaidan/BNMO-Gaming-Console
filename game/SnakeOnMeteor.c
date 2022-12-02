@@ -315,9 +315,9 @@ void PrintMapSnake (List L, int FoodX, int FoodY, int MetX, int MetY, int Obs1X,
     MapSnake[Obs1Y][Obs1X] = 27;
     MapSnake[Obs2Y][Obs2X] = 27;
     printf("Berikut merupakan peta permainan\n\n");
-    printf("      ▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤ \n");
+    printf("      +---+---+---+---+---+ \n");
     for (int i = 0; i < 5; ++i){
-        printf("      ▓");
+        printf("      |");
         for (int j = 0; j < 5; ++j) {
             if (MapSnake[i][j] == 0) {
                 if (j != 4) {
@@ -368,14 +368,14 @@ void PrintMapSnake (List L, int FoodX, int FoodY, int MetX, int MetY, int Obs1X,
             }
             if (j == 4) {
                 if (i != 4) {
-                    printf("▓\n      ▓-------------------▓\n");   
+                    printf("|\n      +---+---+---+---+---+\n");   
                 } else {
-                    printf("▓\n");
+                    printf("|\n");
                 }
             }
         }
     }
-    printf("      ▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤ \n\n");
+    printf("      +---+---+---+---+---+ \n\n");
     printf("      Legends:\n");
     printf("      H, 1, 2, and other digits : Snake\n");     
     printf("      O : Food\n");
