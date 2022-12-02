@@ -54,6 +54,9 @@ void PopHanoi(Stack * S, infotype* X){
 }
 
 int lengthS(Stack S){
+/* Mencari panjang dari stack
+   I.S. S mungkin kosong
+   F.S. Panjang dari S*/
     int i = 0;
     while (i <= Top(S)){
         if (InfoTop(S) != 0) i++;
@@ -62,12 +65,14 @@ int lengthS(Stack S){
 }
 
 void setNol(Stack *S){
+/* Membuat S isinya 0 semua*/
     for (int i = 0; i < MaxEl; i++){
         (*S).T[i] = 0;
     }
 }
 
 boolean isStackSama(Stack s1, Stack s2){
+/* Mengembalikan true jika stack sama*/
     boolean sama = true;
     int i = 0;
     while (i <= Top(s1) && sama){
@@ -78,6 +83,7 @@ boolean isStackSama(Stack s1, Stack s2){
 }
 
 int gettop (Stack S){
+/* Mengambil top pada stack*/
     boolean found = false;
     int i = 0, x = 0;
     while (! found){

@@ -2,7 +2,9 @@
 #include "scoreboard.h"
 //gcc -o scoreboard scoreboard.c ADT/Map/mapscore.c
 
-int StringLength(char* string) {
+int StringLength(char* string) 
+/* Mengembalikan nilai panjang suatu string */
+{
     int len = 0;
     while (string[len] != '\0') {
         len++;
@@ -10,7 +12,9 @@ int StringLength(char* string) {
     return len;
 }
 
-int CountDigits(float n) {
+int CountDigits(float n) 
+/* Mengembalikan nilai panjang suatu float */
+{
     int i = n * 100;
     int count = 0;
     if (n < 1) {
@@ -33,7 +37,9 @@ boolean isZero (float n) {
     }
 }
 
-void PrintScoreboard(Map M) {
+void PrintScoreboard(Map M) 
+/* Menampilkan Scoreboard yang ada ke layar. */
+{
     if (!IsMapEmpty(M)) {
         int i = 0;
         //find the longest name
@@ -124,7 +130,11 @@ void PrintScoreboard(Map M) {
     }
 }
 
-void ResetScoreboard(ListMap *LM, ArrayDin G) {
+void ResetScoreboard(ListMap *LM, ArrayDin G) 
+/* Me-reset scoreboard
+    I.S.: Scoreboard terisi
+    F.S.: Scoreboard suatu/semua permainan di-reset, tergantung masukan user. */
+{
     printf("DAFTAR SCOREBOARD:\n");
     printf("0. All\n");
     for (int i = 0; i < G.Neff; i++) {

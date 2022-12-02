@@ -2,14 +2,20 @@
 //gcc -o coba towerofhanoi.c ../program/ADT/StackHanoi/stackhanoi.c ../program/ADT/mesinkarkata/mesinkata.c ../program/ADT/mesinkarkata/mesinkar.c
 
 void printblank(int n){
+// I.S. n terdefinisi
+// F.S. n spasi tercetak
     for (int i = 0; i < n; i++) printf(" ");
 }
 
 void printbintang(int n){
+/* I.S. n terdefinisi
+ * F.S. n bintang tercetak
+ */
     for (int i = 0; i < n; i++) printf("*");
 }
 
 float optimummove(int n){
+// menghasilkan jumlah langkah minimum untuk menyelesaikan tower of hanoi dengan n disk
     int i = 1;
     for (int j = 1; j < n; j++) {
         i *= 2;
@@ -19,6 +25,7 @@ float optimummove(int n){
 }
 
 boolean isAngka(Word W){
+// menghasilkan true jika W merupakan kata yang terdiri dari angka saja
     int i = 0;
     boolean output = true;
     while (i < W.Length && output){
@@ -29,6 +36,7 @@ boolean isAngka(Word W){
 }
 
 void displaytower(int n, Stack tower1, Stack tower2, Stack tower3){
+//Menampilkan tower of hanoi dengan n disk
     for(int i = 0; i < n; i++) {
         int value1 = tower1.T[n-i-1], value2 = tower2.T[n-i-1], value3 = tower3.T[n-i-1];
         if (value1 != 0){
@@ -82,6 +90,7 @@ void displaytower(int n, Stack tower1, Stack tower2, Stack tower3){
 }
 
 void printart(){
+//Menampilkan gambar art tower of hanoi
     printf("  _____                          __   _  _               _ \n");
     printf(" |_   _|____ __ _____ _ _   ___ / _| | || |__ _ _ _  ___(_)\n");
     printf("   | |/ _ \\ V  V / -_) '_| / _ \\  _| | __ / _` | ' \\/ _ \\ |\n");
@@ -89,6 +98,7 @@ void printart(){
 }
 
 void gameover(){
+//Menampilkan gambar art game over
     printf("  _ _  _____          __  __ ______    ______      ________ _____    _ _ \n");
     printf(" | | |/ ____|   /\\   |  \\/  |  ____|  / __ \\ \\    / /  ____|  __ \\  | | |\n");
     printf(" | | | |  __   /  \\  | \\  / | |__    | |  | \\ \\  / /| |__  | |__) | | | |\n");
@@ -100,7 +110,7 @@ void gameover(){
 
 
 void playtowerofhanoi(float *score, boolean *play){
-
+//Memainkan game tower of hanoi
     Stack tower1, tower2, tower3, temp;
     int temp1, temp2, info1, info2, info3;
     float count = 0, optimal, n;

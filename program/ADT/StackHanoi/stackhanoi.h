@@ -57,11 +57,18 @@ void PopHanoi(Stack * S, infotype* X);
 /* F.S. X adalah nilai elemen TOP yang lama, TOP berkurang 1 */
 
 int lengthS(Stack S);
+/* Mencari panjang dari stack
+   I.S. S mungkin kosong
+   F.S. Panjang dari S*/
 
 void setNol(Stack *S);
+/* Membuat S isinya 0 semua*/
 
 boolean isStackSama(Stack s1, Stack s2);
+/* Mengembalikan true jika stack sama*/
 
 int gettop (Stack S);
+/* Mengambil top pada stack*/
+
 
 #endif
