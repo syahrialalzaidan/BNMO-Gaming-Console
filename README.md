@@ -68,7 +68,7 @@ Namun, siapa sangka 5 orang programmer itu melanjutkan kisah tersebut. Kisah mer
 <p>
 
 <p align="Center">
-  <a href="https://drive.google.com/drive/folders/19nget4JQghYiOb5zmSfVUjlL9DNyzOtn?usp=share_link"> Buku Sakral BNMO Vol. 2 !!!
+  <a href="https://drive.google.com/drive/folders/1ZabfZNvtebZrZluKDU_7hIlB22NToe6M?usp=share_link"> Buku Sakral BNMO Vol. 2 !!!
   <a>
 <p>
 
