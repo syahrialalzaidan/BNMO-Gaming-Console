@@ -31,7 +31,7 @@ void printart();
 void gameover();
 //Menampilkan gambar art game over
 
-void playtowerofhanoi(float *score);
+void playtowerofhanoi(float *score, boolean *play);
 //Memainkan game tower of hanoi
 
 

@@ -99,7 +99,7 @@ void gameover(){
 }
 
 
-void playtowerofhanoi(float *score){
+void playtowerofhanoi(float *score, boolean *play){
 
     Stack tower1, tower2, tower3, temp;
     int temp1, temp2, info1, info2, info3;
@@ -132,9 +132,7 @@ void playtowerofhanoi(float *score){
     }
     temp = tower1;
     printf("Menyiapkan tower of hanoi.");
-    sleep(1);
     printf(" .");
-    sleep(1);
     printf(" .\n");
     clear();
     printf("Ketik 'Q' untuk keluar dari permainan\n\n");
@@ -168,9 +166,7 @@ void playtowerofhanoi(float *score){
                     PushHanoi(&tower2, temp1);
                     count++;
                     printf("Memindahkan ke tower B . ");
-                    sleep(1);
                     printf(". ");
-                    sleep(1);
                     printf(".\n\n");
                     clear();
                     displaytower(n, tower1, tower2, tower3);
@@ -183,9 +179,7 @@ void playtowerofhanoi(float *score){
                     PushHanoi(&tower3, temp1);
                     count++;
                     printf("Memindahkan ke tower C . ");
-                    sleep(1);
                     printf(". ");
-                    sleep(1);
                     printf(".\n\n");
                     clear();
                     displaytower(n, tower1, tower2, tower3);
@@ -201,9 +195,7 @@ void playtowerofhanoi(float *score){
                     PushHanoi(&tower1, temp1);
                     count++;
                     printf("Memindahkan ke tower A . ");
-                    sleep(1);
                     printf(". ");
-                    sleep(1);
                     printf(".\n\n");
                     clear();
                     displaytower(n, tower1, tower2, tower3);
@@ -217,9 +209,7 @@ void playtowerofhanoi(float *score){
                     PushHanoi(&tower3, temp1);
                     count++;
                     printf("Memindahkan ke tower C . ");
-                    sleep(1);
                     printf(". ");
-                    sleep(1);
                     printf(".\n\n");
                     clear();
                     displaytower(n, tower1, tower2, tower3);
@@ -235,9 +225,7 @@ void playtowerofhanoi(float *score){
                     PushHanoi(&tower1, temp1);
                     count++;
                     printf("Memindahkan ke tower A . ");
-                    sleep(1);
                     printf(". ");
-                    sleep(1);
                     printf(".\n\n");
                     clear();
                     displaytower(n, tower1, tower2, tower3);
@@ -251,9 +239,7 @@ void playtowerofhanoi(float *score){
                     PushHanoi(&tower2, temp1);
                     count++;
                     printf("Memindahkan ke tower B . ");
-                    sleep(1);
                     printf(". ");
-                    sleep(1);
                     printf(".\n\n");
                     clear();
                     displaytower(n, tower1, tower2, tower3);
@@ -266,14 +252,16 @@ void playtowerofhanoi(float *score){
     }
     
     *score = ((optimal / count) * 10 * (n/5));
-    if (count >= optimal && *score > 0){
+    if (count >= optimal){
         gameover();
         printf("Selamat Anda berhasil menyelesaikan permainan ini!!\n");
         printf("Skor : %.2f\n", *score);
+        *play = true;
     }
     else {
         gameover();
         printf("Kok nyerah??\n");
+        *play = false;
     }
 }
 

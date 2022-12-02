@@ -28,31 +28,31 @@ void play(Queue *qg, ArrayDin array, float *skor, boolean *play){
     char* akinator = "Akinator";
 
     printf("\n");
-
-    if (isStringSame((*qg).buffer[(*qg).idxHead], katarng)){
+    printf("isStringSame: %d\n", isStringSame(katarng, (*qg).buffer[(*qg).idxHead]));
+    if (isStringSame(katarng, (*qg).buffer[(*qg).idxHead])){
         printf("Loading RNG ...\n");
         rng(skor);
-    } else if(isStringSame((*qg).buffer[(*qg).idxHead], dinnerdash)){
+    } else if(isStringSame(dinnerdash, (*qg).buffer[(*qg).idxHead])){
         printf("Loading Dinner Dash ...\n");
         srand(time(0));
         playdinnerdash(skor);
-    } else if(isStringSame((*qg).buffer[(*qg).idxHead], tebak)){
+    } else if(isStringSame(tebak, (*qg).buffer[(*qg).idxHead])){
         printf("Loading Tebak Kata ...\n");
         playtebakkata(skor);
     // } else if(isStringSame((*qg).buffer[(*qg).idxHead], dinosaur) || isStringSame((*qg).buffer[(*qg).idxHead], rise) || isStringSame((*qg).buffer[(*qg).idxHead], eiffel)){
     //     printf("Game %s masih dalam maintenance, belum dapat dimainkan.\n", (*qg).buffer[(*qg).idxHead]);
     //     printf("Silahkan pilih game lain.\n");
-    } else if(isStringSame((*qg).buffer[(*qg).idxHead], hangmanword)){
+    } else if(isStringSame(hangmanword,(*qg).buffer[(*qg).idxHead])){
         printf("Loading Hangman ...\n");
         Hangman(skor, play);
     //     //playtebakkata();
-    } else if(isStringSame((*qg).buffer[(*qg).idxHead], toh)){
+    } else if(isStringSame(toh, (*qg).buffer[(*qg).idxHead])){
         printf("Loading Tower of Hanoi ...\n");
-        playtowerofhanoi(skor);
-    } else if(isStringSame((*qg).buffer[(*qg).idxHead], som)){
+        playtowerofhanoi(skor, play);
+    } else if(isStringSame(som, (*qg).buffer[(*qg).idxHead])){
         printf("Loading Snake on Meteor ...\n");
         PlaySnakeOnMeteor(skor);
-    } else if(isStringSame((*qg).buffer[(*qg).idxHead], akinator)){
+    } else if(isStringSame(akinator, (*qg).buffer[(*qg).idxHead])){
         printf("Loading Akinator ...\n");
         srand(time(0));
         playakinator(skor);
