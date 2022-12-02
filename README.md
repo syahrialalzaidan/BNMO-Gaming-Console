@@ -96,8 +96,11 @@ Namun, siapa sangka 5 orang programmer itu melanjutkan kisah tersebut. Kisah mer
 📦docs
   
     ┣ 📜IF2111_Form Asistensi TB1_01_10.pdf
+    ┣ 📜IF2111_Form Asistensi TB2_01_10.pdf
     ┣ 📜IF2111_TB1_01_10.pdf
-    ┗ 📜Spesifikasi Tugas Besar 1 IF2111 2022_2023.pdf
+    ┣ 📜IF2111_TB2_01_10.pdf
+    ┣ 📜Spesifikasi Tugas Besar 1 IF2111 2022_2023.pdf
+    ┗ 📜Spesifikasi Tugas Besar 2 IF2111 2022_2023.pdf
 
 📦game
   
