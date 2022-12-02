@@ -6,7 +6,7 @@ HANGMAN
 TOWER OF HANOI
 SNAKE ON METEOR
 Akinator
-15
+14
 RNG
 RNG
 Diner DASH
@@ -20,7 +20,6 @@ HANGMAN
 SNAKE ON METEOR
 Akinator
 Akinator
-HANGMAN
 SNAKE ON METEOR
 2
 rahmansatya 8
@@ -31,13 +30,12 @@ mieyuon 45503
 2
 paneeyaaa 10
 american.standard 10
-2
+1
 viinnnsst 16
-american.standard 10
 0
 2
 riandrabeo 14
-ariq 8
+iskandardar 8
 2
 tryoutify 100
 ilmatiga 20

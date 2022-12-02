@@ -495,5 +495,5 @@ void PlaySnakeOnMeteor(float *skor) {
         DelVFirst(&snake, &HeadX, &HeadY);
     }
     *skor = LengthList(snake)*2;
-    printf("\n): 🅖 🅐 🅜 🅔   🅞 🅥 🅔 🅡  :( \n\nSkor: %.0f\n\n", *skor);
+    printf("\n): G A M E    O V E R :( \n\nSkor: %.0f\n\n", *skor);
 }
