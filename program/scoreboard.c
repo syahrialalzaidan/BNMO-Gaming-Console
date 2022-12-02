@@ -11,8 +11,11 @@ int StringLength(char* string) {
 }
 
 int CountDigits(float n) {
-    int i = (int) n * 100;
+    int i = n * 100;
     int count = 0;
+    if (n < 1) {
+        i = i * 10;
+    }
     while (i != 0) {
         i /= 10.00;
         count++;
@@ -86,8 +89,14 @@ void PrintScoreboard(Map M) {
             // if 2 digits behind decimal point is 0 then print int
             if (isZero(M.Elements[i].Value)) {
                 printf("| %d", (int) M.Elements[i].Value);
-                for (int j = 0; j < maxScoreLength - CountDigits(M.Elements[i].Value)+3; j++) {
+                if ( M.Elements[i].Value == 0) {
+                    for (int j = 0; j < maxScoreLength - CountDigits(M.Elements[i].Value); j++) {
                     printf(" ");
+                }
+                } else {
+                    for (int j = 0; j < maxScoreLength - CountDigits(M.Elements[i].Value)+3; j++) {
+                        printf(" ");
+                    }
                 }
             } else {
                 printf("| %.2f", M.Elements[i].Value);

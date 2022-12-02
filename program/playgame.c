@@ -56,7 +56,6 @@ void play(Queue *qg, ArrayDin array, float *skor, boolean *play){
         printf("Loading Akinator ...\n");
         srand(time(0));
         playakinator(skor);
-    
     } else {
         printf("GAME OVER\n");
         srand(time(NULL));

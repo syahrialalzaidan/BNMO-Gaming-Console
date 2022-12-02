@@ -14,9 +14,9 @@ SNAKE ON METEOR
 BNMO 19
 Finn 12
 3 
-Jake 58
-Finn 31
-Marcelline 30
+Jake 0.5
+Finn 0
+Marcelline 1.75
 0
 0
 1
