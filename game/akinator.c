@@ -43,7 +43,7 @@ void jawab(char* jawaban[41], int nomer[41]){
 
 void printakinator(){
 /* Menampilkan tulisan akinator*/
-    printf("  /$$$$$$  /$$       /$$                       /$$                        \n");
+    printf("\n  /$$$$$$  /$$       /$$                       /$$                        \n");
     printf(" /$$__  $$| $$      |__/                      | $$                        \n");
     printf("| $$  \\ $$| $$   /$$ /$$ /$$$$$$$   /$$$$$$  /$$$$$$    /$$$$$$   /$$$$$$ \n");
     printf("| $$  \\$$| $$   /$$ /$$ /$$$$$$$   /$$$$$$  /$$$$$$    /$$$$$$   /$$$$$$ \n");
@@ -104,8 +104,8 @@ void playakinator(float *skor){
     boolean valid = true;
     int sum = 0;
 
-    printf("Hewan yang kamu harus tebak adalah %s\n", tebakan);
     while ((RIGHT(akinator) != NILakin) && (valid)){
+        printf("Hewan yang kamu harus tebak adalah %s\n\n", tebakan);
         char* Y = "y";
         char* N = "n";
         printf("%s\n", INFO(*akinator));
@@ -115,13 +115,13 @@ void playakinator(float *skor){
         char* input = WordToStringakin(currentWordakin);
 
         while (((!isStringSameakin(Y, input)) && (!isStringSameakin(N, input))) || (!inputcheck(currentWordakin))){
+            clear();
             ADVWORDakin();
             if (!IsEOPakin()){
                 EndWordakin = true;
             }
-            printf("\n");
-            printf("\nJawaban yang diterima hanya y atau n\n\n");
-            printf("Hewan yang kamu harus tebak adalah %s\n", tebakan);
+            printf("Jawaban yang diterima hanya 'y' atau 'n'\n\n");
+            printf("Hewan yang kamu harus tebak adalah %s\n\n", tebakan);
             printf("%s\n", INFO(*akinator));
             printf("Yes (y) / No (n): ");
             STARTWORDakin();
@@ -146,6 +146,7 @@ void playakinator(float *skor){
         } else{
             sum++;
         }
+        clear();
     }
 
     char* jawab;
@@ -155,13 +156,15 @@ void playakinator(float *skor){
     jawab = INFO(*akinator);
     hasil = (ssum/pj) * 100;
 
-    printf("Jawaban kamu ");
+    clear();
+    printf("+-------------------------+\n");
+    printf("|Jawaban kamu");
     if (isStringSameakin(tebakan, jawab)){
-        printf("benar semua\n");
-        printf("Skor: %.2f\n", hasil);
+        printf(" benar semua |\n");
     } else{
-        printf("salah\n");
-        printf("Skor: %.2f\n", hasil);
+        printf(" salah       |\n");
     }
+    printf("+-------------------------+\n");
+    printf("Skor: %.2f\n", hasil);
     *skor = hasil;
 }

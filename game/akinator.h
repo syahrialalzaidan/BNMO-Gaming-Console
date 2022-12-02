@@ -3,6 +3,7 @@
 
 #include "../program/ADT/MesinkarkataAkinator/mesinkataakinator.h"
 #include "../program/ADT/tree/tree.h"
+#include "../program/ADT/mesinkarkata/mesinkata.h"
 
 boolean isStringSameakin(char *c1, char*c2);
 /* Mengembalikan true jika string sama */
