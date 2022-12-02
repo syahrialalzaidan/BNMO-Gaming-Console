@@ -65,12 +65,14 @@ int lengthS(Stack S){
 }
 
 void setNol(Stack *S){
+/* Membuat S isinya 0 semua*/
     for (int i = 0; i < MaxEl; i++){
         (*S).T[i] = 0;
     }
 }
 
 boolean isStackSama(Stack s1, Stack s2){
+/* Mengembalikan true jika stack sama*/
     boolean sama = true;
     int i = 0;
     while (i <= Top(s1) && sama){
@@ -81,6 +83,7 @@ boolean isStackSama(Stack s1, Stack s2){
 }
 
 int gettop (Stack S){
+/* Mengambil top pada stack*/
     boolean found = false;
     int i = 0, x = 0;
     while (! found){
