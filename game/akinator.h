@@ -2,7 +2,7 @@
 #define AKINATOR_H
 
 #include "../program/ADT/MesinkarkataAkinator/mesinkataakinator.h"
-#include "../program/ADT/tree/tree.h"
+#include "../program/ADT/Tree/tree.h"
 #include "../program/ADT/mesinkarkata/mesinkata.h"
 
 boolean isStringSameakin(char *c1, char*c2);
