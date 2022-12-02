@@ -1,16 +1,6 @@
 #include "Hangman.h"
 //gcc -o hangman Hangman.c ../program/ADT/Map/mapchar.c ../program/ADT/Set/sethangman.c ../program/ADT/mesinkarkata/mesinkata.c ../program/ADT/mesinkarkata/mesinkar.c ../program/ADT/Set/set.c ../program/load.c ../program/ADT/Stack/stack.c ../program/ADT/Map/map.c ../program/ADT/arraydin/arraydin.c
 
-/*Meng-generate kamus kata yang digunakan untuk permainan*/
-// void generatemap(MapChar *kamus){
-//     InsertChar(kamus, "MAYORNAUFAL", "K01tertampan");
-//     InsertChar(kamus, "GIBEH", "dinosaurus");
-//     InsertChar(kamus, "ARGENTINA", "messi");
-//     InsertChar(kamus, "SWEDIA", "negara dengan pulau terbanyak");
-//     InsertChar(kamus, "ALSTRUKDAT", "matkul favorit ariq");
-//     InsertChar(kamus, "KALIMANTAN", "pulau terbesar di indonesia");
-// }
-
 /*Me-load kamus*/
 void loadkamus(char* filename, Set* kamus) {
 /*  Membaca save file yang berisi list game yang dapat dimainkan.
@@ -34,8 +24,8 @@ void loadkamus(char* filename, Set* kamus) {
     StopLoadPita();
 }
 
-/*Mengubah semua huruf kecil ke huruf besar*/
 char UpperHuruf(char input){
+/*  Mengubah semua huruf kecil ke huruf besar*/
     int upperfactor = 'A' - 'a';
     if (input >= 'a' && input <= 'z'){
         input += upperfactor;
@@ -43,8 +33,8 @@ char UpperHuruf(char input){
     return input;
 }
 
-/*Membuat input kata menjadi huruf besar semua*/
 char* UpperKata(char* input){
+/* Membuat input kata menjadi huruf besar semua*/
     int i = 0;
     while (input[i] != '\0')
     {
@@ -54,8 +44,10 @@ char* UpperKata(char* input){
     return input;
 }
 
-/*Animasi kekalahan HAHAHA*/
 void hangmanart(){
+/*  Animasi kekalahan HAHAHA
+    I.S. : Nyawa pemain habis alias kalah
+    F.S. : Ada animasi kekalahan HAHAHA*/
     printf("\nur dead bruh\n\n");
     printf("  _________\n");
     printf("  |/      |\n");
@@ -94,6 +86,7 @@ boolean isstringequalHM(char *kata1, char *kata2){
     return true;
 }
 
+/*Welcome page Hangman*/
 void hangmanascii(){
     printf("HHHHHHHHH     HHHHHHHHH               AAA               NNNNNNNN        NNNNNNNN        GGGGGGGGGGGGGMMMMMMMM               MMMMMMMM               AAA               NNNNNNNN        NNNNNNNN\n");
     printf("H:::::::H     H:::::::H              A:::A              N:::::::N       N::::::N     GGG::::::::::::GM:::::::M             M:::::::M              A:::A              N:::::::N       N::::::N\n");    
@@ -114,8 +107,10 @@ void hangmanascii(){
 }
 
 
-/*Permainan utama*/
 void playtebakkataHM(float* scoretotal, float* nyawa){
+/*  Permainan utama
+    I.S. : Nyawa awal pasti lebih dari 0
+    F.S. : Nyawa habis (kalah) atau pemain memenangkan permainan dengan menambah skor*/
     int skor = 0; //Skor game
     time_t t;
     srand(time(&t)); //Seed for random number
@@ -199,6 +194,9 @@ void playtebakkataHM(float* scoretotal, float* nyawa){
 }
 
 void savekamus(Set kamus){
+/*  Menyimpan kata ke kamus
+    I.S. : Kamus kata dalam bentuk set telah disiapkan
+    F.S. : Kamus ditulis ulang dengan kata yang baru*/
     char* filepath = AddPath("kamus.txt");
     FILE* fp = fopen(filepath, "w");
     fprintf(fp, "%d\n", kamus.Count);
@@ -213,8 +211,10 @@ void savekamus(Set kamus){
     fclose(fp);
 }
 
-//Fungsi utama yang dipanggil
 void Hangman(float *skor, boolean *play){
+/*  Fungsi utama yang dipanggil
+    I.S. : Permainan dipanggil
+    F.S. : Mengembalikan skor untuk ditambah ke scoreboard*/
     float skortemp, skortotal = 0, nyawa = 10;
     *play = true;
     int pilihan;
@@ -259,7 +259,6 @@ void Hangman(float *skor, boolean *play){
             }
             printf("Yah nyawa kamu habis, tapi ... Selamat kamu berhasil mendapatkan %.0f poin pada game ini!\n", skortotal);
             printf("Selamat mengerjakan tubes lainnya, Bye-bye! :D\n");
-        //ALGORITMA MASUKIN SCOREBOARD
         }
         else if (pilihan == 2){
             valid = true;
