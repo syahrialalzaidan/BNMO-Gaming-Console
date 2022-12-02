@@ -6,21 +6,24 @@ HANGMAN
 TOWER OF HANOI
 SNAKE ON METEOR
 Akinator
-3
-HANGMAN
-TOWER OF HANOI
-SNAKE ON METEOR
-2 
-BNMO 19
-Finn 12
-3 
-Jake 0.5
-Finn 0
-Marcelline 1.75
+7
+RNG
+RNG
+Diner DASH
+Diner DASH
+Diner DASH
+Tebak Kata
+Tebak Kata
+2
+rahmansatya 8
+qraify 7
+2
+rrryogaak 58351
+mieyuon 45503
+2
+paneeyaaa 10
+american.standard 10
 0
 0
-1
-Marshall 10.52
-1
-Ariq 77
+0
 0
