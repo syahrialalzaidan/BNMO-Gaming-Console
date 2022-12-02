@@ -240,7 +240,7 @@ int main() {
             playgame(&queuegames, Games, &score, &found);
             if (found){
                 Push(&history, gameName);
-                if (score != 0){
+                if (score > 0){
                     printf("Masukkan nama: ");
                     STARTWORD();
                     char* name = WordToString(currentWord);

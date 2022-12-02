@@ -264,10 +264,11 @@ void playtowerofhanoi(float *score){
         }
         else printf("Input INVALID!\n\n");
     }
-    if (count >= optimal){
+    
+    *score = ((optimal / count) * 10 * (n/5));
+    if (count >= optimal && *score > 0){
         gameover();
         printf("Selamat Anda berhasil menyelesaikan permainan ini!!\n");
-        *score = ((optimal / count) * 10 * (n/5));
         printf("Skor : %.2f\n", *score);
     }
     else {
